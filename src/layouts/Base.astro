@@ -1,0 +1,66 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "UroRef — Urology quick reference for trainees. Protocols, drug doses, procedure guides and FRCS viva cards, built for the ward." } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <title>{title} | UroRef</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/styles/global.css" />
+</head>
+<body style="background-color: #f8fafc; color: #1e293b; font-family: 'Inter', sans-serif; margin: 0;">
+
+  <!-- Nav -->
+  <header style="background-color: #0f2b46; position: sticky; top: 0; z-index: 50; border-bottom: 1px solid rgba(255,255,255,0.08);">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; height: 64px;">
+      <a href="/" style="text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+        <span style="color: #f59e0b; font-weight: 800; font-size: 1.25rem; letter-spacing: -0.02em;">UroRef</span>
+      </a>
+
+      <nav style="display: flex; align-items: center; gap: 1.5rem;">
+        <a href="/app" style="color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.15s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.75)'">App</a>
+        <a href="/about" style="color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.9rem; font-weight: 500;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.75)'">About</a>
+        <a href="/deep-dives" style="color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.9rem; font-weight: 500;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.75)'">Deep Dives</a>
+        <a href="/updates" style="color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.9rem; font-weight: 500;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.75)'">Updates</a>
+        <a href="/app" style="background-color: #f59e0b; color: #0f2b46; padding: 0.5rem 1.1rem; border-radius: 8px; text-decoration: none; font-size: 0.875rem; font-weight: 700; white-space: nowrap;">Get app</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page content -->
+  <main>
+    <slot />
+  </main>
+
+  <!-- Footer -->
+  <footer style="background-color: #0f2b46; color: rgba(255,255,255,0.6); margin-top: 5rem;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 2.5rem 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
+      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem;">
+        <span style="color: #f59e0b; font-weight: 800; font-size: 1.1rem;">UroRef</span>
+        <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+          <a href="/app" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">App</a>
+          <a href="/about" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">About</a>
+          <a href="/updates" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Updates</a>
+          <a href="/contact" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Contact</a>
+          <a href="https://forms.gle/4QTK3MSgMsedJQEw7" target="_blank" rel="noopener" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Feedback</a>
+        </div>
+      </div>
+      <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: space-between; align-items: center;">
+        <span style="font-size: 0.8rem;">© 2026 UroRef. Built by Nity G, Urology SpR.</span>
+        <span style="font-size: 0.8rem; color: rgba(255,255,255,0.4);">Quick reference only — not clinical advice.</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

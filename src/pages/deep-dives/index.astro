@@ -1,0 +1,42 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const articles = await getCollection('deep-dives');
+---
+<Base title="Deep Dives" description="In-depth urology clinical guides for registrars and trainees — written by an SpR, peer reviewed.">
+
+  <section style="background-color: #0f2b46; padding: 5rem 1.5rem 4rem;">
+    <div style="max-width: 750px; margin: 0 auto;">
+      <div style="display: inline-block; background-color: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.3); border-radius: 100px; padding: 0.3rem 0.875rem; margin-bottom: 1.25rem;">
+        <span style="color: #f59e0b; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;">Clinical guides</span>
+      </div>
+      <h1 style="color: white; font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -0.03em; margin: 0 0 1rem; line-height: 1.15;">Deep Dives</h1>
+      <p style="color: rgba(255,255,255,0.7); font-size: 1.1rem; line-height: 1.7; margin: 0;">
+        Detailed clinical guides for urology trainees. Written by an SpR, covering the topics that matter on the wards and in exams.
+      </p>
+    </div>
+  </section>
+
+  <section style="padding: 4rem 1.5rem; max-width: 800px; margin: 0 auto;">
+    {articles.length === 0 ? (
+      <p style="color: #64748b;">No articles yet.</p>
+    ) : (
+      <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+        {articles.map(article => (
+            <a href={`/deep-dives/${article.id}`} style="display: block; background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.75rem; text-decoration: none; transition: border-color 0.15s;" onmouseover="this.style.borderColor='#f59e0b'" onmouseout="this.style.borderColor='#e2e8f0'">
+            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.625rem; flex-wrap: wrap;">
+              {article.data.tags && article.data.tags.map((tag: string) => (
+                <span style="background-color: #f1f5f9; color: #64748b; font-size: 0.75rem; padding: 0.2rem 0.5rem; border-radius: 4px;">{tag}</span>
+              ))}
+              <span style="color: #94a3b8; font-size: 0.8rem;">{article.data.date}</span>
+            </div>
+            <h2 style="font-size: 1.2rem; font-weight: 700; color: #0f2b46; margin: 0 0 0.5rem; letter-spacing: -0.01em;">{article.data.title}</h2>
+            <p style="color: #64748b; font-size: 0.9rem; margin: 0; line-height: 1.6;">{article.data.description}</p>
+          </a>
+        ))}
+      </div>
+    )}
+  </section>
+
+</Base>

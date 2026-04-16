@@ -1,0 +1,55 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Contact" description="Get in touch with the UroRef team — feedback, bugs, clinical review contributions.">
+
+  <section style="background-color: #0f2b46; padding: 5rem 1.5rem 4rem;">
+    <div style="max-width: 750px; margin: 0 auto;">
+      <h1 style="color: white; font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -0.03em; margin: 0 0 1rem;">Contact</h1>
+      <p style="color: rgba(255,255,255,0.7); font-size: 1.1rem; line-height: 1.7; margin: 0;">Bugs, feedback, clinical queries, or wanting to contribute — all welcome.</p>
+    </div>
+  </section>
+
+  <section style="padding: 4rem 1.5rem; max-width: 700px; margin: 0 auto;">
+    <div style="display: grid; gap: 1.25rem;">
+
+      <!-- Feedback form -->
+      <a href="https://forms.gle/4QTK3MSgMsedJQEw7" target="_blank" rel="noopener" style="display: flex; gap: 1.25rem; background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.75rem; text-decoration: none; align-items: center; transition: border-color 0.15s;" onmouseover="this.style.borderColor='#f59e0b'" onmouseout="this.style.borderColor='#e2e8f0'">
+        <span style="font-size: 2rem; flex-shrink: 0;">📝</span>
+        <div>
+          <p style="font-weight: 700; color: #0f2b46; margin: 0 0 0.25rem; font-size: 1rem;">Feedback form</p>
+          <p style="color: #64748b; margin: 0; font-size: 0.875rem; line-height: 1.5;">Report a bug, suggest content, or share feedback. Takes 2 minutes.</p>
+          <p style="color: #f59e0b; margin: 0.5rem 0 0; font-size: 0.8rem; font-weight: 600;">forms.gle/4QTK3MSgMsedJQEw7 →</p>
+        </div>
+      </a>
+
+      <!-- Email -->
+      <div style="display: flex; gap: 1.25rem; background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.75rem; align-items: center;">
+        <span style="font-size: 2rem; flex-shrink: 0;">📧</span>
+        <div>
+          <p style="font-weight: 700; color: #0f2b46; margin: 0 0 0.25rem; font-size: 1rem;">Email</p>
+          <p style="color: #64748b; margin: 0; font-size: 0.875rem; line-height: 1.5;">For clinical review contributions, partnership enquiries, or anything more formal.</p>
+          <p style="color: #94a3b8; margin: 0.5rem 0 0; font-size: 0.8rem; font-family: 'JetBrains Mono', monospace;">[email coming soon]</p>
+        </div>
+      </div>
+
+      <!-- GitHub -->
+      <a href="https://github.com/nityjr-ctrl/uroref-app" target="_blank" rel="noopener" style="display: flex; gap: 1.25rem; background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.75rem; text-decoration: none; align-items: center;" onmouseover="this.style.borderColor='#f59e0b'" onmouseout="this.style.borderColor='#e2e8f0'">
+        <span style="font-size: 2rem; flex-shrink: 0;">⚙️</span>
+        <div>
+          <p style="font-weight: 700; color: #0f2b46; margin: 0 0 0.25rem; font-size: 1rem;">GitHub</p>
+          <p style="color: #64748b; margin: 0; font-size: 0.875rem; line-height: 1.5;">View the UroRef app repository. Issues and PRs welcome for technical contributions.</p>
+          <p style="color: #f59e0b; margin: 0.5rem 0 0; font-size: 0.8rem; font-weight: 600; font-family: 'JetBrains Mono', monospace;">github.com/nityjr-ctrl/uroref-app →</p>
+        </div>
+      </a>
+
+    </div>
+
+    <div style="margin-top: 2.5rem; background-color: rgba(15,43,70,0.04); border: 1px solid #e2e8f0; border-radius: 10px; padding: 1.25rem;">
+      <p style="color: #64748b; font-size: 0.85rem; margin: 0; line-height: 1.7;">
+        <strong style="color: #374151;">Clinical safety:</strong> If you've spotted a clinical error in UroRef content, please flag it via the feedback form above and it will be prioritised. UroRef is a quick reference tool — always verify against your trust guidelines and seek senior advice when in doubt.
+      </p>
+    </div>
+  </section>
+
+</Base>

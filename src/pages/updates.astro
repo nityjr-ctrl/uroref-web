@@ -1,0 +1,109 @@
+---
+import Base from '../layouts/Base.astro';
+
+const changelog = [
+  {
+    version: 'v2.3',
+    phase: 'Phase 2',
+    date: 'April 2026',
+    status: 'latest',
+    title: 'Search, pinned tools & recently used',
+    items: [
+      'Full-text search across all content types — protocols, drug doses, procedures, viva cards',
+      'Pin your most-used tools to the home screen for one-tap access',
+      'Recently used section automatically tracks and surfaces what you need during busy shifts',
+      'Search results ranked by relevance with content-type labels',
+    ],
+  },
+  {
+    version: 'v2.3',
+    phase: 'Phase 1',
+    date: 'April 2026',
+    status: 'latest',
+    title: 'Trust layer, governance view & review metadata',
+    items: [
+      'Trust layer introduced — content now carries review status metadata',
+      'Governance view in-app: see which content has been consultant-reviewed',
+      'Review badge system — reviewed, in-review, and authored-by indicators',
+      'Groundwork for consultant contributor access and review workflow',
+    ],
+  },
+  {
+    version: 'v2.2',
+    phase: null,
+    date: 'March 2026',
+    status: 'previous',
+    title: 'iOS release',
+    items: [
+      'UroRef released on iOS App Store',
+      'Full protocol library available on iPhone',
+      'On-call emergency section with structured guides',
+      'Drug dose calculator with renal adjustment prompts',
+    ],
+  },
+  {
+    version: 'v2.1',
+    phase: null,
+    date: 'January 2026',
+    status: 'initial',
+    title: 'Initial release',
+    items: [
+      'First build of UroRef — internal testing with North West Deanery trainees',
+      'Core protocol library (catheterisation, TURBT, TRUS biopsy)',
+      'Basic drug dose reference',
+      'FRCS viva card set — first 40 topics',
+    ],
+  },
+];
+---
+<Base title="Updates — UroRef Changelog" description="UroRef app changelog — version history, new features and upcoming changes.">
+
+  <section style="background-color: #0f2b46; padding: 5rem 1.5rem 4rem;">
+    <div style="max-width: 750px; margin: 0 auto;">
+      <h1 style="color: white; font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -0.03em; margin: 0 0 1rem; line-height: 1.15;">Updates</h1>
+      <p style="color: rgba(255,255,255,0.7); font-size: 1.1rem; line-height: 1.7; margin: 0;">
+        What's new in UroRef — features, fixes, and what's coming next.
+      </p>
+    </div>
+  </section>
+
+  <section style="padding: 4rem 1.5rem; max-width: 750px; margin: 0 auto;">
+    <div style="display: flex; flex-direction: column; gap: 0; position: relative;">
+
+      {changelog.map((entry, idx) => (
+        <div style="display: flex; gap: 1.5rem; padding-bottom: 2.5rem;">
+
+          <!-- Timeline line + dot -->
+          <div style="display: flex; flex-direction: column; align-items: center; flex-shrink: 0; width: 24px;">
+            <div style={`width: 12px; height: 12px; border-radius: 50%; margin-top: 0.35rem; flex-shrink: 0; ${entry.status === 'latest' ? 'background-color: #f59e0b; box-shadow: 0 0 0 3px rgba(245,158,11,0.2);' : 'background-color: #cbd5e1;'}`}></div>
+            {idx < changelog.length - 1 && <div style="width: 1px; background-color: #e2e8f0; flex: 1; margin-top: 4px;"></div>}
+          </div>
+
+          <!-- Content -->
+          <div style="flex: 1; padding-bottom: 0.25rem;">
+            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem; flex-wrap: wrap;">
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; font-weight: 500; color: #0f2b46; background-color: #e2e8f0; padding: 0.2rem 0.6rem; border-radius: 4px;">
+                {entry.version}{entry.phase ? ` ${entry.phase}` : ''}
+              </span>
+              {entry.status === 'latest' && (
+                <span style="background-color: rgba(245,158,11,0.15); color: #d97706; font-size: 0.7rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.05em;">Latest</span>
+              )}
+              <span style="color: #94a3b8; font-size: 0.8rem;">{entry.date}</span>
+            </div>
+            <h2 style="font-size: 1.1rem; font-weight: 700; color: #0f2b46; margin: 0 0 0.875rem; letter-spacing: -0.01em;">{entry.title}</h2>
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem;">
+              {entry.items.map(item => (
+                <li style="display: flex; gap: 0.625rem; align-items: flex-start;">
+                  <span style="color: #64748b; margin-top: 0.5rem; width: 4px; height: 4px; background-color: #94a3b8; border-radius: 50%; flex-shrink: 0;"></span>
+                  <span style="color: #374151; font-size: 0.9rem; line-height: 1.65;">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))}
+
+    </div>
+  </section>
+
+</Base>

@@ -1,0 +1,77 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="About UroRef" description="UroRef was built by Nity G, a Urology SpR in the North West Deanery, because the resources trainees needed didn't exist in one place.">
+
+  <section style="background-color: #0f2b46; padding: 5rem 1.5rem 4rem;">
+    <div style="max-width: 750px; margin: 0 auto;">
+      <h1 style="color: white; font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -0.03em; margin: 0 0 1rem; line-height: 1.15;">About UroRef</h1>
+      <p style="color: rgba(255,255,255,0.7); font-size: 1.15rem; line-height: 1.7; margin: 0;">
+        A quick reference tool built by a urology registrar, for urology trainees.
+      </p>
+    </div>
+  </section>
+
+  <section style="padding: 4rem 1.5rem; max-width: 750px; margin: 0 auto;">
+
+    <!-- Who built it -->
+    <div style="margin-bottom: 3rem;">
+      <h2 style="font-size: 1.5rem; font-weight: 700; color: #0f2b46; margin: 0 0 1rem; letter-spacing: -0.01em;">Who built it</h2>
+      <div style="background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.75rem; display: flex; gap: 1.25rem; align-items: flex-start;">
+        <div style="width: 52px; height: 52px; background-color: #0f2b46; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;">👨‍⚕️</div>
+        <div>
+          <p style="font-weight: 700; color: #0f2b46; margin: 0 0 0.25rem; font-size: 1.05rem;">Nity G</p>
+          <p style="color: #64748b; margin: 0 0 0.5rem; font-size: 0.9rem;">Urology SpR — North West Deanery</p>
+          <p style="color: #374151; margin: 0; font-size: 0.95rem; line-height: 1.7;">
+            "Built because the resources I needed didn't exist in one place. On a busy on-call shift you don't have time to cross-reference multiple PDFs, apps, and the BNF. I wanted one tool that actually matches how we work."
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- What it contains -->
+    <div style="margin-bottom: 3rem;">
+      <h2 style="font-size: 1.5rem; font-weight: 700; color: #0f2b46; margin: 0 0 1rem; letter-spacing: -0.01em;">What it contains</h2>
+      <div style="display: grid; gap: 0.75rem;">
+        {[
+          ['📋', 'Protocols', '100+ urology protocols — catheterisation, nephrostomy care, TURBT post-op care, TRUS biopsy, flexible cystoscopy prep'],
+          ['🚨', 'On-call emergencies', 'Structured guides for acute retention, urosepsis, frank haematuria, renal colic, priapism, fournier\'s gangrene'],
+          ['💊', 'Drug doses', 'Urology-specific doses — analgesics, alpha-blockers, antibiotics, bladder instillations — with renal dose adjustment prompts'],
+          ['🩺', 'Procedure guides', 'Step-by-step guides designed for registrar-level decision making, not just observation'],
+          ['📚', 'FRCS viva cards', 'High-yield structured answers for urology exit exam topics — upper tract, lower tract, oncology, reconstruction'],
+          ['🔍', 'Search & pin', 'Instant full-text search across all content. Pin your most-used tools. Recently used tracked automatically'],
+        ].map(([icon, title, desc]) => (
+          <div style="display: flex; gap: 1rem; background: white; border: 1px solid #e2e8f0; border-radius: 10px; padding: 1.25rem; align-items: flex-start;">
+            <span style="font-size: 1.4rem; flex-shrink: 0; margin-top: 0.1rem;">{icon}</span>
+            <div>
+              <p style="font-weight: 600; color: #0f2b46; margin: 0 0 0.25rem; font-size: 0.95rem;">{title}</p>
+              <p style="color: #64748b; margin: 0; font-size: 0.875rem; line-height: 1.6;">{desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Governance -->
+    <div style="background-color: rgba(15,43,70,0.04); border: 1px solid #e2e8f0; border-radius: 12px; padding: 2rem; margin-bottom: 2rem;">
+      <h2 style="font-size: 1.5rem; font-weight: 700; color: #0f2b46; margin: 0 0 1rem; letter-spacing: -0.01em;">Governance & review</h2>
+      <div style="display: flex; flex-direction: column; gap: 0.875rem; margin-bottom: 1.5rem;">
+        <div style="display: flex; gap: 0.75rem; align-items: flex-start;">
+          <span style="width: 8px; height: 8px; background-color: #f59e0b; border-radius: 50%; flex-shrink: 0; margin-top: 0.45rem;"></span>
+          <p style="color: #374151; margin: 0; font-size: 0.9rem; line-height: 1.6;"><strong>Review status:</strong> Consultant review layer in progress. Content is written by an SpR and is being reviewed by consultant urologists.</p>
+        </div>
+        <div style="display: flex; gap: 0.75rem; align-items: flex-start;">
+          <span style="width: 8px; height: 8px; background-color: #f59e0b; border-radius: 50%; flex-shrink: 0; margin-top: 0.45rem;"></span>
+          <p style="color: #374151; margin: 0; font-size: 0.9rem; line-height: 1.6;"><strong>Important:</strong> UroRef is a quick reference tool for trained clinicians. It is not a substitute for senior advice, trust guidelines, or clinical judgement.</p>
+        </div>
+        <div style="display: flex; gap: 0.75rem; align-items: flex-start;">
+          <span style="width: 8px; height: 8px; background-color: #f59e0b; border-radius: 50%; flex-shrink: 0; margin-top: 0.45rem;"></span>
+          <p style="color: #374151; margin: 0; font-size: 0.9rem; line-height: 1.6;"><strong>Get involved:</strong> If you're a urology consultant and would like to review content or contribute, we'd love to hear from you.</p>
+        </div>
+      </div>
+      <a href="https://forms.gle/4QTK3MSgMsedJQEw7" target="_blank" rel="noopener" style="display: inline-block; background-color: #f59e0b; color: #0f2b46; padding: 0.6rem 1.25rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.875rem;">Submit feedback or offer to review →</a>
+    </div>
+
+  </section>
+
+</Base>

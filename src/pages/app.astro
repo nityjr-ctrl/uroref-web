@@ -1,0 +1,91 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Download UroRef" description="Download UroRef — the urology quick reference app for trainees. Available on iOS and Android.">
+
+  <!-- Hero -->
+  <section style="background-color: #0f2b46; padding: 5rem 1.5rem 4rem; text-align: center;">
+    <div style="max-width: 700px; margin: 0 auto;">
+      <h1 style="color: white; font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 800; letter-spacing: -0.03em; margin: 0 0 1rem; line-height: 1.15;">
+        Download UroRef
+      </h1>
+      <p style="color: rgba(255,255,255,0.7); font-size: 1.15rem; margin: 0 0 0.5rem; line-height: 1.6;">
+        100+ urology protocols. Drug doses. On-call emergency guides. FRCS viva cards.
+      </p>
+      <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem; margin: 0;">
+        Free. Built for trainees. Available on iOS and Android.
+      </p>
+    </div>
+  </section>
+
+  <!-- Download badges -->
+  <section style="padding: 4rem 1.5rem; max-width: 800px; margin: 0 auto; text-align: center;">
+    <h2 style="font-size: 1.5rem; font-weight: 700; color: #0f2b46; margin: 0 0 0.75rem;">Get the app</h2>
+    <p style="color: #64748b; margin: 0 0 2.5rem;">Choose your platform. Nick will add live download links soon.</p>
+
+    <div style="display: flex; gap: 1.25rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem;">
+      <!-- iOS Badge -->
+      <a href="#" style="display: flex; align-items: center; gap: 0.875rem; background-color: #0f2b46; color: white; padding: 0.875rem 1.75rem; border-radius: 12px; text-decoration: none; min-width: 200px;">
+        <span style="font-size: 2rem;">🍎</span>
+        <div style="text-align: left;">
+          <div style="font-size: 0.7rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 0.05em;">Download on the</div>
+          <div style="font-size: 1.1rem; font-weight: 700;">App Store</div>
+        </div>
+      </a>
+
+      <!-- Android Badge -->
+      <a href="#" style="display: flex; align-items: center; gap: 0.875rem; background-color: #0f2b46; color: white; padding: 0.875rem 1.75rem; border-radius: 12px; text-decoration: none; min-width: 200px;">
+        <span style="font-size: 2rem;">🤖</span>
+        <div style="text-align: left;">
+          <div style="font-size: 0.7rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 0.05em;">Get it on</div>
+          <div style="font-size: 1.1rem; font-weight: 700;">Google Play</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- QR Code placeholder -->
+    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 16px; padding: 2.5rem; margin-bottom: 2rem; max-width: 400px; margin-left: auto; margin-right: auto;">
+      <div style="width: 160px; height: 160px; background-color: #f1f5f9; border-radius: 8px; margin: 0 auto 1.25rem; display: flex; align-items: center; justify-content: center; border: 2px dashed #cbd5e1;">
+        <span style="color: #94a3b8; font-size: 0.8rem; text-align: center; padding: 0.5rem;">QR code<br/>coming soon</span>
+      </div>
+      <p style="font-size: 0.9rem; font-weight: 600; color: #0f2b46; margin: 0 0 0.25rem;">Print and pin to your ward noticeboard</p>
+      <p style="font-size: 0.8rem; color: #64748b; margin: 0;">Scan to download UroRef instantly on any device.</p>
+    </div>
+  </section>
+
+  <!-- Screenshots placeholder -->
+  <section style="background-color: #0f2b46; padding: 4rem 1.5rem;">
+    <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+      <h2 style="color: white; font-size: 1.75rem; font-weight: 700; margin: 0 0 0.75rem; letter-spacing: -0.02em;">See it in action</h2>
+      <p style="color: rgba(255,255,255,0.6); margin: 0 0 2.5rem; font-size: 0.95rem;">Screenshots coming soon — Nick is adding these before launch.</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; max-width: 700px; margin: 0 auto;">
+        {[1,2,3,4].map(() => (
+          <div style="aspect-ratio: 9/16; background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; display: flex; align-items: center; justify-content: center;">
+            <span style="color: rgba(255,255,255,0.3); font-size: 0.75rem;">Screenshot</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Features reminder -->
+  <section style="padding: 4rem 1.5rem; max-width: 700px; margin: 0 auto;">
+    <h2 style="font-size: 1.5rem; font-weight: 700; color: #0f2b46; margin: 0 0 1.5rem; text-align: center;">What's inside</h2>
+    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.875rem;">
+      {[
+        '100+ urology protocols — catheterisation, stents, TURBT post-op, TRUS biopsy, cystoscopy',
+        'On-call emergency guides — acute retention, urosepsis, frank haematuria, renal colic',
+        'Drug doses with renal adjustment prompts (morphine, tamsulosin, gentamicin, ciprofloxacin)',
+        'Procedure step-by-step guides built for registrar-level decision-making',
+        'FRCS viva cards — structured high-yield answers for urology exit exams',
+        'Pinned tools and recently used — fast access during busy shifts',
+      ].map(item => (
+        <li style="display: flex; gap: 0.75rem; align-items: flex-start;">
+          <span style="color: #f59e0b; font-size: 1.1rem; margin-top: 0.1rem; flex-shrink: 0;">✓</span>
+          <span style="color: #374151; font-size: 0.95rem; line-height: 1.6;">{item}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+</Base>

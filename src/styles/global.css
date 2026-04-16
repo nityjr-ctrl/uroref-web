@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #0f2b46;
+  --color-amber: #f59e0b;
+  --color-slate-text: #64748b;
+  --color-bg-light: #f8fafc;
+
+  --font-sans: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg-light);
+    color: #1e293b;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-sans);
+    font-weight: 700;
+  }
+
+  code, pre, .mono {
+    font-family: var(--font-mono);
+  }
+}

@@ -1,0 +1,78 @@
+---
+import Base from '../layouts/Base.astro';
+
+const features = [
+  { icon: '🔍', title: 'Search 100+ protocols', desc: 'Instant search across guidelines, doses, and procedures.' },
+  { icon: '📌', title: 'Pinned tools & recents', desc: 'Quick access to what you use most on your current rotation.' },
+  { icon: '🚨', title: 'On-call emergencies', desc: 'Acute retention, urosepsis, haematuria — structured guides for nights.' },
+  { icon: '🩺', title: 'Procedure guides', desc: 'Catheterisation, nephrostomy care, cystoscopy prep and more.' },
+  { icon: '💊', title: 'Drug doses', desc: 'Urology-specific doses with renal adjustment prompts.' },
+  { icon: '📚', title: 'FRCS viva cards', desc: 'High-yield viva topics for urology trainees in ST3+.' },
+];
+---
+<Base title="Urology at your fingertips">
+
+  <!-- Hero -->
+  <section style="background-color: #0f2b46; padding: 6rem 1.5rem 5rem; text-align: center;">
+    <div style="max-width: 800px; margin: 0 auto;">
+      <div style="display: inline-block; background-color: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.3); border-radius: 100px; padding: 0.35rem 1rem; margin-bottom: 1.5rem;">
+        <span style="color: #f59e0b; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;">For urology trainees</span>
+      </div>
+      <h1 style="color: white; font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; letter-spacing: -0.03em; margin: 0 0 1rem; line-height: 1.1;">
+        Urology at your fingertips.
+      </h1>
+      <p style="color: rgba(255,255,255,0.7); font-size: clamp(1.1rem, 3vw, 1.35rem); margin: 0 0 2.5rem; font-weight: 400; line-height: 1.6;">
+        Built for the ward, not the library.
+      </p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem;">
+        <a href="/app" style="background-color: #f59e0b; color: #0f2b46; padding: 0.875rem 2rem; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 1.05rem; display: inline-block;">Get the app →</a>
+        <a href="/about" style="background-color: transparent; color: white; padding: 0.875rem 2rem; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 1.05rem; border: 1px solid rgba(255,255,255,0.2); display: inline-block;">Learn more</a>
+      </div>
+      <p style="color: rgba(255,255,255,0.45); font-size: 0.875rem; margin: 0;">
+        Created by a urology registrar. Used on the wards.
+      </p>
+    </div>
+  </section>
+
+  <!-- Features grid -->
+  <section style="padding: 5rem 1.5rem; max-width: 1200px; margin: 0 auto;">
+    <div style="text-align: center; margin-bottom: 3rem;">
+      <h2 style="font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; color: #0f2b46; margin: 0 0 0.75rem; letter-spacing: -0.02em;">Everything you need. One app.</h2>
+      <p style="color: #64748b; font-size: 1.05rem; max-width: 560px; margin: 0 auto;">No more hunting through multiple apps, PDFs, and BNFs during a busy on-call shift.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem;">
+      {features.map(f => (
+        <div style="background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.75rem; transition: box-shadow 0.2s;">
+          <div style="font-size: 1.75rem; margin-bottom: 0.875rem;">{f.icon}</div>
+          <h3 style="font-size: 1.05rem; font-weight: 700; color: #0f2b46; margin: 0 0 0.5rem;">{f.title}</h3>
+          <p style="color: #64748b; font-size: 0.9rem; margin: 0; line-height: 1.6;">{f.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Trust card -->
+  <section style="background-color: #0f2b46; padding: 4rem 1.5rem;">
+    <div style="max-width: 700px; margin: 0 auto; text-align: center;">
+      <div style="background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 2.5rem;">
+        <div style="width: 48px; height: 48px; background-color: rgba(245,158,11,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; font-size: 1.5rem;">🏥</div>
+        <p style="color: white; font-size: 1.15rem; font-weight: 600; margin: 0 0 1rem; line-height: 1.6;">
+          "Created by Nity G, Urology SpR."
+        </p>
+        <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin: 0; line-height: 1.7;">
+          Consultant review layer in progress. This is a quick reference tool — not a substitute for senior advice. Always escalate when in doubt.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download CTA -->
+  <section style="padding: 5rem 1.5rem; text-align: center;">
+    <div style="max-width: 600px; margin: 0 auto;">
+      <h2 style="font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; color: #0f2b46; margin: 0 0 1rem; letter-spacing: -0.02em;">Ready for your next on-call?</h2>
+      <p style="color: #64748b; font-size: 1.05rem; margin: 0 0 2rem; line-height: 1.6;">Download UroRef and have 100+ protocols, drug doses, and emergency guides in your pocket before your next shift.</p>
+      <a href="/app" style="background-color: #0f2b46; color: white; padding: 0.875rem 2.25rem; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 1.05rem; display: inline-block;">Download UroRef →</a>
+    </div>
+  </section>
+
+</Base>

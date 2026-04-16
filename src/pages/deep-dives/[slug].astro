@@ -1,0 +1,130 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('deep-dives');
+  return articles.map(article => ({
+    params: { slug: article.id },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+const { Content } = await render(article);
+---
+<Base title={article.data.title} description={article.data.description}>
+
+  <section style="background-color: #0f2b46; padding: 4rem 1.5rem 3rem;">
+    <div style="max-width: 750px; margin: 0 auto;">
+      <a href="/deep-dives" style="color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.4rem; margin-bottom: 1.5rem;" onmouseover="this.style.color='rgba(255,255,255,0.8)'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">
+        ← Deep Dives
+      </a>
+      <div style="display: flex; gap: 0.625rem; margin-bottom: 1rem; flex-wrap: wrap;">
+        {article.data.tags && article.data.tags.map((tag: string) => (
+          <span style="background-color: rgba(245,158,11,0.15); color: #f59e0b; font-size: 0.75rem; padding: 0.25rem 0.625rem; border-radius: 4px; font-weight: 500;">{tag}</span>
+        ))}
+      </div>
+      <h1 style="color: white; font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; letter-spacing: -0.03em; margin: 0 0 1rem; line-height: 1.2;">{article.data.title}</h1>
+      <p style="color: rgba(255,255,255,0.65); font-size: 0.9rem; margin: 0;">{article.data.date} · Written by {article.data.author || 'Nity G, Urology SpR'}</p>
+    </div>
+  </section>
+
+  <!-- Clinical safety banner -->
+  <div style="background-color: rgba(245,158,11,0.08); border-bottom: 1px solid rgba(245,158,11,0.2); padding: 0.75rem 1.5rem;">
+    <div style="max-width: 750px; margin: 0 auto;">
+      <p style="color: #92400e; font-size: 0.8rem; margin: 0; line-height: 1.5;">
+        ⚠️ Quick reference only — not a substitute for senior clinical advice or your trust guidelines. Always escalate when in doubt.
+      </p>
+    </div>
+  </div>
+
+  <!-- Article body -->
+  <article style="padding: 3rem 1.5rem 5rem; max-width: 750px; margin: 0 auto;">
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+
+  <style>
+    .prose h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #0f2b46;
+      margin: 2rem 0 0.875rem;
+      letter-spacing: -0.01em;
+      border-bottom: 2px solid #f1f5f9;
+      padding-bottom: 0.5rem;
+    }
+    .prose h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #0f2b46;
+      margin: 1.5rem 0 0.625rem;
+    }
+    .prose p {
+      color: #374151;
+      line-height: 1.75;
+      margin: 0 0 1rem;
+      font-size: 0.975rem;
+    }
+    .prose ul, .prose ol {
+      color: #374151;
+      padding-left: 1.5rem;
+      margin: 0.75rem 0 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .prose li {
+      font-size: 0.95rem;
+      line-height: 1.65;
+    }
+    .prose strong {
+      color: #0f2b46;
+      font-weight: 700;
+    }
+    .prose code {
+      font-family: 'JetBrains Mono', monospace;
+      background-color: #f1f5f9;
+      color: #0f2b46;
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.875rem;
+    }
+    .prose blockquote {
+      border-left: 3px solid #f59e0b;
+      padding: 0.75rem 1.25rem;
+      background-color: rgba(245,158,11,0.05);
+      margin: 1.25rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .prose blockquote p {
+      margin: 0;
+      color: #374151;
+      font-style: italic;
+    }
+    .prose table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.25rem 0;
+      font-size: 0.875rem;
+    }
+    .prose th {
+      background-color: #0f2b46;
+      color: white;
+      padding: 0.625rem 0.875rem;
+      text-align: left;
+      font-weight: 600;
+    }
+    .prose td {
+      padding: 0.55rem 0.875rem;
+      border-bottom: 1px solid #e2e8f0;
+      color: #374151;
+    }
+    .prose tr:nth-child(even) td {
+      background-color: #f8fafc;
+    }
+  </style>
+
+</Base>

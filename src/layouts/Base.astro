@@ -1,10 +1,20 @@
 ---
+import '../styles/global.css';
+
 interface Props {
   title: string;
   description?: string;
+  image?: string;
 }
 
-const { title, description = "UroRef — Urology quick reference for trainees. Protocols, drug doses, procedure guides and FRCS viva cards, built for the ward." } = Astro.props;
+const {
+  title,
+  description = "UroRef — Urology quick reference for trainees. Protocols, drug doses, procedure guides and FRCS viva cards, built for the ward.",
+  image = '/favicon.svg',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
+const ogImage = new URL(image, Astro.site ?? Astro.url);
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -13,10 +23,26 @@ const { title, description = "UroRef — Urology quick reference for trainees. P
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content={description} />
   <title>{title} | UroRef</title>
+  <link rel="canonical" href={canonicalURL} />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="alternate icon" href="/favicon.ico" />
+  <meta name="theme-color" content="#0f2b46" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="UroRef" />
+  <meta property="og:title" content={`${title} | UroRef`} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:image" content={ogImage} />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={`${title} | UroRef`} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/src/styles/global.css" />
 </head>
 <body style="background-color: #f8fafc; color: #1e293b; font-family: 'Inter', sans-serif; margin: 0;">
 

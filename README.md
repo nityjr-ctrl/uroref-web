@@ -1,43 +1,56 @@
-# Astro Starter Kit: Minimal
+# UroRef Web
+
+Marketing and content site for **UroRef** — a urology quick-reference app for trainees.
+Built with [Astro](https://astro.build) + Tailwind CSS v4. Static output, deploy anywhere.
+
+## Stack
+
+- Astro 6 (static site)
+- Tailwind CSS v4 (via `@tailwindcss/vite`)
+- MDX for long-form Deep Dives
+- `@astrojs/sitemap` for SEO
+
+## Local development
 
 ```sh
-npm create astro@latest -- --template minimal
+npm install
+npm run dev      # http://localhost:4321
+npm run build    # → ./dist/
+npm run preview  # serve the production build
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Node `>=22.12.0` is required (see `package.json#engines`).
 
-## 🚀 Project Structure
+## Project structure
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```
+src/
+├── content/deep-dives/   # MDX articles, schema in src/content.config.ts
+├── layouts/Base.astro    # Shared shell (nav, footer, SEO meta)
+├── pages/                # File-based routes
+│   ├── index.astro       # Marketing home
+│   ├── app.astro         # Download page
+│   ├── about.astro
+│   ├── contact.astro
+│   ├── updates.astro     # Changelog
+│   └── deep-dives/       # Listing + [slug].astro
+└── styles/global.css     # Tailwind entry + theme tokens
+public/                   # Static assets (favicon, robots.txt)
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Deploying
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+The build output in `./dist/` is fully static. Recommended hosts: Cloudflare Pages,
+Netlify, Vercel, or GitHub Pages. Set the production `site` URL in `astro.config.mjs`
+before publishing so canonical URLs and the sitemap are correct.
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Content
 
-## 🧞 Commands
+Add a new Deep Dive by creating an `.mdx` file in `src/content/deep-dives/` with
+frontmatter matching the schema in `src/content.config.ts` (`title`, `description`,
+`date`, optional `author`, `tags`).
 
-All commands are run from the root of the project, from a terminal:
+## Disclaimer
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+UroRef is a quick-reference tool for trained clinicians and is **not** a substitute
+for senior advice or trust guidelines.

@@ -1,54 +1,51 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const contents = [
+  ['🩺', 'Procedures', '16 common urology procedures with consent risks, operative steps, post-op orders, and ward round checklists.'],
+  ['🚨', 'Emergencies', "On-call decision trees for haematuria, retention, scrotal pain, priapism, penile fracture, paraphimosis, catheter problems, loin pain and fever, and more."],
+  ['💊', 'Drugs', 'Urology-specific drug doses, antibiotic protocols, renal adjustments, and drug interaction flags.'],
+  ['🧮', 'Calculators', 'IDENTIFY (haematuria cancer risk), MIMIC (stone passage), TWIST (torsion), eGFR, CPG, prostate volume.'],
+  ['🏥', 'Clinic', 'Outpatient presentation frameworks, investigation pathways, referral guidance.'],
+  ['📄', 'BAUS Leaflets', '31 BAUS-approved patient information leaflets via QR code.'],
+];
+
+const thanks = [
+  'Mr Yehia Abdallah',
+  'Mr Grigorios Athanasiadis',
+  'Mr Tom Farmer',
+  'Mr Oladapo Feyisetan',
+  'Mr Rob Mason',
+  'Mr Chirag Patel',
+  'Mr Omar Shareef',
+];
 ---
-<Base title="About UroRef" description="UroRef was built by Nity G, a Urology SpR in the North West Deanery, because the resources trainees needed didn't exist in one place.">
+<Base title="About UroRef" description="UroRef is a urology quick-reference tool, authored by Nity G (Urology SpR), used by 500+ trainees across the UK. Referenced to EAU 2024, NICE and BAUS.">
 
   <section class="u-hero" style="padding: 5.5rem 1.5rem 4.5rem;">
     <div class="u-hero-bg" aria-hidden="true"></div>
     <div class="u-hero-grid" aria-hidden="true"></div>
     <div style="max-width: 750px; margin: 0 auto; position: relative;">
       <div class="u-eyebrow-pill" style="margin-bottom: 1.5rem;">About</div>
-      <h1 class="u-gradient-text" style="font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 800; letter-spacing: -0.03em; margin: 0 0 1rem; line-height: 1.15;">A quick reference, built on the wards.</h1>
-      <p style="color: rgba(255,255,255,0.72); font-size: 1.15rem; line-height: 1.7; margin: 0;">
-        Made by a urology registrar for urology trainees — the tool I wished I had on my first on-call.
+      <h1 class="u-gradient-text" style="font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 800; letter-spacing: -0.03em; margin: 0 0 1.25rem; line-height: 1.15;">It started as a personal tool.</h1>
+      <p style="color: rgba(255,255,255,0.75); font-size: 1.2rem; line-height: 1.65; margin: 0; max-width: 600px;">
+        It is now used by <strong style="color:#fcd34d; font-weight: 700;">500+ trainees</strong> across the UK.
       </p>
     </div>
   </section>
 
   <section style="padding: 4rem 1.5rem; max-width: 750px; margin: 0 auto;">
 
-    <!-- Who built it -->
-    <div style="margin-bottom: 3rem;">
-      <h2 style="font-size: 1.5rem; font-weight: 700; color: #0f2b46; margin: 0 0 1rem; letter-spacing: -0.01em;">Who built it</h2>
-      <div style="background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.75rem; display: flex; gap: 1.25rem; align-items: flex-start;">
-        <div style="width: 52px; height: 52px; background-color: #0f2b46; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;">👨‍⚕️</div>
-        <div>
-          <p style="font-weight: 700; color: #0f2b46; margin: 0 0 0.25rem; font-size: 1.05rem;">Nity G</p>
-          <p style="color: #64748b; margin: 0 0 0.5rem; font-size: 0.9rem;">Urology SpR — North West Deanery</p>
-          <p style="color: #374151; margin: 0; font-size: 0.95rem; line-height: 1.7;">
-            "Built because the resources I needed didn't exist in one place. On a busy on-call shift you don't have time to cross-reference multiple PDFs, apps, and the BNF. I wanted one tool that actually matches how we work."
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- What it contains -->
-    <div style="margin-bottom: 3rem;">
-      <h2 style="font-size: 1.5rem; font-weight: 700; color: #0f2b46; margin: 0 0 1rem; letter-spacing: -0.01em;">What it contains</h2>
+    <!-- What's in the app -->
+    <div style="margin-bottom: 3.25rem;">
+      <h2 style="font-size: 1.5rem; font-weight: 700; color: #0f2b46; margin: 0 0 1.25rem; letter-spacing: -0.01em;">What's in the app</h2>
       <div style="display: grid; gap: 0.75rem;">
-        {[
-          ['📋', 'Protocols', '100+ urology protocols — catheterisation, nephrostomy care, TURBT post-op care, TRUS biopsy, flexible cystoscopy prep'],
-          ['🚨', 'On-call emergencies', 'Structured guides for acute retention, urosepsis, frank haematuria, renal colic, priapism, fournier\'s gangrene'],
-          ['💊', 'Drug doses', 'Urology-specific doses — analgesics, alpha-blockers, antibiotics, bladder instillations — with renal dose adjustment prompts'],
-          ['🩺', 'Procedure guides', 'Step-by-step guides designed for registrar-level decision making, not just observation'],
-          ['📚', 'FRCS viva cards', 'High-yield structured answers for urology exit exam topics — upper tract, lower tract, oncology, reconstruction'],
-          ['🔍', 'Search & pin', 'Instant full-text search across all content. Pin your most-used tools. Recently used tracked automatically'],
-        ].map(([icon, title, desc]) => (
+        {contents.map(([icon, title, desc]) => (
           <div style="display: flex; gap: 1rem; background: white; border: 1px solid #e2e8f0; border-radius: 10px; padding: 1.25rem; align-items: flex-start;">
             <span style="font-size: 1.4rem; flex-shrink: 0; margin-top: 0.1rem;">{icon}</span>
             <div>
-              <p style="font-weight: 600; color: #0f2b46; margin: 0 0 0.25rem; font-size: 0.95rem;">{title}</p>
-              <p style="color: #64748b; margin: 0; font-size: 0.875rem; line-height: 1.6;">{desc}</p>
+              <p style="font-weight: 700; color: #0f2b46; margin: 0 0 0.25rem; font-size: 0.98rem;">{title}</p>
+              <p style="color: #64748b; margin: 0; font-size: 0.9rem; line-height: 1.6;">{desc}</p>
             </div>
           </div>
         ))}
@@ -56,23 +53,38 @@ import Base from '../layouts/Base.astro';
     </div>
 
     <!-- Governance -->
-    <div style="background-color: rgba(15,43,70,0.04); border: 1px solid #e2e8f0; border-radius: 12px; padding: 2rem; margin-bottom: 2rem;">
-      <h2 style="font-size: 1.5rem; font-weight: 700; color: #0f2b46; margin: 0 0 1rem; letter-spacing: -0.01em;">Governance & review</h2>
-      <div style="display: flex; flex-direction: column; gap: 0.875rem; margin-bottom: 1.5rem;">
-        <div style="display: flex; gap: 0.75rem; align-items: flex-start;">
-          <span style="width: 8px; height: 8px; background-color: #f59e0b; border-radius: 50%; flex-shrink: 0; margin-top: 0.45rem;"></span>
-          <p style="color: #374151; margin: 0; font-size: 0.9rem; line-height: 1.6;"><strong>Review status:</strong> Consultant review layer in progress. Content is written by an SpR and is being reviewed by consultant urologists.</p>
+    <div style="background-color: rgba(15,43,70,0.04); border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.85rem; margin-bottom: 3rem;">
+      <h2 style="font-size: 1.5rem; font-weight: 700; color: #0f2b46; margin: 0 0 0.9rem; letter-spacing: -0.01em;">Governance</h2>
+      <p style="color: #374151; margin: 0 0 0.9rem; font-size: 0.95rem; line-height: 1.7;">
+        UroRef is a quick reference tool. It is not a substitute for clinical judgement, senior advice, or local protocols.
+      </p>
+      <p style="color: #374151; margin: 0 0 0.9rem; font-size: 0.95rem; line-height: 1.7;">
+        All content is referenced to <strong style="color:#0f2b46;">EAU 2024 guidelines</strong>, <strong style="color:#0f2b46;">NICE</strong>, and <strong style="color:#0f2b46;">BAUS</strong>.
+      </p>
+      <p style="color: #374151; margin: 0; font-size: 0.95rem; line-height: 1.7;">
+        Content is authored by Nity G, Urology SpR.
+      </p>
+    </div>
+
+    <!-- Thanks -->
+    <div style="margin-bottom: 2.5rem;">
+      <h2 style="font-size: 1.5rem; font-weight: 700; color: #0f2b46; margin: 0 0 1rem; letter-spacing: -0.01em;">With thanks to</h2>
+      <div style="background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.75rem;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.6rem 1.25rem; margin-bottom: 1rem;">
+          {thanks.map(name => (
+            <div style="color: #374151; font-size: 0.95rem; font-weight: 500;">{name}</div>
+          ))}
         </div>
-        <div style="display: flex; gap: 0.75rem; align-items: flex-start;">
-          <span style="width: 8px; height: 8px; background-color: #f59e0b; border-radius: 50%; flex-shrink: 0; margin-top: 0.45rem;"></span>
-          <p style="color: #374151; margin: 0; font-size: 0.9rem; line-height: 1.6;"><strong>Important:</strong> UroRef is a quick reference tool for trained clinicians. It is not a substitute for senior advice, trust guidelines, or clinical judgement.</p>
-        </div>
-        <div style="display: flex; gap: 0.75rem; align-items: flex-start;">
-          <span style="width: 8px; height: 8px; background-color: #f59e0b; border-radius: 50%; flex-shrink: 0; margin-top: 0.45rem;"></span>
-          <p style="color: #374151; margin: 0; font-size: 0.9rem; line-height: 1.6;"><strong>Get involved:</strong> If you're a urology consultant and would like to review content or contribute, we'd love to hear from you.</p>
-        </div>
+        <p style="color: #64748b; margin: 0; font-size: 0.9rem; line-height: 1.65;">
+          And urology trainees across the North West Deanery.
+        </p>
       </div>
-      <a href="https://forms.gle/4QTK3MSgMsedJQEw7" target="_blank" rel="noopener" style="display: inline-block; background-color: #f59e0b; color: #0f2b46; padding: 0.6rem 1.25rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.875rem;">Submit feedback or offer to review →</a>
+    </div>
+
+    <!-- Feedback -->
+    <div style="text-align: center;">
+      <p style="color: #64748b; margin: 0 0 1rem; font-size: 0.95rem;">Questions or feedback?</p>
+      <a href="https://forms.gle/4QTK3MSgMsedJQEw7" target="_blank" rel="noopener" class="u-cta-primary">Send feedback →</a>
     </div>
 
   </section>

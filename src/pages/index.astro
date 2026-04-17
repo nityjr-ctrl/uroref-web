@@ -2,12 +2,12 @@
 import Base from '../layouts/Base.astro';
 
 const features = [
-  { icon: '🔍', title: 'Search 100+ protocols', desc: 'Instant search across guidelines, doses, and procedures.' },
-  { icon: '📌', title: 'Pinned tools & recents', desc: 'Quick access to what you use most on your current rotation.' },
-  { icon: '🚨', title: 'On-call emergencies', desc: 'Acute retention, urosepsis, haematuria — structured guides for nights.' },
-  { icon: '🩺', title: 'Procedure guides', desc: 'Catheterisation, nephrostomy care, cystoscopy prep and more.' },
-  { icon: '💊', title: 'Drug doses', desc: 'Urology-specific doses with renal adjustment prompts.' },
-  { icon: '📚', title: 'FRCS viva cards', desc: 'High-yield viva topics for urology trainees in ST3+.' },
+  { icon: '🩺', title: 'Procedures', desc: '16 common urology procedures — consent risks, operative steps, post-op orders, ward round checklists.' },
+  { icon: '🚨', title: 'Emergencies', desc: 'On-call decision trees for haematuria, retention, scrotal pain, priapism, catheter problems and more.' },
+  { icon: '💊', title: 'Drugs', desc: 'Urology-specific doses, antibiotic protocols, renal adjustments, and drug interaction flags.' },
+  { icon: '🧮', title: 'Calculators', desc: 'IDENTIFY, MIMIC, TWIST, eGFR, CPG, prostate volume, Leibovich Score.' },
+  { icon: '🏥', title: 'Clinic', desc: 'Outpatient presentation frameworks, investigation pathways, referral guidance.' },
+  { icon: '📄', title: 'BAUS Leaflets', desc: '31 BAUS-approved patient information leaflets via QR code.' },
 ];
 ---
 <Base title="Urology at your fingertips">
@@ -21,16 +21,16 @@ const features = [
       <h1 class="u-gradient-text" style="font-size: clamp(2.75rem, 7vw, 4.5rem); font-weight: 800; letter-spacing: -0.035em; margin: 0 0 1.25rem; line-height: 1.05;">
         Urology at your fingertips.
       </h1>
-      <p style="color: rgba(255,255,255,0.72); font-size: clamp(1.1rem, 3vw, 1.4rem); margin: 0 auto 2.5rem; font-weight: 400; line-height: 1.6; max-width: 560px;">
-        Built for the ward, not the library. Protocols, drug doses and on-call guides — in your pocket.
+      <p style="color: rgba(255,255,255,0.72); font-size: clamp(1.1rem, 3vw, 1.4rem); margin: 0 auto 2.5rem; font-weight: 400; line-height: 1.6; max-width: 580px;">
+        Built for the ward, not the library. Procedures, emergencies, drugs and calculators — in your pocket.
       </p>
       <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem;">
         <a href="/app" class="u-cta-primary">Get the app →</a>
         <a href="/about" class="u-cta-ghost">Learn more</a>
       </div>
-      <div style="display: inline-flex; align-items: center; gap: 0.65rem; color: rgba(255,255,255,0.55); font-size: 0.85rem;">
+      <div style="display: inline-flex; align-items: center; gap: 0.65rem; color: rgba(255,255,255,0.6); font-size: 0.9rem;">
         <span class="u-live-dot"></span>
-        Created by a urology registrar. Used on the wards.
+        Used by <strong style="color:#fcd34d; font-weight:700;">500+ trainees</strong> across the UK
       </div>
     </div>
   </section>
@@ -107,10 +107,10 @@ const features = [
       <div style="background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 2.5rem;">
         <div style="width: 48px; height: 48px; background-color: rgba(245,158,11,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; font-size: 1.5rem;">🏥</div>
         <p style="color: white; font-size: 1.15rem; font-weight: 600; margin: 0 0 1rem; line-height: 1.6;">
-          "Created by Nity G, Urology SpR."
+          Authored by Nity G, Urology SpR.
         </p>
-        <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin: 0; line-height: 1.7;">
-          Consultant review layer in progress. This is a quick reference tool — not a substitute for senior advice. Always escalate when in doubt.
+        <p style="color: rgba(255,255,255,0.65); font-size: 0.95rem; margin: 0; line-height: 1.7;">
+          Referenced to <strong style="color:white;">EAU 2024</strong>, <strong style="color:white;">NICE</strong> and <strong style="color:white;">BAUS</strong>. A quick reference tool — not a substitute for clinical judgement, senior advice, or local protocols.
         </p>
       </div>
     </div>
@@ -120,7 +120,7 @@ const features = [
   <section style="padding: 5rem 1.5rem; text-align: center;">
     <div style="max-width: 600px; margin: 0 auto;">
       <h2 style="font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; color: #0f2b46; margin: 0 0 1rem; letter-spacing: -0.02em;">Ready for your next on-call?</h2>
-      <p style="color: #64748b; font-size: 1.05rem; margin: 0 0 2rem; line-height: 1.6;">Download UroRef and have 100+ protocols, drug doses, and emergency guides in your pocket before your next shift.</p>
+      <p style="color: #64748b; font-size: 1.05rem; margin: 0 0 2rem; line-height: 1.6;">Download UroRef and have 16 procedures, on-call emergency algorithms, urology drug doses and calculators in your pocket before your next shift.</p>
       <a href="/app" style="background-color: #0f2b46; color: white; padding: 0.875rem 2.25rem; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 1.05rem; display: inline-block;">Download UroRef →</a>
     </div>
   </section>

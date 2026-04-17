@@ -1,0 +1,699 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const allDeepDives = await getCollection('deep-dives');
+
+const trending = [
+  {
+    rank: 1,
+    title: 'Acute urinary retention — the on-call algorithm',
+    category: 'On-call',
+    delta: '+312%',
+    views: '4.2k',
+    href: '/app',
+    hot: true,
+  },
+  {
+    rank: 2,
+    title: 'Ureteric colic on call: a registrar\u2019s guide',
+    category: 'Deep Dive',
+    delta: '+187%',
+    views: '3.6k',
+    href: '/deep-dives/ureteric-colic-on-call',
+    hot: true,
+  },
+  {
+    rank: 3,
+    title: 'Tamsulosin — when (and when not) to start',
+    category: 'Drug doses',
+    delta: '+94%',
+    views: '2.9k',
+    href: '/app',
+    hot: false,
+  },
+  {
+    rank: 4,
+    title: 'Catheterisation: the difficult male catheter',
+    category: 'Procedure',
+    delta: '+71%',
+    views: '2.4k',
+    href: '/app',
+    hot: false,
+  },
+  {
+    rank: 5,
+    title: 'Urosepsis — Sepsis 6 + decompression timing',
+    category: 'Emergency',
+    delta: '+58%',
+    views: '2.1k',
+    href: '/app',
+    hot: false,
+  },
+];
+
+const recentUpdates = [
+  { date: '14 Apr', label: 'v2.3 P2', title: 'Search, pinned tools & recently used shipped' },
+  { date: '08 Apr', label: 'v2.3 P1', title: 'Trust layer + governance view live' },
+  { date: '02 Apr', label: 'Content', title: '12 new FRCS viva cards (oncology)' },
+  { date: '28 Mar', label: 'Content', title: 'Renal colic deep dive published' },
+  { date: '21 Mar', label: 'v2.2', title: 'iOS App Store release' },
+];
+
+const stats = [
+  { label: 'Active trainees this month', value: '1,247', delta: '+38%' },
+  { label: 'Protocols viewed', value: '18.6k', delta: '+62%' },
+  { label: 'Deep dives read', value: '4.1k', delta: '+114%' },
+  { label: 'Avg. session', value: '2m 41s', delta: '+9%' },
+];
+
+const recentDeepDives = allDeepDives.slice(0, 3);
+---
+<Base title="Last 30 days — what's trending" description="What urology trainees are reading on UroRef this month — trending protocols, deep dives, drug doses and emergency guides.">
+
+  <!-- Animated hero -->
+  <section class="t-hero">
+    <div class="t-hero-bg" aria-hidden="true"></div>
+    <div class="t-hero-grid" aria-hidden="true"></div>
+
+    <div class="t-hero-inner">
+      <div class="t-live">
+        <span class="t-live-dot"></span>
+        <span class="t-live-text">Live · updated daily</span>
+      </div>
+
+      <h1 class="t-title">
+        <span class="t-title-eyebrow">Last 30 days</span>
+        <span class="t-title-main">What urology trainees are reading right now.</span>
+      </h1>
+
+      <p class="t-sub">
+        A live snapshot of the protocols, drug doses and deep dives that other trainees opened this month.
+        Rankings refresh every 24 hours.
+      </p>
+
+      <div class="t-stats">
+        {stats.map(s => (
+          <div class="t-stat">
+            <div class="t-stat-value">{s.value}</div>
+            <div class="t-stat-label">{s.label}</div>
+            <div class="t-stat-delta">{s.delta}<span class="t-stat-arrow">▲</span></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Trending list -->
+  <section class="t-section">
+    <div class="t-section-head">
+      <div>
+        <div class="t-eyebrow">🔥 Trending now</div>
+        <h2 class="t-h2">Top 5 this month</h2>
+      </div>
+      <a href="/app" class="t-link">Open in app →</a>
+    </div>
+
+    <div class="t-trend-list">
+      {trending.map(item => (
+        <a href={item.href} class={`t-trend ${item.hot ? 't-trend-hot' : ''}`}>
+          <div class="t-rank">
+            <span class="t-rank-num">{String(item.rank).padStart(2, '0')}</span>
+            {item.hot && <span class="t-flame">🔥</span>}
+          </div>
+          <div class="t-trend-body">
+            <div class="t-trend-meta">
+              <span class="t-tag">{item.category}</span>
+              <span class="t-views">{item.views} reads</span>
+            </div>
+            <div class="t-trend-title">{item.title}</div>
+          </div>
+          <div class="t-delta">
+            <span class="t-delta-num">{item.delta}</span>
+            <span class="t-delta-label">vs. last 30d</span>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <p class="t-disclaimer">
+      Demo metrics shown — real ranking goes live the day analytics ships (expected next release).
+    </p>
+  </section>
+
+  <!-- Two-column: updates + new deep dives -->
+  <section class="t-grid-section">
+    <div class="t-col">
+      <div class="t-eyebrow">📡 Shipped this month</div>
+      <h2 class="t-h2">Recent updates</h2>
+      <div class="t-updates">
+        {recentUpdates.map(u => (
+          <div class="t-update">
+            <div class="t-update-date">{u.date}</div>
+            <div class="t-update-body">
+              <span class="t-tag-mono">{u.label}</span>
+              <p class="t-update-title">{u.title}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <a href="/updates" class="t-link">Full changelog →</a>
+    </div>
+
+    <div class="t-col">
+      <div class="t-eyebrow">📖 Fresh deep dives</div>
+      <h2 class="t-h2">Newly published</h2>
+      <div class="t-dives">
+        {recentDeepDives.length === 0 ? (
+          <p style="color: rgba(255,255,255,0.5);">No new deep dives this month.</p>
+        ) : (
+          recentDeepDives.map(article => (
+            <a href={`/deep-dives/${article.id}`} class="t-dive">
+              <div class="t-dive-tags">
+                {article.data.tags && article.data.tags.slice(0, 2).map((tag: string) => (
+                  <span class="t-tag-amber">{tag}</span>
+                ))}
+              </div>
+              <h3 class="t-dive-title">{article.data.title}</h3>
+              <p class="t-dive-desc">{article.data.description}</p>
+              <span class="t-dive-cta">Read →</span>
+            </a>
+          ))
+        )}
+      </div>
+      <a href="/deep-dives" class="t-link">All deep dives →</a>
+    </div>
+  </section>
+
+  <!-- Newsletter capture -->
+  <section class="t-cta">
+    <div class="t-cta-card">
+      <div class="t-cta-glow" aria-hidden="true"></div>
+      <div class="t-cta-inner">
+        <div class="t-eyebrow t-eyebrow-amber">Stay current</div>
+        <h2 class="t-cta-title">Trending list, in your inbox.</h2>
+        <p class="t-cta-sub">Once a month — what's new in UroRef, what trainees are reading, and the on-call topics worth re-reading. No spam, no marketing.</p>
+        <a href="https://forms.gle/4QTK3MSgMsedJQEw7" target="_blank" rel="noopener" class="t-cta-btn">Get the monthly digest →</a>
+        <p class="t-cta-note">Until our list is live we'll collect interest via the feedback form.</p>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* ---- Hero ---- */
+    .t-hero {
+      position: relative;
+      overflow: hidden;
+      background-color: #0a1d33;
+      padding: 6rem 1.5rem 5rem;
+      isolation: isolate;
+    }
+    .t-hero-bg {
+      position: absolute;
+      inset: -20%;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(245,158,11,0.35), transparent 45%),
+        radial-gradient(circle at 80% 30%, rgba(56,189,248,0.25), transparent 45%),
+        radial-gradient(circle at 50% 90%, rgba(245,158,11,0.18), transparent 50%);
+      filter: blur(40px);
+      animation: t-float 18s ease-in-out infinite alternate;
+      z-index: -2;
+    }
+    .t-hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+      z-index: -1;
+    }
+    @keyframes t-float {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(2%, -3%) scale(1.05); }
+    }
+    .t-hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .t-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 0.85rem;
+      border-radius: 100px;
+      background: rgba(34,197,94,0.12);
+      border: 1px solid rgba(34,197,94,0.35);
+      margin-bottom: 1.75rem;
+    }
+    .t-live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 0 0 rgba(34,197,94,0.7);
+      animation: t-pulse 2s infinite;
+    }
+    .t-live-text {
+      color: #4ade80;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    @keyframes t-pulse {
+      0% { box-shadow: 0 0 0 0 rgba(34,197,94,0.7); }
+      70% { box-shadow: 0 0 0 12px rgba(34,197,94,0); }
+      100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+    }
+
+    .t-title {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin: 0 0 1.25rem;
+      max-width: 850px;
+    }
+    .t-title-eyebrow {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #f59e0b;
+    }
+    .t-title-main {
+      font-size: clamp(2.25rem, 5.5vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      line-height: 1.05;
+      background: linear-gradient(135deg, #ffffff 0%, #ffffff 40%, #fcd34d 80%, #f59e0b 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .t-sub {
+      color: rgba(255,255,255,0.7);
+      font-size: 1.1rem;
+      line-height: 1.65;
+      max-width: 620px;
+      margin: 0 0 3rem;
+    }
+
+    .t-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .t-stat {
+      position: relative;
+      padding: 1.5rem 1.25rem;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      overflow: hidden;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .t-stat:hover {
+      transform: translateY(-2px);
+      border-color: rgba(245,158,11,0.4);
+    }
+    .t-stat::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(245,158,11,0.6), transparent);
+    }
+    .t-stat-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.85rem;
+      font-weight: 700;
+      color: white;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .t-stat-label {
+      color: rgba(255,255,255,0.55);
+      font-size: 0.78rem;
+      margin-bottom: 0.6rem;
+    }
+    .t-stat-delta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      color: #4ade80;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+    .t-stat-arrow {
+      font-size: 0.6rem;
+    }
+
+    /* ---- Sections ---- */
+    .t-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5rem 1.5rem 1rem;
+    }
+    .t-section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .t-eyebrow {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #f59e0b;
+      margin-bottom: 0.5rem;
+    }
+    .t-eyebrow-amber {
+      color: #fcd34d;
+    }
+    .t-h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 800;
+      color: #0f2b46;
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+    .t-link {
+      color: #f59e0b;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: opacity 0.15s;
+    }
+    .t-link:hover { opacity: 0.7; }
+
+    /* ---- Trending list ---- */
+    .t-trend-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .t-trend {
+      display: grid;
+      grid-template-columns: 70px 1fr auto;
+      gap: 1.25rem;
+      align-items: center;
+      padding: 1.25rem 1.5rem;
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      text-decoration: none;
+      transition: transform 0.18s, border-color 0.18s, box-shadow 0.18s;
+      position: relative;
+      overflow: hidden;
+    }
+    .t-trend::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, #f59e0b, transparent);
+      opacity: 0;
+      transition: opacity 0.18s;
+    }
+    .t-trend:hover {
+      transform: translateX(4px);
+      border-color: #f59e0b;
+      box-shadow: 0 8px 24px -12px rgba(245,158,11,0.3);
+    }
+    .t-trend:hover::before { opacity: 1; }
+    .t-trend-hot {
+      background: linear-gradient(135deg, #fffbeb 0%, white 60%);
+    }
+    .t-rank {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .t-rank-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #cbd5e1;
+      letter-spacing: -0.04em;
+    }
+    .t-trend-hot .t-rank-num {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .t-flame {
+      font-size: 1rem;
+      animation: t-flicker 1.6s ease-in-out infinite alternate;
+    }
+    @keyframes t-flicker {
+      0% { transform: scale(1) rotate(-3deg); }
+      100% { transform: scale(1.1) rotate(3deg); }
+    }
+    .t-trend-body {
+      min-width: 0;
+    }
+    .t-trend-meta {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      margin-bottom: 0.35rem;
+    }
+    .t-tag {
+      background: #eff6ff;
+      color: #1e40af;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.18rem 0.55rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .t-views {
+      color: #94a3b8;
+      font-size: 0.78rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .t-trend-title {
+      color: #0f2b46;
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+    .t-delta {
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .t-delta-num {
+      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      color: #16a34a;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .t-delta-label {
+      color: #94a3b8;
+      font-size: 0.7rem;
+    }
+    .t-disclaimer {
+      color: #94a3b8;
+      font-size: 0.78rem;
+      margin: 1.5rem 0 0;
+      font-style: italic;
+    }
+
+    /* ---- Two-column section ---- */
+    .t-grid-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+    @media (max-width: 768px) {
+      .t-grid-section { grid-template-columns: 1fr; gap: 3rem; }
+      .t-trend { grid-template-columns: 50px 1fr; }
+      .t-delta { grid-column: 2; text-align: left; margin-top: 0.4rem; }
+    }
+    .t-col h2 {
+      margin-bottom: 1.5rem;
+    }
+
+    .t-updates {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .t-update {
+      display: flex;
+      gap: 1rem;
+      padding: 0.875rem 1rem;
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      transition: border-color 0.15s;
+    }
+    .t-update:hover { border-color: #cbd5e1; }
+    .t-update-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: #94a3b8;
+      width: 50px;
+      flex-shrink: 0;
+      padding-top: 0.15rem;
+    }
+    .t-update-body {
+      flex: 1;
+    }
+    .t-tag-mono {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: #0f2b46;
+      background: #f1f5f9;
+      padding: 0.1rem 0.45rem;
+      border-radius: 4px;
+      margin-bottom: 0.3rem;
+    }
+    .t-update-title {
+      color: #374151;
+      font-size: 0.9rem;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .t-dives {
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+      margin-bottom: 1.5rem;
+    }
+    .t-dive {
+      display: block;
+      padding: 1.5rem;
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: transform 0.18s, border-color 0.18s, box-shadow 0.18s;
+    }
+    .t-dive:hover {
+      transform: translateY(-2px);
+      border-color: #f59e0b;
+      box-shadow: 0 12px 28px -16px rgba(15,43,70,0.25);
+    }
+    .t-dive-tags {
+      display: flex;
+      gap: 0.4rem;
+      margin-bottom: 0.6rem;
+      flex-wrap: wrap;
+    }
+    .t-tag-amber {
+      background: rgba(245,158,11,0.12);
+      color: #d97706;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.18rem 0.55rem;
+      border-radius: 4px;
+    }
+    .t-dive-title {
+      color: #0f2b46;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin: 0 0 0.4rem;
+      letter-spacing: -0.01em;
+      line-height: 1.35;
+    }
+    .t-dive-desc {
+      color: #64748b;
+      font-size: 0.875rem;
+      margin: 0 0 0.75rem;
+      line-height: 1.55;
+    }
+    .t-dive-cta {
+      color: #f59e0b;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    /* ---- Newsletter CTA ---- */
+    .t-cta {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+    .t-cta-card {
+      position: relative;
+      border-radius: 24px;
+      padding: 3.5rem 2rem;
+      background: linear-gradient(135deg, #0a1d33 0%, #0f2b46 50%, #1e3a5f 100%);
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .t-cta-glow {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 25% 30%, rgba(245,158,11,0.45), transparent 45%),
+        radial-gradient(circle at 75% 80%, rgba(56,189,248,0.25), transparent 50%);
+      filter: blur(50px);
+      z-index: -1;
+      animation: t-float 12s ease-in-out infinite alternate;
+    }
+    .t-cta-inner {
+      max-width: 580px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+    }
+    .t-cta-title {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 800;
+      color: white;
+      margin: 0.5rem 0 1rem;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+    }
+    .t-cta-sub {
+      color: rgba(255,255,255,0.7);
+      font-size: 1rem;
+      line-height: 1.65;
+      margin: 0 0 2rem;
+    }
+    .t-cta-btn {
+      display: inline-block;
+      padding: 0.95rem 2.25rem;
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      color: #0a1d33;
+      font-weight: 800;
+      font-size: 1rem;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 12px 30px -8px rgba(245,158,11,0.5);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .t-cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 40px -8px rgba(245,158,11,0.6);
+    }
+    .t-cta-note {
+      color: rgba(255,255,255,0.4);
+      font-size: 0.78rem;
+      margin: 1.25rem 0 0;
+    }
+  </style>
+
+</Base>

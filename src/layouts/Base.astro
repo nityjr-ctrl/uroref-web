@@ -10,11 +10,29 @@ interface Props {
 const {
   title,
   description = "UroRef — Urology quick reference for trainees. Protocols, drug doses, procedure guides and FRCS viva cards, built for the ward.",
-  image = '/favicon.svg',
+  image = '/og-image.png',
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
 const ogImage = new URL(image, Astro.site ?? Astro.url);
+
+const orgJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'UroRef',
+  url: (Astro.site ?? Astro.url).toString().replace(/\/$/, ''),
+  logo: new URL('/icon-512.png', Astro.site ?? Astro.url).toString(),
+  description,
+  sameAs: ['https://github.com/nityjr-ctrl/uroref-app'],
+};
+
+const siteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'UroRef',
+  url: (Astro.site ?? Astro.url).toString().replace(/\/$/, ''),
+  description,
+};
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -26,6 +44,8 @@ const ogImage = new URL(image, Astro.site ?? Astro.url);
   <link rel="canonical" href={canonicalURL} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="alternate icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
   <meta name="theme-color" content="#0f2b46" />
 
   <meta property="og:type" content="website" />
@@ -34,11 +54,16 @@ const ogImage = new URL(image, Astro.site ?? Astro.url);
   <meta property="og:description" content={description} />
   <meta property="og:url" content={canonicalURL} />
   <meta property="og:image" content={ogImage} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={`${title} | UroRef`} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImage} />
+
+  <script type="application/ld+json" set:html={JSON.stringify(orgJsonLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(siteJsonLd)} />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -49,7 +74,22 @@ const ogImage = new URL(image, Astro.site ?? Astro.url);
   <!-- Nav -->
   <header style="background-color: #0f2b46; position: sticky; top: 0; z-index: 50; border-bottom: 1px solid rgba(255,255,255,0.08);">
     <div style="max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; height: 64px;">
-      <a href="/" style="text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+      <a href="/" style="text-decoration: none; display: flex; align-items: center; gap: 0.55rem;" aria-label="UroRef home">
+        <svg width="26" height="26" viewBox="0 0 64 64" aria-hidden="true">
+          <defs>
+            <linearGradient id="navmark-bg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#1e3a5f"/>
+              <stop offset="1" stop-color="#0a1d33"/>
+            </linearGradient>
+            <linearGradient id="navmark-amber" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#fcd34d"/>
+              <stop offset="1" stop-color="#f59e0b"/>
+            </linearGradient>
+          </defs>
+          <rect width="64" height="64" rx="14" fill="url(#navmark-bg)" stroke="rgba(255,255,255,0.12)"/>
+          <path d="M18 18 V36 a14 14 0 0 0 28 0 V18" fill="none" stroke="url(#navmark-amber)" stroke-width="6" stroke-linecap="round"/>
+          <circle cx="32" cy="49" r="3" fill="url(#navmark-amber)"/>
+        </svg>
         <span style="color: #f59e0b; font-weight: 800; font-size: 1.25rem; letter-spacing: -0.02em;">UroRef</span>
       </a>
 
@@ -92,9 +132,13 @@ const ogImage = new URL(image, Astro.site ?? Astro.url);
           <a href="https://forms.gle/4QTK3MSgMsedJQEw7" target="_blank" rel="noopener" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Feedback</a>
         </div>
       </div>
-      <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: space-between; align-items: center;">
+      <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1rem; display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: center;">
         <span style="font-size: 0.8rem;">© 2026 UroRef. Built by Nity G, Urology SpR.</span>
-        <span style="font-size: 0.8rem; color: rgba(255,255,255,0.4);">Quick reference only — not clinical advice.</span>
+        <div style="display: flex; gap: 1.25rem; flex-wrap: wrap; align-items: center;">
+          <a href="/privacy" style="color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.8rem;" onmouseover="this.style.color='rgba(255,255,255,0.85)'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Privacy</a>
+          <a href="/terms" style="color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.8rem;" onmouseover="this.style.color='rgba(255,255,255,0.85)'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Terms</a>
+          <span style="font-size: 0.8rem; color: rgba(255,255,255,0.4);">Quick reference only — not clinical advice.</span>
+        </div>
       </div>
     </div>
   </footer>

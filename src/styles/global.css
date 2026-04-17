@@ -2,7 +2,9 @@
 
 @theme {
   --color-navy: #0f2b46;
+  --color-navy-deep: #0a1d33;
   --color-amber: #f59e0b;
+  --color-amber-light: #fcd34d;
   --color-slate-text: #64748b;
   --color-bg-light: #f8fafc;
 
@@ -15,6 +17,8 @@
     font-family: var(--font-sans);
     background-color: var(--color-bg-light);
     color: #1e293b;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -25,4 +29,128 @@
   code, pre, .mono {
     font-family: var(--font-mono);
   }
+
+  *:focus-visible {
+    outline: 2px solid #f59e0b;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Shared "fancy" hero / surface utilities used across pages.
+   Keep selectors prefixed with `u-` so page-specific styles are safe.
+   ------------------------------------------------------------------ */
+
+.u-hero {
+  position: relative;
+  overflow: hidden;
+  background-color: #0a1d33;
+  isolation: isolate;
+}
+.u-hero-bg {
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(245,158,11,0.32), transparent 45%),
+    radial-gradient(circle at 80% 30%, rgba(56,189,248,0.22), transparent 45%),
+    radial-gradient(circle at 50% 90%, rgba(245,158,11,0.16), transparent 50%);
+  filter: blur(40px);
+  animation: u-float 18s ease-in-out infinite alternate;
+  z-index: -2;
+  pointer-events: none;
+}
+.u-hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at center, black 25%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 25%, transparent 75%);
+  z-index: -1;
+  pointer-events: none;
+}
+@keyframes u-float {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(2%, -3%) scale(1.05); }
+}
+
+.u-eyebrow-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.95rem;
+  border-radius: 100px;
+  background: rgba(245,158,11,0.12);
+  border: 1px solid rgba(245,158,11,0.32);
+  color: #f59e0b;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.u-gradient-text {
+  background: linear-gradient(135deg, #ffffff 0%, #ffffff 40%, #fcd34d 80%, #f59e0b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.u-glass-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+}
+
+.u-cta-primary {
+  display: inline-block;
+  padding: 0.9rem 2.1rem;
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: #0a1d33;
+  font-weight: 800;
+  font-size: 1rem;
+  border-radius: 12px;
+  text-decoration: none;
+  box-shadow: 0 12px 30px -8px rgba(245,158,11,0.5);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.u-cta-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px -8px rgba(245,158,11,0.6);
+}
+
+.u-cta-ghost {
+  display: inline-block;
+  padding: 0.9rem 2.1rem;
+  background: rgba(255,255,255,0.04);
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 12px;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.18);
+  transition: background 0.15s, border-color 0.15s;
+}
+.u-cta-ghost:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.32);
+}
+
+.u-live-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  animation: u-pulse 2s infinite;
+}
+@keyframes u-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(34,197,94,0.7); }
+  70%  { box-shadow: 0 0 0 12px rgba(34,197,94,0); }
+  100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
 }

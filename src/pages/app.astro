@@ -4,12 +4,15 @@ import Base from '../layouts/Base.astro';
 <Base title="Download UroRef" description="Download UroRef — the urology quick reference app for trainees. Available on iOS and Android.">
 
   <!-- Hero -->
-  <section style="background-color: #0f2b46; padding: 5rem 1.5rem 4rem; text-align: center;">
-    <div style="max-width: 700px; margin: 0 auto;">
-      <h1 style="color: white; font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 800; letter-spacing: -0.03em; margin: 0 0 1rem; line-height: 1.15;">
-        Download UroRef
+  <section class="u-hero" style="padding: 5.5rem 1.5rem 4.5rem; text-align: center;">
+    <div class="u-hero-bg" aria-hidden="true"></div>
+    <div class="u-hero-grid" aria-hidden="true"></div>
+    <div style="max-width: 750px; margin: 0 auto; position: relative;">
+      <div class="u-eyebrow-pill" style="margin-bottom: 1.5rem;">Download</div>
+      <h1 class="u-gradient-text" style="font-size: clamp(2rem, 5.5vw, 3.5rem); font-weight: 800; letter-spacing: -0.03em; margin: 0 0 1rem; line-height: 1.1;">
+        Get UroRef on your phone.
       </h1>
-      <p style="color: rgba(255,255,255,0.7); font-size: 1.15rem; margin: 0 0 0.5rem; line-height: 1.6;">
+      <p style="color: rgba(255,255,255,0.72); font-size: 1.15rem; margin: 0 auto 0.5rem; line-height: 1.6; max-width: 560px;">
         100+ urology protocols. Drug doses. On-call emergency guides. FRCS viva cards.
       </p>
       <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem; margin: 0;">
@@ -53,19 +56,347 @@ import Base from '../layouts/Base.astro';
     </div>
   </section>
 
-  <!-- Screenshots placeholder -->
-  <section style="background-color: #0f2b46; padding: 4rem 1.5rem;">
-    <div style="max-width: 900px; margin: 0 auto; text-align: center;">
-      <h2 style="color: white; font-size: 1.75rem; font-weight: 700; margin: 0 0 0.75rem; letter-spacing: -0.02em;">See it in action</h2>
-      <p style="color: rgba(255,255,255,0.6); margin: 0 0 2.5rem; font-size: 0.95rem;">Screenshots coming soon, ahead of launch.</p>
-      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; max-width: 700px; margin: 0 auto;">
-        {[1,2,3,4].map(() => (
-          <div style="aspect-ratio: 9/16; background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; display: flex; align-items: center; justify-content: center;">
-            <span style="color: rgba(255,255,255,0.3); font-size: 0.75rem;">Screenshot</span>
+  <!-- Preview mockups -->
+  <section class="u-hero" style="padding: 5rem 1.5rem 6rem;">
+    <div class="u-hero-bg" aria-hidden="true"></div>
+    <div style="max-width: 1000px; margin: 0 auto; text-align: center; position: relative;">
+      <h2 style="color: white; font-size: clamp(1.75rem, 3.5vw, 2.25rem); font-weight: 800; margin: 0 0 0.75rem; letter-spacing: -0.025em;">See it in action</h2>
+      <p style="color: rgba(255,255,255,0.55); margin: 0 0 3rem; font-size: 0.95rem;">Illustrative previews — real screenshots ahead of launch.</p>
+
+      <div class="phones">
+        <!-- Phone 1 — Home / search -->
+        <div class="phone phone-left">
+          <div class="phone-screen" style="background: linear-gradient(180deg, #f8fafc, #eef2f7);">
+            <div class="phone-notch"></div>
+            <div class="phone-header">
+              <div class="phone-time">09:41</div>
+              <div class="phone-icons">●●● ▮</div>
+            </div>
+            <div class="phone-body">
+              <div class="phone-title">UroRef</div>
+              <div class="phone-search">🔍 Search protocols, drugs…</div>
+              <div class="phone-chip-row">
+                <span class="phone-chip phone-chip-on">On-call</span>
+                <span class="phone-chip">Drugs</span>
+                <span class="phone-chip">Viva</span>
+              </div>
+              <div class="phone-card">
+                <div class="phone-card-label">PINNED</div>
+                <div class="phone-card-title">Acute retention</div>
+                <div class="phone-card-meta">On-call · 4-step</div>
+              </div>
+              <div class="phone-card">
+                <div class="phone-card-label">PINNED</div>
+                <div class="phone-card-title">Tamsulosin dose</div>
+                <div class="phone-card-meta">Drug · renal-adj.</div>
+              </div>
+              <div class="phone-card phone-card-amber">
+                <div class="phone-card-label" style="color:#d97706;">EMERGENCY</div>
+                <div class="phone-card-title">Urosepsis</div>
+                <div class="phone-card-meta">Sepsis-6 pathway</div>
+              </div>
+            </div>
           </div>
-        ))}
+        </div>
+
+        <!-- Phone 2 — Emergency protocol (centre) -->
+        <div class="phone phone-center">
+          <div class="phone-screen" style="background: linear-gradient(180deg, #0a1d33, #0f2b46);">
+            <div class="phone-notch"></div>
+            <div class="phone-header phone-header-dark">
+              <div class="phone-time">09:41</div>
+              <div class="phone-icons">●●● ▮</div>
+            </div>
+            <div class="phone-body">
+              <div class="phone-pill">🚨 EMERGENCY</div>
+              <div class="phone-title phone-title-light">Urosepsis</div>
+              <div class="phone-sub">Fever + obstructed system</div>
+              <div class="phone-step">
+                <div class="phone-step-num">1</div>
+                <div class="phone-step-body">
+                  <div class="phone-step-title">Sepsis 6 — now</div>
+                  <div class="phone-step-desc">O₂, bloods + cultures, lactate, IV Abx, IV fluids, urine output</div>
+                </div>
+              </div>
+              <div class="phone-step">
+                <div class="phone-step-num">2</div>
+                <div class="phone-step-body">
+                  <div class="phone-step-title">CT KUB urgently</div>
+                  <div class="phone-step-desc">Confirm level + degree of obstruction</div>
+                </div>
+              </div>
+              <div class="phone-step phone-step-hot">
+                <div class="phone-step-num" style="background:#f59e0b;color:#0a1d33;">3</div>
+                <div class="phone-step-body">
+                  <div class="phone-step-title" style="color:#fcd34d;">Decompress within hours</div>
+                  <div class="phone-step-desc" style="color:rgba(255,255,255,0.7);">Nephrostomy or retrograde JJ — call consultant</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="phone-glow" aria-hidden="true"></div>
+        </div>
+
+        <!-- Phone 3 — Drug dose -->
+        <div class="phone phone-right">
+          <div class="phone-screen" style="background: linear-gradient(180deg, #f8fafc, #eef2f7);">
+            <div class="phone-notch"></div>
+            <div class="phone-header">
+              <div class="phone-time">09:41</div>
+              <div class="phone-icons">●●● ▮</div>
+            </div>
+            <div class="phone-body">
+              <div class="phone-breadcrumb">← Drug doses</div>
+              <div class="phone-title">Gentamicin</div>
+              <div class="phone-sub" style="color:#64748b;">Aminoglycoside · urosepsis cover</div>
+              <div class="phone-dose">
+                <div class="phone-dose-label">Usual dose</div>
+                <div class="phone-dose-value">5 mg/kg</div>
+                <div class="phone-dose-unit">IV, once daily</div>
+              </div>
+              <div class="phone-warn">
+                ⚠ Adjust in CKD — use IBW if obese. Monitor levels from day 2.
+              </div>
+              <div class="phone-card">
+                <div class="phone-card-label">RENAL ADJ.</div>
+                <div class="phone-card-title">eGFR 30–60: 3 mg/kg OD</div>
+              </div>
+              <div class="phone-card">
+                <div class="phone-card-label">RENAL ADJ.</div>
+                <div class="phone-card-title">eGFR &lt;30: seek advice</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+
+    <style>
+      .phones {
+        display: grid;
+        grid-template-columns: 1fr 1.15fr 1fr;
+        gap: 1.25rem;
+        align-items: end;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      @media (max-width: 720px) {
+        .phones { grid-template-columns: 1fr; gap: 2rem; max-width: 280px; }
+      }
+      .phone {
+        position: relative;
+        aspect-ratio: 9 / 19;
+        border-radius: 32px;
+        background: linear-gradient(160deg, #1f2937, #0f172a);
+        padding: 6px;
+        box-shadow:
+          0 40px 80px -30px rgba(0,0,0,0.55),
+          0 0 0 1px rgba(255,255,255,0.08);
+        transform-origin: center bottom;
+      }
+      .phone-left  { transform: rotate(-4deg) translateY(18px) scale(0.92); }
+      .phone-right { transform: rotate( 4deg) translateY(18px) scale(0.92); }
+      .phone-center { z-index: 2; }
+      @media (max-width: 720px) {
+        .phone-left, .phone-right { transform: none; }
+      }
+      .phone-screen {
+        position: relative;
+        border-radius: 26px;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        color: #0f2b46;
+      }
+      .phone-notch {
+        position: absolute;
+        top: 8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 44%;
+        height: 18px;
+        background: #0a0f1a;
+        border-radius: 12px;
+        z-index: 5;
+      }
+      .phone-header {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem 1.2rem 0.2rem;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.6rem;
+        color: #0f2b46;
+        font-weight: 600;
+      }
+      .phone-header-dark { color: rgba(255,255,255,0.7); }
+      .phone-body {
+        padding: 1.2rem 0.85rem;
+        text-align: left;
+        font-size: 0.7rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .phone-title {
+        font-size: 1.1rem;
+        font-weight: 800;
+        color: #0f2b46;
+        letter-spacing: -0.02em;
+        margin: 0.15rem 0 0.35rem;
+      }
+      .phone-title-light { color: white; }
+      .phone-sub {
+        font-size: 0.62rem;
+        color: rgba(255,255,255,0.6);
+        margin-bottom: 0.25rem;
+      }
+      .phone-search {
+        font-size: 0.62rem;
+        color: #94a3b8;
+        padding: 0.55rem 0.7rem;
+        background: white;
+        border-radius: 8px;
+        border: 1px solid #e2e8f0;
+      }
+      .phone-chip-row { display: flex; gap: 0.3rem; margin-top: 0.3rem; }
+      .phone-chip {
+        font-size: 0.55rem;
+        color: #64748b;
+        background: white;
+        border: 1px solid #e2e8f0;
+        padding: 0.2rem 0.5rem;
+        border-radius: 100px;
+        font-weight: 600;
+      }
+      .phone-chip-on {
+        background: #0f2b46;
+        color: white;
+        border-color: #0f2b46;
+      }
+      .phone-card {
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: 10px;
+        padding: 0.55rem 0.7rem;
+        line-height: 1.3;
+      }
+      .phone-card-amber {
+        background: linear-gradient(135deg, #fffbeb, white);
+        border-color: rgba(245,158,11,0.3);
+      }
+      .phone-card-label {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.5rem;
+        color: #94a3b8;
+        letter-spacing: 0.08em;
+        margin-bottom: 0.1rem;
+      }
+      .phone-card-title {
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: #0f2b46;
+      }
+      .phone-card-meta {
+        font-size: 0.55rem;
+        color: #94a3b8;
+        margin-top: 0.1rem;
+      }
+      .phone-pill {
+        display: inline-block;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.52rem;
+        font-weight: 700;
+        color: #fcd34d;
+        background: rgba(245,158,11,0.15);
+        border: 1px solid rgba(245,158,11,0.3);
+        padding: 0.15rem 0.5rem;
+        border-radius: 100px;
+        letter-spacing: 0.1em;
+        align-self: flex-start;
+      }
+      .phone-step {
+        display: flex;
+        gap: 0.5rem;
+        align-items: flex-start;
+        padding: 0.55rem;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 10px;
+      }
+      .phone-step-hot {
+        border-color: rgba(245,158,11,0.3);
+        background: linear-gradient(135deg, rgba(245,158,11,0.08), rgba(255,255,255,0.03));
+      }
+      .phone-step-num {
+        width: 18px; height: 18px;
+        background: rgba(255,255,255,0.12);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.6rem;
+        font-weight: 700;
+        flex-shrink: 0;
+      }
+      .phone-step-title {
+        font-size: 0.65rem;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 0.1rem;
+      }
+      .phone-step-desc {
+        font-size: 0.55rem;
+        color: rgba(255,255,255,0.55);
+        line-height: 1.45;
+      }
+      .phone-breadcrumb {
+        font-size: 0.6rem;
+        color: #64748b;
+        margin-bottom: 0.2rem;
+      }
+      .phone-dose {
+        background: linear-gradient(135deg, #0f2b46, #1e3a5f);
+        color: white;
+        padding: 0.75rem;
+        border-radius: 12px;
+        margin: 0.35rem 0 0.25rem;
+      }
+      .phone-dose-label {
+        font-size: 0.5rem;
+        color: rgba(255,255,255,0.55);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .phone-dose-value {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 1.25rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        color: #fcd34d;
+        margin: 0.1rem 0;
+      }
+      .phone-dose-unit {
+        font-size: 0.6rem;
+        color: rgba(255,255,255,0.6);
+      }
+      .phone-warn {
+        font-size: 0.58rem;
+        color: #92400e;
+        background: rgba(245,158,11,0.12);
+        border: 1px solid rgba(245,158,11,0.25);
+        padding: 0.4rem 0.55rem;
+        border-radius: 8px;
+        line-height: 1.4;
+      }
+      .phone-glow {
+        position: absolute;
+        inset: -20%;
+        background: radial-gradient(circle at center, rgba(245,158,11,0.35), transparent 60%);
+        filter: blur(40px);
+        z-index: -1;
+      }
+    </style>
   </section>
 
   <!-- Features reminder -->

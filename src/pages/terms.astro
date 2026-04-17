@@ -1,0 +1,116 @@
+---
+import Base from '../layouts/Base.astro';
+const lastUpdated = 'April 2026';
+---
+<Base title="Terms of use" description="UroRef terms of use — clinical disclaimer, acceptable use, and licence terms.">
+
+  <section class="u-hero" style="padding: 5rem 1.5rem 4rem;">
+    <div class="u-hero-bg" aria-hidden="true"></div>
+    <div class="u-hero-grid" aria-hidden="true"></div>
+    <div style="max-width: 750px; margin: 0 auto; position: relative;">
+      <div class="u-eyebrow-pill" style="margin-bottom: 1.5rem;">Legal</div>
+      <h1 class="u-gradient-text" style="font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -0.03em; margin: 0 0 0.75rem;">Terms of use</h1>
+      <p style="color: rgba(255,255,255,0.65); font-size: 1rem; margin: 0;">Last updated: {lastUpdated}</p>
+    </div>
+  </section>
+
+  <section style="padding: 3.5rem 1.5rem 5rem; max-width: 750px; margin: 0 auto;">
+    <article class="legal">
+
+      <p>
+        By using the UroRef website (uroref.com) or the UroRef mobile app, you agree to these
+        terms. If you do not agree, please do not use UroRef.
+      </p>
+
+      <h2>1. Clinical disclaimer (read this)</h2>
+      <p>
+        UroRef is a <strong>quick-reference tool for trained clinicians</strong>. It is not
+        medical advice, and it is not a substitute for:
+      </p>
+      <ul>
+        <li>your own clinical judgement;</li>
+        <li>your trust or hospital's local guidelines and protocols;</li>
+        <li>senior advice from a consultant or specialist;</li>
+        <li>the BNF, EMC or your local formulary for drug doses.</li>
+      </ul>
+      <p>
+        Always verify drug doses, contraindications and clinical decisions against authoritative
+        sources before acting on them. UroRef is provided "as is" without warranty of any kind.
+        The author accepts no liability for clinical decisions made using this tool.
+      </p>
+
+      <h2>2. Who can use UroRef</h2>
+      <p>
+        UroRef is intended for healthcare professionals — primarily urology trainees, registrars,
+        consultants, and allied healthcare staff. It is <strong>not</strong> intended as a
+        patient information resource.
+      </p>
+
+      <h2>3. Acceptable use</h2>
+      <ul>
+        <li>You may use UroRef for personal, non-commercial clinical reference.</li>
+        <li>You may not republish, scrape, or redistribute substantial portions of the content without permission.</li>
+        <li>You may not use the content to build a competing product.</li>
+        <li>You may not represent UroRef content as your own clinical authorship.</li>
+      </ul>
+
+      <h2>4. Intellectual property</h2>
+      <p>
+        Content, design, and brand are © UroRef / Nity G. Open-source dependencies are used under
+        their respective licences. The UroRef name and mark are reserved.
+      </p>
+
+      <h2>5. Contributions</h2>
+      <p>
+        If you submit feedback, suggestions, or content via the feedback form, you grant UroRef
+        a non-exclusive, royalty-free, perpetual licence to use that submission to improve the
+        product. You will be credited where appropriate (e.g. for consultant content review).
+      </p>
+
+      <h2>6. Availability</h2>
+      <p>
+        We aim for the site and app to be available 24/7 but offer no guarantee. UroRef may be
+        modified, suspended, or discontinued at any time.
+      </p>
+
+      <h2>7. Governing law</h2>
+      <p>
+        These terms are governed by the laws of England and Wales. Any dispute is subject to the
+        exclusive jurisdiction of the courts of England and Wales.
+      </p>
+
+      <h2>8. Contact</h2>
+      <p>
+        Questions about these terms? Use the
+        <a href="https://forms.gle/4QTK3MSgMsedJQEw7" target="_blank" rel="noopener">feedback form</a>
+        and we'll respond as soon as we can.
+      </p>
+
+      <p class="legal-foot">
+        If you spot a clinical error in UroRef content, please flag it via the feedback form so
+        it can be prioritised for review.
+      </p>
+
+    </article>
+  </section>
+
+  <style>
+    .legal { color: #374151; line-height: 1.75; font-size: 0.975rem; }
+    .legal h2 { color: #0f2b46; font-size: 1.25rem; font-weight: 700; margin: 2.25rem 0 0.6rem; letter-spacing: -0.01em; }
+    .legal p, .legal ul { margin: 0 0 1rem; }
+    .legal ul { padding-left: 1.5rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .legal a { color: #d97706; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .legal a:hover { color: #f59e0b; }
+    .legal strong { color: #0f2b46; }
+    .legal-foot {
+      margin-top: 2.5rem;
+      padding: 1rem 1.25rem;
+      background: rgba(15,43,70,0.04);
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      color: #64748b;
+    }
+  </style>
+
+</Base>

@@ -73,22 +73,37 @@ const siteJsonLd = {
 
   <!-- Nav -->
   <header class="site-nav">
+    <input type="checkbox" id="site-nav-toggle" class="site-nav-toggle" aria-hidden="true" />
     <div class="site-nav-inner">
       <a href="/" class="u-wordmark" style="font-size: 22px;" aria-label="UroRef home">
         <span class="uro">Uro</span><span class="ref">Ref</span>
         <span class="dot" style="width: 4px; height: 4px; margin-bottom: 1px;"></span>
       </a>
 
-      <nav class="site-nav-links">
-        <a href="/deep-dives">Blog</a>
-        <a href="/deep-dives">Landmark Trials</a>
-        <a href="/deep-dives">FRCS</a>
-        <a href="/about">About</a>
+      <nav class="site-nav-links" aria-label="Primary">
+        <a href="/deep-dives">Deep Dives</a>
         <a href="/app">App</a>
+        <a href="/about">About</a>
+        <a href="/updates">Updates</a>
       </nav>
 
-      <a href="https://forms.gle/4QTK3MSgMsedJQEw7" target="_blank" rel="noopener" class="site-nav-cta">Subscribe</a>
+      <div class="site-nav-actions">
+        <a href="https://forms.gle/4QTK3MSgMsedJQEw7" target="_blank" rel="noopener" class="site-nav-cta">Subscribe</a>
+        <label for="site-nav-toggle" class="site-nav-burger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </label>
+      </div>
     </div>
+
+    <!-- Mobile drawer (CSS-only, driven by #site-nav-toggle) -->
+    <nav class="site-nav-drawer" aria-label="Mobile">
+      <a href="/deep-dives">Deep Dives</a>
+      <a href="/app">App</a>
+      <a href="/about">About</a>
+      <a href="/updates">Updates</a>
+      <a href="/contact">Contact</a>
+      <a href="https://forms.gle/4QTK3MSgMsedJQEw7" target="_blank" rel="noopener" class="drawer-cta">Subscribe →</a>
+    </nav>
   </header>
 
   <main>
@@ -109,11 +124,9 @@ const siteJsonLd = {
         <div>
           <h4>Read</h4>
           <ul>
-            <li><a href="/deep-dives">Latest</a></li>
-            <li><a href="/deep-dives">Landmark Trials</a></li>
-            <li><a href="/deep-dives">On-Call</a></li>
-            <li><a href="/deep-dives">FRCS Revision</a></li>
-            <li><a href="/last30days">Trending</a></li>
+            <li><a href="/deep-dives">Deep Dives</a></li>
+            <li><a href="https://forms.gle/4QTK3MSgMsedJQEw7" target="_blank" rel="noopener">Newsletter</a></li>
+            <li><a href="/last30days">Last 30 days</a></li>
           </ul>
         </div>
         <div>
@@ -196,9 +209,79 @@ const siteJsonLd = {
   }
   .site-nav-cta:hover { background: var(--teal-400); }
 
+  .site-nav-actions { display: flex; align-items: center; gap: 12px; }
+
+  /* Hamburger toggle (hidden checkbox controls drawer) */
+  .site-nav-toggle { position: absolute; opacity: 0; pointer-events: none; }
+  .site-nav-burger {
+    display: none;
+    width: 40px; height: 40px;
+    border-radius: var(--r-md);
+    cursor: pointer;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    border: 1px solid var(--border-strong);
+    background: transparent;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .site-nav-burger:hover { border-color: var(--teal-500); }
+  .site-nav-burger span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: var(--text-primary);
+    border-radius: 2px;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+
+  /* Drawer */
+  .site-nav-drawer {
+    display: none;
+    flex-direction: column;
+    padding: 8px 20px 20px;
+    background: rgba(10, 37, 64, 0.98);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid var(--border);
+  }
+  .site-nav-drawer a {
+    padding: 14px 4px;
+    font-size: 16px;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border);
+    transition: color 0.15s;
+  }
+  .site-nav-drawer a:hover { color: var(--text-primary); }
+  .site-nav-drawer a.drawer-cta {
+    margin-top: 14px;
+    padding: 12px 16px;
+    background: var(--teal-500);
+    color: var(--navy-900);
+    border: 0;
+    border-radius: var(--r-full);
+    font-weight: 600;
+    text-align: center;
+  }
+  .site-nav-drawer a.drawer-cta:hover { color: var(--navy-900); }
+
+  /* Drawer open state */
+  .site-nav-toggle:checked ~ .site-nav-drawer { display: flex; }
+  .site-nav-toggle:checked ~ .site-nav-inner .site-nav-burger span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .site-nav-toggle:checked ~ .site-nav-inner .site-nav-burger span:nth-child(2) {
+    opacity: 0;
+  }
+  .site-nav-toggle:checked ~ .site-nav-inner .site-nav-burger span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
   @media (max-width: 820px) {
     .site-nav-inner { padding: 16px 20px; gap: 16px; }
     .site-nav-links { display: none; }
+    .site-nav-burger { display: flex; }
   }
 
   .site-footer {

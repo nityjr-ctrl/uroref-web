@@ -1,45 +1,46 @@
 ---
 import Base from '../layouts/Base.astro';
+const WAITLIST_URL = 'https://forms.gle/4QTK3MSgMsedJQEw7';
 ---
-<Base title="Download UroRef" description="Download UroRef — the urology quick reference app for trainees. Available on iOS and Android.">
+<Base title="Download UroRef" description="UroRef — the urology quick reference app for trainees. Join the waitlist for iOS and Android launch.">
 
   <!-- Hero -->
   <section class="u-hero" style="padding: 5.5rem 1.5rem 4.5rem; text-align: center;">
     <div class="u-hero-bg" aria-hidden="true"></div>
     <div class="u-hero-grid" aria-hidden="true"></div>
     <div style="max-width: 750px; margin: 0 auto; position: relative;">
-      <div class="u-eyebrow-pill" style="margin-bottom: 1.5rem;">Download</div>
+      <div class="u-eyebrow-pill" style="margin-bottom: 1.5rem;">Coming soon</div>
       <h1 class="u-gradient-text" style="font-size: clamp(2rem, 5.5vw, 3.5rem); font-weight: 800; letter-spacing: -0.03em; margin: 0 0 1rem; line-height: 1.1;">
-        Get UroRef on your phone.
+        UroRef on your phone.
       </h1>
       <p style="color: rgba(255,255,255,0.72); font-size: 1.15rem; margin: 0 auto 0.75rem; line-height: 1.6; max-width: 600px;">
         16 procedures. On-call emergency algorithms. Urology drug doses. 6 calculators. 31 BAUS leaflets.
       </p>
       <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem; margin: 0;">
-        Free. Built for trainees. Used by 500+ trainees across the UK.
+        Currently used by 500+ trainees on TestFlight. Public release shortly.
       </p>
     </div>
   </section>
 
-  <!-- Download badges -->
+  <!-- Waitlist CTA -->
   <section style="padding: 4rem 1.5rem; max-width: 800px; margin: 0 auto; text-align: center;">
-    <h2 style="font-size: 1.5rem; font-weight: 700; color: #0A2540; margin: 0 0 0.75rem;">Get the app</h2>
-    <p style="color: #64748b; margin: 0 0 2.5rem;">Choose your platform. Live download links coming soon.</p>
+    <h2 style="font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin: 0 0 0.75rem;">Join the launch list</h2>
+    <p style="color: var(--text-secondary); margin: 0 0 2.5rem;">We'll email you the App Store and Play Store links the day they go live.</p>
 
     <div class="badge-row">
       <!-- iOS App Store Badge -->
-      <a href="#" class="store-badge" aria-label="Download on the App Store">
+      <a href={WAITLIST_URL} target="_blank" rel="noopener" class="store-badge" aria-label="Get notified when the iOS app is live">
         <svg width="22" height="26" viewBox="0 0 384 512" aria-hidden="true">
           <path fill="currentColor" d="M318.7 268.7c-.3-36.7 16.4-64.4 50.3-84.8-19-27.1-47.6-42-85.4-44.9-35.7-2.8-74.7 21-89 21-15.1 0-49.6-20-76.7-20C72.8 141.6 16 184.5 16 271.9c0 25.8 4.7 52.4 14.1 79.7 12.6 36.1 58.1 124.7 105.5 123.2 24.8-.6 42.4-17.6 74.7-17.6 31.4 0 47.6 17.6 75.3 17.6 47.8-.7 89-81.3 100.9-117.5-63.5-29.9-67.8-87.7-67.8-89.6zM256.6 113.3c30.3-36 27.5-68.7 26.6-80.4-26.7 1.6-57.6 18.2-75.2 38.6-19.4 21.9-30.8 49-28.3 78.7 28.9 2.2 55.3-12.7 76.9-36.9z"/>
         </svg>
         <div class="store-text">
-          <div class="store-eyebrow">Download on the</div>
+          <div class="store-eyebrow">Notify me when live</div>
           <div class="store-name">App Store</div>
         </div>
       </a>
 
       <!-- Google Play Badge -->
-      <a href="#" class="store-badge" aria-label="Get it on Google Play">
+      <a href={WAITLIST_URL} target="_blank" rel="noopener" class="store-badge" aria-label="Get notified when the Android app is live">
         <svg width="22" height="26" viewBox="0 0 24 24" aria-hidden="true">
           <path fill="#34a853" d="M3.609 1.814 13.792 12 3.609 22.186a1 1 0 0 1-.609-.92V2.734a1 1 0 0 1 .609-.92z" opacity="0"/>
           <path fill="#34a853" d="M3 2.734v18.532a1 1 0 0 0 .25.66L13.792 12 3.25 2.073A1 1 0 0 0 3 2.734z"/>
@@ -48,7 +49,7 @@ import Base from '../layouts/Base.astro';
           <path fill="#4285f4" d="m20.16 10.81-3.35-1.82L13.792 12l3.018 3.01 3.35-1.82a1.36 1.36 0 0 0 0-2.38z"/>
         </svg>
         <div class="store-text">
-          <div class="store-eyebrow">Get it on</div>
+          <div class="store-eyebrow">Notify me when live</div>
           <div class="store-name">Google Play</div>
         </div>
       </a>
@@ -97,13 +98,43 @@ import Base from '../layouts/Base.astro';
     </style>
 
     <!-- QR Code placeholder -->
-    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 16px; padding: 2.5rem; margin-bottom: 2rem; max-width: 400px; margin-left: auto; margin-right: auto;">
-      <div style="width: 160px; height: 160px; background-color: #f1f5f9; border-radius: 8px; margin: 0 auto 1.25rem; display: flex; align-items: center; justify-content: center; border: 2px dashed #cbd5e1;">
-        <span style="color: #94a3b8; font-size: 0.8rem; text-align: center; padding: 0.5rem;">QR code<br/>coming soon</span>
+    <div class="qr-card">
+      <div class="qr-slot">
+        <span>QR code<br/>at launch</span>
       </div>
-      <p style="font-size: 0.9rem; font-weight: 600; color: #0A2540; margin: 0 0 0.25rem;">Print and pin to your ward noticeboard</p>
-      <p style="font-size: 0.8rem; color: #64748b; margin: 0;">Scan to download UroRef instantly on any device.</p>
+      <p class="qr-title">Print and pin to your ward noticeboard</p>
+      <p class="qr-sub">Scan to download UroRef instantly on any device.</p>
     </div>
+
+    <style>
+      .qr-card {
+        background: var(--navy-700);
+        border: 1px solid var(--border);
+        border-radius: var(--r-xl);
+        padding: 2.5rem;
+        margin: 0 auto 2rem;
+        max-width: 400px;
+      }
+      .qr-slot {
+        width: 160px;
+        height: 160px;
+        background: var(--navy-800);
+        border-radius: var(--r-md);
+        margin: 0 auto 1.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px dashed var(--border-strong);
+      }
+      .qr-slot span {
+        color: var(--text-muted);
+        font-size: 0.8rem;
+        text-align: center;
+        padding: 0.5rem;
+      }
+      .qr-title { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); margin: 0 0 0.25rem; }
+      .qr-sub { font-family: var(--font-serif); font-size: 0.85rem; color: var(--text-secondary); margin: 0; }
+    </style>
   </section>
 
   <!-- Preview mockups -->
@@ -450,9 +481,9 @@ import Base from '../layouts/Base.astro';
   </section>
 
   <!-- Features reminder -->
-  <section style="padding: 4rem 1.5rem; max-width: 700px; margin: 0 auto;">
-    <h2 style="font-size: 1.5rem; font-weight: 700; color: #0A2540; margin: 0 0 1.5rem; text-align: center;">What's inside</h2>
-    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.875rem;">
+  <section class="features-list">
+    <h2>What's inside</h2>
+    <ul>
       {[
         '16 common urology procedures — consent risks, operative steps, post-op orders, ward round checklists',
         'On-call decision trees — haematuria, retention, scrotal pain, priapism, penile fracture, paraphimosis, catheter problems, loin pain and fever',
@@ -462,12 +493,53 @@ import Base from '../layouts/Base.astro';
         '31 BAUS-approved patient information leaflets via QR code',
         'Search, pinned tools and recently used — fast access during busy shifts',
       ].map(item => (
-        <li style="display: flex; gap: 0.75rem; align-items: flex-start;">
-          <span style="color: #00D4C8; font-size: 1.1rem; margin-top: 0.1rem; flex-shrink: 0;">✓</span>
-          <span style="color: #374151; font-size: 0.95rem; line-height: 1.6;">{item}</span>
+        <li>
+          <span class="tick">✓</span>
+          <span>{item}</span>
         </li>
       ))}
     </ul>
   </section>
+
+  <style>
+    .features-list {
+      padding: 4rem 1.5rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .features-list h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0 0 1.5rem;
+      text-align: center;
+      letter-spacing: -0.01em;
+    }
+    .features-list ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+    }
+    .features-list li {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+    .features-list .tick {
+      color: var(--teal-500);
+      font-size: 1.1rem;
+      margin-top: 0.1rem;
+      flex-shrink: 0;
+    }
+    .features-list li span:last-child {
+      font-family: var(--font-serif);
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+  </style>
 
 </Base>

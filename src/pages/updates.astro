@@ -87,36 +87,29 @@ const changelog = [
     </div>
   </section>
 
-  <section style="padding: 4rem 1.5rem; max-width: 750px; margin: 0 auto;">
-    <div style="display: flex; flex-direction: column; gap: 0; position: relative;">
+  <section class="changelog">
+    <div class="changelog-stack">
 
       {changelog.map((entry, idx) => (
-        <div style="display: flex; gap: 1.5rem; padding-bottom: 2.5rem;">
+        <div class="entry">
 
           <!-- Timeline line + dot -->
-          <div style="display: flex; flex-direction: column; align-items: center; flex-shrink: 0; width: 24px;">
-            <div style={`width: 12px; height: 12px; border-radius: 50%; margin-top: 0.35rem; flex-shrink: 0; ${entry.status === 'latest' ? 'background-color: #00D4C8; box-shadow: 0 0 0 3px rgba(0,212,200,0.2);' : 'background-color: #cbd5e1;'}`}></div>
-            {idx < changelog.length - 1 && <div style="width: 1px; background-color: #e2e8f0; flex: 1; margin-top: 4px;"></div>}
+          <div class="rail">
+            <div class={`dot ${entry.status === 'latest' ? 'dot-live' : ''}`}></div>
+            {idx < changelog.length - 1 && <div class="line"></div>}
           </div>
 
           <!-- Content -->
-          <div style="flex: 1; padding-bottom: 0.25rem;">
-            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem; flex-wrap: wrap;">
-              <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; font-weight: 500; color: #0A2540; background-color: #e2e8f0; padding: 0.2rem 0.6rem; border-radius: 4px;">
-                {entry.version}{entry.phase ? ` ${entry.phase}` : ''}
-              </span>
-              {entry.status === 'latest' && (
-                <span style="background-color: rgba(0,212,200,0.15); color: #00A89E; font-size: 0.7rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.05em;">Latest</span>
-              )}
-              <span style="color: #94a3b8; font-size: 0.8rem;">{entry.date}</span>
+          <div class="content">
+            <div class="entry-meta">
+              <span class="version">{entry.version}{entry.phase ? ` ${entry.phase}` : ''}</span>
+              {entry.status === 'latest' && <span class="badge-latest">Latest</span>}
+              <span class="date">{entry.date}</span>
             </div>
-            <h2 style="font-size: 1.1rem; font-weight: 700; color: #0A2540; margin: 0 0 0.875rem; letter-spacing: -0.01em;">{entry.title}</h2>
-            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem;">
+            <h2>{entry.title}</h2>
+            <ul>
               {entry.items.map(item => (
-                <li style="display: flex; gap: 0.625rem; align-items: flex-start;">
-                  <span style="color: #64748b; margin-top: 0.5rem; width: 4px; height: 4px; background-color: #94a3b8; border-radius: 50%; flex-shrink: 0;"></span>
-                  <span style="color: #374151; font-size: 0.9rem; line-height: 1.65;">{item}</span>
-                </li>
+                <li><span class="bullet"></span><span>{item}</span></li>
               ))}
             </ul>
           </div>
@@ -125,5 +118,100 @@ const changelog = [
 
     </div>
   </section>
+
+  <style>
+    .changelog { padding: 4rem 1.5rem; max-width: 750px; margin: 0 auto; }
+    .changelog-stack { display: flex; flex-direction: column; gap: 0; position: relative; }
+    .entry { display: flex; gap: 1.5rem; padding-bottom: 2.5rem; }
+    .rail {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+      width: 24px;
+    }
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-top: 0.35rem;
+      flex-shrink: 0;
+      background: var(--navy-500);
+    }
+    .dot-live {
+      background: var(--teal-500);
+      box-shadow: 0 0 0 3px rgba(0,212,200,0.2);
+    }
+    .line {
+      width: 1px;
+      background: var(--border);
+      flex: 1;
+      margin-top: 4px;
+    }
+    .content { flex: 1; padding-bottom: 0.25rem; }
+    .entry-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .version {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      background: var(--navy-700);
+      border: 1px solid var(--border);
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--r-sm);
+    }
+    .badge-latest {
+      background: rgba(0,212,200,0.15);
+      color: var(--teal-500);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 100px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border: 1px solid rgba(0,212,200,0.3);
+    }
+    .date { color: var(--text-muted); font-family: var(--font-mono); font-size: 0.78rem; }
+    .content h2 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 0 0 0.875rem;
+      letter-spacing: -0.015em;
+    }
+    .content ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .content li {
+      display: flex;
+      gap: 0.625rem;
+      align-items: flex-start;
+    }
+    .content li .bullet {
+      margin-top: 0.55rem;
+      width: 4px;
+      height: 4px;
+      background: var(--text-muted);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .content li span:last-child {
+      font-family: var(--font-serif);
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.65;
+    }
+  </style>
 
 </Base>

@@ -18,25 +18,101 @@ const articles = await getCollection('deep-dives');
     </div>
   </section>
 
-  <section style="padding: 4rem 1.5rem; max-width: 800px; margin: 0 auto;">
+  <section class="dives-list">
     {articles.length === 0 ? (
-      <p style="color: #64748b;">No articles yet.</p>
+      <div class="dives-empty">
+        <p>The first Deep Dive is coming soon.</p>
+        <a href="https://forms.gle/4QTK3MSgMsedJQEw7" target="_blank" rel="noopener" class="u-cta-primary">Get it in your inbox →</a>
+      </div>
     ) : (
-      <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+      <div class="dives-stack">
         {articles.map(article => (
-            <a href={`/deep-dives/${article.id}`} style="display: block; background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.75rem; text-decoration: none; transition: border-color 0.15s;" onmouseover="this.style.borderColor='#00D4C8'" onmouseout="this.style.borderColor='#e2e8f0'">
-            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.625rem; flex-wrap: wrap;">
+          <a href={`/deep-dives/${article.id}`} class="dive-link">
+            <div class="dive-meta">
               {article.data.tags && article.data.tags.map((tag: string) => (
-                <span style="background-color: #f1f5f9; color: #64748b; font-size: 0.75rem; padding: 0.2rem 0.5rem; border-radius: 4px;">{tag}</span>
+                <span class="dive-tag">{tag}</span>
               ))}
-              <span style="color: #94a3b8; font-size: 0.8rem;">{article.data.date}</span>
+              <span class="dive-date">{article.data.date}</span>
             </div>
-            <h2 style="font-size: 1.2rem; font-weight: 700; color: #0A2540; margin: 0 0 0.5rem; letter-spacing: -0.01em;">{article.data.title}</h2>
-            <p style="color: #64748b; font-size: 0.9rem; margin: 0; line-height: 1.6;">{article.data.description}</p>
+            <h2>{article.data.title}</h2>
+            <p>{article.data.description}</p>
           </a>
         ))}
       </div>
     )}
   </section>
+
+  <style>
+    .dives-list {
+      padding: 4rem 1.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .dives-empty {
+      text-align: center;
+      padding: 3rem 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+    }
+    .dives-empty p {
+      font-family: var(--font-serif);
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      margin: 0;
+    }
+    .dives-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .dive-link {
+      display: block;
+      background: var(--navy-700);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 1.75rem;
+      text-decoration: none;
+      transition: border-color 0.15s, transform 0.2s;
+    }
+    .dive-link:hover { border-color: var(--teal-500); transform: translateY(-2px); }
+    .dive-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.625rem;
+      flex-wrap: wrap;
+    }
+    .dive-tag {
+      background: var(--navy-800);
+      color: var(--text-secondary);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--r-sm);
+      border: 1px solid var(--border);
+      letter-spacing: 0.03em;
+    }
+    .dive-date {
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      font-size: 0.78rem;
+    }
+    .dive-link h2 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 0 0 0.5rem;
+      letter-spacing: -0.015em;
+    }
+    .dive-link p {
+      font-family: var(--font-serif);
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin: 0;
+      line-height: 1.6;
+    }
+  </style>
 
 </Base>

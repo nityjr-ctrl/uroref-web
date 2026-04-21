@@ -95,21 +95,39 @@ const lastUpdated = 'April 2026';
   </section>
 
   <style>
-    .legal { color: #374151; line-height: 1.75; font-size: 0.975rem; }
-    .legal h2 { color: #0A2540; font-size: 1.25rem; font-weight: 700; margin: 2.25rem 0 0.6rem; letter-spacing: -0.01em; }
+    .legal {
+      font-family: var(--font-serif);
+      color: var(--text-secondary);
+      line-height: 1.75;
+      font-size: 1rem;
+    }
+    .legal h2 {
+      font-family: var(--font-sans);
+      color: var(--text-primary);
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 2.25rem 0 0.6rem;
+      letter-spacing: -0.02em;
+    }
     .legal p, .legal ul { margin: 0 0 1rem; }
     .legal ul { padding-left: 1.5rem; display: flex; flex-direction: column; gap: 0.4rem; }
-    .legal a { color: #00A89E; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
-    .legal a:hover { color: #00D4C8; }
-    .legal strong { color: #0A2540; }
+    .legal a {
+      color: var(--teal-500);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+    .legal a:hover { color: var(--teal-400); }
+    .legal strong { color: var(--text-primary); font-weight: 600; }
     .legal-foot {
       margin-top: 2.5rem;
       padding: 1rem 1.25rem;
-      background: rgba(15,43,70,0.04);
-      border: 1px solid #e2e8f0;
-      border-radius: 10px;
+      background: var(--navy-700);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
       font-size: 0.85rem;
-      color: #64748b;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
     }
   </style>
 

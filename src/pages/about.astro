@@ -34,18 +34,18 @@ const thanks = [
     </div>
   </section>
 
-  <section style="padding: 4rem 1.5rem; max-width: 750px; margin: 0 auto;">
+  <section class="about-body">
 
     <!-- What's in the app -->
-    <div style="margin-bottom: 3.25rem;">
-      <h2 style="font-size: 1.5rem; font-weight: 700; color: #0A2540; margin: 0 0 1.25rem; letter-spacing: -0.01em;">What's in the app</h2>
-      <div style="display: grid; gap: 0.75rem;">
+    <div class="about-block">
+      <h2>What's in the app</h2>
+      <div class="about-grid">
         {contents.map(([icon, title, desc]) => (
-          <div style="display: flex; gap: 1rem; background: white; border: 1px solid #e2e8f0; border-radius: 10px; padding: 1.25rem; align-items: flex-start;">
-            <span style="font-size: 1.4rem; flex-shrink: 0; margin-top: 0.1rem;">{icon}</span>
+          <div class="about-card">
+            <span class="icon">{icon}</span>
             <div>
-              <p style="font-weight: 700; color: #0A2540; margin: 0 0 0.25rem; font-size: 0.98rem;">{title}</p>
-              <p style="color: #64748b; margin: 0; font-size: 0.9rem; line-height: 1.6;">{desc}</p>
+              <p class="title">{title}</p>
+              <p class="desc">{desc}</p>
             </div>
           </div>
         ))}
@@ -53,40 +53,112 @@ const thanks = [
     </div>
 
     <!-- Governance -->
-    <div style="background-color: rgba(15,43,70,0.04); border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.85rem; margin-bottom: 3rem;">
-      <h2 style="font-size: 1.5rem; font-weight: 700; color: #0A2540; margin: 0 0 0.9rem; letter-spacing: -0.01em;">Governance</h2>
-      <p style="color: #374151; margin: 0 0 0.9rem; font-size: 0.95rem; line-height: 1.7;">
-        UroRef is a quick reference tool. It is not a substitute for clinical judgement, senior advice, or local protocols.
-      </p>
-      <p style="color: #374151; margin: 0 0 0.9rem; font-size: 0.95rem; line-height: 1.7;">
-        All content is referenced to <strong style="color:#0A2540;">EAU 2024 guidelines</strong>, <strong style="color:#0A2540;">NICE</strong>, and <strong style="color:#0A2540;">BAUS</strong>.
-      </p>
-      <p style="color: #374151; margin: 0; font-size: 0.95rem; line-height: 1.7;">
-        Content is authored by Nity G, Urology SpR.
-      </p>
+    <div class="about-governance">
+      <h2>Governance</h2>
+      <p>UroRef is a quick reference tool. It is not a substitute for clinical judgement, senior advice, or local protocols.</p>
+      <p>All content is referenced to <strong>EAU 2024 guidelines</strong>, <strong>NICE</strong>, and <strong>BAUS</strong>.</p>
+      <p>Content is authored by Nity G, Urology SpR.</p>
     </div>
 
     <!-- Thanks -->
-    <div style="margin-bottom: 2.5rem;">
-      <h2 style="font-size: 1.5rem; font-weight: 700; color: #0A2540; margin: 0 0 1rem; letter-spacing: -0.01em;">With thanks to</h2>
-      <div style="background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.75rem;">
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.6rem 1.25rem; margin-bottom: 1rem;">
+    <div class="about-block">
+      <h2>With thanks to</h2>
+      <div class="about-thanks">
+        <div class="thanks-grid">
           {thanks.map(name => (
-            <div style="color: #374151; font-size: 0.95rem; font-weight: 500;">{name}</div>
+            <div class="thanks-name">{name}</div>
           ))}
         </div>
-        <p style="color: #64748b; margin: 0; font-size: 0.9rem; line-height: 1.65;">
-          And urology trainees across the North West Deanery.
-        </p>
+        <p class="thanks-foot">And urology trainees across the North West Deanery.</p>
       </div>
     </div>
 
     <!-- Feedback -->
-    <div style="text-align: center;">
-      <p style="color: #64748b; margin: 0 0 1rem; font-size: 0.95rem;">Questions or feedback?</p>
+    <div class="about-feedback">
+      <p>Questions or feedback?</p>
       <a href="https://forms.gle/4QTK3MSgMsedJQEw7" target="_blank" rel="noopener" class="u-cta-primary">Send feedback →</a>
     </div>
 
   </section>
+
+  <style>
+    .about-body {
+      padding: 4rem 1.5rem;
+      max-width: 750px;
+      margin: 0 auto;
+    }
+    .about-block { margin-bottom: 3.25rem; }
+    .about-body h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0 0 1.25rem;
+      letter-spacing: -0.01em;
+    }
+    .about-grid { display: grid; gap: 0.75rem; }
+    .about-card {
+      display: flex;
+      gap: 1rem;
+      background: var(--navy-700);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 1.25rem;
+      align-items: flex-start;
+      transition: border-color 0.15s;
+    }
+    .about-card:hover { border-color: var(--border-strong); }
+    .about-card .icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .about-card .title { font-weight: 600; color: var(--text-primary); margin: 0 0 0.25rem; font-size: 0.98rem; }
+    .about-card .desc {
+      font-family: var(--font-serif);
+      color: var(--text-secondary);
+      margin: 0;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    .about-governance {
+      background: var(--navy-700);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 1.85rem;
+      margin-bottom: 3rem;
+    }
+    .about-governance h2 { margin-bottom: 0.9rem; }
+    .about-governance p {
+      font-family: var(--font-serif);
+      color: var(--text-secondary);
+      margin: 0 0 0.9rem;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+    .about-governance p:last-child { margin: 0; }
+    .about-governance strong { color: var(--text-primary); font-weight: 600; }
+    .about-thanks {
+      background: var(--navy-700);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 1.75rem;
+    }
+    .thanks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 0.6rem 1.25rem;
+      margin-bottom: 1rem;
+    }
+    .thanks-name { color: var(--text-secondary); font-size: 0.95rem; font-weight: 500; }
+    .thanks-foot {
+      font-family: var(--font-serif);
+      color: var(--text-muted);
+      margin: 0;
+      font-size: 0.9rem;
+      line-height: 1.65;
+    }
+    .about-feedback { text-align: center; }
+    .about-feedback p {
+      color: var(--text-muted);
+      margin: 0 0 1rem;
+      font-size: 0.95rem;
+    }
+  </style>
 
 </Base>

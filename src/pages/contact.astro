@@ -15,50 +15,93 @@ import Base from '../layouts/Base.astro';
     </div>
   </section>
 
-  <section style="padding: 4rem 1.5rem; max-width: 700px; margin: 0 auto;">
+  <section class="contact-body">
 
     <!-- Primary CTA -->
-    <div style="text-align: center; margin-bottom: 2.5rem;">
+    <div class="contact-primary">
       <a href="https://forms.gle/4QTK3MSgMsedJQEw7" target="_blank" rel="noopener" class="u-cta-primary">Send feedback — 30 second form →</a>
-      <p style="color: #94a3b8; font-size: 0.85rem; margin: 1rem 0 0;">forms.gle/4QTK3MSgMsedJQEw7</p>
+      <p class="contact-link">forms.gle/4QTK3MSgMsedJQEw7</p>
     </div>
 
     <!-- Clinical correction -->
-    <div style="background: linear-gradient(135deg, #fffbeb, white); border: 1px solid rgba(0,212,200,0.3); border-radius: 12px; padding: 1.75rem; margin-bottom: 1.25rem;">
-      <div style="display: flex; gap: 1.1rem; align-items: flex-start;">
-        <span style="font-size: 1.6rem; flex-shrink: 0; margin-top: 0.1rem;">🩺</span>
+    <div class="contact-card contact-card-accent">
+      <div class="inner">
+        <span class="icon">🩺</span>
         <div>
-          <p style="font-weight: 700; color: #0A2540; margin: 0 0 0.4rem; font-size: 1rem;">Found a clinical error?</p>
-          <p style="color: #374151; margin: 0; font-size: 0.95rem; line-height: 1.6;">
-            Flag it via the feedback form and it will be reviewed and corrected within <strong style="color:#0A2540;">48 hours</strong>.
-          </p>
+          <p class="title">Found a clinical error?</p>
+          <p class="desc">Flag it via the feedback form and it will be reviewed and corrected within <strong>48 hours</strong>.</p>
         </div>
       </div>
     </div>
 
     <!-- Consultant review -->
-    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.75rem; margin-bottom: 1.25rem;">
-      <div style="display: flex; gap: 1.1rem; align-items: flex-start;">
-        <span style="font-size: 1.6rem; flex-shrink: 0; margin-top: 0.1rem;">👨‍⚕️</span>
+    <div class="contact-card">
+      <div class="inner">
+        <span class="icon">👨‍⚕️</span>
         <div>
-          <p style="font-weight: 700; color: #0A2540; margin: 0 0 0.4rem; font-size: 1rem;">Reviewing content for your subspecialty?</p>
-          <p style="color: #374151; margin: 0; font-size: 0.95rem; line-height: 1.6;">
-            We are building a consultant review layer and welcome involvement from consultants across all urology subspecialties.
-          </p>
+          <p class="title">Reviewing content for your subspecialty?</p>
+          <p class="desc">We are building a consultant review layer and welcome involvement from consultants across all urology subspecialties.</p>
         </div>
       </div>
     </div>
 
     <!-- GitHub -->
-    <a href="https://github.com/nityjr-ctrl/uroref-app" target="_blank" rel="noopener" style="display: flex; gap: 1.1rem; background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.75rem; text-decoration: none; align-items: flex-start; transition: border-color 0.15s;" onmouseover="this.style.borderColor='#00D4C8'" onmouseout="this.style.borderColor='#e2e8f0'">
-      <span style="font-size: 1.6rem; flex-shrink: 0; margin-top: 0.1rem;">⚙️</span>
-      <div>
-        <p style="font-weight: 700; color: #0A2540; margin: 0 0 0.4rem; font-size: 1rem;">GitHub</p>
-        <p style="color: #374151; margin: 0 0 0.5rem; font-size: 0.95rem; line-height: 1.6;">View the UroRef app repository. Issues and PRs welcome for technical contributions.</p>
-        <p style="color: #00D4C8; margin: 0; font-size: 0.82rem; font-weight: 600; font-family: 'JetBrains Mono', monospace;">github.com/nityjr-ctrl/uroref-app →</p>
+    <a href="https://github.com/nityjr-ctrl/uroref-app" target="_blank" rel="noopener" class="contact-card contact-card-link">
+      <div class="inner">
+        <span class="icon">⚙️</span>
+        <div>
+          <p class="title">GitHub</p>
+          <p class="desc">View the UroRef app repository. Issues and PRs welcome for technical contributions.</p>
+          <p class="url">github.com/nityjr-ctrl/uroref-app →</p>
+        </div>
       </div>
     </a>
 
   </section>
+
+  <style>
+    .contact-body { padding: 4rem 1.5rem; max-width: 700px; margin: 0 auto; }
+    .contact-primary { text-align: center; margin-bottom: 2.5rem; }
+    .contact-link {
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      margin: 1rem 0 0;
+    }
+    .contact-card {
+      background: var(--navy-700);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 1.75rem;
+      margin-bottom: 1.25rem;
+      transition: border-color 0.15s;
+    }
+    .contact-card-accent {
+      border-color: rgba(0,212,200,0.3);
+      background:
+        radial-gradient(circle at 0% 0%, rgba(0,212,200,0.08) 0%, transparent 50%),
+        var(--navy-700);
+    }
+    .contact-card-link { display: block; text-decoration: none; }
+    .contact-card-link:hover { border-color: var(--teal-500); }
+    .contact-card .inner { display: flex; gap: 1.1rem; align-items: flex-start; }
+    .contact-card .icon { font-size: 1.6rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .contact-card .title { font-weight: 600; color: var(--text-primary); margin: 0 0 0.4rem; font-size: 1rem; }
+    .contact-card .desc {
+      font-family: var(--font-serif);
+      color: var(--text-secondary);
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .contact-card .desc strong { color: var(--text-primary); font-weight: 600; }
+    .contact-card .url {
+      color: var(--teal-500);
+      margin: 0.5rem 0 0;
+      font-size: 0.82rem;
+      font-weight: 600;
+      font-family: var(--font-mono);
+    }
+  </style>
 
 </Base>

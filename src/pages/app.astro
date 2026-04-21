@@ -480,65 +480,180 @@ const WAITLIST_URL = 'https://forms.gle/4QTK3MSgMsedJQEw7';
     </style>
   </section>
 
-  <!-- Features reminder -->
-  <section class="features-list">
-    <h2>What's inside</h2>
-    <ul>
+  <!-- Content breakdown for consultant review -->
+  <section class="content-sections">
+    <div class="content-head">
+      <div class="content-eyebrow">FOR CONSULTANT REVIEW</div>
+      <h2>App content, broken down</h2>
+      <p class="content-lede">Ten distinct content areas, each reviewable on its own. Every section below maps to a module inside the app — sign off section-by-section.</p>
+    </div>
+
+    <ol class="content-list">
       {[
-        '16 common urology procedures — consent risks, operative steps, post-op orders, ward round checklists',
-        'On-call decision trees — haematuria, retention, scrotal pain, priapism, penile fracture, paraphimosis, catheter problems, loin pain and fever',
-        'Urology-specific drug doses, antibiotic protocols, renal adjustments and interaction flags',
-        'Calculators — IDENTIFY, MIMIC, TWIST, eGFR, CPG, prostate volume, Leibovich Score',
-        'Clinic presentation frameworks, investigation pathways, referral guidance',
-        '31 BAUS-approved patient information leaflets via QR code',
-        'Search, pinned tools and recently used — fast access during busy shifts',
-      ].map(item => (
-        <li>
-          <span class="tick">✓</span>
-          <span>{item}</span>
+        {
+          title: 'On-call emergency algorithms',
+          scope: 'Step-by-step decision trees for the bleep at 3am — designed to end in an action, not a differential.',
+          items: 'Urosepsis / obstructed infected kidney · priapism (ischaemic vs non-ischaemic) · testicular torsion · paraphimosis · penile fracture · clot retention · acute urinary retention · frank / clot haematuria · difficult catheterisation · loin pain + fever · post-operative complications.',
+        },
+        {
+          title: 'Procedure guides',
+          scope: '16 procedures written as practical op notes — indication, consent risks, positioning, operative steps, post-op orders and ward round checklists.',
+          items: 'Endoscopy (flexible cystoscopy, rigid cystoscopy, ureteroscopy, PCNL) · stenting & access (JJ stent, nephrostomy, suprapubic catheter, TWOC) · scrotal & penile (orchidopexy, hydrocele repair, circumcision, aspiration) · TURBT · TURP · biopsy.',
+        },
+        {
+          title: 'Drug doses & antibiotics',
+          scope: 'Urology-specific prescribing reference, organised by clinical scenario rather than alphabetically.',
+          items: 'Alpha-blockers · 5-ARIs · anticholinergics / beta-3 agonists · NSAIDs and analgesia · urosepsis antibiotic regimens · prophylaxis for endoscopy and biopsy · intravesical agents (BCG, mitomycin) · hormone therapy · renal adjustments and interaction flags.',
+        },
+        {
+          title: 'UDS — Urodynamics',
+          scope: 'Dedicated module for urodynamic assessment, interpretation and reporting.',
+          items: 'BOOI (Bladder Outlet Obstruction Index) calculator · BCI (Bladder Contractility Index) calculator · ICS nomogram classification · filling / voiding phase trace primer · indications and pre-test checklist · video UDS add-on · reporting template for clinic letters.',
+        },
+        {
+          title: 'Clinical calculators',
+          scope: 'Validated scoring tools and clinical calculators outside urodynamics.',
+          items: 'IDENTIFY (haematuria risk) · MIMIC (stone passage probability) · TWIST (testicular torsion) · eGFR / creatinine clearance · prostate volume · CPG (Cambridge Prognostic Group) · Leibovich Score (RCC recurrence) · IPSS.',
+        },
+        {
+          title: 'Clinic presentation frameworks',
+          scope: 'Structured approaches to the common outpatient presentations — designed for trainees early in their rotation.',
+          items: 'New haematuria · LUTS (storage / voiding / post-micturition) · recurrent UTI · scrotal lump · loin pain · erectile dysfunction · male infertility · incontinence · post-operative follow-up · stone clinic review.',
+        },
+        {
+          title: 'Investigations & imaging pathways',
+          scope: 'When to request what, and what to do with the result.',
+          items: 'Haematuria pathway (flexi + CT urogram vs US KUB) · stone pathway (CT KUB thresholds) · oncology staging imaging · US vs MRI testis · mpMRI prostate / PI-RADS · isotope renography indications · urine cytology and biomarker use.',
+        },
+        {
+          title: 'Referral & MDT guidance',
+          scope: '2WW and MDT preparation support for trainees expected to refer or present cases.',
+          items: '2WW criteria by tumour site (prostate, bladder, renal, testis, penile) · MDT proforma and what to have ready · oncology onward pathways · paediatric urology referral thresholds · andrology / functional referral criteria.',
+        },
+        {
+          title: 'BAUS patient information leaflets',
+          scope: 'Full offline library of BAUS-approved patient information leaflets, surfaced at the point of consent or clinic handover.',
+          items: '31 leaflets spanning endoscopy, stone, oncology, scrotal, penile and functional procedures · offline access · QR share to patient device · linked from the relevant procedure guide.',
+        },
+        {
+          title: 'Navigation & workflow',
+          scope: 'How the content is accessed during a shift — not medical content, but worth a sanity check from a senior user.',
+          items: 'Global search across protocols, drugs and calculators · pinned tools · recently used · offline-first (no Wi-Fi dependency on the ward) · dark mode for night shifts · accessibility and type sizing.',
+        },
+      ].map((section, i) => (
+        <li class="content-item">
+          <div class="content-num">{String(i + 1).padStart(2, '0')}</div>
+          <div class="content-body">
+            <h3>{section.title}</h3>
+            <p class="scope">{section.scope}</p>
+            <p class="items">{section.items}</p>
+          </div>
         </li>
       ))}
-    </ul>
+    </ol>
+
+    <p class="content-foot">Feedback welcome on any section — reach us via the <a href="/contact">contact page</a>.</p>
   </section>
 
   <style>
-    .features-list {
-      padding: 4rem 1.5rem;
-      max-width: 700px;
+    .content-sections {
+      padding: 5rem 1.5rem 6rem;
+      max-width: 820px;
       margin: 0 auto;
     }
-    .features-list h2 {
-      font-size: 1.5rem;
+    .content-head { text-align: center; margin-bottom: 3rem; }
+    .content-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      color: var(--teal-500);
+      margin-bottom: 0.75rem;
+    }
+    .content-head h2 {
+      font-size: clamp(1.6rem, 3vw, 2rem);
       font-weight: 700;
       color: var(--text-primary);
-      margin: 0 0 1.5rem;
-      text-align: center;
-      letter-spacing: -0.01em;
+      letter-spacing: -0.02em;
+      margin: 0 0 0.75rem;
     }
-    .features-list ul {
+    .content-lede {
+      font-family: var(--font-serif);
+      color: var(--text-secondary);
+      font-size: 1rem;
+      line-height: 1.6;
+      max-width: 58ch;
+      margin: 0 auto;
+    }
+
+    .content-list {
       list-style: none;
       padding: 0;
       margin: 0;
       display: flex;
       flex-direction: column;
       gap: 0.875rem;
+      counter-reset: content-counter;
     }
-    .features-list li {
-      display: flex;
-      gap: 0.75rem;
-      align-items: flex-start;
+    .content-item {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 1.25rem;
+      align-items: start;
+      padding: 1.5rem 1.5rem 1.5rem 1.25rem;
+      background: var(--navy-700);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      transition: border-color 0.15s, transform 0.15s;
     }
-    .features-list .tick {
+    .content-item:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-1px);
+    }
+    .content-num {
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      font-weight: 600;
       color: var(--teal-500);
-      font-size: 1.1rem;
-      margin-top: 0.1rem;
-      flex-shrink: 0;
+      letter-spacing: 0.04em;
+      padding-top: 0.15rem;
     }
-    .features-list li span:last-child {
+    .content-body h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+      margin: 0 0 0.5rem;
+    }
+    .content-body .scope {
       font-family: var(--font-serif);
       color: var(--text-secondary);
       font-size: 0.95rem;
+      line-height: 1.55;
+      margin: 0 0 0.6rem;
+    }
+    .content-body .items {
+      font-size: 0.85rem;
       line-height: 1.6;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .content-foot {
+      text-align: center;
+      font-family: var(--font-serif);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin: 2.5rem 0 0;
+    }
+    .content-foot a { color: var(--teal-500); }
+
+    @media (max-width: 520px) {
+      .content-item {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+        padding: 1.25rem;
+      }
+      .content-num { padding-top: 0; }
     }
   </style>
 

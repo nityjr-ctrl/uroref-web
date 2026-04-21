@@ -1,0 +1,102 @@
+---
+title: "Inside the UroRef App"
+description: "A walkthrough of what UroRef actually contains — procedures, emergency decision trees, drug doses, calculators, clinic frameworks and BAUS patient leaflets. All in one place, offline."
+date: "April 2026"
+author: "Nity G, Urology SpR"
+tags: ["App", "Resource"]
+---
+
+UroRef grew out of a simple frustration: useful information exists, but finding it quickly when you're on call is a different problem entirely. Here's what's actually inside the app.
+
+<div style="background: linear-gradient(135deg, rgba(0,212,200,0.12) 0%, rgba(9,20,38,0.9) 100%); border: 1px solid rgba(0,212,200,0.25); border-radius: 18px; padding: 32px 36px; margin: 2.5rem 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; text-align: center;">
+  <div style="padding: 0 24px; border-right: 1px solid rgba(255,255,255,0.08);">
+    <div style="font-size: 2.75rem; font-weight: 700; color: #00D4C8; letter-spacing: -0.05em; line-height: 1; font-family: system-ui, sans-serif;">500+</div>
+    <div style="font-size: 0.7rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.1em; font-family: monospace; margin-top: 8px;">Trainees using it</div>
+  </div>
+  <div style="padding: 0 24px; border-right: 1px solid rgba(255,255,255,0.08);">
+    <div style="font-size: 2.75rem; font-weight: 700; color: #00D4C8; letter-spacing: -0.05em; line-height: 1; font-family: system-ui, sans-serif;">16</div>
+    <div style="font-size: 0.7rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.1em; font-family: monospace; margin-top: 8px;">Procedures</div>
+  </div>
+  <div style="padding: 0 24px;">
+    <div style="font-size: 2.75rem; font-weight: 700; color: #00D4C8; letter-spacing: -0.05em; line-height: 1; font-family: system-ui, sans-serif;">31</div>
+    <div style="font-size: 0.7rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.1em; font-family: monospace; margin-top: 8px;">BAUS leaflets</div>
+  </div>
+</div>
+
+## On-Call Decision Trees
+
+The emergency module is the heart of the app. Each tree is built around the question you're actually asking at 2am — not a textbook walkthrough, but a binary decision path that gets you to the right action quickly.
+
+<div style="background: #0A1929; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 20px 24px; margin: 1.75rem 0; overflow: hidden; position: relative;">
+  <div style="font-family: monospace; font-size: 0.72rem; color: rgba(0,212,200,0.7); letter-spacing: 0.1em; margin-bottom: 16px; text-transform: uppercase;">ON-CALL · 02:47</div>
+  <div style="display: flex; flex-direction: column; gap: 8px;">
+    <div style="background: rgba(220,50,50,0.12); border: 1px solid rgba(220,50,50,0.3); border-left: 3px solid #DC3232; border-radius: 8px; padding: 10px 14px;">
+      <div style="color: #fff; font-size: 0.8rem; font-weight: 600; font-family: system-ui, sans-serif;">Obstructed infected kidney</div>
+      <div style="color: rgba(255,255,255,0.5); font-size: 0.72rem; font-family: monospace; margin-top: 3px;">Resus → decompress within hours</div>
+    </div>
+    <div style="background: rgba(220,50,50,0.12); border: 1px solid rgba(220,50,50,0.3); border-left: 3px solid #DC3232; border-radius: 8px; padding: 10px 14px;">
+      <div style="color: #fff; font-size: 0.8rem; font-weight: 600; font-family: system-ui, sans-serif;">Priapism</div>
+      <div style="color: rgba(255,255,255,0.5); font-size: 0.72rem; font-family: monospace; margin-top: 3px;">Ischaemic vs non-ischaemic pathway</div>
+    </div>
+    <div style="background: rgba(230,140,30,0.1); border: 1px solid rgba(230,140,30,0.25); border-left: 3px solid #E68C1E; border-radius: 8px; padding: 10px 14px;">
+      <div style="color: #fff; font-size: 0.8rem; font-weight: 600; font-family: system-ui, sans-serif;">Clot retention</div>
+      <div style="color: rgba(255,255,255,0.5); font-size: 0.72rem; font-family: monospace; margin-top: 3px;">3-way · CBI · theatre if fails</div>
+    </div>
+    <div style="background: rgba(0,212,200,0.07); border: 1px solid rgba(0,212,200,0.2); border-left: 3px solid #00D4C8; border-radius: 8px; padding: 10px 14px;">
+      <div style="color: #fff; font-size: 0.8rem; font-weight: 600; font-family: system-ui, sans-serif;">Difficult catheterisation</div>
+      <div style="color: rgba(255,255,255,0.5); font-size: 0.72rem; font-family: monospace; margin-top: 3px;">Step-by-step decision tree</div>
+    </div>
+  </div>
+</div>
+
+Conditions covered include ureteric colic with obstruction, priapism, clot retention, haematuria, paraphimosis, testicular torsion, post-operative complications, and more. Each tree ends with a clear action — not a differential list.
+
+## Procedure Guides
+
+Sixteen procedure guides built for practical use — structured as op notes and step-by-step technical guides, covering both the procedural steps and the things that actually go wrong.
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 1.75rem 0;">
+  <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 14px 16px;">
+    <div style="color: rgba(0,212,200,0.8); font-family: monospace; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px;">Endoscopy</div>
+    <div style="color: #e2e8f0; font-size: 0.88rem; font-weight: 500; font-family: system-ui, sans-serif; line-height: 1.5;">Flexible cystoscopy · Rigid cystoscopy · Ureteroscopy · PCNL</div>
+  </div>
+  <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 14px 16px;">
+    <div style="color: rgba(0,212,200,0.8); font-family: monospace; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px;">Stenting & Access</div>
+    <div style="color: #e2e8f0; font-size: 0.88rem; font-weight: 500; font-family: system-ui, sans-serif; line-height: 1.5;">JJ stent insertion · Nephrostomy · Suprapubic catheter · TWOC</div>
+  </div>
+  <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 14px 16px;">
+    <div style="color: rgba(0,212,200,0.8); font-family: monospace; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px;">Scrotal & Penile</div>
+    <div style="color: #e2e8f0; font-size: 0.88rem; font-weight: 500; font-family: system-ui, sans-serif; line-height: 1.5;">Orchidopexy · Hydrocele repair · Circumcision · Aspiration</div>
+  </div>
+  <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 14px 16px;">
+    <div style="color: rgba(0,212,200,0.8); font-family: monospace; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px;">Calculators</div>
+    <div style="color: #e2e8f0; font-size: 0.88rem; font-weight: 500; font-family: system-ui, sans-serif; line-height: 1.5;">BOOI · BCI · Stone passage probability · Creatinine clearance</div>
+  </div>
+</div>
+
+The procedure guides include op note templates alongside the technical steps — useful both as preparation beforehand and as a reference during the case.
+
+## Drug Doses
+
+A curated reference for the drugs that actually come up in urology on call. NSAIDs, alpha-blockers, antibiotics for urosepsis, intravesical agents, hormone therapy doses — with the specific context (indication, dose, route, contraindications) you need in the moment.
+
+> No scrolling through BNF pages at 3am. The drugs are listed by clinical scenario, not alphabetically.
+
+## Clinic Frameworks
+
+Structured frameworks for outpatient urology — covering the common clinic presentations from new haematuria to lower urinary tract symptoms to post-operative follow-up. These are particularly useful early in training when the structure of a urology consultation is still unfamiliar.
+
+## 31 BAUS Patient Leaflets
+
+The full suite of BAUS patient information leaflets, in-app and available offline. Useful in clinic when a patient needs to take something away, or when you need to quickly check what patients are routinely told about a procedure before a consent conversation.
+
+<div style="background: linear-gradient(135deg, rgba(0,212,200,0.1) 0%, rgba(5,15,28,0.95) 100%); border: 1px solid rgba(0,212,200,0.2); border-radius: 14px; padding: 24px 28px; margin: 2rem 0;">
+  <div style="font-family: monospace; font-size: 0.7rem; color: rgba(0,212,200,0.7); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px;">Offline first</div>
+  <div style="color: rgba(255,255,255,0.85); font-size: 1rem; line-height: 1.65; font-family: Georgia, serif;">Everything in UroRef works without a data connection. Because the wards, theatres, and radiology corridors where you actually need this are the same places where hospital Wi-Fi reliably disappears.</div>
+</div>
+
+## Currently in TestFlight
+
+UroRef is currently live on TestFlight with over 500 UK urology trainees. Android and public App Store releases are in progress.
+
+If you're not already on it, the app is free and the only thing you need is the TestFlight link — sign up via the newsletter and you'll get it straight to your inbox.

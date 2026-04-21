@@ -204,7 +204,7 @@ const recentDeepDives = allDeepDives.slice(0, 3);
     .t-hero {
       position: relative;
       overflow: hidden;
-      background-color: #0a1d33;
+      background-color: #050F1C;
       padding: 6rem 1.5rem 5rem;
       isolation: isolate;
     }
@@ -212,9 +212,9 @@ const recentDeepDives = allDeepDives.slice(0, 3);
       position: absolute;
       inset: -20%;
       background:
-        radial-gradient(circle at 20% 20%, rgba(245,158,11,0.35), transparent 45%),
+        radial-gradient(circle at 20% 20%, rgba(0,212,200,0.35), transparent 45%),
         radial-gradient(circle at 80% 30%, rgba(56,189,248,0.25), transparent 45%),
-        radial-gradient(circle at 50% 90%, rgba(245,158,11,0.18), transparent 50%);
+        radial-gradient(circle at 50% 90%, rgba(0,212,200,0.18), transparent 50%);
       filter: blur(40px);
       animation: t-float 18s ease-in-out infinite alternate;
       z-index: -2;
@@ -282,14 +282,14 @@ const recentDeepDives = allDeepDives.slice(0, 3);
       font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: #f59e0b;
+      color: #00D4C8;
     }
     .t-title-main {
       font-size: clamp(2.25rem, 5.5vw, 4rem);
       font-weight: 800;
       letter-spacing: -0.035em;
       line-height: 1.05;
-      background: linear-gradient(135deg, #ffffff 0%, #ffffff 40%, #fcd34d 80%, #f59e0b 100%);
+      background: linear-gradient(135deg, #ffffff 0%, #ffffff 40%, #33DDD3 80%, #00D4C8 100%);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -320,14 +320,14 @@ const recentDeepDives = allDeepDives.slice(0, 3);
     }
     .t-stat:hover {
       transform: translateY(-2px);
-      border-color: rgba(245,158,11,0.4);
+      border-color: rgba(0,212,200,0.4);
     }
     .t-stat::before {
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(245,158,11,0.6), transparent);
+      background: linear-gradient(90deg, transparent, rgba(0,212,200,0.6), transparent);
     }
     .t-stat-value {
       font-family: 'JetBrains Mono', monospace;
@@ -374,21 +374,21 @@ const recentDeepDives = allDeepDives.slice(0, 3);
       font-weight: 700;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: #f59e0b;
+      color: #00D4C8;
       margin-bottom: 0.5rem;
     }
     .t-eyebrow-amber {
-      color: #fcd34d;
+      color: #33DDD3;
     }
     .t-h2 {
       font-size: clamp(1.5rem, 3vw, 2rem);
       font-weight: 800;
-      color: #0f2b46;
+      color: #0A2540;
       margin: 0;
       letter-spacing: -0.02em;
     }
     .t-link {
-      color: #f59e0b;
+      color: #00D4C8;
       text-decoration: none;
       font-weight: 600;
       font-size: 0.9rem;
@@ -421,14 +421,14 @@ const recentDeepDives = allDeepDives.slice(0, 3);
       position: absolute;
       left: 0; top: 0; bottom: 0;
       width: 3px;
-      background: linear-gradient(180deg, #f59e0b, transparent);
+      background: linear-gradient(180deg, #00D4C8, transparent);
       opacity: 0;
       transition: opacity 0.18s;
     }
     .t-trend:hover {
       transform: translateX(4px);
-      border-color: #f59e0b;
-      box-shadow: 0 8px 24px -12px rgba(245,158,11,0.3);
+      border-color: #00D4C8;
+      box-shadow: 0 8px 24px -12px rgba(0,212,200,0.3);
     }
     .t-trend:hover::before { opacity: 1; }
     .t-trend-hot {
@@ -447,7 +447,7 @@ const recentDeepDives = allDeepDives.slice(0, 3);
       letter-spacing: -0.04em;
     }
     .t-trend-hot .t-rank-num {
-      background: linear-gradient(135deg, #f59e0b, #d97706);
+      background: linear-gradient(135deg, #00D4C8, #00A89E);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -485,7 +485,7 @@ const recentDeepDives = allDeepDives.slice(0, 3);
       font-family: 'JetBrains Mono', monospace;
     }
     .t-trend-title {
-      color: #0f2b46;
+      color: #0A2540;
       font-size: 1rem;
       font-weight: 600;
       line-height: 1.4;
@@ -562,7 +562,7 @@ const recentDeepDives = allDeepDives.slice(0, 3);
       display: inline-block;
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.7rem;
-      color: #0f2b46;
+      color: #0A2540;
       background: #f1f5f9;
       padding: 0.1rem 0.45rem;
       border-radius: 4px;
@@ -592,7 +592,7 @@ const recentDeepDives = allDeepDives.slice(0, 3);
     }
     .t-dive:hover {
       transform: translateY(-2px);
-      border-color: #f59e0b;
+      border-color: #00D4C8;
       box-shadow: 0 12px 28px -16px rgba(15,43,70,0.25);
     }
     .t-dive-tags {
@@ -602,15 +602,15 @@ const recentDeepDives = allDeepDives.slice(0, 3);
       flex-wrap: wrap;
     }
     .t-tag-amber {
-      background: rgba(245,158,11,0.12);
-      color: #d97706;
+      background: rgba(0,212,200,0.12);
+      color: #00A89E;
       font-size: 0.7rem;
       font-weight: 600;
       padding: 0.18rem 0.55rem;
       border-radius: 4px;
     }
     .t-dive-title {
-      color: #0f2b46;
+      color: #0A2540;
       font-size: 1.05rem;
       font-weight: 700;
       margin: 0 0 0.4rem;
@@ -624,7 +624,7 @@ const recentDeepDives = allDeepDives.slice(0, 3);
       line-height: 1.55;
     }
     .t-dive-cta {
-      color: #f59e0b;
+      color: #00D4C8;
       font-size: 0.85rem;
       font-weight: 600;
     }
@@ -639,7 +639,7 @@ const recentDeepDives = allDeepDives.slice(0, 3);
       position: relative;
       border-radius: 24px;
       padding: 3.5rem 2rem;
-      background: linear-gradient(135deg, #0a1d33 0%, #0f2b46 50%, #1e3a5f 100%);
+      background: linear-gradient(135deg, #050F1C 0%, #0A2540 50%, #163A62 100%);
       overflow: hidden;
       isolation: isolate;
     }
@@ -647,7 +647,7 @@ const recentDeepDives = allDeepDives.slice(0, 3);
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at 25% 30%, rgba(245,158,11,0.45), transparent 45%),
+        radial-gradient(circle at 25% 30%, rgba(0,212,200,0.45), transparent 45%),
         radial-gradient(circle at 75% 80%, rgba(56,189,248,0.25), transparent 50%);
       filter: blur(50px);
       z-index: -1;
@@ -676,18 +676,18 @@ const recentDeepDives = allDeepDives.slice(0, 3);
     .t-cta-btn {
       display: inline-block;
       padding: 0.95rem 2.25rem;
-      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-      color: #0a1d33;
+      background: linear-gradient(135deg, #00D4C8 0%, #00A89E 100%);
+      color: #050F1C;
       font-weight: 800;
       font-size: 1rem;
       border-radius: 12px;
       text-decoration: none;
-      box-shadow: 0 12px 30px -8px rgba(245,158,11,0.5);
+      box-shadow: 0 12px 30px -8px rgba(0,212,200,0.5);
       transition: transform 0.15s, box-shadow 0.15s;
     }
     .t-cta-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 18px 40px -8px rgba(245,158,11,0.6);
+      box-shadow: 0 18px 40px -8px rgba(0,212,200,0.6);
     }
     .t-cta-note {
       color: rgba(255,255,255,0.4);

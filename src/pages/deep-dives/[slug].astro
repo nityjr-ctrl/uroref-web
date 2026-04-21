@@ -13,20 +13,22 @@ export async function getStaticPaths() {
 const { article } = Astro.props;
 const { Content } = await render(article);
 ---
-<Base title={article.data.title} description={article.data.description}>
+<Base title={article.data.title} description={article.data.description} image="/og-image.png">
 
-  <section style="background-color: #0f2b46; padding: 4rem 1.5rem 3rem;">
-    <div style="max-width: 750px; margin: 0 auto;">
-      <a href="/deep-dives" style="color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.4rem; margin-bottom: 1.5rem;" onmouseover="this.style.color='rgba(255,255,255,0.8)'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">
+  <section class="u-hero" style="padding: 4.5rem 1.5rem 3.25rem;">
+    <div class="u-hero-bg" aria-hidden="true"></div>
+    <div class="u-hero-grid" aria-hidden="true"></div>
+    <div style="max-width: 750px; margin: 0 auto; position: relative;">
+      <a href="/deep-dives" style="color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.4rem; margin-bottom: 1.5rem;" onmouseover="this.style.color='rgba(255,255,255,0.85)'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">
         ← Deep Dives
       </a>
-      <div style="display: flex; gap: 0.625rem; margin-bottom: 1rem; flex-wrap: wrap;">
+      <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap;">
         {article.data.tags && article.data.tags.map((tag: string) => (
-          <span style="background-color: rgba(245,158,11,0.15); color: #f59e0b; font-size: 0.75rem; padding: 0.25rem 0.625rem; border-radius: 4px; font-weight: 500;">{tag}</span>
+          <span style="background-color: rgba(245,158,11,0.15); color: #fcd34d; font-size: 0.72rem; padding: 0.25rem 0.65rem; border-radius: 100px; font-weight: 600; letter-spacing: 0.03em; border: 1px solid rgba(245,158,11,0.25);">{tag}</span>
         ))}
       </div>
-      <h1 style="color: white; font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; letter-spacing: -0.03em; margin: 0 0 1rem; line-height: 1.2;">{article.data.title}</h1>
-      <p style="color: rgba(255,255,255,0.65); font-size: 0.9rem; margin: 0;">{article.data.date} · Written by {article.data.author || 'Nity G, Urology SpR'}</p>
+      <h1 class="u-gradient-text" style="font-size: clamp(1.85rem, 4.5vw, 2.75rem); font-weight: 800; letter-spacing: -0.03em; margin: 0 0 1rem; line-height: 1.2;">{article.data.title}</h1>
+      <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin: 0;">{article.data.date} · Written by {article.data.author || 'Nity G, Urology SpR'}</p>
     </div>
   </section>
 

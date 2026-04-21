@@ -1,0 +1,115 @@
+---
+import Base from '../layouts/Base.astro';
+const lastUpdated = 'April 2026';
+---
+<Base title="Privacy" description="UroRef privacy policy — what data we collect, why, and your rights.">
+
+  <section class="u-hero" style="padding: 5rem 1.5rem 4rem;">
+    <div class="u-hero-bg" aria-hidden="true"></div>
+    <div class="u-hero-grid" aria-hidden="true"></div>
+    <div style="max-width: 750px; margin: 0 auto; position: relative;">
+      <div class="u-eyebrow-pill" style="margin-bottom: 1.5rem;">Legal</div>
+      <h1 class="u-gradient-text" style="font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -0.03em; margin: 0 0 0.75rem;">Privacy</h1>
+      <p style="color: rgba(255,255,255,0.65); font-size: 1rem; margin: 0;">Last updated: {lastUpdated}</p>
+    </div>
+  </section>
+
+  <section style="padding: 3.5rem 1.5rem 5rem; max-width: 750px; margin: 0 auto;">
+    <article class="legal">
+
+      <p>
+        UroRef is built by Nity G (Urology SpR, North West Deanery). This page explains what
+        information the UroRef website (uroref.com) and the UroRef mobile app collect, why,
+        and what your rights are. We aim for the absolute minimum.
+      </p>
+
+      <h2>Who we are</h2>
+      <p>
+        Data controller: Nity G, trading as UroRef. Contact via the
+        <a href="https://forms.gle/4QTK3MSgMsedJQEw7" target="_blank" rel="noopener">feedback form</a>.
+      </p>
+
+      <h2>What this website collects</h2>
+      <ul>
+        <li><strong>No account, no login.</strong> The marketing site does not require an account.</li>
+        <li>
+          <strong>Anonymised analytics</strong> (privacy-respecting, cookie-free — e.g. Plausible /
+          Cloudflare Web Analytics). We see aggregate page views, country, referrer, and device
+          type. We do <em>not</em> track you across sites and cannot identify you.
+        </li>
+        <li>
+          <strong>Feedback form</strong> — if you submit our Google feedback form, the data goes to
+          Google Forms under their privacy policy. We use it only to improve UroRef.
+        </li>
+      </ul>
+
+      <h2>What the mobile app collects</h2>
+      <ul>
+        <li>
+          <strong>No personal account.</strong> The app works offline and does not require a login.
+        </li>
+        <li>
+          <strong>Crash + diagnostic data</strong> through the platform (Apple / Google) so we can
+          fix issues. This is anonymised and aggregated by the platform.
+        </li>
+        <li>
+          <strong>No clinical data leaves your device.</strong> Anything you pin or favourite is
+          stored locally on your phone.
+        </li>
+      </ul>
+
+      <h2>Cookies</h2>
+      <p>
+        The website does not set tracking cookies. If we add a privacy-respecting analytics
+        provider it will be cookieless. Embedded resources (Google Fonts) may set technical
+        cookies — these are not used for tracking.
+      </p>
+
+      <h2>Third-party services</h2>
+      <ul>
+        <li>Hosting — static site host (e.g. Cloudflare Pages / Netlify).</li>
+        <li>Google Fonts — to load Inter and JetBrains Mono.</li>
+        <li>Google Forms — for feedback collection.</li>
+      </ul>
+
+      <h2>Your rights</h2>
+      <p>
+        Under UK GDPR you have rights of access, rectification, erasure, restriction, portability
+        and objection. To exercise any of these, contact us via the feedback form. We respond
+        within 30 days.
+      </p>
+
+      <h2>Changes</h2>
+      <p>
+        If this policy materially changes, the "last updated" date above will change and the
+        change will be noted on the <a href="/updates">Updates</a> page.
+      </p>
+
+      <p class="legal-foot">
+        UroRef is a quick reference tool, not a substitute for clinical judgement. Always
+        verify against your trust guidelines and seek senior advice where appropriate.
+      </p>
+
+    </article>
+  </section>
+
+  <style>
+    .legal { color: #374151; line-height: 1.75; font-size: 0.975rem; }
+    .legal h2 { color: #0f2b46; font-size: 1.25rem; font-weight: 700; margin: 2.25rem 0 0.6rem; letter-spacing: -0.01em; }
+    .legal p, .legal ul { margin: 0 0 1rem; }
+    .legal ul { padding-left: 1.5rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .legal a { color: #d97706; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .legal a:hover { color: #f59e0b; }
+    .legal strong { color: #0f2b46; }
+    .legal-foot {
+      margin-top: 2.5rem;
+      padding: 1rem 1.25rem;
+      background: rgba(15,43,70,0.04);
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      color: #64748b;
+    }
+  </style>
+
+</Base>

@@ -24,7 +24,7 @@ const { Content } = await render(article);
       </a>
       <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap;">
         {article.data.tags && article.data.tags.map((tag: string) => (
-          <span style="background-color: rgba(245,158,11,0.15); color: #fcd34d; font-size: 0.72rem; padding: 0.25rem 0.65rem; border-radius: 100px; font-weight: 600; letter-spacing: 0.03em; border: 1px solid rgba(245,158,11,0.25);">{tag}</span>
+          <span style="background-color: rgba(0,212,200,0.15); color: #33DDD3; font-size: 0.72rem; padding: 0.25rem 0.65rem; border-radius: 100px; font-weight: 600; letter-spacing: 0.03em; border: 1px solid rgba(0,212,200,0.25);">{tag}</span>
         ))}
       </div>
       <h1 class="u-gradient-text" style="font-size: clamp(1.85rem, 4.5vw, 2.75rem); font-weight: 800; letter-spacing: -0.03em; margin: 0 0 1rem; line-height: 1.2;">{article.data.title}</h1>
@@ -33,7 +33,7 @@ const { Content } = await render(article);
   </section>
 
   <!-- Clinical safety banner -->
-  <div style="background-color: rgba(245,158,11,0.08); border-bottom: 1px solid rgba(245,158,11,0.2); padding: 0.75rem 1.5rem;">
+  <div style="background-color: rgba(0,212,200,0.08); border-bottom: 1px solid rgba(0,212,200,0.2); padding: 0.75rem 1.5rem;">
     <div style="max-width: 750px; margin: 0 auto;">
       <p style="color: #92400e; font-size: 0.8rem; margin: 0; line-height: 1.5;">
         ⚠️ Quick reference only — not a substitute for senior clinical advice or your trust guidelines. Always escalate when in doubt.
@@ -52,7 +52,7 @@ const { Content } = await render(article);
     .prose h2 {
       font-size: 1.4rem;
       font-weight: 700;
-      color: #0f2b46;
+      color: #0A2540;
       margin: 2rem 0 0.875rem;
       letter-spacing: -0.01em;
       border-bottom: 2px solid #f1f5f9;
@@ -61,7 +61,7 @@ const { Content } = await render(article);
     .prose h3 {
       font-size: 1.1rem;
       font-weight: 700;
-      color: #0f2b46;
+      color: #0A2540;
       margin: 1.5rem 0 0.625rem;
     }
     .prose p {
@@ -83,21 +83,21 @@ const { Content } = await render(article);
       line-height: 1.65;
     }
     .prose strong {
-      color: #0f2b46;
+      color: #0A2540;
       font-weight: 700;
     }
     .prose code {
       font-family: 'JetBrains Mono', monospace;
       background-color: #f1f5f9;
-      color: #0f2b46;
+      color: #0A2540;
       padding: 0.15rem 0.4rem;
       border-radius: 4px;
       font-size: 0.875rem;
     }
     .prose blockquote {
-      border-left: 3px solid #f59e0b;
+      border-left: 3px solid #00D4C8;
       padding: 0.75rem 1.25rem;
-      background-color: rgba(245,158,11,0.05);
+      background-color: rgba(0,212,200,0.05);
       margin: 1.25rem 0;
       border-radius: 0 8px 8px 0;
     }
@@ -113,7 +113,7 @@ const { Content } = await render(article);
       font-size: 0.875rem;
     }
     .prose th {
-      background-color: #0f2b46;
+      background-color: #0A2540;
       color: white;
       padding: 0.625rem 0.875rem;
       text-align: left;

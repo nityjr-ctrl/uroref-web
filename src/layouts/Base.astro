@@ -9,7 +9,7 @@ interface Props {
 
 const {
   title,
-  description = "UroRef — urology quick reference for trainees. Procedures, on-call emergencies, drug doses, calculators and BAUS leaflets. Used by 500+ trainees across the UK.",
+  description = "UroRef — evidence for UK urology trainees. A weekly publication on landmark trials, on-call pathways and FRCS-standard summaries, paired with the UroRef app.",
   image = '/og-image.png',
 } = Astro.props;
 
@@ -35,7 +35,7 @@ const siteJsonLd = {
 };
 ---
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -46,7 +46,7 @@ const siteJsonLd = {
   <link rel="alternate icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
-  <meta name="theme-color" content="#0f2b46" />
+  <meta name="theme-color" content="#0A2540" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="UroRef" />
@@ -67,77 +67,85 @@ const siteJsonLd = {
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 </head>
-<body style="background-color: #f8fafc; color: #1e293b; font-family: 'Inter', sans-serif; margin: 0;">
+<body>
 
   <!-- Nav -->
-  <header style="background-color: #0f2b46; position: sticky; top: 0; z-index: 50; border-bottom: 1px solid rgba(255,255,255,0.08);">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; height: 64px;">
-      <a href="/" style="text-decoration: none; display: flex; align-items: center; gap: 0.55rem;" aria-label="UroRef home">
-        <svg width="26" height="26" viewBox="0 0 64 64" aria-hidden="true">
-          <defs>
-            <linearGradient id="navmark-bg" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#1e3a5f"/>
-              <stop offset="1" stop-color="#0a1d33"/>
-            </linearGradient>
-            <linearGradient id="navmark-amber" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#fcd34d"/>
-              <stop offset="1" stop-color="#f59e0b"/>
-            </linearGradient>
-          </defs>
-          <rect width="64" height="64" rx="14" fill="url(#navmark-bg)" stroke="rgba(255,255,255,0.12)"/>
-          <path d="M18 18 V36 a14 14 0 0 0 28 0 V18" fill="none" stroke="url(#navmark-amber)" stroke-width="6" stroke-linecap="round"/>
-          <circle cx="32" cy="49" r="3" fill="url(#navmark-amber)"/>
-        </svg>
-        <span style="color: #f59e0b; font-weight: 800; font-size: 1.25rem; letter-spacing: -0.02em;">UroRef</span>
+  <header class="site-nav">
+    <div class="site-nav-inner">
+      <a href="/" class="u-wordmark" style="font-size: 22px;" aria-label="UroRef home">
+        <span class="uro">Uro</span><span class="ref">Ref</span>
+        <span class="dot" style="width: 4px; height: 4px; margin-bottom: 1px;"></span>
       </a>
 
-      <nav style="display: flex; align-items: center; gap: 1.5rem;">
-        <a href="/app" style="color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.15s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.75)'">App</a>
-        <a href="/last30days" style="color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.9rem; font-weight: 500; display: inline-flex; align-items: center; gap: 0.4rem;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.75)'">
-          Trending
-          <span style="display: inline-block; width: 6px; height: 6px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 0 0 rgba(34,197,94,0.7); animation: navpulse 2s infinite;"></span>
-        </a>
-        <a href="/about" style="color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.9rem; font-weight: 500;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.75)'">About</a>
-        <a href="/deep-dives" style="color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.9rem; font-weight: 500;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.75)'">Deep Dives</a>
-        <a href="/updates" style="color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.9rem; font-weight: 500;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.75)'">Updates</a>
-        <a href="/app" style="background-color: #f59e0b; color: #0f2b46; padding: 0.5rem 1.1rem; border-radius: 8px; text-decoration: none; font-size: 0.875rem; font-weight: 700; white-space: nowrap;">Get app</a>
+      <nav class="site-nav-links">
+        <a href="/deep-dives">Blog</a>
+        <a href="/deep-dives">Landmark Trials</a>
+        <a href="/deep-dives">FRCS</a>
+        <a href="/about">About</a>
+        <a href="/app">App</a>
       </nav>
-      <style>
-        @keyframes navpulse {
-          0% { box-shadow: 0 0 0 0 rgba(34,197,94,0.7); }
-          70% { box-shadow: 0 0 0 8px rgba(34,197,94,0); }
-          100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
-        }
-      </style>
+
+      <a href="https://forms.gle/4QTK3MSgMsedJQEw7" target="_blank" rel="noopener" class="site-nav-cta">Subscribe</a>
     </div>
   </header>
 
-  <!-- Page content -->
   <main>
     <slot />
   </main>
 
   <!-- Footer -->
-  <footer style="background-color: #0f2b46; color: rgba(255,255,255,0.6); margin-top: 5rem;">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 2.5rem 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
-      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem;">
-        <span style="color: #f59e0b; font-weight: 800; font-size: 1.1rem;">UroRef</span>
-        <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
-          <a href="/app" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">App</a>
-          <a href="/about" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">About</a>
-          <a href="/updates" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Updates</a>
-          <a href="/contact" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Contact</a>
-          <a href="https://forms.gle/4QTK3MSgMsedJQEw7" target="_blank" rel="noopener" style="color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Feedback</a>
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div class="site-footer-top">
+        <div class="about">
+          <span class="u-wordmark" style="font-size: 22px;">
+            <span class="uro">Uro</span><span class="ref">Ref</span>
+            <span class="dot" style="width: 4px; height: 4px; margin-bottom: 1px;"></span>
+          </span>
+          <p>A weekly urology training publication. Written by Nity G, Urology SpR, North West Deanery.</p>
+        </div>
+        <div>
+          <h4>Read</h4>
+          <ul>
+            <li><a href="/deep-dives">Latest</a></li>
+            <li><a href="/deep-dives">Landmark Trials</a></li>
+            <li><a href="/deep-dives">On-Call</a></li>
+            <li><a href="/deep-dives">FRCS Revision</a></li>
+            <li><a href="/last30days">Trending</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Product</h4>
+          <ul>
+            <li><a href="/app">iOS app</a></li>
+            <li><a href="/app">Android app</a></li>
+            <li><a href="/updates">Changelog</a></li>
+            <li><a href="https://github.com/nityjr-ctrl/uroref-app" target="_blank" rel="noopener">GitHub</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>About</h4>
+          <ul>
+            <li><a href="/about">The author</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/privacy">Privacy</a></li>
+            <li><a href="/terms">Terms</a></li>
+          </ul>
         </div>
       </div>
-      <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1rem; display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: center;">
-        <span style="font-size: 0.8rem;">© 2026 UroRef. Built by Nity G, Urology SpR.</span>
-        <div style="display: flex; gap: 1.25rem; flex-wrap: wrap; align-items: center;">
-          <a href="/privacy" style="color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.8rem;" onmouseover="this.style.color='rgba(255,255,255,0.85)'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Privacy</a>
-          <a href="/terms" style="color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.8rem;" onmouseover="this.style.color='rgba(255,255,255,0.85)'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Terms</a>
-          <span style="font-size: 0.8rem; color: rgba(255,255,255,0.4);">Quick reference only — not clinical advice.</span>
+
+      <div class="site-footer-disclaimer">
+        <b>Medical disclaimer.</b> UroRef is an educational resource for healthcare professionals. It does not constitute medical advice. Always follow local guidelines and clinical judgement.
+      </div>
+
+      <div class="site-footer-legal">
+        <span>© 2026 UroRef · Nity G, Urology SpR</span>
+        <div>
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
+          <a href="/contact">Contact</a>
         </div>
       </div>
     </div>
@@ -145,3 +153,118 @@ const siteJsonLd = {
 
 </body>
 </html>
+
+<style is:global>
+  /* ══════════ Shared site nav + footer (v1) ══════════ */
+  .site-nav {
+    background: rgba(10, 37, 64, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .site-nav-inner {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+  }
+  .site-nav-links {
+    display: flex;
+    gap: 28px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+  .site-nav-links a { transition: color 0.15s; }
+  .site-nav-links a:hover, .site-nav-links a.on { color: var(--text-primary); }
+  .site-nav-cta {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 14px;
+    background: var(--teal-500);
+    color: var(--navy-900);
+    border-radius: var(--r-full);
+    letter-spacing: -0.005em;
+    white-space: nowrap;
+    transition: background 0.15s;
+  }
+  .site-nav-cta:hover { background: var(--teal-400); }
+
+  @media (max-width: 820px) {
+    .site-nav-inner { padding: 16px 20px; gap: 16px; }
+    .site-nav-links { display: none; }
+  }
+
+  .site-footer {
+    padding: 64px 32px 40px;
+    color: var(--text-muted);
+    font-size: 13px;
+    border-top: 1px solid var(--border);
+    margin-top: 96px;
+  }
+  .site-footer-inner { max-width: var(--container); margin: 0 auto; }
+  .site-footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+  .site-footer-top h4 {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin: 0 0 14px 0;
+  }
+  .site-footer-top ul { list-style: none; padding: 0; margin: 0; }
+  .site-footer-top li { margin-bottom: 8px; }
+  .site-footer-top li a { color: var(--text-secondary); font-size: 14px; transition: color 0.15s; }
+  .site-footer-top li a:hover { color: var(--text-primary); }
+  .site-footer-top .about p {
+    font-family: var(--font-serif);
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    max-width: 34ch;
+    margin: 12px 0 0 0;
+  }
+  .site-footer-disclaimer {
+    padding: 20px 24px;
+    background: var(--navy-900);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 32px;
+  }
+  .site-footer-disclaimer b { color: var(--text-secondary); font-weight: 500; }
+  .site-footer-legal {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .site-footer-legal a { margin-left: 20px; transition: color 0.15s; }
+  .site-footer-legal a:hover { color: var(--text-primary); }
+
+  @media (max-width: 820px) {
+    .site-footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .site-footer-top .about { grid-column: 1 / -1; }
+    .site-footer-legal a { margin-left: 14px; }
+    .site-footer { padding: 48px 20px 32px; }
+  }
+</style>

@@ -1,128 +1,750 @@
 ---
 import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
 
-const features = [
-  { icon: '🩺', title: 'Procedures', desc: '16 common urology procedures — consent risks, operative steps, post-op orders, ward round checklists.' },
-  { icon: '🚨', title: 'Emergencies', desc: 'On-call decision trees for haematuria, retention, scrotal pain, priapism, catheter problems and more.' },
-  { icon: '💊', title: 'Drugs', desc: 'Urology-specific doses, antibiotic protocols, renal adjustments, and drug interaction flags.' },
-  { icon: '🧮', title: 'Calculators', desc: 'IDENTIFY, MIMIC, TWIST, eGFR, CPG, prostate volume, Leibovich Score.' },
-  { icon: '🏥', title: 'Clinic', desc: 'Outpatient presentation frameworks, investigation pathways, referral guidance.' },
-  { icon: '📄', title: 'BAUS Leaflets', desc: '31 BAUS-approved patient information leaflets via QR code.' },
+// Pull latest deep dives to populate the post grid. Design's example copy
+// kept as fallback for missing slots so the layout always looks complete.
+const allDives = await getCollection('deep-dives');
+const live = allDives
+  .slice()
+  .sort((a, b) => (a.data.date < b.data.date ? 1 : -1))
+  .map(a => ({
+    href: `/deep-dives/${a.id}`,
+    category: (a.data.tags?.[0] ?? 'On-Call').toString(),
+    coverTitle: a.data.title,
+    title: a.data.title,
+    description: a.data.description,
+    date: a.data.date,
+    readTime: '7 min',
+    slot: (a.data.tags?.[0] ?? '').toLowerCase().includes('on-call') ? 'oncall'
+        : (a.data.tags?.[0] ?? '').toLowerCase().includes('stone') ? 'stones'
+        : (a.data.tags?.[0] ?? '').toLowerCase().includes('frcs') ? 'frcs'
+        : 'oncall',
+  }));
+
+const sampleCards = [
+  {
+    slot: 'oncall',
+    category: 'On-Call',
+    coverTitle: 'Obstructed infected kidney at 03:00',
+    title: 'The five decisions that actually matter between sepsis and decompression',
+    description: 'Resus first, imaging second, theatre third. A pragmatic pathway for the registrar getting the call from ED.',
+    date: '14 Apr 2026',
+    readTime: '5 min',
+    href: '/deep-dives',
+  },
+  {
+    slot: 'frcs',
+    category: 'FRCS Revision',
+    coverTitle: 'Urodynamics without the mystique',
+    title: 'BOOI, BCI, and the three questions a viva panel actually asks',
+    description: 'A five-step reading of any UDS trace, with the numbers that let you separate obstruction from detrusor underactivity.',
+    date: '11 Apr 2026',
+    readTime: '9 min',
+    href: '/deep-dives',
+  },
+  {
+    slot: 'stones',
+    category: 'Stones',
+    coverTitle: "Pre-stenting: when it's worth the clinic slot",
+    title: "The case for pre-stenting, and the cases where it isn't",
+    description: 'Ureters under tension are easier to scope. But every stent has a cost. Here is where the evidence lands.',
+    date: '08 Apr 2026',
+    readTime: '6 min',
+    href: '/deep-dives',
+  },
 ];
+
+// Merge live articles into the first card slots, fall back to samples.
+const cards = [...live, ...sampleCards].slice(0, 3);
+
+function catColor(slot: string): string {
+  switch (slot) {
+    case 'landmark': return 'var(--cat-landmark)';
+    case 'oncall':   return 'var(--cat-oncall)';
+    case 'frcs':     return 'var(--cat-frcs)';
+    case 'stones':   return 'var(--cat-stones)';
+    case 'oncology': return 'var(--cat-oncology)';
+    default:         return 'var(--cat-default)';
+  }
+}
 ---
-<Base title="Urology at your fingertips">
+<Base title="Evidence for UK urology trainees" description="UroRef — evidence for UK urology trainees. Landmark trials, on-call pathways and FRCS-standard summaries, registrar to registrar.">
 
   <!-- Hero -->
-  <section class="u-hero" style="padding: 7rem 1.5rem 6rem; text-align: center;">
-    <div class="u-hero-bg" aria-hidden="true"></div>
-    <div class="u-hero-grid" aria-hidden="true"></div>
-    <div style="max-width: 850px; margin: 0 auto; position: relative;">
-      <div class="u-eyebrow-pill" style="margin-bottom: 1.75rem;">For urology trainees</div>
-      <h1 class="u-gradient-text" style="font-size: clamp(2.75rem, 7vw, 4.5rem); font-weight: 800; letter-spacing: -0.035em; margin: 0 0 1.25rem; line-height: 1.05;">
-        Urology at your fingertips.
-      </h1>
-      <p style="color: rgba(255,255,255,0.72); font-size: clamp(1.1rem, 3vw, 1.4rem); margin: 0 auto 2.5rem; font-weight: 400; line-height: 1.6; max-width: 580px;">
-        Built for the ward, not the library. Procedures, emergencies, drugs and calculators — in your pocket.
-      </p>
-      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem;">
-        <a href="/app" class="u-cta-primary">Get the app →</a>
-        <a href="/about" class="u-cta-ghost">Learn more</a>
-      </div>
-      <div style="display: inline-flex; align-items: center; gap: 0.65rem; color: rgba(255,255,255,0.6); font-size: 0.9rem;">
-        <span class="u-live-dot"></span>
-        Used by <strong style="color:#fcd34d; font-weight:700;">500+ trainees</strong> across the UK
-      </div>
-    </div>
-  </section>
+  <section class="home-hero">
+    <div class="home-hero-glow" aria-hidden="true"></div>
 
-  <!-- Features grid -->
-  <section style="padding: 5rem 1.5rem; max-width: 1200px; margin: 0 auto;">
-    <div style="text-align: center; margin-bottom: 3rem;">
-      <h2 style="font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; color: #0f2b46; margin: 0 0 0.75rem; letter-spacing: -0.02em;">Everything you need. One app.</h2>
-      <p style="color: #64748b; font-size: 1.05rem; max-width: 560px; margin: 0 auto;">No more hunting through multiple apps, PDFs, and BNFs during a busy on-call shift.</p>
-    </div>
-    <div class="feature-grid">
-      {features.map(f => (
-        <div class="feature-card">
-          <div class="feature-icon">{f.icon}</div>
-          <h3>{f.title}</h3>
-          <p>{f.desc}</p>
+    <div class="home-hero-inner">
+      <div>
+        <div class="home-eyebrow">
+          <span class="u-live-dot"></span>NEW · LANDMARK TRIAL FRIDAY · WEEK 3 OF 52
         </div>
-      ))}
-    </div>
+        <h1>The evidence behind <em>the decisions we actually make</em> on the ward.</h1>
+        <p class="lead">
+          A weekly publication for UK urology trainees. Landmark trials stripped to the findings that change practice, on-call pathways that hold up at 3am, and FRCS-standard summaries written registrar to registrar.
+        </p>
+        <div class="home-hero-cta">
+          <a href="https://forms.gle/4QTK3MSgMsedJQEw7" target="_blank" rel="noopener" class="u-cta-primary">
+            Subscribe to the newsletter
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a href="/deep-dives" class="u-cta-ghost">Read the blog</a>
+        </div>
 
-    <style>
-      .feature-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 1.25rem;
-      }
-      .feature-card {
-        position: relative;
-        background: white;
-        border: 1px solid #e2e8f0;
-        border-radius: 14px;
-        padding: 1.75rem;
-        transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
-        overflow: hidden;
-      }
-      .feature-card::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; right: 0;
-        height: 2px;
-        background: linear-gradient(90deg, transparent, #f59e0b, transparent);
-        opacity: 0;
-        transition: opacity 0.2s;
-      }
-      .feature-card:hover {
-        transform: translateY(-3px);
-        border-color: #f59e0b;
-        box-shadow: 0 14px 30px -16px rgba(15,43,70,0.25);
-      }
-      .feature-card:hover::before { opacity: 1; }
-      .feature-icon {
-        font-size: 1.85rem;
-        margin-bottom: 0.875rem;
-        filter: drop-shadow(0 4px 8px rgba(15,43,70,0.1));
-      }
-      .feature-card h3 {
-        font-size: 1.05rem;
-        font-weight: 700;
-        color: #0f2b46;
-        margin: 0 0 0.5rem;
-      }
-      .feature-card p {
-        color: #64748b;
-        font-size: 0.9rem;
-        margin: 0;
-        line-height: 1.6;
-      }
-    </style>
+        <div class="home-hero-stats">
+          <div class="home-stat">
+            <div class="num">52</div>
+            <div class="lbl">Trials / year</div>
+          </div>
+          <div class="home-stat">
+            <div class="num">8</div>
+            <div class="lbl">FRCS stations</div>
+          </div>
+          <div class="home-stat">
+            <div class="num">500+</div>
+            <div class="lbl">Trainees using the app</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Featured article card -->
+      <a href="/deep-dives" class="featured-card" aria-label="Open latest landmark trial">
+        <div class="cover">
+          <div class="cover-number">WEEK 03 / 52</div>
+          <div class="cover-title">Pro<span>teC</span>T</div>
+          <div class="cover-graphic">
+            <span>NEJM · 2016</span>
+            <span>N = 1,643</span>
+          </div>
+        </div>
+        <div class="body">
+          <div class="cat"><span class="bullet"></span>Landmark Trial Friday</div>
+          <h3>ProtecT at 10 years: permission to monitor, not a mandate to treat</h3>
+          <p>Equivalent prostate cancer-specific mortality across monitoring, surgery and radiotherapy. The real contribution is what it lets us stop doing.</p>
+          <div class="foot">
+            <span>18 Apr 2026 · 7 min</span>
+            <span class="read">READ →</span>
+          </div>
+        </div>
+      </a>
+    </div>
   </section>
 
-  <!-- Trust card -->
-  <section style="background-color: #0f2b46; padding: 4rem 1.5rem;">
-    <div style="max-width: 700px; margin: 0 auto; text-align: center;">
-      <div style="background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 2.5rem;">
-        <div style="width: 48px; height: 48px; background-color: rgba(245,158,11,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; font-size: 1.5rem;">🏥</div>
-        <p style="color: white; font-size: 1.15rem; font-weight: 600; margin: 0 0 1rem; line-height: 1.6;">
-          Authored by Nity G, Urology SpR.
-        </p>
-        <p style="color: rgba(255,255,255,0.65); font-size: 0.95rem; margin: 0; line-height: 1.7;">
-          Referenced to <strong style="color:white;">EAU 2024</strong>, <strong style="color:white;">NICE</strong> and <strong style="color:white;">BAUS</strong>. A quick reference tool — not a substitute for clinical judgement, senior advice, or local protocols.
-        </p>
+  <!-- Latest posts -->
+  <section class="latest">
+    <div class="latest-inner">
+      <div class="latest-head">
+        <h2>This week <em>on UroRef</em></h2>
+        <a class="all" href="/deep-dives">All posts →</a>
+      </div>
+
+      <div class="post-grid">
+        {cards.map(card => (
+          <a href={card.href} class={`post-card post-card-${card.slot}`}>
+            <div class="cover" style={`--cat: ${catColor(card.slot)};`}>
+              <div class="cover-label">
+                <em>{card.category}</em>
+                {card.coverTitle}
+              </div>
+            </div>
+            <div class="body">
+              <h3>{card.title}</h3>
+              <p>{card.description}</p>
+              <div class="foot">
+                <span>{card.date}</span>
+                <span>{card.readTime}</span>
+              </div>
+            </div>
+          </a>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- Download CTA -->
-  <section style="padding: 5rem 1.5rem; text-align: center;">
-    <div style="max-width: 600px; margin: 0 auto;">
-      <h2 style="font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; color: #0f2b46; margin: 0 0 1rem; letter-spacing: -0.02em;">Ready for your next on-call?</h2>
-      <p style="color: #64748b; font-size: 1.05rem; margin: 0 0 2rem; line-height: 1.6;">Download UroRef and have 16 procedures, on-call emergency algorithms, urology drug doses and calculators in your pocket before your next shift.</p>
-      <a href="/app" style="background-color: #0f2b46; color: white; padding: 0.875rem 2.25rem; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 1.05rem; display: inline-block;">Download UroRef →</a>
+  <!-- App band -->
+  <section class="app-band">
+    <div class="app-band-inner">
+      <div>
+        <h2>The same content, in your <em>pocket</em>.</h2>
+        <p>UroRef the app is the on-call sibling of this publication. 16 procedures, emergency decision trees, drug doses, calculators, clinic frameworks and 31 BAUS leaflets. Used by 500+ trainees across the UK. Works offline, because wards do not.</p>
+        <div class="app-badges">
+          <a href="/app" class="badge">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.07-.48-2.05-.52-3.19 0-1.43.7-2.16.5-3.03-.4C2.08 14.14 2.87 4.9 9.05 4.58c1.43.07 2.44.78 3.29.84 1.29-.25 2.53-1 3.9-.92 1.64.13 2.88.82 3.68 2.06-3.39 2.03-2.59 6.49.54 7.74-.63 1.63-1.44 3.24-2.41 5.98zM12.03 4.5c-.17-2.45 1.8-4.47 4.07-4.67.31 2.83-2.55 4.98-4.07 4.67z"/></svg>
+            <div class="label"><span class="small">Download on the</span><span class="big">App Store</span></div>
+          </a>
+          <a href="/app" class="badge">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.61 1.81C3.23 2.21 3 2.83 3 3.63v16.74c0 .8.23 1.42.61 1.82l.06.06L13.05 13v-.22L3.67 1.75l-.06.06zm13.66 11.52l-3.12-3.13v-.22l3.13-3.13.07.04 3.7 2.1c1.06.6 1.06 1.58 0 2.19l-3.7 2.1-.08.05zm-1.06 1.06L5.77 22.75c.35.37.93.42 1.58.05l10.85-6.17-2.99-2.99zM5.77 1.24l10.44 8.36 2.99-2.99L7.35 1.19c-.65-.37-1.23-.32-1.58.05z"/></svg>
+            <div class="label"><span class="small">Get it on</span><span class="big">Google Play</span></div>
+          </a>
+        </div>
+      </div>
+
+      <div class="app-visual">
+        <div class="app-phone">
+          <div class="app-phone-screen">
+            <div class="app-phone-eyebrow">ON-CALL · 02:47</div>
+            <div class="app-phone-row red"><b>Obstructed infected kidney</b>Resus → decompress within hrs</div>
+            <div class="app-phone-row red"><b>Priapism</b>Ischaemic vs non-ischaemic</div>
+            <div class="app-phone-row amber"><b>Clot retention</b>3-way · CBI · theatre if fails</div>
+            <div class="app-phone-row accent"><b>BOOI / BCI</b>UDS calculator</div>
+            <div class="app-phone-row"><b>JJ stent insertion</b>Op note</div>
+            <div class="app-phone-row"><b>Difficult catheterisation</b>Tree</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter band -->
+  <section class="newsletter-wrap">
+    <div class="newsletter">
+      <div>
+        <h2>One email, every Friday.<br /><em>Built for the pre-ward-round commute.</em></h2>
+        <p>The week's Landmark Trial, a short On-Call note, and one FRCS drill. Five to eight minutes of reading. No filler.</p>
+      </div>
+      <div>
+        <form class="email-form" action="https://forms.gle/4QTK3MSgMsedJQEw7" method="get" target="_blank" rel="noopener">
+          <input type="email" name="email" placeholder="you@nhs.net" aria-label="Email address" required />
+          <button type="submit">Subscribe</button>
+        </form>
+        <div class="tick">
+          <span>Free</span>
+          <span>UK spelling</span>
+          <span>Unsubscribe one click</span>
+        </div>
+      </div>
     </div>
   </section>
 
 </Base>
+
+<style>
+  /* ══════════ HERO ══════════ */
+  .home-hero {
+    position: relative;
+    padding: 88px 32px 80px;
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .home-hero-glow {
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(0,212,200,0.18) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .home-hero-inner {
+    max-width: var(--container);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 0.9fr;
+    gap: 56px;
+    align-items: center;
+    position: relative;
+  }
+
+  .home-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--teal-500);
+    font-weight: 500;
+    margin-bottom: 20px;
+    letter-spacing: 0.02em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .home-hero h1 {
+    font-family: var(--font-sans);
+    font-size: clamp(42px, 6vw, 72px);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 1.02;
+    margin: 0 0 24px 0;
+    text-wrap: balance;
+  }
+  .home-hero h1 em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--teal-500);
+    letter-spacing: -0.015em;
+  }
+  .home-hero .lead {
+    font-family: var(--font-serif);
+    font-size: 21px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    max-width: 56ch;
+    margin: 0 0 36px 0;
+    letter-spacing: -0.005em;
+  }
+  .home-hero-cta { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+
+  .home-hero-stats {
+    display: flex;
+    gap: 36px;
+    margin-top: 56px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+  .home-stat .num {
+    font-family: var(--font-sans);
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--text-primary);
+  }
+  .home-stat .lbl {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 6px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* Featured card */
+  .featured-card {
+    display: block;
+    background: var(--navy-700);
+    border: 1px solid var(--border);
+    border-radius: var(--r-2xl);
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+    transition: border-color 0.15s, transform 0.2s;
+    text-decoration: none;
+    color: inherit;
+  }
+  .featured-card:hover { border-color: var(--border-strong); transform: translateY(-2px); }
+  .featured-card .cover {
+    height: 260px;
+    background:
+      radial-gradient(circle at 30% 30%, rgba(0,212,200,0.4) 0%, transparent 50%),
+      linear-gradient(135deg, #0F2E4F 0%, #050F1C 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .featured-card .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(90deg, transparent 0 40px, rgba(255,255,255,0.02) 40px 41px),
+      repeating-linear-gradient(0deg, transparent 0 40px, rgba(255,255,255,0.02) 40px 41px);
+  }
+  .featured-card .cover-graphic {
+    position: absolute;
+    bottom: 20px; left: 20px; right: 20px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-muted);
+    display: flex;
+    justify-content: space-between;
+  }
+  .featured-card .cover-number {
+    position: absolute;
+    top: 24px; right: 24px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--teal-500);
+    border: 1px solid var(--teal-500);
+    padding: 4px 8px;
+    border-radius: var(--r-sm);
+    letter-spacing: 0.04em;
+  }
+  .featured-card .cover-title {
+    position: absolute;
+    top: 90px; left: 28px; right: 28px;
+    font-family: var(--font-sans);
+    font-size: 44px;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 0.95;
+    color: var(--text-primary);
+  }
+  .featured-card .cover-title span { color: var(--teal-500); }
+  .featured-card .body { padding: 24px 28px 28px; }
+  .featured-card .cat {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--cat-landmark);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .featured-card .cat .bullet {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--cat-landmark);
+  }
+  .featured-card h3 {
+    font-family: var(--font-sans);
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin: 0 0 10px 0;
+  }
+  .featured-card p {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    margin: 0 0 16px 0;
+  }
+  .featured-card .foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+  }
+  .featured-card .foot .read {
+    color: var(--teal-500);
+    font-weight: 500;
+  }
+
+  @media (max-width: 960px) {
+    .home-hero-inner { grid-template-columns: 1fr; gap: 40px; }
+    .home-hero { padding: 56px 20px 48px; }
+  }
+
+  /* ══════════ LATEST POSTS ══════════ */
+  .latest {
+    padding: 88px 32px 40px;
+    border-bottom: 1px solid var(--border);
+  }
+  .latest-inner { max-width: var(--container); margin: 0 auto; }
+  .latest-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 48px;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .latest-head h2 {
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    margin: 0;
+  }
+  .latest-head h2 em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+  .latest-head .all {
+    font-size: 13px;
+    color: var(--teal-500);
+    font-weight: 500;
+    letter-spacing: -0.005em;
+  }
+
+  .post-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  @media (max-width: 960px) { .post-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 640px) { .post-grid { grid-template-columns: 1fr; } }
+
+  .post-card {
+    background: var(--navy-700);
+    border: 1px solid var(--border);
+    border-radius: var(--r-xl);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.15s, transform 0.2s;
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
+  }
+  .post-card:hover { border-color: var(--border-strong); transform: translateY(-2px); }
+  .post-card .cover {
+    height: 180px;
+    position: relative;
+    overflow: hidden;
+  }
+  .post-card-oncall .cover   { background: linear-gradient(135deg, #3D1E1E 0%, #0A2540 80%); }
+  .post-card-frcs .cover     { background: linear-gradient(135deg, #2E2240 0%, #0A2540 80%); }
+  .post-card-stones .cover   { background: linear-gradient(135deg, #0F3D39 0%, #0A2540 80%); }
+  .post-card-landmark .cover { background: linear-gradient(135deg, #3D3820 0%, #0A2540 80%); }
+  .post-card-oncology .cover { background: linear-gradient(135deg, #3D2A0D 0%, #0A2540 80%); }
+  .post-card .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(135deg, transparent 0 30px, rgba(255,255,255,0.03) 30px 31px);
+  }
+  .post-card .cover-label {
+    position: absolute;
+    bottom: 14px; left: 16px; right: 16px;
+    font-family: var(--font-serif);
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+    color: var(--text-primary);
+    text-wrap: balance;
+  }
+  .post-card .cover-label em {
+    color: var(--cat, var(--cat-default));
+    font-style: normal;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: block;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  .post-card .body { padding: 20px 20px 22px; flex: 1; display: flex; flex-direction: column; }
+  .post-card h3 {
+    font-family: var(--font-sans);
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.25;
+    margin: 0 0 10px 0;
+    text-wrap: balance;
+  }
+  .post-card p {
+    font-family: var(--font-serif);
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    margin: 0 0 16px 0;
+    flex: 1;
+  }
+  .post-card .foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  /* ══════════ APP BAND ══════════ */
+  .app-band {
+    padding: 88px 32px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin-top: 88px;
+  }
+  .app-band-inner {
+    max-width: var(--container);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .app-band h2 {
+    font-size: clamp(30px, 4vw, 42px);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+    margin: 0 0 16px 0;
+  }
+  .app-band h2 em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--teal-500);
+    font-weight: 500;
+  }
+  .app-band p {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    max-width: 52ch;
+    margin: 0 0 28px 0;
+  }
+  .app-badges { display: flex; gap: 12px; flex-wrap: wrap; }
+  .badge {
+    background: var(--navy-900);
+    border: 1px solid var(--border-strong);
+    padding: 12px 18px;
+    border-radius: var(--r-lg);
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: border-color 0.15s;
+  }
+  .badge:hover { border-color: var(--teal-500); }
+  .badge .label { display: flex; flex-direction: column; }
+  .badge .small {
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-family: var(--font-mono);
+  }
+  .badge .big { font-size: 15px; font-weight: 500; }
+  .badge svg { width: 22px; height: 22px; color: var(--text-primary); }
+
+  .app-visual {
+    position: relative;
+    height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .app-phone {
+    width: 240px;
+    height: 400px;
+    background: #000;
+    border-radius: 36px;
+    padding: 8px;
+    box-shadow: var(--shadow-lg);
+    transform: rotate(-4deg);
+  }
+  .app-phone-screen {
+    width: 100%;
+    height: 100%;
+    background: var(--navy-800);
+    border-radius: 28px;
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow: hidden;
+  }
+  .app-phone-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--text-muted);
+    padding: 2px 4px 4px;
+    letter-spacing: 0.1em;
+  }
+  .app-phone-row {
+    background: var(--navy-700);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 11px;
+    color: var(--text-secondary);
+    line-height: 1.3;
+  }
+  .app-phone-row b { color: var(--text-primary); display: block; font-size: 12px; margin-bottom: 3px; }
+  .app-phone-row.accent { border-left: 2px solid var(--teal-500); }
+  .app-phone-row.red    { border-left: 2px solid var(--cat-oncall); }
+  .app-phone-row.amber  { border-left: 2px solid var(--cat-oncology); }
+
+  @media (max-width: 860px) {
+    .app-band-inner { grid-template-columns: 1fr; gap: 40px; }
+    .app-visual { height: 360px; }
+    .app-band { padding: 64px 20px; margin-top: 64px; }
+  }
+
+  /* ══════════ NEWSLETTER ══════════ */
+  .newsletter-wrap {
+    padding: 80px 32px 0;
+    max-width: var(--container);
+    margin: 0 auto;
+  }
+  .newsletter {
+    padding: 56px 48px;
+    border-radius: var(--r-2xl);
+    background:
+      radial-gradient(circle at 0% 0%, rgba(0,212,200,0.15) 0%, transparent 50%),
+      var(--navy-700);
+    border: 1px solid var(--border-strong);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .newsletter h2 {
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    margin: 0 0 14px 0;
+  }
+  .newsletter h2 em {
+    color: var(--text-secondary);
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+  }
+  .newsletter p {
+    font-family: var(--font-serif);
+    font-size: 17px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    margin: 0 0 20px 0;
+  }
+  .newsletter .tick {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-muted);
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .newsletter .tick span { display: inline-flex; align-items: center; gap: 6px; }
+  .newsletter .tick span::before { content: '✓'; color: var(--teal-500); }
+
+  .email-form {
+    display: flex;
+    gap: 8px;
+    padding: 8px;
+    background: var(--navy-800);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--r-full);
+    margin-bottom: 16px;
+  }
+  .email-form input {
+    flex: 1;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    padding: 12px 16px;
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--text-primary);
+    min-width: 0;
+  }
+  .email-form input::placeholder { color: var(--text-muted); }
+  .email-form button {
+    background: var(--teal-500);
+    color: var(--navy-900);
+    border: 0;
+    padding: 12px 20px;
+    border-radius: var(--r-full);
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .email-form button:hover { background: var(--teal-400); }
+
+  @media (max-width: 860px) {
+    .newsletter { grid-template-columns: 1fr; gap: 28px; padding: 40px 28px; }
+    .newsletter-wrap { padding: 56px 20px 0; }
+  }
+</style>

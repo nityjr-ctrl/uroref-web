@@ -160,6 +160,245 @@ const { Content } = await render(article);
       text-underline-offset: 3px;
     }
     .prose a:hover { color: var(--teal-400); }
+
+    /* ══════════ Article visual panels ══════════ */
+
+    /* Stats row */
+    .prose .stat-row {
+      background: linear-gradient(135deg, rgba(0,212,200,0.12) 0%, rgba(9,20,38,0.9) 100%);
+      border: 1px solid rgba(0,212,200,0.25);
+      border-radius: 18px;
+      padding: 28px 20px;
+      margin: 2rem 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      text-align: center;
+    }
+    .prose .stat-row > div {
+      padding: 0 12px;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .prose .stat-row > div:last-child { border-right: 0; }
+    .prose .stat-num {
+      font-size: clamp(1.75rem, 7vw, 2.75rem);
+      font-weight: 700;
+      color: var(--teal-500);
+      letter-spacing: -0.05em;
+      line-height: 1;
+      font-family: var(--font-sans);
+    }
+    .prose .stat-lbl {
+      font-size: clamp(0.62rem, 2vw, 0.7rem);
+      color: rgba(255,255,255,0.45);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-family: var(--font-mono);
+      margin-top: 8px;
+    }
+    @media (max-width: 480px) {
+      .prose .stat-row { padding: 22px 10px; }
+      .prose .stat-row > div { padding: 0 6px; }
+    }
+
+    /* Simulated app screen */
+    .prose .app-screen {
+      background: #0A1929;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 18px 18px;
+      margin: 1.75rem 0;
+    }
+    .prose .app-screen-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: rgba(0,212,200,0.7);
+      letter-spacing: 0.1em;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+    .prose .app-screen-rows { display: flex; flex-direction: column; gap: 8px; }
+    .prose .app-row {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-left-width: 3px;
+      border-radius: 8px;
+      padding: 10px 14px;
+    }
+    .prose .app-row--red   { background: rgba(220,50,50,0.12);  border-color: rgba(220,50,50,0.3);  border-left-color: #DC3232; }
+    .prose .app-row--amber { background: rgba(230,140,30,0.1);  border-color: rgba(230,140,30,0.25); border-left-color: #E68C1E; }
+    .prose .app-row--teal  { background: rgba(0,212,200,0.07);  border-color: rgba(0,212,200,0.2);  border-left-color: #00D4C8; }
+    .prose .app-row-title {
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 600;
+      font-family: var(--font-sans);
+    }
+    .prose .app-row-sub {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.72rem;
+      font-family: var(--font-mono);
+      margin-top: 3px;
+      line-height: 1.4;
+    }
+
+    /* Feature grids (2-col labelled cards, stacks on mobile) */
+    .prose .feature-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin: 1.75rem 0;
+    }
+    @media (max-width: 560px) {
+      .prose .feature-grid-2 { grid-template-columns: 1fr; }
+    }
+    .prose .feature-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 14px 16px;
+    }
+    .prose .feature-eyebrow {
+      color: rgba(0,212,200,0.8);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+    .prose .feature-body {
+      color: #e2e8f0;
+      font-size: 0.9rem;
+      font-weight: 500;
+      font-family: var(--font-sans);
+      line-height: 1.55;
+    }
+
+    /* Icon feature row (3-col, stacks on mobile) */
+    .prose .icon-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 1.75rem 0;
+    }
+    @media (max-width: 560px) {
+      .prose .icon-grid-3 { grid-template-columns: 1fr; }
+    }
+    .prose .icon-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 18px 20px;
+      text-align: center;
+    }
+    .prose .icon-card-emoji { font-size: 1.6rem; margin-bottom: 8px; }
+    .prose .icon-card-title {
+      color: #e2e8f0;
+      font-size: 0.88rem;
+      font-weight: 600;
+      font-family: var(--font-sans);
+      margin-bottom: 4px;
+    }
+    .prose .icon-card-sub {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.78rem;
+      font-family: Georgia, serif;
+      line-height: 1.5;
+    }
+
+    /* Pull quote block */
+    .prose .pullquote {
+      background: linear-gradient(135deg, rgba(0,212,200,0.08) 0%, rgba(5,15,28,0.98) 100%);
+      border-left: 3px solid rgba(0,212,200,0.6);
+      border-radius: 0 14px 14px 0;
+      padding: 22px 24px;
+      margin: 0.5rem 0 2rem;
+    }
+    .prose .pullquote-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: rgba(0,212,200,0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 10px;
+    }
+    .prose .pullquote-body {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(1rem, 3.5vw, 1.15rem);
+      color: rgba(255,255,255,0.9);
+      line-height: 1.65;
+      font-style: italic;
+    }
+
+    /* Teal callout box */
+    .prose .callout-teal {
+      background: linear-gradient(135deg, rgba(0,212,200,0.1) 0%, rgba(9,20,38,0.95) 100%);
+      border: 1px solid rgba(0,212,200,0.2);
+      border-radius: 14px;
+      padding: 22px 24px;
+      margin: 1.75rem 0;
+    }
+    .prose .callout-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: rgba(0,212,200,0.65);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+    .prose .callout-body {
+      font-family: Georgia, serif;
+      font-size: clamp(0.95rem, 2.5vw, 1.02rem);
+      color: rgba(255,255,255,0.88);
+      line-height: 1.65;
+    }
+
+    /* On-call thoughts grid */
+    .prose .thoughts-grid {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 22px 24px;
+      margin: 1.75rem 0;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px 20px;
+    }
+    @media (max-width: 520px) {
+      .prose .thoughts-grid {
+        grid-template-columns: 1fr;
+        padding: 18px 20px;
+        gap: 10px;
+      }
+    }
+    .prose .thought-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.92rem;
+      font-family: Georgia, serif;
+      line-height: 1.5;
+    }
+    .prose .thought-item::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(220,50,50,0.7);
+      margin-top: 8px;
+      flex-shrink: 0;
+    }
+
+    /* Mobile tweaks for generic prose spacing inside panels */
+    @media (max-width: 560px) {
+      .article-wrap { padding: 2rem 1.1rem 3.5rem; }
+      .prose h2 { font-size: 1.35rem; margin: 1.75rem 0 0.75rem; }
+      .prose h3 { font-size: 1.05rem; }
+      .prose .callout-teal,
+      .prose .pullquote,
+      .prose .app-screen { padding: 18px 18px; }
+    }
   </style>
 
 </Base>

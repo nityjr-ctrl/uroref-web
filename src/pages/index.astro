@@ -60,31 +60,30 @@ function catColor(slot: string): string {
         <div class="home-eyebrow">
           <span class="u-live-dot"></span>UroRef · written by an ex urology SHO
         </div>
-        <h1>Everything I wish someone had told me on my <em>first urology on-call.</em></h1>
+        <h1>Everything I wish I had on my <em>first urology on-call.</em></h1>
         <p class="lead">
-          Quick-reference pathways for the calls that wake you up at 3am. Blocked catheters, haematuria, torsion, renal colic — written by someone who's been the SHO holding the bleep.
+          A quick-reference app for real-world urology on-calls.
         </p>
         <div class="home-hero-cta">
-          <a href="/app" class="u-cta-primary">
-            Download the app
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          <a href="/app" class="store-btn" aria-label="Download UroRef on the App Store">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.07-.48-2.05-.52-3.19 0-1.43.7-2.16.5-3.03-.4C2.08 14.14 2.87 4.9 9.05 4.58c1.43.07 2.44.78 3.29.84 1.29-.25 2.53-1 3.9-.92 1.64.13 2.88.82 3.68 2.06-3.39 2.03-2.59 6.49.54 7.74-.63 1.63-1.44 3.24-2.41 5.98zM12.03 4.5c-.17-2.45 1.8-4.47 4.07-4.67.31 2.83-2.55 4.98-4.07 4.67z"/></svg>
+            <span class="store-label">
+              <span class="store-small">Download on the</span>
+              <span class="store-big">App Store</span>
+            </span>
           </a>
-          <a href="/deep-dives" class="u-cta-ghost">Read a deep dive</a>
-        </div>
-
-        <div class="home-hero-stats">
-          <div class="home-stat">
-            <div class="num">500+</div>
-            <div class="lbl">Trainees using the app</div>
-          </div>
-          <div class="home-stat">
-            <div class="num">16</div>
-            <div class="lbl">On-call pathways</div>
-          </div>
-          <div class="home-stat">
-            <div class="num">31</div>
-            <div class="lbl">Patient info leaflets</div>
-          </div>
+          <a href="/app" class="store-btn" aria-label="Get UroRef on Google Play">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#34A853" d="M3.25 2.073A1 1 0 0 0 3 2.734v18.532a1 1 0 0 0 .25.66L13.792 12 3.25 2.073z"/>
+              <path fill="#FBBC04" d="M16.81 8.99 6.05 2.79l9.235 9.21z"/>
+              <path fill="#EA4335" d="M6.05 21.21 16.81 15.01 15.285 12z"/>
+              <path fill="#4285F4" d="m20.16 10.81-3.35-1.82L13.792 12l3.018 3.01 3.35-1.82a1.36 1.36 0 0 0 0-2.38z"/>
+            </svg>
+            <span class="store-label">
+              <span class="store-small">Get it on</span>
+              <span class="store-big">Google Play</span>
+            </span>
+          </a>
         </div>
       </div>
 
@@ -132,40 +131,28 @@ function catColor(slot: string): string {
     </div>
   </section>
 
-  <!-- Latest posts -->
-  {hasLiveContent && (
-    <section class="latest">
-      <div class="latest-inner">
-        <div class="latest-head">
-          <h2>Latest <em>deep dives</em></h2>
-          <a class="all" href="/deep-dives">All posts →</a>
-        </div>
-
-        <div class="post-grid">
-          {cards.map(card => (
-            <a href={card.href} class={`post-card post-card-${card.slot}`}>
-              <div class="cover" style={`--cat: ${catColor(card.slot)};`}>
-                <div class="cover-label">
-                  <em>{card.category}</em>
-                  {card.coverTitle}
-                </div>
-              </div>
-              <div class="body">
-                <h3>{card.title}</h3>
-                <p>{card.description}</p>
-                <div class="foot">
-                  <span>{card.date}</span>
-                  <span>{card.readTime}</span>
-                </div>
-              </div>
-            </a>
-          ))}
-        </div>
+  <!-- [2] Key value section -->
+  <section class="value-band">
+    <div class="value-inner">
+      <div class="value-col">
+        <span class="value-mark">01</span>
+        <h3>Designed for real on-calls</h3>
+        <p>Built around common scenarios faced by trainees.</p>
       </div>
-    </section>
-  )}
+      <div class="value-col">
+        <span class="value-mark">02</span>
+        <h3>Fast and practical</h3>
+        <p>Focused on quick access rather than long guidelines.</p>
+      </div>
+      <div class="value-col">
+        <span class="value-mark">03</span>
+        <h3>Structured and accessible</h3>
+        <p>Information organised for clarity under pressure.</p>
+      </div>
+    </div>
+  </section>
 
-  <!-- App band -->
+  <!-- [3] Screenshots / app visual -->
   <section class="app-band">
     <div class="app-band-inner">
       <div>
@@ -199,26 +186,70 @@ function catColor(slot: string): string {
     </div>
   </section>
 
-  <!-- Newsletter band -->
-  <section class="newsletter-wrap">
-    <div class="newsletter">
-      <div>
-        <h2>One email, when it matters.<br /><em>Built for the pre-ward-round commute.</em></h2>
-        <p>A short On-Call note, a landmark trial distilled, and one FRCS drill. Five to eight minutes of reading. No filler.</p>
-      </div>
-      <div>
-        <a href={NEWSLETTER_URL} target="_blank" rel="noopener" class="newsletter-cta">
-          Sign up — takes 20 seconds
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-        </a>
-        <div class="tick">
-          <span>Free</span>
-          <span>UK spelling</span>
-          <span>Unsubscribe one click</span>
+  <!-- [4] Stats / credibility section -->
+  <section class="stats-band">
+    <div class="stats-inner">
+      <div class="stats-grid">
+        <div class="stat">
+          <div class="stat-num">500+</div>
+          <div class="stat-lbl">Trainees</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">16</div>
+          <div class="stat-lbl">Pathways</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">31</div>
+          <div class="stat-lbl">Patient leaflets</div>
         </div>
       </div>
+      <p class="stats-note">Used by trainees across the UK</p>
     </div>
   </section>
+
+  <!-- [5] Quote / why section -->
+  <section class="quote-band">
+    <div class="quote-inner">
+      <blockquote class="quote">
+        <p>&ldquo;Sometimes someone suddenly asks you, &lsquo;What&rsquo;s monopolar versus bipolar?&rsquo; and your brain freezes.</p>
+        <p>The answer is simple &mdash; but in the moment, even simple knowledge can feel briefly out of reach.&rdquo;</p>
+      </blockquote>
+      <p class="quote-support">UroRef was built during training to make those moments easier, by organising commonly used information into a more accessible format.</p>
+    </div>
+  </section>
+
+  <!-- [6] Deep dives -->
+  {hasLiveContent && (
+    <section class="latest">
+      <div class="latest-inner">
+        <div class="latest-head">
+          <h2>Latest <em>deep dives</em></h2>
+          <a class="all" href="/deep-dives">All posts →</a>
+        </div>
+
+        <div class="post-grid">
+          {cards.map(card => (
+            <a href={card.href} class={`post-card post-card-${card.slot}`}>
+              <div class="cover" style={`--cat: ${catColor(card.slot)};`}>
+                <div class="cover-label">
+                  <em>{card.category}</em>
+                  {card.coverTitle}
+                </div>
+              </div>
+              <div class="body">
+                <h3>{card.title}</h3>
+                <p>{card.description}</p>
+                <div class="foot">
+                  <span>{card.date}</span>
+                  <span>{card.readTime}</span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
 
 </Base>
 
@@ -287,29 +318,43 @@ function catColor(slot: string): string {
   }
   .home-hero-cta { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
 
-  .home-hero-stats {
-    display: flex;
-    gap: 36px;
-    margin-top: 56px;
-    padding-top: 28px;
-    border-top: 1px solid var(--border);
-    flex-wrap: wrap;
+  /* Platform download buttons — dominant hero CTA */
+  .store-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--navy-900);
+    color: var(--text-primary);
+    padding: 12px 20px;
+    border-radius: var(--r-lg);
+    border: 1px solid var(--border-strong);
+    text-decoration: none;
+    min-width: 200px;
+    transition: border-color 0.15s, transform 0.15s, background 0.15s;
   }
-  .home-stat .num {
+  .store-btn:hover {
+    border-color: var(--teal-500);
+    transform: translateY(-1px);
+    background: #000;
+  }
+  .store-btn svg { width: 26px; height: 26px; flex-shrink: 0; }
+  .store-label { display: flex; flex-direction: column; line-height: 1.15; }
+  .store-small {
     font-family: var(--font-sans);
-    font-size: 32px;
+    font-size: 11px;
+    color: var(--text-secondary);
+    letter-spacing: 0.02em;
+  }
+  .store-big {
+    font-family: var(--font-sans);
+    font-size: 17px;
     font-weight: 600;
-    letter-spacing: -0.03em;
-    line-height: 1;
+    letter-spacing: -0.01em;
     color: var(--text-primary);
   }
-  .home-stat .lbl {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--text-muted);
-    margin-top: 6px;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
+  @media (max-width: 540px) {
+    .home-hero-cta { flex-direction: column; align-items: stretch; gap: 10px; }
+    .store-btn { width: 100%; min-width: 0; justify-content: center; }
   }
 
   /* Featured card */
@@ -664,76 +709,6 @@ function catColor(slot: string): string {
     .app-band { padding: 64px 20px; margin-top: 64px; }
   }
 
-  /* ══════════ NEWSLETTER ══════════ */
-  .newsletter-wrap {
-    padding: 80px 32px 0;
-    max-width: var(--container);
-    margin: 0 auto;
-  }
-  .newsletter {
-    padding: 56px 48px;
-    border-radius: var(--r-2xl);
-    background:
-      radial-gradient(circle at 0% 0%, rgba(0,212,200,0.15) 0%, transparent 50%),
-      var(--navy-700);
-    border: 1px solid var(--border-strong);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    align-items: center;
-  }
-  .newsletter h2 {
-    font-size: clamp(24px, 3vw, 36px);
-    font-weight: 600;
-    letter-spacing: -0.025em;
-    line-height: 1.1;
-    margin: 0 0 14px 0;
-  }
-  .newsletter h2 em {
-    color: var(--text-secondary);
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-weight: 400;
-  }
-  .newsletter p {
-    font-family: var(--font-serif);
-    font-size: 17px;
-    color: var(--text-secondary);
-    line-height: 1.55;
-    margin: 0 0 20px 0;
-  }
-  .newsletter .tick {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    color: var(--text-muted);
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-  .newsletter .tick span { display: inline-flex; align-items: center; gap: 6px; }
-  .newsletter .tick span::before { content: '✓'; color: var(--teal-500); }
-
-  .newsletter-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: var(--teal-500);
-    color: var(--navy-900);
-    padding: 14px 22px;
-    border-radius: var(--r-full);
-    font-family: var(--font-sans);
-    font-weight: 600;
-    font-size: 15px;
-    text-decoration: none;
-    letter-spacing: -0.005em;
-    margin-bottom: 16px;
-    transition: background 0.15s, transform 0.15s;
-  }
-  .newsletter-cta:hover {
-    background: var(--teal-400);
-    transform: translateY(-1px);
-  }
-
   .featured-card-empty .cover {
     background:
       radial-gradient(circle at 30% 30%, rgba(0,212,200,0.28) 0%, transparent 55%),
@@ -744,8 +719,131 @@ function catColor(slot: string): string {
     line-height: 1.05;
   }
 
+  /* ══════════ VALUE ══════════ */
+  .value-band {
+    padding: 88px 32px;
+    border-bottom: 1px solid var(--border);
+  }
+  .value-inner {
+    max-width: var(--container);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+  }
+  .value-col {
+    padding-top: 20px;
+    border-top: 1px solid var(--border-strong);
+  }
+  .value-mark {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--teal-500);
+    letter-spacing: 0.14em;
+    margin-bottom: 18px;
+  }
+  .value-col h3 {
+    font-family: var(--font-sans);
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    color: var(--text-primary);
+    margin: 0 0 10px 0;
+  }
+  .value-col p {
+    font-family: var(--font-serif);
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    margin: 0;
+    max-width: 34ch;
+  }
   @media (max-width: 860px) {
-    .newsletter { grid-template-columns: 1fr; gap: 28px; padding: 40px 28px; }
-    .newsletter-wrap { padding: 56px 20px 0; }
+    .value-inner { grid-template-columns: 1fr; gap: 32px; }
+    .value-band { padding: 64px 20px; }
+  }
+
+  /* ══════════ STATS ══════════ */
+  .stats-band {
+    padding: 88px 32px;
+    border-bottom: 1px solid var(--border);
+  }
+  .stats-inner {
+    max-width: var(--container);
+    margin: 0 auto;
+    text-align: center;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-bottom: 28px;
+  }
+  .stats-grid .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .stat-num {
+    font-family: var(--font-sans);
+    font-size: clamp(44px, 5.5vw, 64px);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 1;
+    color: var(--text-primary);
+  }
+  .stat-lbl {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .stats-note {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    font-style: italic;
+    color: var(--text-muted);
+    margin: 0;
+  }
+  @media (max-width: 720px) {
+    .stats-grid { grid-template-columns: 1fr; gap: 32px; }
+    .stats-band { padding: 64px 20px; }
+  }
+
+  /* ══════════ QUOTE ══════════ */
+  .quote-band {
+    padding: 96px 32px;
+    border-bottom: 1px solid var(--border);
+  }
+  .quote-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .quote {
+    margin: 0 0 32px 0;
+    padding: 0;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(20px, 2.4vw, 26px);
+    line-height: 1.5;
+    letter-spacing: -0.005em;
+    color: var(--text-primary);
+  }
+  .quote p { margin: 0 0 14px 0; }
+  .quote p:last-child { margin-bottom: 0; }
+  .quote-support {
+    font-family: var(--font-serif);
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+  @media (max-width: 720px) {
+    .quote-band { padding: 64px 20px; }
   }
 </style>

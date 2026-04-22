@@ -1,5 +1,8 @@
 ---
 import Base from '../../layouts/Base.astro';
+
+const APP_STORE_URL = 'https://apps.apple.com/us/app/uroref/id6761680168';
+const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.nityg.uroref';
 ---
 <Base
   title="Inside the UroRef App"
@@ -56,6 +59,7 @@ import Base from '../../layouts/Base.astro';
       </a>
       <a href="#features" class="u-cta-ghost">See what's inside</a>
     </div>
+    <p class="ia-hero-availability">Available now on iOS and Android.</p>
 
   </div>
 </section>
@@ -266,14 +270,28 @@ import Base from '../../layouts/Base.astro';
 <section class="ia-avail">
   <div class="ia-avail-inner">
     <p class="ia-avail-eyebrow">Available now</p>
-    <h2>UroRef is live on TestFlight</h2>
-    <p>Over 500 UK urology trainees are already using it. Android and public App Store releases are coming. The app is free — join the newsletter to get the TestFlight link straight to your inbox.</p>
-    <div class="ia-cta-row">
-      <a href="/app" class="u-cta-primary">
-        Get the app
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    <h2>UroRef is live on iOS and Android</h2>
+    <p>Over 500 UK urology trainees are already using it. The app is free.</p>
+    <div class="ia-cta-row ia-store-row">
+      <a href={APP_STORE_URL} target="_blank" rel="noopener" class="ia-store-btn" aria-label="Download UroRef on the App Store">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.07-.48-2.05-.52-3.19 0-1.43.7-2.16.5-3.03-.4C2.08 14.14 2.87 4.9 9.05 4.58c1.43.07 2.44.78 3.29.84 1.29-.25 2.53-1 3.9-.92 1.64.13 2.88.82 3.68 2.06-3.39 2.03-2.59 6.49.54 7.74-.63 1.63-1.44 3.24-2.41 5.98zM12.03 4.5c-.17-2.45 1.8-4.47 4.07-4.67.31 2.83-2.55 4.98-4.07 4.67z"/></svg>
+        <span class="ia-store-label">
+          <span class="ia-store-small">Download on the</span>
+          <span class="ia-store-big">App Store</span>
+        </span>
       </a>
-      <a href="https://forms.gle/4QTK3MSgMsedJQEw7" target="_blank" rel="noopener" class="u-cta-ghost">Join the newsletter</a>
+      <a href={PLAY_STORE_URL} target="_blank" rel="noopener" class="ia-store-btn" aria-label="Get UroRef on Google Play">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="#34A853" d="M3.25 2.073A1 1 0 0 0 3 2.734v18.532a1 1 0 0 0 .25.66L13.792 12 3.25 2.073z"/>
+          <path fill="#FBBC04" d="M16.81 8.99 6.05 2.79l9.235 9.21z"/>
+          <path fill="#EA4335" d="M6.05 21.21 16.81 15.01 15.285 12z"/>
+          <path fill="#4285F4" d="m20.16 10.81-3.35-1.82L13.792 12l3.018 3.01 3.35-1.82a1.36 1.36 0 0 0 0-2.38z"/>
+        </svg>
+        <span class="ia-store-label">
+          <span class="ia-store-small">Get it on</span>
+          <span class="ia-store-big">Google Play</span>
+        </span>
+      </a>
     </div>
   </div>
 </section>
@@ -497,6 +515,54 @@ import Base from '../../layouts/Base.astro';
   gap: 14px;
   flex-wrap: wrap;
   align-items: center;
+}
+
+.ia-hero-availability {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  margin: 16px 0 0;
+}
+
+/* Platform download buttons (shared visual with homepage) */
+.ia-store-row { gap: 18px; justify-content: center; }
+.ia-store-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--navy-900);
+  color: var(--text-primary);
+  padding: 12px 20px;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--border-strong);
+  text-decoration: none;
+  min-width: 200px;
+  transition: border-color 0.15s, transform 0.15s, background 0.15s;
+}
+.ia-store-btn:hover {
+  border-color: var(--teal-500);
+  transform: translateY(-1px);
+  background: #000;
+}
+.ia-store-btn svg { width: 24px; height: 24px; flex-shrink: 0; }
+.ia-store-label { display: flex; flex-direction: column; line-height: 1.15; }
+.ia-store-small {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+}
+.ia-store-big {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+@media (max-width: 540px) {
+  .ia-store-row { flex-direction: column; align-items: stretch; gap: 10px; }
+  .ia-store-btn { width: 100%; min-width: 0; justify-content: center; }
 }
 
 

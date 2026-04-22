@@ -19,8 +19,8 @@ import Base from '../layouts/Base.astro';
 
     <!-- Primary CTA -->
     <div class="contact-primary">
-      <a href="https://forms.gle/4QTK3MSgMsedJQEw7" target="_blank" rel="noopener" class="u-cta-primary">Send feedback — 30 second form →</a>
-      <p class="contact-link">forms.gle/4QTK3MSgMsedJQEw7</p>
+      <a href="mailto:nity@uroref.com" class="u-cta-primary">Email nity@uroref.com →</a>
+      <p class="contact-link">Or use the <a href="https://forms.gle/4QTK3MSgMsedJQEw7" target="_blank" rel="noopener">30-second feedback form</a>.</p>
     </div>
 
     <!-- Clinical correction -->
@@ -68,6 +68,8 @@ import Base from '../layouts/Base.astro';
       font-size: 0.8rem;
       margin: 1rem 0 0;
     }
+    .contact-link a { color: var(--teal-500); transition: color 0.15s; }
+    .contact-link a:hover { color: var(--teal-400); }
     .contact-card {
       background: var(--navy-700);
       border: 1px solid var(--border);

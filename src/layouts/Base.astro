@@ -120,6 +120,7 @@ const siteJsonLd = {
             <span class="dot" style="width: 4px; height: 4px; margin-bottom: 1px;"></span>
           </span>
           <p>A weekly urology training publication. Written by Nity G, Urology SpR, North West Deanery.</p>
+          <p class="site-footer-email"><a href="mailto:nity@uroref.com">nity@uroref.com</a></p>
         </div>
         <div>
           <h4>Read</h4>
@@ -319,6 +320,16 @@ const siteJsonLd = {
     max-width: 34ch;
     margin: 12px 0 0 0;
   }
+  .site-footer-top .about .site-footer-email {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    margin-top: 10px;
+  }
+  .site-footer-top .about .site-footer-email a {
+    color: var(--teal-500);
+    transition: color 0.15s;
+  }
+  .site-footer-top .about .site-footer-email a:hover { color: var(--teal-400); }
   .site-footer-disclaimer {
     padding: 20px 24px;
     background: var(--navy-900);

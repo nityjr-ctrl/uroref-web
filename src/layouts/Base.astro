@@ -82,13 +82,12 @@ const siteJsonLd = {
 
       <nav class="site-nav-links" aria-label="Primary">
         <a href="/deep-dives">Deep Dives</a>
-        <a href="/app">App</a>
         <a href="/about">About</a>
-        <a href="/updates">Updates</a>
+        <a href="/contact">Contact</a>
+        <a href="/app" class="site-nav-app">Get the app</a>
       </nav>
 
       <div class="site-nav-actions">
-        <a href="https://forms.gle/4QTK3MSgMsedJQEw7" target="_blank" rel="noopener" class="site-nav-cta">Subscribe</a>
         <label for="site-nav-toggle" class="site-nav-burger" aria-label="Open menu">
           <span></span><span></span><span></span>
         </label>
@@ -98,11 +97,9 @@ const siteJsonLd = {
     <!-- Mobile drawer (CSS-only, driven by #site-nav-toggle) -->
     <nav class="site-nav-drawer" aria-label="Mobile">
       <a href="/deep-dives">Deep Dives</a>
-      <a href="/app">App</a>
       <a href="/about">About</a>
-      <a href="/updates">Updates</a>
       <a href="/contact">Contact</a>
-      <a href="https://forms.gle/4QTK3MSgMsedJQEw7" target="_blank" rel="noopener" class="drawer-cta">Subscribe →</a>
+      <a href="/app" class="drawer-app">Get the app</a>
     </nav>
   </header>
 
@@ -197,18 +194,8 @@ const siteJsonLd = {
   }
   .site-nav-links a { transition: color 0.15s; }
   .site-nav-links a:hover, .site-nav-links a.on { color: var(--text-primary); }
-  .site-nav-cta {
-    font-size: 13px;
-    font-weight: 600;
-    padding: 8px 14px;
-    background: var(--teal-500);
-    color: var(--navy-900);
-    border-radius: var(--r-full);
-    letter-spacing: -0.005em;
-    white-space: nowrap;
-    transition: background 0.15s;
-  }
-  .site-nav-cta:hover { background: var(--teal-400); }
+  .site-nav-links a.site-nav-app { color: var(--teal-500); }
+  .site-nav-links a.site-nav-app:hover { color: var(--teal-400); }
 
   .site-nav-actions { display: flex; align-items: center; gap: 12px; }
 
@@ -255,17 +242,8 @@ const siteJsonLd = {
     transition: color 0.15s;
   }
   .site-nav-drawer a:hover { color: var(--text-primary); }
-  .site-nav-drawer a.drawer-cta {
-    margin-top: 14px;
-    padding: 12px 16px;
-    background: var(--teal-500);
-    color: var(--navy-900);
-    border: 0;
-    border-radius: var(--r-full);
-    font-weight: 600;
-    text-align: center;
-  }
-  .site-nav-drawer a.drawer-cta:hover { color: var(--navy-900); }
+  .site-nav-drawer a.drawer-app { color: var(--teal-500); }
+  .site-nav-drawer a.drawer-app:hover { color: var(--teal-400); }
 
   /* Drawer open state */
   .site-nav-toggle:checked ~ .site-nav-drawer { display: flex; }

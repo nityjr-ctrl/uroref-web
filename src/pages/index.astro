@@ -2,7 +2,6 @@
 import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 
-const NEWSLETTER_URL = 'https://forms.gle/4QTK3MSgMsedJQEw7';
 const APP_STORE_URL = 'https://apps.apple.com/us/app/uroref/id6761680168';
 const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.nityg.uroref';
 
@@ -36,7 +35,6 @@ const live = allDives
     slot: slotFromTags(a.data.tags),
   }));
 
-const featured = live[0];
 const cards = live.slice(0, 3);
 const hasLiveContent = cards.length > 0;
 
@@ -64,7 +62,7 @@ function catColor(slot: string): string {
         </div>
         <h1>Everything I wish I had on my <em>first urology on-call.</em></h1>
         <p class="lead">
-          A quick-reference app for real-world urology on-calls.
+          A quick-reference app for real-world urology on-call.
         </p>
         <div class="home-hero-cta">
           <a href={APP_STORE_URL} target="_blank" rel="noopener" class="store-btn" aria-label="Download UroRef on the App Store">
@@ -87,49 +85,9 @@ function catColor(slot: string): string {
             </span>
           </a>
         </div>
+        <p class="home-hero-trust">Used by 500+ trainees across the UK</p>
       </div>
 
-      <!-- Featured article card -->
-      {featured ? (
-        <a href={featured.href} class="featured-card" aria-label={`Read: ${featured.title}`}>
-          <div class="cover" style={`--cat: ${catColor(featured.slot)};`}>
-            <div class="cover-number">{featured.category.toUpperCase()}</div>
-            <div class="cover-title">{featured.title}</div>
-            <div class="cover-graphic">
-              <span>{featured.date}</span>
-              <span>{featured.readTime}</span>
-            </div>
-          </div>
-          <div class="body">
-            <div class="cat"><span class="bullet"></span>Latest deep dive</div>
-            <h3>{featured.title}</h3>
-            <p>{featured.description}</p>
-            <div class="foot">
-              <span>{featured.date} · {featured.readTime}</span>
-              <span class="read">READ →</span>
-            </div>
-          </div>
-        </a>
-      ) : (
-        <a href={NEWSLETTER_URL} target="_blank" rel="noopener" class="featured-card featured-card-empty" aria-label="Join the newsletter for the first issue">
-          <div class="cover">
-            <div class="cover-number">ISSUE 01</div>
-            <div class="cover-title">First issue<br/>launching soon.</div>
-            <div class="cover-graphic">
-              <span>Sign up for the launch</span>
-            </div>
-          </div>
-          <div class="body">
-            <div class="cat"><span class="bullet"></span>Upcoming</div>
-            <h3>Be the first to read it.</h3>
-            <p>The first Deep Dive lands shortly. Join the newsletter and it'll arrive in your inbox the morning it publishes.</p>
-            <div class="foot">
-              <span>Launching soon</span>
-              <span class="read">JOIN →</span>
-            </div>
-          </div>
-        </a>
-      )}
     </div>
   </section>
 
@@ -278,10 +236,6 @@ function catColor(slot: string): string {
   .home-hero-inner {
     max-width: var(--container);
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 0.9fr;
-    gap: 56px;
-    align-items: center;
     position: relative;
   }
 
@@ -302,9 +256,10 @@ function catColor(slot: string): string {
     font-size: clamp(42px, 6vw, 72px);
     font-weight: 600;
     letter-spacing: -0.035em;
-    line-height: 1.02;
-    margin: 0 0 24px 0;
+    line-height: 0.95;
+    margin: 0 0 18px 0;
     text-wrap: balance;
+    max-width: 18ch;
   }
   .home-hero h1 em {
     font-family: var(--font-serif);
@@ -318,12 +273,20 @@ function catColor(slot: string): string {
     font-size: 21px;
     font-weight: 400;
     color: var(--text-secondary);
-    line-height: 1.55;
+    line-height: 1.5;
     max-width: 56ch;
-    margin: 0 0 36px 0;
+    margin: 0 0 28px 0;
     letter-spacing: -0.005em;
   }
-  .home-hero-cta { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+  .home-hero-cta { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+
+  .home-hero-trust {
+    margin: 20px 0 0 0;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+  }
 
   /* Platform download buttons — dominant hero CTA */
   .store-btn {
@@ -365,117 +328,7 @@ function catColor(slot: string): string {
   }
 
   /* Featured card */
-  .featured-card {
-    display: block;
-    background: var(--navy-700);
-    border: 1px solid var(--border);
-    border-radius: var(--r-2xl);
-    overflow: hidden;
-    position: relative;
-    z-index: 2;
-    transition: border-color 0.15s, transform 0.2s;
-    text-decoration: none;
-    color: inherit;
-  }
-  .featured-card:hover { border-color: var(--border-strong); transform: translateY(-2px); }
-  .featured-card .cover {
-    height: 260px;
-    background:
-      radial-gradient(circle at 30% 30%, rgba(0,212,200,0.4) 0%, transparent 50%),
-      linear-gradient(135deg, #0F2E4F 0%, #050F1C 100%);
-    position: relative;
-    overflow: hidden;
-  }
-  .featured-card .cover::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      repeating-linear-gradient(90deg, transparent 0 40px, rgba(255,255,255,0.02) 40px 41px),
-      repeating-linear-gradient(0deg, transparent 0 40px, rgba(255,255,255,0.02) 40px 41px);
-  }
-  .featured-card .cover-graphic {
-    position: absolute;
-    bottom: 20px; left: 20px; right: 20px;
-    font-family: var(--font-mono);
-    font-size: 10px;
-    color: var(--text-muted);
-    display: flex;
-    justify-content: space-between;
-  }
-  .featured-card .cover-number {
-    position: absolute;
-    top: 24px; right: 24px;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--teal-500);
-    border: 1px solid var(--teal-500);
-    padding: 4px 8px;
-    border-radius: var(--r-sm);
-    letter-spacing: 0.04em;
-  }
-  .featured-card .cover-title {
-    position: absolute;
-    top: 76px; left: 28px; right: 28px;
-    font-family: var(--font-sans);
-    font-size: 28px;
-    font-weight: 700;
-    letter-spacing: -0.025em;
-    line-height: 1.05;
-    color: var(--text-primary);
-    text-wrap: balance;
-  }
-  .featured-card .cover-title span { color: var(--teal-500); }
-  .featured-card .body { padding: 24px 28px 28px; }
-  .featured-card .cat {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--cat-landmark);
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .featured-card .cat .bullet {
-    width: 6px; height: 6px; border-radius: 50%;
-    background: var(--cat-landmark);
-  }
-  .featured-card h3 {
-    font-family: var(--font-sans);
-    font-size: 22px;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    line-height: 1.2;
-    margin: 0 0 10px 0;
-  }
-  .featured-card p {
-    font-family: var(--font-serif);
-    font-size: 15px;
-    color: var(--text-secondary);
-    line-height: 1.55;
-    margin: 0 0 16px 0;
-  }
-  .featured-card .foot {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 16px;
-    border-top: 1px solid var(--border);
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--text-muted);
-    letter-spacing: 0.02em;
-  }
-  .featured-card .foot .read {
-    color: var(--teal-500);
-    font-weight: 500;
-  }
-
   @media (max-width: 960px) {
-    .home-hero-inner { grid-template-columns: 1fr; gap: 40px; }
     .home-hero { padding: 56px 20px 48px; }
   }
 
@@ -676,7 +529,7 @@ function catColor(slot: string): string {
     border-radius: 36px;
     padding: 8px;
     box-shadow: var(--shadow-lg);
-    transform: rotate(-4deg);
+    transform: rotate(-2deg);
   }
   .app-phone-screen {
     width: 100%;
@@ -714,16 +567,6 @@ function catColor(slot: string): string {
     .app-band-inner { grid-template-columns: 1fr; gap: 40px; }
     .app-visual { height: 360px; }
     .app-band { padding: 64px 20px; margin-top: 64px; }
-  }
-
-  .featured-card-empty .cover {
-    background:
-      radial-gradient(circle at 30% 30%, rgba(0,212,200,0.28) 0%, transparent 55%),
-      linear-gradient(135deg, #0F2E4F 0%, #050F1C 100%);
-  }
-  .featured-card-empty .cover .cover-title {
-    font-size: 32px;
-    line-height: 1.05;
   }
 
   /* ══════════ VALUE ══════════ */
@@ -792,13 +635,13 @@ function catColor(slot: string): string {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 18px;
   }
   .stat-num {
     font-family: var(--font-sans);
-    font-size: clamp(44px, 5.5vw, 64px);
-    font-weight: 600;
-    letter-spacing: -0.035em;
+    font-size: clamp(52px, 6.4vw, 74px);
+    font-weight: 700;
+    letter-spacing: -0.04em;
     line-height: 1;
     color: var(--text-primary);
   }

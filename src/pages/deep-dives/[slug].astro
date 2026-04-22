@@ -28,6 +28,9 @@ const { Content } = await render(article);
         ))}
       </div>
       <h1 class="u-gradient-text" style="font-size: clamp(1.85rem, 4.5vw, 2.75rem); font-weight: 800; letter-spacing: -0.03em; margin: 0 0 1rem; line-height: 1.2;">{article.data.title}</h1>
+      {article.data.anchor && (
+        <p class="article-anchor">{article.data.anchor}</p>
+      )}
       <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin: 0 0 0.6rem;">{article.data.date} · Written by {article.data.author || 'Nity G, Urology SpR'}</p>
       <p class="article-safety-note">For reference only — not a substitute for clinical judgement.</p>
     </div>
@@ -41,6 +44,16 @@ const { Content } = await render(article);
   </article>
 
   <style>
+    .article-anchor {
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: rgba(255,255,255,0.72);
+      font-size: 1.05rem;
+      line-height: 1.55;
+      max-width: 40ch;
+      margin: 0.25rem 0 1.5rem;
+      letter-spacing: -0.005em;
+    }
     .article-safety-note {
       color: rgba(255,255,255,0.38);
       font-family: var(--font-mono);
@@ -57,21 +70,22 @@ const { Content } = await render(article);
       font-size: 1.45rem;
       font-weight: 600;
       color: var(--text-primary);
-      margin: 4rem 0 1.5rem;
+      margin: 4.75rem 0 1.75rem;
       letter-spacing: -0.02em;
     }
     .prose h3 {
       font-size: 1.15rem;
       font-weight: 600;
       color: var(--text-primary);
-      margin: 2.5rem 0 0.85rem;
+      margin: 3rem 0 1rem;
       letter-spacing: -0.015em;
     }
     .prose p {
       font-family: var(--font-serif);
       color: var(--text-secondary);
+      font-weight: 400;
       line-height: 1.75;
-      margin: 0 0 1.75rem;
+      margin: 0 0 1.85rem;
       font-size: 1rem;
     }
     .prose ul, .prose ol {
@@ -338,41 +352,21 @@ const { Content } = await render(article);
       line-height: 1.65;
     }
 
-    /* On-call thoughts grid */
+    /* On-call thoughts — stacked line-break rhythm */
     .prose .thoughts-grid {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 14px;
-      padding: 22px 24px;
-      margin: 1.75rem 0;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px 20px;
-    }
-    @media (max-width: 520px) {
-      .prose .thoughts-grid {
-        grid-template-columns: 1fr;
-        padding: 18px 20px;
-        gap: 10px;
-      }
+      margin: 2.25rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      padding-left: 1.25rem;
+      border-left: 2px solid rgba(0,212,200,0.35);
     }
     .prose .thought-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      color: rgba(255,255,255,0.7);
-      font-size: 0.92rem;
-      font-family: Georgia, serif;
+      color: var(--text-primary);
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.02rem;
       line-height: 1.5;
-    }
-    .prose .thought-item::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: rgba(220,50,50,0.7);
-      margin-top: 8px;
-      flex-shrink: 0;
     }
 
     /* Letter-style opener (after "A note to..." heading) */
@@ -390,34 +384,35 @@ const { Content } = await render(article);
     /* Standalone emphasis line — visual anchor */
     .prose .pullout {
       font-family: var(--font-serif);
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       font-style: italic;
+      font-weight: 500;
       color: var(--text-primary);
-      line-height: 1.45;
+      line-height: 1.4;
       text-align: center;
-      margin: 3.5rem auto;
-      max-width: 34ch;
+      margin: 4rem auto;
+      max-width: 32ch;
       letter-spacing: -0.01em;
     }
 
     /* Clean feature block (replaces emoji icon cards) */
     .prose .feature-block {
-      margin: 2rem 0;
+      margin: 2.5rem 0;
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
+      gap: 2.25rem;
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
-      padding: 1.75rem 0;
+      padding: 2.25rem 0;
     }
     .prose .feature-item { display: block; }
     .prose .feature-label {
       font-family: var(--font-sans);
-      font-size: 0.95rem;
+      font-size: 1rem;
       font-weight: 600;
       color: var(--text-primary);
       letter-spacing: -0.01em;
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.4rem;
     }
     .prose .feature-desc {
       font-family: var(--font-serif);
@@ -427,14 +422,30 @@ const { Content } = await render(article);
       margin: 0;
     }
 
+    /* Grounded closing line */
+    .prose .article-closing {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+      text-align: center;
+      margin: 3.5rem auto 0;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      max-width: 32ch;
+    }
+
     /* Mobile tweaks for generic prose spacing inside panels */
     @media (max-width: 560px) {
       .article-wrap { padding: 2.25rem 1.1rem 3.5rem; }
-      .prose h2 { font-size: 1.3rem; margin: 3rem 0 1.25rem; }
-      .prose h3 { font-size: 1.05rem; margin: 2rem 0 0.75rem; }
+      .prose h2 { font-size: 1.3rem; margin: 3.25rem 0 1.25rem; }
+      .prose h3 { font-size: 1.05rem; margin: 2.25rem 0 0.75rem; }
       .prose p { line-height: 1.7; margin: 0 0 1.5rem; }
-      .prose .pullout { font-size: 1.18rem; margin: 2.5rem auto; max-width: 28ch; }
+      .prose .pullout { font-size: 1.22rem; margin: 2.75rem auto; max-width: 28ch; }
       .prose .letter-opener { font-size: 1.05rem; margin-bottom: 2rem; }
+      .prose .feature-block { gap: 1.75rem; padding: 1.75rem 0; }
+      .prose .article-closing { margin-top: 2.5rem; padding-top: 1.75rem; }
+      .article-anchor { font-size: 0.98rem; }
       .prose .callout-teal,
       .prose .pullquote,
       .prose .app-screen { padding: 18px 18px; }

@@ -9,6 +9,7 @@ const deepDives = defineCollection({
     date: z.string(),
     author: z.string().optional(),
     tags: z.array(z.string()).optional(),
+    anchor: z.string().optional(),
   }),
 });
 

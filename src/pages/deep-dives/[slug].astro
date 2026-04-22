@@ -28,16 +28,10 @@ const { Content } = await render(article);
         ))}
       </div>
       <h1 class="u-gradient-text" style="font-size: clamp(1.85rem, 4.5vw, 2.75rem); font-weight: 800; letter-spacing: -0.03em; margin: 0 0 1rem; line-height: 1.2;">{article.data.title}</h1>
-      <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin: 0;">{article.data.date} · Written by {article.data.author || 'Nity G, Urology SpR'}</p>
+      <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin: 0 0 0.6rem;">{article.data.date} · Written by {article.data.author || 'Nity G, Urology SpR'}</p>
+      <p class="article-safety-note">For reference only — not a substitute for clinical judgement.</p>
     </div>
   </section>
-
-  <!-- Clinical safety banner -->
-  <div class="safety-banner">
-    <div class="safety-banner-inner">
-      <p>⚠️ Quick reference only — not a substitute for senior clinical advice or your trust guidelines. Always escalate when in doubt.</p>
-    </div>
-  </div>
 
   <!-- Article body -->
   <article class="article-wrap">
@@ -47,46 +41,37 @@ const { Content } = await render(article);
   </article>
 
   <style>
-    .safety-banner {
-      background: rgba(0,212,200,0.08);
-      border-bottom: 1px solid rgba(0,212,200,0.2);
-      padding: 0.75rem 1.5rem;
-    }
-    .safety-banner-inner { max-width: 750px; margin: 0 auto; }
-    .safety-banner p {
-      color: var(--teal-500);
+    .article-safety-note {
+      color: rgba(255,255,255,0.38);
       font-family: var(--font-mono);
-      font-size: 0.78rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.02em;
       margin: 0;
-      line-height: 1.55;
-      letter-spacing: 0.01em;
     }
     .article-wrap {
-      padding: 3rem 1.5rem 5rem;
-      max-width: 750px;
+      padding: 3.5rem 1.5rem 5rem;
+      max-width: 720px;
       margin: 0 auto;
     }
     .prose h2 {
-      font-size: 1.5rem;
+      font-size: 1.45rem;
       font-weight: 600;
       color: var(--text-primary);
-      margin: 2.25rem 0 0.875rem;
+      margin: 3rem 0 1.25rem;
       letter-spacing: -0.02em;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 0.5rem;
     }
     .prose h3 {
       font-size: 1.15rem;
       font-weight: 600;
       color: var(--text-primary);
-      margin: 1.5rem 0 0.625rem;
+      margin: 2rem 0 0.75rem;
       letter-spacing: -0.015em;
     }
     .prose p {
       font-family: var(--font-serif);
       color: var(--text-secondary);
-      line-height: 1.75;
-      margin: 0 0 1rem;
+      line-height: 1.8;
+      margin: 0 0 1.25rem;
       font-size: 1.02rem;
     }
     .prose ul, .prose ol {
@@ -390,11 +375,66 @@ const { Content } = await render(article);
       flex-shrink: 0;
     }
 
+    /* Letter-style opener (after "A note to..." heading) */
+    .prose .letter-opener {
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--text-primary);
+      font-size: 1.1rem;
+      line-height: 1.65;
+      max-width: 34ch;
+      margin: 0 0 2rem;
+      letter-spacing: -0.005em;
+    }
+
+    /* Standalone emphasis line — visual anchor */
+    .prose .pullout {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--text-primary);
+      line-height: 1.5;
+      text-align: center;
+      margin: 2.25rem auto;
+      max-width: 28ch;
+      letter-spacing: -0.005em;
+    }
+
+    /* Clean feature block (replaces emoji icon cards) */
+    .prose .feature-block {
+      margin: 2rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 1.75rem 0;
+    }
+    .prose .feature-item { display: block; }
+    .prose .feature-label {
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+      margin-bottom: 0.35rem;
+    }
+    .prose .feature-desc {
+      font-family: var(--font-serif);
+      font-size: 0.98rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
     /* Mobile tweaks for generic prose spacing inside panels */
     @media (max-width: 560px) {
-      .article-wrap { padding: 2rem 1.1rem 3.5rem; }
-      .prose h2 { font-size: 1.35rem; margin: 1.75rem 0 0.75rem; }
+      .article-wrap { padding: 2.25rem 1.1rem 3.5rem; }
+      .prose h2 { font-size: 1.3rem; margin: 2.25rem 0 1rem; }
       .prose h3 { font-size: 1.05rem; }
+      .prose p { line-height: 1.75; }
+      .prose .pullout { font-size: 1.08rem; margin: 1.75rem auto; }
+      .prose .letter-opener { font-size: 1.02rem; }
       .prose .callout-teal,
       .prose .pullquote,
       .prose .app-screen { padding: 18px 18px; }

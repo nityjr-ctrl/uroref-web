@@ -23,7 +23,7 @@ const orgJsonLd = {
   url: (Astro.site ?? Astro.url).toString().replace(/\/$/, ''),
   logo: new URL('/icon-512.png', Astro.site ?? Astro.url).toString(),
   description,
-  sameAs: ['https://github.com/nityjr-ctrl/uroref-app'],
+  sameAs: [],
 };
 
 const siteJsonLd = {
@@ -133,7 +133,6 @@ const siteJsonLd = {
             <li><a href="/app">iOS app</a></li>
             <li><a href="/app">Android app</a></li>
             <li><a href="/updates">Changelog</a></li>
-            <li><a href="https://github.com/nityjr-ctrl/uroref-app" target="_blank" rel="noopener">GitHub</a></li>
           </ul>
         </div>
         <div>

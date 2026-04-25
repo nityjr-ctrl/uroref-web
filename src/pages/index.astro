@@ -37,6 +37,7 @@ const live = allDives
 
 const cards = live.slice(0, 3);
 const hasLiveContent = cards.length > 0;
+const sidebarPosts = live.slice(0, 5);
 
 function catColor(slot: string): string {
   switch (slot) {
@@ -192,25 +193,49 @@ function catColor(slot: string): string {
           <a class="all" href="/deep-dives">All posts →</a>
         </div>
 
-        <div class="post-grid">
-          {cards.map(card => (
-            <a href={card.href} class={`post-card post-card-${card.slot}`}>
-              <div class="cover" style={`--cat: ${catColor(card.slot)};`}>
-                <div class="cover-label">
-                  <em>{card.category}</em>
-                  {card.coverTitle}
+        <div class="latest-body">
+          <div class="post-grid">
+            {cards.map(card => (
+              <a href={card.href} class={`post-card post-card-${card.slot}`}>
+                <div class="cover" style={`--cat: ${catColor(card.slot)};`}>
+                  <div class="cover-label">
+                    <em>{card.category}</em>
+                    {card.coverTitle}
+                  </div>
                 </div>
-              </div>
-              <div class="body">
-                <h3>{card.title}</h3>
-                <p>{card.description}</p>
-                <div class="foot">
-                  <span>{card.date}</span>
-                  <span>{card.readTime}</span>
+                <div class="body">
+                  <h3>{card.title}</h3>
+                  <p>{card.description}</p>
+                  <div class="foot">
+                    <span>{card.date}</span>
+                    <span>{card.readTime}</span>
+                  </div>
                 </div>
-              </div>
-            </a>
-          ))}
+              </a>
+            ))}
+          </div>
+
+          <!-- What did I read yesterday? -->
+          <aside class="yd-card">
+            <div class="yd-eyebrow">Reading log</div>
+            <h3 class="yd-title">What did I read yesterday?</h3>
+            <p class="yd-sub">A quick route back into the latest UroRef deep dives.</p>
+            <hr class="yd-rule" />
+            <ul class="yd-list">
+              {sidebarPosts.map(post => (
+                <li>
+                  <a href={post.href} class="yd-item">
+                    <div class="yd-item-tag" style={`color: ${catColor(post.slot)};`}>{post.category}</div>
+                    <div class="yd-item-title">{post.title}</div>
+                    <div class="yd-item-meta">{post.date} · {post.readTime} read</div>
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <div class="yd-footer">
+              <a href="/deep-dives">View all deep dives →</a>
+            </div>
+          </aside>
         </div>
       </div>
     </section>
@@ -452,6 +477,119 @@ function catColor(slot: string): string {
     font-family: var(--font-mono);
     font-size: 11px;
     color: var(--text-muted);
+  }
+
+  /* ══════════ LATEST BODY (grid + sidebar) ══════════ */
+  .latest-body {
+    display: grid;
+    grid-template-columns: 1fr 264px;
+    gap: 32px;
+    align-items: start;
+  }
+  @media (max-width: 1100px) {
+    .latest-body { grid-template-columns: 1fr; }
+  }
+
+  /* ══════════ WHAT DID I READ YESTERDAY? ══════════ */
+  .yd-card {
+    background: var(--navy-700);
+    border: 1px solid var(--border);
+    border-radius: var(--r-xl);
+    padding: 20px 18px 18px;
+    box-shadow: 0 4px 24px -8px rgba(0,0,0,0.5);
+  }
+  .yd-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--teal-500);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .yd-title {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    line-height: 1.25;
+    margin: 0 0 8px;
+  }
+  .yd-sub {
+    font-family: var(--font-serif);
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin: 0 0 14px;
+    font-style: italic;
+  }
+  .yd-rule {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0 0 14px;
+  }
+  .yd-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .yd-item {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    padding: 9px 10px;
+    border-radius: var(--r-md);
+    border: 1px solid transparent;
+    transition: background 0.13s, border-color 0.13s;
+  }
+  .yd-item:hover {
+    background: rgba(255,255,255,0.04);
+    border-color: var(--border);
+  }
+  .yd-item-tag {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+    font-weight: 500;
+  }
+  .yd-item-title {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+  }
+  .yd-item-meta {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-muted);
+    margin-top: 4px;
+    letter-spacing: 0.02em;
+  }
+  .yd-footer {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  .yd-footer a {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--teal-500);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.13s;
+  }
+  .yd-footer a:hover { color: var(--teal-400); }
+
+  @media (max-width: 1100px) {
+    .yd-card { padding: 20px; }
   }
 
   /* ══════════ APP BAND ══════════ */

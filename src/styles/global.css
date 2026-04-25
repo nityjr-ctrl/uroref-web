@@ -246,6 +246,60 @@
   margin-bottom: 4px;
 }
 
+/* Prose panel components (MDX articles) */
+.prose .pullquote {
+  margin: 0 0 2.5rem;
+  padding: 1.25rem 1.5rem;
+  border-left: 3px solid var(--teal-500);
+  background: rgba(0,212,200,0.06);
+  border-radius: 0 8px 8px 0;
+}
+.prose .pullquote-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--teal-500);
+  margin-bottom: 0.65rem;
+}
+.prose .pullquote-body {
+  font-family: var(--font-serif);
+  font-size: 1.08rem;
+  font-style: italic;
+  color: #ffffff;
+  line-height: 1.6;
+  margin: 0;
+}
+.prose .callout-teal {
+  margin: 2.25rem 0;
+  padding: 1.25rem 1.5rem;
+  background: rgba(0,212,200,0.08);
+  border: 1px solid rgba(0,212,200,0.25);
+  border-radius: 8px;
+}
+.prose .callout-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #00D4C8;
+  margin-bottom: 0.65rem;
+}
+.prose .callout-body {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  color: #B8C5D6;
+  line-height: 1.65;
+  margin: 0;
+}
+.prose img {
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.08);
+  margin: 0.25rem 0;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

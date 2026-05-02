@@ -3,6 +3,17 @@ import Base from '../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 
 const articles = await getCollection('deep-dives');
+
+const monthOrder: Record<string, number> = {
+  January: 1, February: 2, March: 3, April: 4, May: 5, June: 6,
+  July: 7, August: 8, September: 9, October: 10, November: 11, December: 12
+};
+const sorted = [...articles].sort((a, b) => {
+  const [aMonth, aYear] = a.data.date.split(' ');
+  const [bMonth, bYear] = b.data.date.split(' ');
+  if (aYear !== bYear) return Number(bYear) - Number(aYear);
+  return monthOrder[bMonth] - monthOrder[aMonth];
+});
 ---
 <Base title="Deep Dives" description="In-depth urology clinical guides for registrars and trainees — written by an SpR, peer reviewed.">
 
@@ -19,14 +30,14 @@ const articles = await getCollection('deep-dives');
   </section>
 
   <section class="dives-list">
-    {articles.length === 0 ? (
+    {sorted.length === 0 ? (
       <div class="dives-empty">
         <p>The first Deep Dive is coming soon.</p>
         <a href="https://forms.gle/4QTK3MSgMsedJQEw7" target="_blank" rel="noopener" class="u-cta-primary">Get it in your inbox →</a>
       </div>
     ) : (
       <div class="dives-stack">
-        {articles.map(article => (
+        {sorted.map(article => (
           <a href={`/deep-dives/${article.id}`} class="dive-link">
             <div class="dive-meta">
               {article.data.tags && article.data.tags.map((tag: string) => (

@@ -1,0 +1,950 @@
+:root {
+  --biopsy-bg: #071012;
+  --biopsy-panel: rgba(12, 26, 29, 0.9);
+  --biopsy-panel-strong: #10252a;
+  --biopsy-line: rgba(164, 220, 216, 0.22);
+  --biopsy-ink: #effaf8;
+  --biopsy-muted: #a9bbb8;
+  --biopsy-cyan: #55d7df;
+  --biopsy-green: #5ce0a5;
+  --biopsy-amber: #e2aa4d;
+  --biopsy-rose: #ec6682;
+  --biopsy-blue: #8db7ff;
+  --biopsy-shadow: rgba(0, 0, 0, 0.34);
+}
+
+html.light {
+  --biopsy-bg: #eef5f4;
+  --biopsy-panel: rgba(255, 255, 255, 0.95);
+  --biopsy-panel-strong: #ffffff;
+  --biopsy-line: rgba(29, 83, 88, 0.18);
+  --biopsy-ink: #102025;
+  --biopsy-muted: #526369;
+  --biopsy-shadow: rgba(16, 31, 36, 0.16);
+}
+
+html.reading {
+  --biopsy-bg: #fbf8f0;
+  --biopsy-panel: rgba(255, 253, 247, 0.98);
+  --biopsy-panel-strong: #fffaf0;
+  --biopsy-line: rgba(71, 85, 105, 0.22);
+  --biopsy-ink: #17202a;
+  --biopsy-muted: #53616a;
+  --biopsy-cyan: #157d86;
+  --biopsy-green: #1c8b62;
+  --biopsy-amber: #94651c;
+  --biopsy-rose: #aa334c;
+}
+
+html.a11y-dyslexia body {
+  font-family: Arial, Verdana, Tahoma, sans-serif;
+}
+
+html.a11y-large-text {
+  font-size: 18px;
+}
+
+.biopsy-ar-body {
+  background:
+    radial-gradient(circle at 12% 0, rgba(85, 215, 223, 0.16), transparent 34%),
+    linear-gradient(180deg, var(--biopsy-bg), #081517 48%, var(--biopsy-bg));
+  color: var(--biopsy-ink);
+}
+
+html.light .biopsy-ar-body,
+html.reading .biopsy-ar-body {
+  background:
+    radial-gradient(circle at 12% 0, rgba(85, 215, 223, 0.12), transparent 34%),
+    var(--biopsy-bg);
+}
+
+.biopsy-main {
+  max-width: 1560px;
+  margin: 0 auto;
+  padding: clamp(14px, 2vw, 26px);
+}
+
+.biopsy-safety-strip {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.biopsy-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: end;
+  padding: clamp(18px, 3vw, 34px) 0 clamp(14px, 2vw, 22px);
+}
+
+.biopsy-eyebrow {
+  margin: 0 0 6px;
+  color: var(--biopsy-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+
+.biopsy-hero h1 {
+  margin: 0;
+  max-width: 16ch;
+  color: var(--biopsy-ink);
+  font-size: clamp(2rem, 4.5vw, 4.5rem);
+  line-height: 0.98;
+  letter-spacing: 0;
+}
+
+.biopsy-copy {
+  max-width: 64ch;
+  margin: 12px 0 0;
+  color: var(--biopsy-muted);
+  font-size: clamp(1rem, 1.3vw, 1.18rem);
+  line-height: 1.45;
+}
+
+.biopsy-hero-facts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+  max-width: 440px;
+}
+
+.biopsy-hero-facts span,
+.biopsy-stage-topbar span,
+.biopsy-step-meta span,
+.biopsy-mri-panel figcaption span,
+.biopsy-ar-note,
+.biopsy-source-line {
+  border: 1px solid var(--biopsy-line);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--biopsy-muted);
+  padding: 6px 8px;
+  font-size: 0.78rem;
+  font-weight: 760;
+}
+
+html.light .biopsy-hero-facts span,
+html.light .biopsy-stage-topbar span,
+html.light .biopsy-step-meta span,
+html.light .biopsy-mri-panel figcaption span,
+html.light .biopsy-ar-note,
+html.light .biopsy-source-line,
+html.reading .biopsy-hero-facts span,
+html.reading .biopsy-stage-topbar span,
+html.reading .biopsy-step-meta span,
+html.reading .biopsy-mri-panel figcaption span,
+html.reading .biopsy-ar-note,
+html.reading .biopsy-source-line {
+  background: rgba(10, 76, 84, 0.06);
+}
+
+.biopsy-simulator {
+  border: 1px solid var(--biopsy-line);
+  border-radius: 10px;
+  background: rgba(4, 12, 14, 0.54);
+  box-shadow: 0 24px 80px var(--biopsy-shadow);
+  overflow: hidden;
+}
+
+html.light .biopsy-simulator,
+html.reading .biopsy-simulator {
+  background: rgba(255, 255, 255, 0.74);
+}
+
+.biopsy-grid {
+  display: grid;
+  grid-template-columns: minmax(520px, 1fr) minmax(310px, 0.45fr) minmax(330px, 0.45fr);
+  min-height: min(860px, calc(100dvh - 190px));
+}
+
+.biopsy-player,
+.biopsy-mri-stack,
+.biopsy-panel {
+  min-width: 0;
+}
+
+.biopsy-player {
+  display: grid;
+  grid-template-rows: minmax(420px, 1fr) auto;
+  border-right: 1px solid var(--biopsy-line);
+}
+
+.biopsy-stage {
+  position: relative;
+  min-height: 420px;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(85, 215, 223, 0.13), transparent 44%),
+    linear-gradient(180deg, #091518, #050b0d);
+  overflow: hidden;
+}
+
+html.light .biopsy-stage,
+html.reading .biopsy-stage {
+  background:
+    radial-gradient(circle at 50% 40%, rgba(20, 120, 130, 0.13), transparent 44%),
+    linear-gradient(180deg, #e7f1f0, #d9e7e6);
+}
+
+.biopsy-stage canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+}
+
+.biopsy-stage-topbar,
+.biopsy-status,
+.biopsy-clock,
+.biopsy-empty {
+  position: absolute;
+  z-index: 2;
+}
+
+.biopsy-stage-topbar {
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.biopsy-stage-topbar span:first-child {
+  color: var(--biopsy-ink);
+  background: rgba(18, 31, 34, 0.72);
+}
+
+html.light .biopsy-stage-topbar span:first-child,
+html.reading .biopsy-stage-topbar span:first-child {
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.biopsy-status {
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--biopsy-line);
+  border-radius: 8px;
+  background: rgba(5, 12, 14, 0.76);
+  color: var(--biopsy-ink);
+  padding: 10px 12px;
+  font-weight: 720;
+}
+
+html.light .biopsy-status,
+html.reading .biopsy-status {
+  background: rgba(255, 255, 255, 0.86);
+}
+
+.biopsy-empty {
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--biopsy-muted);
+  font-weight: 760;
+}
+
+.biopsy-empty[hidden] {
+  display: none;
+}
+
+.biopsy-clock {
+  top: 68px;
+  right: 12px;
+  width: 138px;
+  border: 1px solid var(--biopsy-line);
+  border-radius: 8px;
+  background: rgba(4, 12, 14, 0.7);
+  padding: 9px;
+  text-align: center;
+  color: var(--biopsy-muted);
+  font-size: 0.7rem;
+}
+
+html.light .biopsy-clock,
+html.reading .biopsy-clock {
+  background: rgba(255, 255, 255, 0.86);
+}
+
+.biopsy-clock[hidden] {
+  display: none;
+}
+
+.biopsy-clock-title {
+  color: var(--biopsy-ink);
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.biopsy-clock-face {
+  position: relative;
+  width: 84px;
+  height: 84px;
+  margin: 0 auto 6px;
+  border: 1px solid var(--biopsy-line);
+  border-radius: 50%;
+}
+
+.biopsy-clock-face span {
+  position: absolute;
+  color: var(--biopsy-ink);
+  font-size: 0.68rem;
+  font-weight: 800;
+}
+
+.clock-12 { top: 5px; left: 50%; transform: translateX(-50%); }
+.clock-3 { right: 7px; top: 50%; transform: translateY(-50%); }
+.clock-6 { bottom: 5px; left: 50%; transform: translateX(-50%); }
+.clock-9 { left: 7px; top: 50%; transform: translateY(-50%); }
+
+.biopsy-clock-hand {
+  left: 50%;
+  top: 50%;
+  width: 2px;
+  height: 34px;
+  background: var(--biopsy-amber);
+  transform: translate(-50%, -100%);
+  transform-origin: 50% 100%;
+}
+
+.biopsy-depth-countdown {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--biopsy-cyan);
+  font-size: clamp(3rem, 9vw, 8rem);
+  font-weight: 900;
+  text-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+  pointer-events: none;
+}
+
+.biopsy-depth-countdown[hidden] {
+  display: none;
+}
+
+.biopsy-probe-control {
+  display: grid;
+  gap: 9px;
+  padding: 14px;
+  border-top: 1px solid var(--biopsy-line);
+  background: var(--biopsy-panel);
+}
+
+.biopsy-probe-control label,
+.biopsy-slider-row span,
+.biopsy-probe-control output {
+  color: var(--biopsy-muted);
+  font-size: 0.85rem;
+  font-weight: 760;
+}
+
+.biopsy-slider-row {
+  display: grid;
+  grid-template-columns: auto minmax(120px, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+}
+
+input[type="range"] {
+  min-height: 44px;
+  accent-color: var(--biopsy-cyan);
+}
+
+.biopsy-mri-stack {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  border-right: 1px solid var(--biopsy-line);
+  background: rgba(7, 18, 20, 0.68);
+}
+
+html.light .biopsy-mri-stack,
+html.reading .biopsy-mri-stack {
+  background: rgba(244, 249, 248, 0.86);
+}
+
+.biopsy-mri-panel {
+  min-height: 0;
+  margin: 0;
+  display: grid;
+  grid-template-rows: auto minmax(210px, 1fr) auto;
+  gap: 10px;
+  padding: 14px;
+  border-bottom: 1px solid var(--biopsy-line);
+}
+
+.biopsy-mri-panel:last-child {
+  border-bottom: 0;
+}
+
+.biopsy-mri-panel figcaption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+}
+
+.biopsy-mri-panel figcaption strong {
+  color: var(--biopsy-ink);
+  font-size: 1rem;
+}
+
+.biopsy-mri-frame {
+  position: relative;
+  min-height: 210px;
+  border: 1px solid var(--biopsy-line);
+  border-radius: 8px;
+  background: #05090c;
+  overflow: hidden;
+}
+
+html.light .biopsy-mri-frame,
+html.reading .biopsy-mri-frame {
+  background: #d9e2df;
+}
+
+.biopsy-mri-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0.74;
+  filter: grayscale(0.1) contrast(1.05);
+}
+
+.biopsy-mri-overlay,
+.biopsy-sag-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.biopsy-sag-svg {
+  position: relative;
+  display: block;
+}
+
+.biopsy-mri-overlay rect,
+.biopsy-sag-svg rect {
+  fill: rgba(2, 6, 9, 0.38);
+}
+
+html.light .biopsy-mri-overlay rect,
+html.light .biopsy-sag-svg rect,
+html.reading .biopsy-mri-overlay rect,
+html.reading .biopsy-sag-svg rect {
+  fill: rgba(255, 255, 255, 0.18);
+}
+
+.mri-gland,
+.sag-gland {
+  fill: rgba(85, 215, 223, 0.09);
+  stroke: rgba(151, 238, 232, 0.82);
+  stroke-width: 1.8;
+}
+
+.mri-tz,
+.sag-zone {
+  fill: rgba(141, 183, 255, 0.12);
+  stroke: rgba(141, 183, 255, 0.58);
+  stroke-width: 1.2;
+}
+
+.mri-sector {
+  fill: rgba(226, 170, 77, 0.19);
+  stroke: var(--biopsy-amber);
+  stroke-width: 2.4;
+}
+
+.mri-lesion {
+  fill: rgba(236, 102, 130, 0.78);
+  stroke: #fff5f8;
+  stroke-width: 2;
+}
+
+.biopsy-mri-overlay text,
+.biopsy-sag-svg text {
+  fill: var(--biopsy-ink);
+  font-size: 8px;
+  font-weight: 900;
+}
+
+.sag-axis,
+.sag-depth,
+.sag-probe,
+.sag-needle {
+  stroke-linecap: round;
+}
+
+.sag-axis {
+  stroke: rgba(226, 170, 77, 0.8);
+  stroke-width: 2;
+}
+
+.sag-depth {
+  stroke: var(--biopsy-cyan);
+  stroke-width: 3;
+  stroke-dasharray: 4 3;
+}
+
+.sag-probe {
+  stroke: rgba(255, 255, 255, 0.78);
+  stroke-width: 6;
+}
+
+html.light .sag-probe,
+html.reading .sag-probe {
+  stroke: rgba(21, 41, 48, 0.72);
+}
+
+.sag-needle {
+  stroke: var(--biopsy-amber);
+  stroke-width: 2.2;
+}
+
+.biopsy-core-line {
+  stroke: var(--biopsy-green);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  opacity: 0.9;
+}
+
+.biopsy-core-dot {
+  fill: var(--biopsy-green);
+  stroke: rgba(255, 255, 255, 0.9);
+  stroke-width: 1.2;
+}
+
+.biopsy-mri-caption {
+  margin: 0;
+  color: var(--biopsy-muted);
+  font-size: 0.8rem;
+  line-height: 1.35;
+}
+
+.biopsy-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px;
+  background: var(--biopsy-panel);
+  overflow: auto;
+}
+
+.biopsy-card {
+  border: 1px solid var(--biopsy-line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.045);
+  padding: 13px;
+}
+
+html.light .biopsy-card,
+html.reading .biopsy-card {
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.biopsy-technique-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 10px;
+}
+
+.biopsy-technique-card strong {
+  display: block;
+  color: var(--biopsy-ink);
+  font-size: 1.05rem;
+}
+
+.biopsy-technique-grid,
+.biopsy-control-grid,
+.biopsy-toggle-grid {
+  display: grid;
+  gap: 8px;
+}
+
+.biopsy-technique-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.biopsy-control-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.biopsy-toggle-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 10px;
+}
+
+button,
+.biopsy-ar-actions a {
+  min-height: 44px;
+  border: 1px solid var(--biopsy-line);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--biopsy-ink);
+  padding: 8px 11px;
+  font: inherit;
+  font-weight: 780;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+button:hover,
+.biopsy-ar-actions a:hover {
+  border-color: rgba(85, 215, 223, 0.7);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--biopsy-amber);
+  outline-offset: 3px;
+}
+
+button.is-active,
+button[aria-pressed="true"] {
+  background: rgba(85, 215, 223, 0.18);
+  border-color: rgba(85, 215, 223, 0.7);
+  color: var(--biopsy-ink);
+}
+
+button.primary,
+.biopsy-take-core,
+.biopsy-ar-actions .primary {
+  background: var(--biopsy-cyan);
+  color: #061113;
+  border-color: transparent;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.biopsy-step-card h2,
+.biopsy-sampling-head h2,
+.biopsy-ar-block h2 {
+  margin: 0;
+  color: var(--biopsy-ink);
+  font-size: clamp(1.15rem, 1.4vw, 1.5rem);
+  line-height: 1.12;
+  letter-spacing: 0;
+}
+
+.biopsy-step-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.biopsy-step-grid {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.biopsy-step-grid div {
+  border-left: 3px solid var(--biopsy-cyan);
+  background: rgba(255, 255, 255, 0.045);
+  padding: 9px 10px;
+}
+
+html.light .biopsy-step-grid div,
+html.reading .biopsy-step-grid div {
+  background: rgba(9, 91, 99, 0.055);
+}
+
+.biopsy-step-grid span {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--biopsy-amber);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.68rem;
+  font-weight: 900;
+}
+
+.biopsy-step-grid p {
+  margin: 0;
+  color: var(--biopsy-muted);
+  font-size: 0.91rem;
+  line-height: 1.4;
+}
+
+.biopsy-progress-rail {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.biopsy-progress-dot {
+  min-height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.biopsy-progress-dot.is-done {
+  background: var(--biopsy-green);
+}
+
+.biopsy-progress-dot.is-current {
+  background: var(--biopsy-amber);
+}
+
+.biopsy-sampling-card[hidden] {
+  display: none;
+}
+
+.biopsy-sampling-head {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.biopsy-sampling-head strong {
+  color: var(--biopsy-green);
+  font-size: 1.25rem;
+}
+
+.biopsy-zone-chips {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.biopsy-zone-chip {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  border: 1px solid var(--biopsy-line);
+  border-radius: 6px;
+  padding: 8px;
+  color: var(--biopsy-muted);
+  font-weight: 800;
+  min-height: 44px;
+}
+
+.biopsy-zone-chip.is-active {
+  border-color: var(--biopsy-amber);
+  background: rgba(226, 170, 77, 0.13);
+  color: var(--biopsy-ink);
+}
+
+.biopsy-zone-chip.is-complete {
+  border-color: rgba(92, 224, 165, 0.72);
+  background: rgba(92, 224, 165, 0.1);
+}
+
+.biopsy-sampling-prompt,
+.biopsy-summary {
+  margin: 0 0 10px;
+  color: var(--biopsy-muted);
+  line-height: 1.4;
+}
+
+.biopsy-summary {
+  margin-top: 10px;
+  border-top: 1px solid var(--biopsy-line);
+  padding-top: 10px;
+  color: var(--biopsy-ink);
+}
+
+.biopsy-source-line {
+  margin: auto 0 0;
+  display: block;
+  line-height: 1.35;
+}
+
+.biopsy-ar-block {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(330px, 0.52fr);
+  gap: 18px;
+  align-items: stretch;
+  margin: 22px 0 4px;
+  border: 1px solid var(--biopsy-line);
+  border-radius: 10px;
+  background: var(--biopsy-panel);
+  padding: clamp(14px, 2vw, 22px);
+}
+
+.biopsy-ar-block p {
+  color: var(--biopsy-muted);
+  line-height: 1.45;
+}
+
+.biopsy-ar-viewer-card {
+  display: grid;
+  grid-template-rows: minmax(260px, 1fr) auto auto;
+  gap: 10px;
+  min-height: 360px;
+}
+
+model-viewer {
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+  border: 1px solid var(--biopsy-line);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 50% 36%, rgba(85, 215, 223, 0.12), transparent 64%),
+    #071012;
+}
+
+.biopsy-ar-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.biopsy-ar-status {
+  margin: 0;
+  color: var(--biopsy-muted);
+  font-size: 0.86rem;
+}
+
+@media (max-width: 1240px) {
+  .biopsy-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(310px, 0.58fr);
+  }
+
+  .biopsy-panel {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 1px solid var(--biopsy-line);
+  }
+
+  .biopsy-source-line {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .biopsy-hero,
+  .biopsy-grid,
+  .biopsy-ar-block {
+    grid-template-columns: 1fr;
+  }
+
+  .biopsy-hero h1 {
+    max-width: 100%;
+  }
+
+  .biopsy-hero-facts {
+    justify-content: flex-start;
+  }
+
+  .biopsy-player,
+  .biopsy-mri-stack {
+    border-right: 0;
+    border-bottom: 1px solid var(--biopsy-line);
+  }
+
+  .biopsy-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .biopsy-stage {
+    min-height: 58dvh;
+  }
+
+  .biopsy-mri-stack {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+
+  .biopsy-mri-panel {
+    border-bottom: 0;
+    border-right: 1px solid var(--biopsy-line);
+  }
+
+  .biopsy-mri-panel:last-child {
+    border-right: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .biopsy-main {
+    padding: 10px;
+  }
+
+  .biopsy-hero {
+    padding-top: 16px;
+  }
+
+  .biopsy-hero h1 {
+    font-size: 2rem;
+    line-height: 1.03;
+  }
+
+  .biopsy-grid {
+    min-height: 0;
+  }
+
+  .biopsy-stage {
+    min-height: 62dvh;
+  }
+
+  .biopsy-stage-topbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .biopsy-clock {
+    top: 112px;
+    width: 126px;
+  }
+
+  .biopsy-slider-row,
+  .biopsy-mri-stack,
+  .biopsy-zone-chips,
+  .biopsy-control-grid,
+  .biopsy-toggle-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .biopsy-mri-panel {
+    border-right: 0;
+    border-bottom: 1px solid var(--biopsy-line);
+  }
+
+  .biopsy-mri-panel:last-child {
+    border-bottom: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+html.a11y-reduce-motion *,
+html.a11y-reduce-motion *::before,
+html.a11y-reduce-motion *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  scroll-behavior: auto !important;
+  transition-duration: 0.001ms !important;
+}

@@ -1,1 +1,0 @@
-const e="/prostateview/";function n(t){const i=t.trim();if(!i||i===".")return"/";const s=i.startsWith("/")?i:`/${i}`;return(s.endsWith("/")?s:`${s}/`).replace(/\/{2,}/g,"/")}const r=n(e);function c(t){return t?/^[a-z][a-z0-9+.-]*:/i.test(t)||t.startsWith("//")||t.startsWith("#")||r==="/"||t.startsWith(r)?t:t.startsWith("/")?`${r}${t.slice(1)}`:`${r}${t}`:r}export{c as w};

@@ -1,21 +1,45 @@
 <!DOCTYPE html><html lang="en-GB"> <head>
-    <meta name="robots" content="noindex">
-    <link rel="canonical" href="https://prostateview.com/upload/">
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"><meta name="description" content="Prostate mpMRI to 3D mobile viewer. Research and educational prototype, not a medical device."><meta name="theme-color" content="#0b0d10"><link rel="icon" href="/prostateview/icons/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/prostateview/icons/icon-192.png"><title>Upload - ProstateView</title><link rel="stylesheet" href="/prostateview/_astro/about.hFqiksV5.css"></head> <body> <header class="pv-header"> <a class="pv-logo" href="/prostateview/" aria-label="ProstateView for UroRef"> <img src="/prostateview/icons/uroref-logo.svg" alt="UroRef" width="92" height="26" style="display:block;height:26px;width:auto;"> <span style="display:flex;flex-direction:column;line-height:1.05;"> <span style="font-size:14px;font-weight:600;letter-spacing:-0.01em;">ProstateView</span> <span style="font-size:11px;font-weight:400;letter-spacing:0.02em;color:var(--pv-fg-faint);">by Nity G &middot; ST4 Urology</span> </span> <span class="pv-pill warn" title="Research and educational prototype, not a medical device">research</span> </a> <nav class="pv-nav" aria-label="Primary"> <a href="/prostateview/">Home</a> <a href="/prostateview/cases">Cases</a> <a href="/prostateview/method">Method</a> <a href="/prostateview/upload" aria-current="page">Upload</a> <a href="/prostateview/about">About</a> </nav> </header> <div class="pv-disclaimer" role="note" aria-label="Research disclaimer"> <div>Research and educational prototype. Not a medical device. Not for clinical decision-making.</div> <div style="opacity:0.9;font-weight:500;">Use alongside radiology report, MDT discussion, local protocols and senior clinical judgement.</div> </div> <main> <section style="display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start;"> <div class="pv-card"> <h2 style="margin:0 0 8px;">Upload a DICOM zip</h2> <p class="pv-faint" style="margin:0 0 14px;">Public datasets only (PI-CAI, ProstateX, Promise12, Prostate158). We strip PHI per DICOM PS 3.15 Annex E and log every tag we remove.</p> <div id="dropzone" role="button" tabindex="0" aria-label="Drop a DICOM zip here or click to browse" style="border:1.5px dashed var(--pv-border);border-radius:12px;padding:28px;text-align:center;color:var(--pv-fg-muted);cursor:pointer;"> <strong>Drop a .zip here</strong> <div class="pv-faint" style="margin-top:6px;">or click to browse &middot; max 2048 MB</div> <input id="file" type="file" accept=".zip,application/zip" hidden> </div> <div id="upload-status" style="margin-top:14px;min-height:24px;"></div> <p class="pv-faint" style="margin:14px 0 0;">
+    <meta name="robots" content="noindex"><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"><meta name="description" content="Prostate mpMRI to 3D mobile viewer. Research and educational prototype, not a medical device."><meta name="theme-color" content="#0b0d10"><link rel="manifest" href="/prostateview/manifest.webmanifest"><link rel="icon" href="/prostateview/icons/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/prostateview/icons/icon-192.png"><title>Upload - ProstateView</title><link rel="stylesheet" href="/prostateview/_astro/about.hFqiksV5.css"></head> <body> <header class="pv-header"> <a class="pv-logo" href="/" aria-label="ProstateView for UroRef"> <img src="/prostateview/icons/uroref-logo.svg" alt="UroRef" width="92" height="26" style="display:block;height:26px;width:auto;"> <span style="display:flex;flex-direction:column;line-height:1.05;"> <span style="font-size:14px;font-weight:600;letter-spacing:-0.01em;">ProstateView</span> <span style="font-size:11px;font-weight:400;letter-spacing:0.02em;color:var(--pv-fg-faint);">by Nity G &middot; ST4 Urology</span> </span> <span class="pv-pill warn" title="Research and educational prototype, not a medical device">research</span> </a> <nav class="pv-nav" aria-label="Primary"> <a href="/">Home</a> <a href="/prostateview/cases">Cases</a> <a href="/prostateview/method">Method</a> <a href="/prostateview/upload" aria-current="page">Upload</a> <a href="/prostateview/about">About</a> </nav> </header> <div class="pv-disclaimer" role="note" aria-label="Research disclaimer"> <div>Research and educational prototype. Not a medical device. Not for clinical decision-making.</div> <div style="opacity:0.9;font-weight:500;">Use alongside radiology report, MDT discussion, local protocols and senior clinical judgement.</div> </div> <main> <section style="display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start;"> <div class="pv-card"> <h2 style="margin:0 0 8px;">Upload a DICOM zip</h2> <p class="pv-faint" style="margin:0 0 14px;">Public datasets only (PI-CAI, ProstateX, Promise12, Prostate158). We strip PHI per DICOM PS 3.15 Annex E and log every tag we remove.</p> <div id="dropzone" role="button" tabindex="0" aria-label="Drop a DICOM zip here or click to browse" style="border:1.5px dashed var(--pv-border);border-radius:12px;padding:28px;text-align:center;color:var(--pv-fg-muted);cursor:pointer;"> <strong>Drop a .zip here</strong> <div class="pv-faint" style="margin-top:6px;">or click to browse &middot; max 2048 MB</div> <input id="file" type="file" accept=".zip,application/zip" hidden> </div> <div id="upload-status" style="margin-top:14px;min-height:24px;"></div> <p class="pv-faint" style="margin:14px 0 0;">
 Do not upload real NHS patient data. This is a research prototype.
 </p> </div> <div class="pv-card"> <h2 style="margin:0 0 8px;">Try a sample case</h2> <p class="pv-faint" style="margin:0 0 14px;">Pre-staged cases from public datasets, or a synthetic stand-in if no real imaging is present yet.</p> <div id="samples" class="pv-stack"></div> </div> </section> <p class="pv-faint" style="margin-top:18px;">
 Uploads sit on the backend's local disk and can be wiped from each case page. No PHI is permitted. Exploratory model output, not a clinical diagnosis.
-</p> </main> <nav class="pv-bottom-nav" aria-label="Primary mobile"> <a href="/prostateview/"> <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3 3 10v11h6v-7h6v7h6V10z"></path></svg> <span>Home</span> </a> <a href="/prostateview/cases"> <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 6h16v3H4zm0 5h16v3H4zm0 5h16v3H4z"></path></svg> <span>Cases</span> </a> <a href="/prostateview/case/sample-public-prostate158-groundtruth-demo"> <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 4a8 8 0 1 0 8 8 8 8 0 0 0-8-8m0 14a6 6 0 1 1 6-6 6 6 0 0 1-6 6m0-10a4 4 0 1 0 4 4 4 4 0 0 0-4-4m0 6a2 2 0 1 1 2-2 2 2 0 0 1-2 2"></path></svg> <span>Viewer</span> </a> <a href="/prostateview/method"> <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 2v20h12V2zm10 18H8V4h8z M10 7h4v1.5h-4zm0 3.5h4V12h-4zm0 3.5h4v1.5h-4z"></path></svg> <span>Method</span> </a> <a href="/prostateview/about"> <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5z"></path></svg> <span>Safety</span> </a> </nav> <footer>
+</p> </main> <nav class="pv-bottom-nav" aria-label="Primary mobile"> <a href="/"> <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3 3 10v11h6v-7h6v7h6V10z"></path></svg> <span>Home</span> </a> <a href="/prostateview/cases"> <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 6h16v3H4zm0 5h16v3H4zm0 5h16v3H4z"></path></svg> <span>Cases</span> </a> <a href="/prostateview/case/sample-public-prostate158-groundtruth-demo"> <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 4a8 8 0 1 0 8 8 8 8 0 0 0-8-8m0 14a6 6 0 1 1 6-6 6 6 0 0 1-6 6m0-10a4 4 0 1 0 4 4 4 4 0 0 0-4-4m0 6a2 2 0 1 1 2-2 2 2 0 0 1-2 2"></path></svg> <span>Viewer</span> </a> <a href="/prostateview/method"> <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 2v20h12V2zm10 18H8V4h8z M10 7h4v1.5h-4zm0 3.5h4V12h-4zm0 3.5h4v1.5h-4z"></path></svg> <span>Method</span> </a> <a href="/prostateview/about"> <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5z"></path></svg> <span>Safety</span> </a> </nav> <footer>
 Public datasets only. PHI is stripped on every upload. See
 <a href="/prostateview/about">About</a> and the disclaimer above.
 <div style="margin-top:6px;color:var(--pv-fg-faint);">
 Built by Nityanandan G (ST4 Urology, Mersey Deanery) for the UroRef Companion Viewer programme. MIT licensed.
 </div> <div style="margin-top:6px;color:var(--pv-fg-faint);">
 &copy; 2026 Nityanandan G.
-</div> </footer>  </body> </html> <script type="module">const apiBase = "http://localhost:8000";
+</div> </footer> <script>
+      // Retire the old offline cache. Managed hospital browsers/proxies can
+      // otherwise keep stale JS/CSS around after deploys.
+      (function () {
+        if (!("serviceWorker" in navigator)) return;
+        window.addEventListener("load", function () {
+          var hadController = !!navigator.serviceWorker.controller;
+          Promise.all([
+            navigator.serviceWorker.getRegistrations()
+              .then(function (regs) { return Promise.all(regs.map(function (reg) { return reg.unregister(); })); })
+              .catch(function () {}),
+            "caches" in window
+              ? caches.keys()
+                .then(function (keys) {
+                  return Promise.all(keys.filter(function (key) { return key.indexOf("pv-") === 0; }).map(function (key) { return caches.delete(key); }));
+                })
+                .catch(function () {})
+              : Promise.resolve(),
+          ]).then(function () {
+            if (!hadController) return;
+            try {
+              if (sessionStorage.getItem("pv-sw-retired") === "1") return;
+              sessionStorage.setItem("pv-sw-retired", "1");
+            } catch (e) {}
+            location.reload();
+          });
+        });
+      })();
+    </script> </body> </html> <script type="module">const apiBase = "http://localhost:8000";
 const maxUploadMb = 2048;
-const routeBase = "/prostateview/";
-const demoCasesIndexUrl = "/prostateview/demo-cases/index.json";
 
   const dz = document.getElementById("dropzone");
   const fi = document.getElementById("file");
@@ -87,7 +111,7 @@ const demoCasesIndexUrl = "/prostateview/demo-cases/index.json";
       }
       const { data } = await r.json();
       setStatus(`uploaded, redirecting to case ${escapeHtml(data.case_id)}...`, "ok");
-      location.href = `${routeBase}case/${data.case_id}`;
+      location.href = `/prostateview/case/${data.case_id}`;
     } catch (e) {
       setStatus(`error: ${escapeHtml(e.message)} - is the backend reachable at <code>${escapeHtml(apiBase)}</code>?`, "error");
     }
@@ -99,7 +123,7 @@ const demoCasesIndexUrl = "/prostateview/demo-cases/index.json";
       // Prefer the static index that the build ships in /public/demo-cases.
       // Fall back to the backend /samples API only if the static index is missing.
       let data;
-      const staticRes = await fetch(demoCasesIndexUrl).catch(() => null);
+      const staticRes = await fetch(`/prostateview/demo-cases/index.json`).catch(() => null);
       if (staticRes && staticRes.ok) {
         data = await staticRes.json();
       } else {
@@ -122,7 +146,7 @@ const demoCasesIndexUrl = "/prostateview/demo-cases/index.json";
       data.samples.sort((a, b) => order(a) - order(b));
       for (const s of data.samples) {
         const a = document.createElement("a");
-        a.href = `${routeBase}case/sample-${encodeURIComponent(s.id)}`;
+        a.href = `/prostateview/case/sample-${encodeURIComponent(s.id)}`;
         a.style.cssText = "border:1px solid var(--pv-border);border-radius:10px;padding:12px;display:block;color:inherit;text-decoration:none;";
         const pills = [];
         if (s.synthetic) {

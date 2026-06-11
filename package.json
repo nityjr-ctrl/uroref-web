@@ -10,7 +10,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "build:assets": "node scripts/build-assets.mjs"
+    "build:assets": "node scripts/build-assets.mjs",
+    "sync:prostateview": "node scripts/sync-prostateview-mirror.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^5.0.3",

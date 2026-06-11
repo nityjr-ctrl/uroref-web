@@ -1,8 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <script>
+<!DOCTYPE html><html lang="en-GB"> <head>
+    <meta name="robots" content="noindex"><meta charset="UTF-8"><script>
       /* set theme + accessibility prefs before paint to avoid a flash */
       (function(){try{
         var d=document.documentElement;
@@ -13,72 +10,9 @@
           if(localStorage.getItem('pv-a11y-'+k)==='1')d.classList.add('a11y-'+k);
         });
       }catch(e){}})();
-    </script>
-    <meta name="robots" content="noindex">
-    <link rel="canonical" href="https://prostateview.com/v2/biopsy-ar/">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Teaching-only transperineal prostate biopsy simulator with dual live MRI panels and a probe-driven sextant sampling plan.">
-    <meta name="theme-color" content="#0f172a">
-    <link rel="icon" href="/prostateview/icons/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/prostateview/icons/icon-192.png">
-    <title>Biopsy Simulator | ProstateView</title>
-    <link rel="stylesheet" href="/prostateview/_astro/_id_.YTTlSa5y.css">
-    <link rel="stylesheet" href="/prostateview/v2/biopsy-ar/assets/biopsy-ar.css">
-  </head>
-  <body class="pv2-body biopsy-ar-body">
-    <header class="pv2-header">
-      <a class="pv2-brand" href="/prostateview/v2" aria-label="ProstateView home">
-        <span class="pv2-brand-mark" aria-hidden="true">
-          <img class="pv2-brand-logo" src="/prostateview/logo.png" alt="" width="120" height="120">
-        </span>
-        <span class="pv2-wordmark">Prostate<span class="pv2-wordmark-accent">View</span></span>
-      </a>
-      <nav class="pv2-nav" aria-label="Primary">
-        <a href="/prostateview/v2"> Home </a><a href="/prostateview/v2/learn"> Learn </a><a href="/prostateview/v2/safety"> Safety </a><a href="/prostateview/v2/cases/#curated-mri"> Case library </a><a href="/prostateview/v2/poster"> Poster </a><a href="/prostateview/v2/turp-ar"> TURP sim </a><a href="/prostateview/v2/biopsy-ar" aria-current="page"> Biopsy sim </a><a class="pv2-uroref-link" href="https://uroref.com" target="_blank" rel="noopener"> UroRef </a>
-        <div class="pv2-a11y">
-          <button type="button" class="pv2-a11y-btn" data-a11y-toggle aria-label="Display and accessibility settings" aria-expanded="false">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
-          </button>
-          <div class="pv2-a11y-panel" data-a11y-panel hidden>
-            <h3>Theme</h3>
-            <div class="pv2-a11y-theme" role="group" aria-label="Theme">
-              <button type="button" data-theme-set="dark">Dark</button>
-              <button type="button" data-theme-set="light">Light</button>
-              <button type="button" data-theme-set="reading">Reading</button>
-            </div>
-            <h3>Accessibility</h3>
-            <label class="pv2-a11y-opt"><input type="checkbox" data-a11y="dyslexia"> Dyslexia mode</label>
-            <label class="pv2-a11y-opt"><input type="checkbox" data-a11y="large-text"> Large text</label>
-            <label class="pv2-a11y-opt"><input type="checkbox" data-a11y="reduce-motion"> Less motion</label>
-          </div>
-        </div>
-      </nav>
-    </header>
-
-    <div class="pv2-safety-strip biopsy-safety-strip" role="note">
-      <svg class="pv2-safety-svg" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12 3l7 3v5c0 4.4-2.8 8.4-7 10-4.2-1.6-7-5.6-7-10V6l7-3z"></path>
-        <path d="M8.5 12.2l2.2 2.2 4.8-5"></path>
-      </svg>
-      <span>Teaching only. Not for diagnosis, PI-RADS, biopsy planning or navigation.</span>
-    </div>
-
-    <main class="pv2-main biopsy-main">
-      <section class="biopsy-hero" aria-labelledby="biopsy-title">
-        <div>
-          <p class="biopsy-eyebrow">Guided teaching simulator</p>
-          <h1 id="biopsy-title">Transperineal biopsy under local anaesthetic</h1>
-          <p class="biopsy-copy">Probe-driven gland orientation, dual live MRI panels, and a dynamic 14-core sextant plan.</p>
-        </div>
-        <div class="biopsy-hero-facts" aria-label="Simulator facts">
-          <span>Operative lithotomy view</span>
-          <span>Dual MRI panels</span>
-          <span>14-core sextant engine</span>
-        </div>
-      </section>
-
-      <section class="biopsy-simulator" data-biopsy-sim aria-label="Teaching-only biopsy simulator">
-        <script type="application/json" data-biopsy-data>{
+    </script><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"><meta name="description" content="Teaching-only transperineal prostate biopsy simulator with dual live MRI panels and a probe-driven sextant sampling plan."><meta name="theme-color" content="#0f172a"><link rel="canonical" href="https://prostateview.com/v2/biopsy-ar/"><link rel="manifest" href="/prostateview/manifest-v2.webmanifest"><link rel="icon" href="/prostateview/icons/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/prostateview/icons/icon-192.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet"><title>Biopsy Simulator | ProstateView</title><!-- Social sharing previews (WhatsApp / Slack / LinkedIn / X) --><meta property="og:type" content="website"><meta property="og:site_name" content="ProstateView"><meta property="og:title" content="Biopsy Simulator | ProstateView"><meta property="og:description" content="Teaching-only transperineal prostate biopsy simulator with dual live MRI panels and a probe-driven sextant sampling plan."><meta property="og:url" content="https://prostateview.com/v2/biopsy-ar/"><meta property="og:image" content="https://prostateview.com/social-preview.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Biopsy Simulator | ProstateView"><meta name="twitter:description" content="Teaching-only transperineal prostate biopsy simulator with dual live MRI panels and a probe-driven sextant sampling plan."><meta name="twitter:image" content="https://prostateview.com/social-preview.png"><link rel="stylesheet" href="/prostateview/_astro/about.hFqiksV5.css">
+<link rel="stylesheet" href="/prostateview/_astro/biopsy-ar.DZw6UEoW.css">
+<link rel="stylesheet" href="/prostateview/_astro/biopsy-ar.DcBpF_Qy.css"></head> <body class="pv2-body"> <header class="pv2-header"> <a class="pv2-brand" href="/prostateview/v2" aria-label="ProstateView home"> <span class="pv2-brand-mark" aria-hidden="true"> <img class="pv2-brand-logo" src="/prostateview/logo.png" alt="" width="120" height="120"> </span> <span class="pv2-wordmark">Prostate<span class="pv2-wordmark-accent">View</span></span> </a> <nav class="pv2-nav" aria-label="Primary"> <a href="/prostateview/v2"> Home </a><a href="/prostateview/v2/learn"> Learn </a><a href="/prostateview/v2/safety"> Safety </a><a href="/prostateview/v2/cases/#curated-mri"> Case library </a><a href="/prostateview/v2/poster"> Poster </a><a href="/prostateview/v2/turp-ar"> TURP sim </a><a href="/prostateview/v2/biopsy-ar" aria-current="page"> Biopsy sim </a><a class="pv2-uroref-link" href="https://uroref.com" target="_blank" rel="noopener"> UroRef </a> <div class="pv2-a11y"> <button type="button" class="pv2-a11y-btn" data-a11y-toggle aria-label="Display and accessibility settings" aria-expanded="false"> <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg> </button> <div class="pv2-a11y-panel" data-a11y-panel hidden> <h3>Theme</h3> <div class="pv2-a11y-theme" role="group" aria-label="Theme"> <button type="button" data-theme-set="dark">Dark</button> <button type="button" data-theme-set="light">Light</button> <button type="button" data-theme-set="reading">Reading</button> </div> <h3>Accessibility</h3> <label class="pv2-a11y-opt"><input type="checkbox" data-a11y="dyslexia"> Dyslexia mode</label> <label class="pv2-a11y-opt"><input type="checkbox" data-a11y="large-text"> Large text</label> <label class="pv2-a11y-opt"><input type="checkbox" data-a11y="reduce-motion"> Less motion</label> </div> </div> </nav> </header> <div class="pv2-safety-strip" role="note"> <svg class="pv2-safety-svg" viewBox="0 0 24 24" aria-hidden="true"> <path d="M12 3l7 3v5c0 4.4-2.8 8.4-7 10-4.2-1.6-7-5.6-7-10V6l7-3z"></path> <path d="M8.5 12.2l2.2 2.2 4.8-5"></path> </svg> <span>Teaching only. Not for diagnosis, PI&#8209;RADS, biopsy planning or navigation.</span> </div> <main class="pv2-main">  <div class="biopsy-main"> <section class="biopsy-hero" aria-labelledby="biopsy-title"> <div> <p class="biopsy-eyebrow">Guided teaching simulator</p> <h1 id="biopsy-title">Transperineal biopsy under local anaesthetic</h1> <p class="biopsy-copy">Probe-driven gland orientation, dual live MRI panels, and a dynamic 14-core sextant plan.</p> </div> <div class="biopsy-hero-facts" aria-label="Simulator facts"> <span>Operative lithotomy view</span> <span>Dual MRI panels</span> <span>14-core sextant engine</span> </div> </section> <section class="biopsy-simulator" data-biopsy-sim aria-label="Teaching-only biopsy simulator"> <script type="application/json" data-biopsy-data>{
           "case": {
             "id": "biopsy-left-anterior-demo",
             "tier": 1,
@@ -92,7 +26,92 @@
             "lateralityVerified": "patient left",
             "assets": {
               "mriSource": "/prostateview/demo-cases/pv-case-006/preview/t2_full_slice.png",
-              "mriAxial": "/prostateview/demo-cases/pv-case-006/preview/t2_full_slice.png",
+              "mriAxialStack": [
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-00.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-01.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-02.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-03.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-04.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-05.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-06.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-07.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-08.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-09.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-10.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-11.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-12.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-13.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-14.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-15.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-16.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-17.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-18.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-19.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-20.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-21.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-22.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-23.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-24.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-25.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-26.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-27.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-28.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-29.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-30.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-31.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-32.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-33.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-34.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-35.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-36.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-37.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-38.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-39.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-40.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-41.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-42.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-43.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-44.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-45.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-46.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-47.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-48.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-49.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-50.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-51.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-52.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-53.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-54.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-55.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-56.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-57.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-58.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-59.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-60.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-61.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-62.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-63.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-64.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-65.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-66.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-67.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-68.png",
+                "/prostateview/demo-cases/pv-case-006/preview/axial-stack/slice-69.png"
+              ],
+              "axialLevelMap": {
+                "order": "base-to-apex",
+                "baseIndex": 0,
+                "midIndex": 35,
+                "apexIndex": 69,
+                "lesionIndexRange": [48, 54],
+                "lesionStackIndices": [48, 49, 50, 51, 52, 53, 54],
+                "sourceSliceIndex": 6,
+                "sourceStackIndex": 17,
+                "sourceFrameIndex": 51,
+                "trueSourceSliceCount": 24,
+                "framesPerSourceInterval": 3,
+                "interpolation": "linear display interpolation between adjacent true axial source slices"
+              },
               "mriSagittal": null,
               "lesionZoom": "/prostateview/demo-cases/pv-case-006/preview/t2_lesion_zoom.png",
               "modelGlb": "/prostateview/demo-cases/pv-case-006/model.glb",
@@ -132,197 +151,54 @@
             "systematicCores": 2
           },
           "sourceFooter": "Source context: StatPearls biopsy preparation and Journal of Endourology transperineal technique reviews, adapted into schematic teaching copy."
-        }</script>
-
-        <div class="biopsy-grid" data-biopsy-shell>
-          <section class="biopsy-player" aria-label="3D guided player">
-            <div class="biopsy-stage" data-biopsy-stage>
-              <canvas data-biopsy-canvas aria-label="3D prostate gland with schematic TRUS probe, needle and sextant grid"></canvas>
-              <div class="biopsy-stage-topbar">
-                <span data-biopsy-technique-label>TP under LA</span>
-                <span>schematic teaching aids, not navigation</span>
-              </div>
-              <div class="biopsy-clock" data-clock-overlay aria-label="RLBA clock-face orientation">
-                <div class="biopsy-clock-title">12 anterior</div>
-                <div class="biopsy-clock-face">
-                  <span class="clock-12">12</span><span class="clock-3">3</span><span class="clock-6">6</span><span class="clock-9">9</span>
-                  <span class="biopsy-clock-hand"></span>
-                </div>
-                <div>RLBA: A apex, B base, R patient right, L patient left</div>
-              </div>
-              <div class="biopsy-depth-countdown" data-intro-countdown hidden aria-hidden="true">2D</div>
-              <div class="biopsy-status" data-biopsy-status aria-live="polite">Simulator loading.</div>
-              <div class="biopsy-empty" data-biopsy-loading>3D player loads when visible.</div>
-            </div>
-            <div class="biopsy-probe-control" aria-label="Probe depth control">
-              <label for="biopsy-depth">Probe depth</label>
-              <div class="biopsy-slider-row">
-                <span>Out, apex</span>
-                <input id="biopsy-depth" type="range" min="0" max="1000" value="300" step="1" data-probe-slider aria-label="Probe depth, out apex to in base">
-                <span>In, base</span>
-              </div>
-              <output data-probe-output for="biopsy-depth">Apex-side sweep</output>
-            </div>
-          </section>
-
-          <aside class="biopsy-mri-stack" aria-label="Live MRI views">
-            <figure class="biopsy-mri-panel" data-mri-panel="axial">
-              <figcaption>
-                <strong>Live axial</strong>
-                <span data-axial-level>APEX</span>
-              </figcaption>
-              <div class="biopsy-mri-frame">
-                <img data-axial-img src="/prostateview/demo-cases/pv-case-006/preview/t2_full_slice.png" alt="Axial MRI teaching slice for the selected public case" loading="lazy" decoding="async">
-                <svg viewBox="0 0 120 120" class="biopsy-mri-overlay" aria-label="Axial slice overlay">
-                  <rect width="120" height="120"></rect>
-                  <ellipse cx="60" cy="60" rx="43" ry="34" class="mri-gland"></ellipse>
-                  <ellipse cx="60" cy="60" rx="22" ry="18" class="mri-tz"></ellipse>
-                  <path data-axial-sector d="" class="mri-sector"></path>
-                  <circle data-axial-lesion cx="78" cy="42" r="6" class="mri-lesion"></circle>
-                  <g data-axial-cores></g>
-                  <text x="60" y="12" text-anchor="middle">ANT</text>
-                  <text x="60" y="116" text-anchor="middle">POST</text>
-                  <text x="5" y="64">R</text>
-                  <text x="110" y="64">L</text>
-                </svg>
-              </div>
-              <p class="biopsy-mri-caption">Patient right on panel left, patient left on panel right. Lesion is verified patient left.</p>
-            </figure>
-
-            <figure class="biopsy-mri-panel" data-mri-panel="sagittal">
-              <figcaption>
-                <strong>Live sagittal</strong>
-                <span data-sag-source-label>schematic, not a source image</span>
-              </figcaption>
-              <div class="biopsy-mri-frame biopsy-sag-frame">
-                <!-- TODO: replace with sagittal source. -->
-                <svg viewBox="0 0 180 130" class="biopsy-sag-svg" aria-label="Schematic reconstructed sagittal view">
-                  <rect width="180" height="130"></rect>
-                  <path d="M32 62 C34 28 60 16 91 18 C126 20 151 39 153 65 C151 93 125 112 90 113 C57 112 34 94 32 62 Z" class="sag-gland"></path>
-                  <path d="M50 68 C64 49 86 42 113 48 C98 58 87 73 82 97 C66 92 55 82 50 68 Z" class="sag-zone"></path>
-                  <line x1="28" y1="28" x2="155" y2="28" class="sag-axis"></line>
-                  <text x="28" y="20">BASE</text>
-                  <text x="136" y="20">APEX</text>
-                  <text x="88" y="126" text-anchor="middle">POST</text>
-                  <text x="88" y="12" text-anchor="middle">ANT</text>
-                  <line data-sag-depth x1="94" y1="18" x2="94" y2="114" class="sag-depth"></line>
-                  <line data-sag-probe x1="156" y1="96" x2="94" y2="78" class="sag-probe"></line>
-                  <line data-sag-needle x1="150" y1="102" x2="80" y2="48" class="sag-needle"></line>
-                  <circle data-sag-lesion cx="82" cy="45" r="7" class="mri-lesion"></circle>
-                  <g data-sag-cores></g>
-                </svg>
-              </div>
-              <p class="biopsy-mri-caption">Schematic reconstruction from the public axial case. Base-to-apex marker tracks probe depth.</p>
-            </figure>
-          </aside>
-
-          <aside class="biopsy-panel" aria-label="Biopsy simulator controls">
-            <section class="biopsy-card biopsy-technique-card">
-              <div>
-                <p class="biopsy-eyebrow">Technique</p>
-                <strong data-technique-name>TP under LA</strong>
-              </div>
-              <div class="biopsy-technique-grid" role="group" aria-label="Choose technique">
-                <button type="button" class="is-active" data-technique="tp" aria-pressed="true">TP under LA</button>
-                <button type="button" data-technique="trus" aria-pressed="false">TRUS</button>
-              </div>
-            </section>
-
-            <section class="biopsy-card biopsy-step-card" aria-live="polite">
-              <div class="biopsy-step-meta">
-                <span data-step-counter>Step 1 of 6</span>
-                <span data-step-phase>Preparation</span>
-              </div>
-              <h2 data-step-title>Prep patient.</h2>
-              <div class="biopsy-step-grid">
-                <div><span>Objective</span><p data-step-objective>Position, asepsis, consent confirmed, scope and needle ready.</p></div>
-                <div><span>Safety</span><p data-step-safety>Confirm teaching-only framing and check the sterile field before any probe movement.</p></div>
-                <div><span>Common error</span><p data-step-error>Starting the spatial sequence before the patient, kit and consent checks are complete.</p></div>
-              </div>
-              <div class="biopsy-progress-rail" data-progress-rail aria-label="Step progress"></div>
-            </section>
-
-            <section class="biopsy-card biopsy-controls-card" aria-label="Playback controls">
-              <div class="biopsy-control-grid">
-                <button type="button" data-prev-step>Previous</button>
-                <button type="button" data-auto-step aria-pressed="false">Auto-play</button>
-                <button type="button" class="primary" data-next-step>Next</button>
-                <button type="button" data-reset-step>Reset</button>
-              </div>
-              <div class="biopsy-toggle-grid" role="group" aria-label="Overlay toggles">
-                <button type="button" class="is-active" data-toggle="grid" aria-pressed="true">Sextant grid</button>
-                <button type="button" class="is-active" data-toggle="needle" aria-pressed="true">Needle path</button>
-                <button type="button" class="is-active" data-toggle="cores" aria-pressed="true">Core-track map</button>
-                <button type="button" class="is-active" data-toggle="labels" aria-pressed="true">Focus labels</button>
-                <button type="button" class="is-active" data-toggle="clock" aria-pressed="true">RLBA clock</button>
-              </div>
-            </section>
-
-            <section class="biopsy-card biopsy-sampling-card" data-sampling-card hidden aria-label="Core sampling plan">
-              <div class="biopsy-sampling-head">
-                <div>
-                  <p class="biopsy-eyebrow">Step 6</p>
-                  <h2>Core sampling plan</h2>
-                </div>
-                <strong data-total-counter>0 / 14</strong>
-              </div>
-              <div class="biopsy-zone-chips" data-zone-chips></div>
-              <p class="biopsy-sampling-prompt" data-sampling-prompt aria-live="polite">Complete targeted cores in left anterior PZ first.</p>
-              <button type="button" class="biopsy-take-core" data-take-core>Take core in active sextant</button>
-              <div class="biopsy-summary" data-sampling-summary hidden></div>
-            </section>
-
-            <p class="biopsy-source-line" data-source-footer>Source context loading.</p>
-          </aside>
-        </div>
-      </section>
-
-      <section class="biopsy-ar-block" data-biopsy-ar-block aria-label="Secondary AR scaffold">
-        <div>
-          <p class="biopsy-eyebrow">Secondary scaffold</p>
-          <h2>Room-placement AR</h2>
-          <p>Secondary AR scaffold for room placement. The guided teaching stays in the 3D player plus MRI panels.</p>
-          <p class="biopsy-ar-note">Teaching only. The schematic scaffold is not for registration, biopsy planning or navigation.</p>
-        </div>
-        <div class="biopsy-ar-viewer-card">
-          <!-- TODO: replace with validated mesh. -->
-          <model-viewer
-            id="biopsy-ar-viewer"
-            src="/prostateview/models/biopsy/anatomical-scaffold.glb"
-            ios-src="/prostateview/models/biopsy/anatomical-scaffold.usdz"
-            ar
-            ar-modes="webxr scene-viewer quick-look"
-            camera-controls
-            ar-scale="auto"
-            ar-placement="floor"
-            environment-image="neutral"
-            interaction-prompt="none"
-            exposure="0.9"
-            shadow-intensity="0.35"
-            shadow-softness="0.7"
-            alt="Teaching-only prostate biopsy scaffold with schematic sextant concept"
-          ></model-viewer>
-          <div class="biopsy-ar-actions">
-            <button type="button" class="primary" data-ar-launch>View in AR</button>
-            <a rel="ar" href="/prostateview/models/biopsy/anatomical-scaffold.usdz">iOS Quick Look</a>
-          </div>
-          <p class="biopsy-ar-status" data-ar-status aria-live="polite">AR scaffold loads when this section is visible.</p>
-        </div>
-      </section>
-    </main>
-
-    <nav class="pv2-bottom-nav" aria-label="Primary">
-      <a href="/prostateview/v2"> Home </a><a href="/prostateview/v2/learn"> Learn </a><a href="/prostateview/v2/safety"> Safety </a><a href="/prostateview/v2/cases/#curated-mri"> Case library </a><a href="/prostateview/v2/poster"> Poster </a><a href="/prostateview/v2/turp-ar"> TURP sim </a><a href="/prostateview/v2/biopsy-ar" aria-current="page"> Biopsy sim </a><a href="https://uroref.com" target="_blank" rel="noopener"> UroRef </a>
-    </nav>
-    <footer class="pv2-footer">
-      <div>Education prototype. Public Prostate158 assets.</div>
-      <div class="pv2-footer-uroref">A <a href="https://uroref.com" target="_blank" rel="noopener">UroRef</a> project</div>
-      <div class="pv2-credit">Created by Nity G, Urology ST4</div>
-      <div class="pv2-copyright">&copy; 2026 Nityanandan G.</div>
-    </footer>
-
-    <script src="/prostateview/v2/biopsy-ar/assets/biopsy-ar.js" type="module"></script>
-    <script>
+        }</script> <div class="biopsy-grid" data-biopsy-shell> <section class="biopsy-player" aria-label="3D guided player"> <div class="biopsy-stage" data-biopsy-stage> <canvas data-biopsy-canvas aria-label="3D prostate gland with schematic TRUS probe, needle and sextant grid"></canvas> <div class="biopsy-stage-topbar"> <span data-biopsy-technique-label>TP under LA</span> <span>schematic teaching aids, not navigation</span> </div> <div class="biopsy-clock" data-clock-overlay aria-label="RLBA clock-face orientation"> <div class="biopsy-clock-title">12 anterior</div> <div class="biopsy-clock-face"> <span class="clock-12">12</span><span class="clock-3">3</span><span class="clock-6">6</span><span class="clock-9">9</span> <span class="biopsy-clock-hand"></span> </div> <div>RLBA: A apex, B base, R patient right, L patient left</div> </div> <div class="biopsy-depth-countdown" data-intro-countdown hidden aria-hidden="true">2D</div> <div class="biopsy-status" data-biopsy-status aria-live="polite">Simulator loading.</div> <div class="biopsy-empty" data-biopsy-loading>3D player loads when visible.</div> </div> <div class="biopsy-probe-control" aria-label="Probe depth control"> <label for="biopsy-depth">Probe depth</label> <div class="biopsy-slider-row"> <span>Out, apex</span> <input id="biopsy-depth" type="range" min="0" max="1000" value="300" step="1" data-probe-slider aria-label="Probe depth, out apex to in base"> <span>In, base</span> </div> <output data-probe-output for="biopsy-depth">Apex-side sweep</output> </div> </section> <aside class="biopsy-mri-stack" aria-label="Live MRI views"> <figure class="biopsy-mri-panel" data-mri-panel="axial"> <figcaption> <strong>Live axial</strong> <span data-axial-level>APEX</span> <span data-axial-slice-label>slice 49/70</span> </figcaption> <div class="biopsy-mri-frame"> <img data-axial-img src="/prostateview/demo-cases/pv-case-006/preview/t2_full_slice.png" alt="Axial MRI teaching slice for the selected public case" loading="lazy" decoding="async"> <svg viewBox="0 0 120 120" class="biopsy-mri-overlay" aria-label="Axial slice overlay"> <rect width="120" height="120"></rect> <ellipse cx="60" cy="60" rx="43" ry="34" class="mri-gland"></ellipse> <ellipse cx="60" cy="60" rx="22" ry="18" class="mri-tz"></ellipse> <path data-axial-sector d="" class="mri-sector"></path> <circle data-axial-lesion cx="78" cy="42" r="6" class="mri-lesion"></circle> <g data-axial-cores></g> <text x="60" y="12" text-anchor="middle">ANT</text> <text x="60" y="116" text-anchor="middle">POST</text> <text x="5" y="64">R</text> <text x="110" y="64">L</text> </svg> </div> <p class="biopsy-mri-caption"><span data-axial-stack-note>Depth-linked axial stack, base to apex.</span> Patient right on panel left, patient left on panel right. Lesion is verified patient left.</p> </figure> <figure class="biopsy-mri-panel" data-mri-panel="sagittal"> <figcaption> <strong>Live sagittal</strong> <span data-sag-source-label>schematic, not a source image</span> </figcaption> <div class="biopsy-mri-frame biopsy-sag-frame"> <!-- TODO: replace with sagittal source. --> <svg viewBox="0 0 180 130" class="biopsy-sag-svg" aria-label="Schematic reconstructed sagittal view"> <rect width="180" height="130"></rect> <path d="M32 62 C34 28 60 16 91 18 C126 20 151 39 153 65 C151 93 125 112 90 113 C57 112 34 94 32 62 Z" class="sag-gland"></path> <path d="M50 68 C64 49 86 42 113 48 C98 58 87 73 82 97 C66 92 55 82 50 68 Z" class="sag-zone"></path> <line x1="28" y1="28" x2="155" y2="28" class="sag-axis"></line> <text x="28" y="20">BASE</text> <text x="136" y="20">APEX</text> <text x="88" y="126" text-anchor="middle">POST</text> <text x="88" y="12" text-anchor="middle">ANT</text> <line data-sag-depth x1="94" y1="18" x2="94" y2="114" class="sag-depth"></line> <line data-sag-probe x1="156" y1="96" x2="94" y2="78" class="sag-probe"></line> <line data-sag-needle x1="150" y1="102" x2="80" y2="48" class="sag-needle"></line> <circle data-sag-lesion cx="82" cy="45" r="7" class="mri-lesion"></circle> <g data-sag-cores></g> </svg> </div> <p class="biopsy-mri-caption">Schematic reconstruction from the public axial case. Base-to-apex marker tracks probe depth.</p> </figure> </aside> <aside class="biopsy-panel" aria-label="Biopsy simulator controls"> <section class="biopsy-card biopsy-technique-card"> <div> <p class="biopsy-eyebrow">Technique</p> <strong data-technique-name>TP under LA</strong> </div> <div class="biopsy-technique-grid" role="group" aria-label="Choose technique"> <button type="button" class="is-active" data-technique="tp" aria-pressed="true">TP under LA</button> <button type="button" data-technique="trus" aria-pressed="false">TRUS</button> </div> </section> <section class="biopsy-card biopsy-step-card" aria-live="polite"> <div class="biopsy-step-meta"> <span data-step-counter>Step 1 of 6</span> <span data-step-phase>Preparation</span> </div> <h2 data-step-title>Prep patient.</h2> <div class="biopsy-step-grid"> <div><span>Objective</span><p data-step-objective>Position, asepsis, consent confirmed, scope and needle ready.</p></div> <div><span>Safety</span><p data-step-safety>Confirm teaching-only framing and check the sterile field before any probe movement.</p></div> <div><span>Common error</span><p data-step-error>Starting the spatial sequence before the patient, kit and consent checks are complete.</p></div> </div> <div class="biopsy-progress-rail" data-progress-rail aria-label="Step progress"></div> </section> <section class="biopsy-card biopsy-controls-card" aria-label="Playback controls"> <div class="biopsy-control-grid"> <button type="button" data-prev-step>Previous</button> <button type="button" data-auto-step aria-pressed="false">Auto-play</button> <button type="button" class="primary" data-next-step>Next</button> <button type="button" data-reset-step>Reset</button> </div> <div class="biopsy-toggle-grid" role="group" aria-label="Overlay toggles"> <button type="button" class="is-active" data-toggle="grid" aria-pressed="true">Sextant grid</button> <button type="button" class="is-active" data-toggle="needle" aria-pressed="true">Needle path</button> <button type="button" class="is-active" data-toggle="cores" aria-pressed="true">Core-track map</button> <button type="button" class="is-active" data-toggle="labels" aria-pressed="true">Focus labels</button> <button type="button" class="is-active" data-toggle="clock" aria-pressed="true">RLBA clock</button> </div> </section> <section class="biopsy-card biopsy-sampling-card" data-sampling-card hidden aria-label="Core sampling plan"> <div class="biopsy-sampling-head"> <div> <p class="biopsy-eyebrow">Step 6</p> <h2>Core sampling plan</h2> </div> <strong data-total-counter>0 / 14</strong> </div> <div class="biopsy-zone-chips" data-zone-chips></div> <p class="biopsy-sampling-prompt" data-sampling-prompt aria-live="polite">Complete targeted cores in left anterior PZ first.</p> <button type="button" class="biopsy-take-core" data-take-core>Take core in active sextant</button> <div class="biopsy-summary" data-sampling-summary hidden></div> </section> <p class="biopsy-source-line" data-source-footer>Source context loading.</p> </aside> </div> </section> <script type="module" src="/prostateview/_astro/BiopsyGuidedPlayer.astro_astro_type_script_index_0_lang.BB3F-eyv.js"></script> <section class="biopsy-ar-block" data-biopsy-ar-block aria-label="Secondary AR scaffold"> <div> <p class="biopsy-eyebrow">Secondary scaffold</p> <h2>Room-placement AR</h2> <p>Secondary AR scaffold for room placement. The guided teaching stays in the 3D player plus MRI panels.</p> <p class="biopsy-ar-note">Teaching only. The schematic scaffold is not for registration, biopsy planning or navigation.</p> </div> <div class="biopsy-ar-viewer-card"> <!-- TODO: replace with validated mesh. --> <model-viewer id="biopsy-ar-viewer" src="/prostateview/models/biopsy/anatomical-scaffold.glb" ios-src="/prostateview/models/biopsy/anatomical-scaffold.usdz" ar="true" ar-modes="webxr scene-viewer quick-look" camera-controls="true" ar-scale="auto" ar-placement="floor" environment-image="neutral" interaction-prompt="none" exposure="0.9" shadow-intensity="0.35" shadow-softness="0.7" alt="Teaching-only prostate biopsy scaffold with schematic sextant concept"></model-viewer> <div class="biopsy-ar-actions"> <button type="button" class="primary" data-ar-launch>View in AR</button> <a rel="ar" href="/prostateview/models/biopsy/anatomical-scaffold.usdz">iOS Quick Look</a> </div> <p class="biopsy-ar-status" data-ar-status aria-live="polite">AR scaffold loads when this section is visible.</p> </div> </section> </div>  </main> <nav class="pv2-bottom-nav" aria-label="Primary"> <a href="/prostateview/v2"> Home </a><a href="/prostateview/v2/learn"> Learn </a><a href="/prostateview/v2/safety"> Safety </a><a href="/prostateview/v2/cases/#curated-mri"> Case library </a><a href="/prostateview/v2/poster"> Poster </a><a href="/prostateview/v2/turp-ar"> TURP sim </a><a href="/prostateview/v2/biopsy-ar" aria-current="page"> Biopsy sim </a><a href="https://uroref.com" target="_blank" rel="noopener"> UroRef </a> </nav> <footer class="pv2-footer"> <div>Education prototype. Public Prostate158 assets.</div> <div class="pv2-footer-uroref">A <a href="https://uroref.com" target="_blank" rel="noopener">UroRef</a> project</div> <div class="pv2-credit">Created by Nity G, Urology ST4</div> <div class="pv2-copyright">&copy; 2026 Nityanandan G.</div> </footer>  <script>
+      (function () {
+        var root = document.documentElement;
+        var btn = document.querySelector("[data-a11y-toggle]");
+        var panel = document.querySelector("[data-a11y-panel]");
+        if (!btn || !panel) return;
+        btn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          var show = panel.hasAttribute("hidden");
+          if (show) { panel.removeAttribute("hidden"); btn.setAttribute("aria-expanded", "true"); }
+          else { panel.setAttribute("hidden", ""); btn.setAttribute("aria-expanded", "false"); }
+        });
+        document.addEventListener("click", function (e) {
+          if (!panel.contains(e.target) && !btn.contains(e.target)) {
+            panel.setAttribute("hidden", ""); btn.setAttribute("aria-expanded", "false");
+          }
+        });
+        function currentTheme() {
+          return root.classList.contains("light") ? "light"
+            : root.classList.contains("reading") ? "reading" : "dark";
+        }
+        function markTheme() {
+          var t = currentTheme();
+          panel.querySelectorAll("[data-theme-set]").forEach(function (b) {
+            b.setAttribute("aria-pressed", b.getAttribute("data-theme-set") === t ? "true" : "false");
+          });
+        }
+        panel.querySelectorAll("[data-theme-set]").forEach(function (b) {
+          b.addEventListener("click", function () {
+            var t = b.getAttribute("data-theme-set");
+            root.classList.remove("light", "reading");
+            if (t === "light") root.classList.add("light");
+            else if (t === "reading") root.classList.add("reading");
+            try { localStorage.setItem("pv-theme", t); } catch (e) {}
+            markTheme();
+          });
+        });
+        markTheme();
+        panel.querySelectorAll("input[data-a11y]").forEach(function (inp) {
+          var k = inp.getAttribute("data-a11y");
+          inp.checked = root.classList.contains("a11y-" + k);
+          inp.addEventListener("change", function () {
+            root.classList.toggle("a11y-" + k, inp.checked);
+            try { localStorage.setItem("pv-a11y-" + k, inp.checked ? "1" : "0"); } catch (e) {}
+          });
+        });
+      })();
+    </script> <script>
       (function () {
         if (!("serviceWorker" in navigator)) return;
         window.addEventListener("load", function () {
@@ -348,6 +224,4 @@
           });
         });
       })();
-    </script>
-  </body>
-</html>
+    </script> </body> </html>

@@ -1,0 +1,64 @@
+{
+  "id": "pv-case-092",
+  "caseNumber": 92,
+  "title": "Posterolateral PZ lesion (right) (PROSTATE_112)",
+  "subtitle": "Prostate158 PROSTATE_112. lesion: right, PZ, apex, posterior",
+  "status": "READY_GT_DERIVED",
+  "sourceDataset": "Prostate158",
+  "sourceType": "public_research_dataset",
+  "generationType": "ground_truth_derived",
+  "modelPath": "/demo-cases/pv-case-092/model.glb",
+  "annotationsPath": "/demo-cases/pv-case-092/annotations.json",
+  "previewImages": {
+    "full_slice_source": "/demo-cases/pv-case-092/preview/t2_full_slice.png",
+    "full_slice_overlay": "/demo-cases/pv-case-092/preview/t2_full_slice_overlay.png",
+    "lesion_zoom": "/demo-cases/pv-case-092/preview/t2_lesion_zoom.png"
+  },
+  "zone": "PZ",
+  "side": "right",
+  "level": "apex",
+  "anteriorPosterior": "posterior",
+  "hasLesion": true,
+  "modelStatus": "READY_GT_DERIVED",
+  "validationStatus": "Not clinically validated in this app",
+  "technicalValidation": {
+    "hasMetrics": false,
+    "diceWholeGland": null,
+    "dicePZ": null,
+    "diceTZ": null,
+    "volumeDifferenceWholeGlandPercent": null,
+    "volumeDifferencePZPercent": null,
+    "volumeDifferenceTZPercent": null
+  },
+  "clinicalUse": "Research and education only",
+  "safeSummary": "Real Prostate158 case PROSTATE_112. Posterolateral PZ lesion (right). Gland ~52.0 ml (medium balanced). GT-derived gland + zones + lesion.",
+  "teachingValue": "Orientation rehearsal: posterolateral pz lesion (right). Correlate the 3D zonal model with the axial T2W preview. Educational only; not for diagnosis or PI-RADS.",
+  "whatNotToClaim": [
+    "No diagnosis",
+    "No PI-RADS assignment by ProstateView",
+    "No staging",
+    "No biopsy targeting",
+    "No clinical validation"
+  ],
+  "disclaimer": "Research and educational prototype. Not a medical device. Not for diagnosis, PI-RADS, staging or biopsy targeting. Not clinically validated in this app.",
+  "mobileOptimised": {
+    "triangles": 63000,
+    "glbBytes": 120432,
+    "draco": true
+  },
+  "modelReuseNote": null,
+  "lesionGlbOffsetM": [
+    -0.01022,
+    -0.00763,
+    -0.00137
+  ],
+  "glandHalfM": [
+    0.02595,
+    0.02998,
+    0.02295
+  ],
+  "hasLesionMarker": true,
+  "mriPreviewVersion": "full-slice-v2",
+  "lesionMultifocal": false,
+  "arOriented": true
+}

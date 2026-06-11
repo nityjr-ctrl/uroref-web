@@ -1,0 +1,35 @@
+{
+  "case_id": "33177e46756ffa4a",
+  "segmentation_backend": "ground_truth_import",
+  "structure_volumes_mm3": {
+    "gland": 119530.09943034094,
+    "pz": 9978.656032691855,
+    "tz": 109551.44339764908
+  },
+  "lesions": [
+    {
+      "index": 1,
+      "node_name": "lesion_01",
+      "centroid_mm": [
+        58.680709567034135,
+        83.07187857778001,
+        5.058793563768371
+      ],
+      "volume_mm3": 795.058197387747,
+      "max_diameter_mm": 22.010859489440918,
+      "predominant_zone": "pz",
+      "sector_27": "apex-posterior-midline",
+      "sector_12": "upper-back-left",
+      "pi_rads": 0,
+      "notes": "",
+      "confidence_flag": "exploratory"
+    }
+  ],
+  "sector_map_default": "pi-rads-27",
+  "sector_maps_available": [
+    "pi-rads-27",
+    "lay-12"
+  ],
+  "notes": "Public dataset ground-truth labels imported directly. No model inference was run. Not clinically validated.",
+  "disclaimer": "Research and educational prototype. Not a medical device. Not for clinical decision-making."
+}

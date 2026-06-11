@@ -1,0 +1,27 @@
+{
+  "id": "pv-case-001",
+  "title": "Posterior peripheral-zone lesion (PROSTATE_103)",
+  "source": "Prostate158 (Adams et al. 2022, doi:10.5281/zenodo.6481141)",
+  "licence": "CC BY 4.0",
+  "pi_rads_truth": null,
+  "synthetic": false,
+  "public_dataset": true,
+  "inference_backend": "both",
+  "notes": "Real Prostate158 case 103. GT-derived gland + zones + lesion. MONAI inference computed on the raw T2W for technical comparison.",
+  "imported_at": "2026-05-16T19:21:38Z",
+  "badges": [
+    "public-research-dataset-derived",
+    "not-clinically-validated",
+    "both",
+    "mobile-optimised"
+  ],
+  "mesh_nodes": {
+    "prostate_gland": "Whole prostate gland",
+    "peripheral_zone": "Peripheral zone",
+    "transition_zone": "Transition zone",
+    "lesion_01": "Lesion candidate"
+  },
+  "purpose": "Teaching and orientation rehearsal",
+  "disclaimer": "Research and educational prototype. Not a medical device. Not for diagnosis, PI-RADS, staging or biopsy targeting. Not clinically validated in this app.",
+  "model_reuse_note": null
+}

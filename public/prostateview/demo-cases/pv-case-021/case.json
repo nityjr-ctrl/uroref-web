@@ -1,0 +1,58 @@
+{
+  "id": "pv-case-021",
+  "caseNumber": 21,
+  "title": "Anatomy-only, no lesion (PROSTATE_026)",
+  "subtitle": "Anatomy-only, no lesion",
+  "status": "READY_GT_DERIVED",
+  "sourceDataset": "Prostate158",
+  "sourceType": "public_research_dataset",
+  "generationType": "ground_truth_derived",
+  "modelPath": "/demo-cases/pv-case-021/model.glb",
+  "annotationsPath": "/demo-cases/pv-case-021/annotations.json",
+  "previewImages": {
+    "full_slice_source": "/demo-cases/pv-case-021/preview/t2_full_slice.png",
+    "full_slice_overlay": "/demo-cases/pv-case-021/preview/t2_full_slice_overlay.png",
+    "lesion_zoom": null
+  },
+  "zone": "PZ/TZ",
+  "side": "midline",
+  "level": "whole gland",
+  "anteriorPosterior": "n/a",
+  "hasLesion": false,
+  "modelStatus": "READY_GT_DERIVED",
+  "validationStatus": "Not clinically validated in this app",
+  "technicalValidation": {
+    "hasMetrics": false,
+    "diceWholeGland": null,
+    "dicePZ": null,
+    "diceTZ": null,
+    "volumeDifferenceWholeGlandPercent": null,
+    "volumeDifferencePZPercent": null,
+    "volumeDifferenceTZPercent": null
+  },
+  "clinicalUse": "Research and education only",
+  "safeSummary": "Real Prostate158 case PROSTATE_026. Anatomy-only, no lesion. Gland ~22.8 ml (small balanced). GT-derived gland + zones (anatomy-only, no lesion).",
+  "teachingValue": "Orientation rehearsal: anatomy-only, no lesion. Correlate the 3D zonal model with the axial T2W preview. Educational only; not for diagnosis or PI-RADS.",
+  "whatNotToClaim": [
+    "No diagnosis",
+    "No PI-RADS assignment by ProstateView",
+    "No staging",
+    "No biopsy targeting",
+    "No clinical validation"
+  ],
+  "disclaimer": "Research and educational prototype. Not a medical device. Not for diagnosis, PI-RADS, staging or biopsy targeting. Not clinically validated in this app.",
+  "mobileOptimised": {
+    "triangles": 58000,
+    "glbBytes": 107704,
+    "draco": true
+  },
+  "modelReuseNote": null,
+  "glandHalfM": [
+    0.02474,
+    0.01411,
+    0.01666
+  ],
+  "hasLesionMarker": false,
+  "mriPreviewVersion": "full-slice-v2",
+  "arOriented": true
+}

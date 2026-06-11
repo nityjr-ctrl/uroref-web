@@ -1,0 +1,20 @@
+{
+  "case_id": "pv-case-091",
+  "source_case": "PROSTATE_090",
+  "generated_at": "2026-05-30T17:23:53Z",
+  "stager": "scripts/build_mobile_cases.py",
+  "status": "READY_GT_DERIVED",
+  "generation_type": "ground_truth_derived",
+  "mobile_optimised": true,
+  "triangles": 51788,
+  "tri_by_node": {
+    "prostate_gland": 18624,
+    "peripheral_zone": 17572,
+    "transition_zone": 12168,
+    "lesion_01": 3424
+  },
+  "raw_glb_bytes": 936528,
+  "glb_bytes": 91552,
+  "draco": true,
+  "valid": true
+}

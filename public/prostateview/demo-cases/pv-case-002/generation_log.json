@@ -1,0 +1,12 @@
+{
+  "case_id": "pv-case-002",
+  "generated_at": "2026-05-16T20:10:43Z",
+  "orientation_regenerated_at": "2026-05-28T06:45:00Z",
+  "stager": "scripts/generate_real_case.py",
+  "status": "READY_GT_DERIVED",
+  "generation_type": "ground_truth_derived",
+  "orientation_generation_type": "ground_truth_derived_transform_aware",
+  "orientation_transform": "SimpleITK LPS physical millimetres -> gland-centred GLB metres; viewer +x patient-left, +y posterior, +z base/superior",
+  "monai_used_gpu": false,
+  "glb_bytes": 10998840
+}

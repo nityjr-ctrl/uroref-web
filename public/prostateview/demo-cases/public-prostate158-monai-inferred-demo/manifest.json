@@ -1,0 +1,37 @@
+{
+  "id": "public-prostate158-monai-inferred-demo",
+  "title": "Public Prostate158 MONAI-inferred demo",
+  "source": "Prostate158 T2W (Adams et al. 2022) + MONAI prostate_mri_anatomy bundle 0.3.6",
+  "licence": "Dataset CC BY 4.0; Model Apache 2.0",
+  "pi_rads_truth": null,
+  "synthetic": false,
+  "public_dataset": true,
+  "inference_backend": "monai_prostate_mri_anatomy_v0.3.6",
+  "notes": "MONAI prostate_mri_anatomy bundle inference on a real Prostate158 T2W. The bundle outputs central gland + peripheral zone; no lesion class. Volumes are geometric from the bundle's output. Published Dice on Prostate158 test set: central gland 0.877, PZ 0.754. Not clinically validated in this app.",
+  "imported_at": "2026-05-15T03:40:43",
+  "duration_s": 1.03,
+  "picker_label": "Public Prostate158 MONAI-inferred demo",
+  "badges": [
+    "public-research-dataset-derived",
+    "model-inferred",
+    "gpu-inference-output",
+    "not-clinically-validated",
+    "spatially-misaligned-known-issue"
+  ],
+  "gpu": "NVIDIA GeForce RTX 5070 Ti",
+  "inference_duration_s": 6.34,
+  "mesh_nodes": {
+    "prostate_gland": "Whole prostate gland",
+    "peripheral_zone": "Peripheral zone",
+    "transition_zone": "Transition zone (central gland from bundle)"
+  },
+  "purpose": "Real inference pathway demonstration",
+  "runtime_seconds": 6.34,
+  "voxel_counts": {
+    "peripheral_zone": 27809,
+    "transition_zone": 31904
+  },
+  "disclaimer": "Inference output, not clinically validated. Single-case sanity check only.",
+  "known_issue": "Input T2W in this session came from an nnU-Net preprocessed .npy with reconstructed metadata, so the output is spatially shifted ~28 mm from the underlying anatomy. See comparison_report.md. Re-run with the raw T2W from the Zenodo archive to fix.",
+  "pair": "public-prostate158-groundtruth-demo"
+}

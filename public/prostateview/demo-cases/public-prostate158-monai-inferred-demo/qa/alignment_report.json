@@ -1,0 +1,28 @@
+{
+  "case_id": "sample-public-prostate158-monai-inferred-demo",
+  "source_path": "frontend/public/demo-cases/public-prostate158-monai-inferred-demo/preview/t2w.png",
+  "overlay_path": "frontend/public/demo-cases/public-prostate158-monai-inferred-demo/preview/t2w_overlay.png",
+  "source_shape": [
+    640,
+    640,
+    3
+  ],
+  "overlay_shape": [
+    640,
+    640,
+    3
+  ],
+  "dimensions_match": true,
+  "selected_slice_index": 14,
+  "total_slices": 25,
+  "mask_source": "MONAI prostate_mri_anatomy bundle 0.3.6",
+  "overlay_pixel_count": 8501,
+  "overlay_central_70_fraction": 1.0,
+  "overlay_centroid_yx": [
+    336.7312080931655,
+    309.8991883307846
+  ],
+  "alignment_status": "PASS",
+  "reasons": [],
+  "qa_image": "/demo-cases/public-prostate158-monai-inferred-demo/qa/alignment_check.png"
+}

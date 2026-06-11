@@ -1,0 +1,40 @@
+{
+  "caseId": "pv-case-002",
+  "sourceProstate158Id": "PROSTATE_138",
+  "status": "PASS",
+  "verifiedAt": "2026-05-28T06:45:00Z",
+  "scope": "Internal research/education orientation QA only. Not clinical validation.",
+  "meshProvenance": {
+    "regeneratedWithTransformAwarePipeline": true,
+    "sourceLabel": "data/incoming_prostate158/PROSTATE_138/PROSTATE_138_label.nii.gz",
+    "sourceT2w": "data/incoming_prostate158/PROSTATE_138/PROSTATE_138_t2w.nii.gz",
+    "meshCode": "backend/app/pipeline/mesh.py",
+    "exportCode": "backend/app/pipeline/export.py",
+    "transformConvention": "SimpleITK LPS physical millimetres -> centre on gland centroid -> scale to metres for GLB. Viewer convention: +x patient-left, +y posterior, +z superior/base."
+  },
+  "expected": {
+    "side": "midline",
+    "ap": "anterior",
+    "level": "base"
+  },
+  "checks": {
+    "mriOverlayAlignment": "PASS",
+    "displayConsistency": "PASS",
+    "affineCentroid": "PASS",
+    "glbCentroid": "PASS",
+    "viewerProjection": "PASS",
+    "compassConvention": "PASS"
+  },
+  "safety": {
+    "diagnostic": false,
+    "clinicalValidation": false,
+    "piRadsGenerated": false,
+    "staging": false,
+    "biopsyTargeting": false
+  },
+  "notes": [
+    "The lesion is midline, anterior and basal on the source label affine.",
+    "The regenerated GLB lesion centroid is midline, anterior and basal under the documented viewer convention.",
+    "The default 3D viewer uses axial MRI-style projection: anterior screen-top, posterior screen-bottom, patient right screen-left, patient left screen-right."
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "case_id": "pv-case-004",
+  "source_path": "frontend/public/demo-cases/pv-case-004/preview/t2_full_slice.png",
+  "overlay_path": "frontend/public/demo-cases/pv-case-004/preview/t2_full_slice_overlay.png",
+  "source_shape": [
+    270,
+    270,
+    3
+  ],
+  "overlay_shape": [
+    270,
+    270,
+    3
+  ],
+  "dimensions_match": true,
+  "selected_slice_index": 19,
+  "total_slices": 26,
+  "mask_source": "Prostate158 GT (Adams et al. 2022)",
+  "overlay_pixel_count": 10499,
+  "overlay_central_70_fraction": 1.0,
+  "overlay_centroid_yx": [
+    121.3542242118297,
+    126.74645204305172
+  ],
+  "alignment_status": "PASS",
+  "reasons": [],
+  "qa_image": "/demo-cases/pv-case-004/qa/alignment_check.png"
+}

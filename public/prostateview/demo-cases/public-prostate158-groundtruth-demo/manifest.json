@@ -1,0 +1,28 @@
+{
+  "id": "public-prostate158-groundtruth-demo",
+  "title": "Public Prostate158 ground-truth derived demo",
+  "source": "Prostate158 (Adams et al. 2022, doi:10.5281/zenodo.6481141)",
+  "licence": "CC BY 4.0 (dataset terms; confirm before redistribution)",
+  "pi_rads_truth": null,
+  "synthetic": false,
+  "public_dataset": true,
+  "inference_backend": "ground_truth_import",
+  "notes": "Public research dataset-derived. Not clinically validated in this app. Masks are from the dataset's expert ground-truth labels, not from model inference.",
+  "imported_at": "2026-05-15T03:35:19",
+  "duration_s": 4.01,
+  "picker_label": "Public Prostate158 ground-truth derived demo",
+  "badges": [
+    "public-research-dataset-derived",
+    "ground-truth-label-derived",
+    "not-clinically-validated"
+  ],
+  "mesh_nodes": {
+    "prostate_gland": "Whole prostate gland",
+    "peripheral_zone": "Peripheral zone",
+    "transition_zone": "Transition zone",
+    "lesion_01": "Lesion candidate"
+  },
+  "purpose": "Anatomy and reference comparison",
+  "disclaimer": "Research dataset annotation, not clinical validation in this app.",
+  "pair": "public-prostate158-monai-inferred-demo"
+}

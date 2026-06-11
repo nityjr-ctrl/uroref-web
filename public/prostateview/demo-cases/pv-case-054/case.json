@@ -1,0 +1,64 @@
+{
+  "id": "pv-case-054",
+  "caseNumber": 54,
+  "title": "Multifocal lesion (PROSTATE_057)",
+  "subtitle": "Prostate158 PROSTATE_057. lesion: multifocal, dominant left, TZ, base, anterior",
+  "status": "READY_GT_DERIVED",
+  "sourceDataset": "Prostate158",
+  "sourceType": "public_research_dataset",
+  "generationType": "ground_truth_derived",
+  "modelPath": "/demo-cases/pv-case-054/model.glb",
+  "annotationsPath": "/demo-cases/pv-case-054/annotations.json",
+  "previewImages": {
+    "full_slice_source": "/demo-cases/pv-case-054/preview/t2_full_slice.png",
+    "full_slice_overlay": "/demo-cases/pv-case-054/preview/t2_full_slice_overlay.png",
+    "lesion_zoom": "/demo-cases/pv-case-054/preview/t2_lesion_zoom.png"
+  },
+  "zone": "TZ",
+  "side": "left",
+  "level": "base",
+  "anteriorPosterior": "anterior",
+  "hasLesion": true,
+  "modelStatus": "READY_GT_DERIVED",
+  "validationStatus": "Not clinically validated in this app",
+  "technicalValidation": {
+    "hasMetrics": false,
+    "diceWholeGland": null,
+    "dicePZ": null,
+    "diceTZ": null,
+    "volumeDifferenceWholeGlandPercent": null,
+    "volumeDifferencePZPercent": null,
+    "volumeDifferenceTZPercent": null
+  },
+  "clinicalUse": "Research and education only",
+  "safeSummary": "Real Prostate158 case PROSTATE_057. Multifocal lesion. Gland ~64.0 ml (large BPH). GT-derived gland + zones + lesion.",
+  "teachingValue": "Orientation rehearsal: multifocal lesion. Correlate the 3D zonal model with the axial T2W preview. Educational only; not for diagnosis or PI-RADS.",
+  "whatNotToClaim": [
+    "No diagnosis",
+    "No PI-RADS assignment by ProstateView",
+    "No staging",
+    "No biopsy targeting",
+    "No clinical validation"
+  ],
+  "disclaimer": "Research and educational prototype. Not a medical device. Not for diagnosis, PI-RADS, staging or biopsy targeting. Not clinically validated in this app.",
+  "mobileOptimised": {
+    "triangles": 63000,
+    "glbBytes": 116928,
+    "draco": true
+  },
+  "modelReuseNote": null,
+  "lesionGlbOffsetM": [
+    0.00091,
+    0.00662,
+    0.00686
+  ],
+  "glandHalfM": [
+    0.02516,
+    0.02918,
+    0.02465
+  ],
+  "hasLesionMarker": true,
+  "mriPreviewVersion": "full-slice-v2",
+  "lesionMultifocal": true,
+  "arOriented": true
+}

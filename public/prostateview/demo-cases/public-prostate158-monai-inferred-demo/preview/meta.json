@@ -1,0 +1,26 @@
+{
+  "case_id": "public-prostate158-monai-inferred-demo",
+  "slice_index": 14,
+  "total_slices": 25,
+  "sequence_t2w": "T2-weighted axial",
+  "mask_source": "MONAI prostate_mri_anatomy bundle 0.3.6",
+  "mask_kind": "inferred",
+  "overlay_ok": true,
+  "overlay_status": "staged",
+  "overlay_note": "Whole gland + peripheral zone + transition zone overlay from MONAI bundle. Lesion class is not produced by the bundle.",
+  "extras": {
+    "adc": {
+      "sequence": "ADC map",
+      "kind": "source_sequence"
+    },
+    "dwi": {
+      "sequence": "DWI / DFI",
+      "kind": "source_sequence"
+    },
+    "model_3d": {
+      "label": "3D orientation model",
+      "kind": "rendered_glb"
+    }
+  },
+  "warning": "Source MRI preview from public research dataset. For demonstration only. Not a diagnostic image viewer."
+}

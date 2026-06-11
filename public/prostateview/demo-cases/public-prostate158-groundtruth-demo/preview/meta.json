@@ -1,0 +1,26 @@
+{
+  "case_id": "public-prostate158-groundtruth-demo",
+  "slice_index": 12,
+  "total_slices": 25,
+  "sequence_t2w": "T2-weighted axial",
+  "mask_source": "Prostate158 expert ground-truth labels",
+  "mask_kind": "ground-truth",
+  "overlay_ok": false,
+  "overlay_status": "not_staged",
+  "overlay_note": "Segmentation overlay is staged on the paired MONAI-inferred case; the ground-truth tile here is intentionally without an overlay so the source T2W is visible.",
+  "extras": {
+    "adc": {
+      "sequence": "ADC map",
+      "kind": "source_sequence"
+    },
+    "dwi": {
+      "sequence": "DWI / DFI",
+      "kind": "source_sequence"
+    },
+    "model_3d": {
+      "label": "3D orientation model",
+      "kind": "rendered_glb"
+    }
+  },
+  "warning": "Source MRI preview from public research dataset. For demonstration only. Not a diagnostic image viewer."
+}

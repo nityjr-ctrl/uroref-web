@@ -1,0 +1,11 @@
+{
+  "id": "synthetic-demo",
+  "hasLesion": false,
+  "_note": "orientation metadata for the viewer; legacy demo case",
+  "glandHalfM": [
+    0.01551,
+    0.00576,
+    0.01551
+  ],
+  "arOriented": true
+}

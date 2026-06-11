@@ -1,0 +1,156 @@
+<!DOCTYPE html><html lang="en-GB"> <head>
+    <meta name="robots" content="noindex">
+    <link rel="canonical" href="https://prostateview.com/upload/">
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"><meta name="description" content="Prostate mpMRI to 3D mobile viewer. Research and educational prototype, not a medical device."><meta name="theme-color" content="#0b0d10"><link rel="icon" href="/prostateview/icons/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/prostateview/icons/icon-192.png"><title>Upload - ProstateView</title><link rel="stylesheet" href="/prostateview/_astro/about.hFqiksV5.css"></head> <body> <header class="pv-header"> <a class="pv-logo" href="/prostateview/" aria-label="ProstateView for UroRef"> <img src="/prostateview/icons/uroref-logo.svg" alt="UroRef" width="92" height="26" style="display:block;height:26px;width:auto;"> <span style="display:flex;flex-direction:column;line-height:1.05;"> <span style="font-size:14px;font-weight:600;letter-spacing:-0.01em;">ProstateView</span> <span style="font-size:11px;font-weight:400;letter-spacing:0.02em;color:var(--pv-fg-faint);">by Nity G &middot; ST4 Urology</span> </span> <span class="pv-pill warn" title="Research and educational prototype, not a medical device">research</span> </a> <nav class="pv-nav" aria-label="Primary"> <a href="/prostateview/">Home</a> <a href="/prostateview/cases">Cases</a> <a href="/prostateview/method">Method</a> <a href="/prostateview/upload" aria-current="page">Upload</a> <a href="/prostateview/about">About</a> </nav> </header> <div class="pv-disclaimer" role="note" aria-label="Research disclaimer"> <div>Research and educational prototype. Not a medical device. Not for clinical decision-making.</div> <div style="opacity:0.9;font-weight:500;">Use alongside radiology report, MDT discussion, local protocols and senior clinical judgement.</div> </div> <main> <section style="display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start;"> <div class="pv-card"> <h2 style="margin:0 0 8px;">Upload a DICOM zip</h2> <p class="pv-faint" style="margin:0 0 14px;">Public datasets only (PI-CAI, ProstateX, Promise12, Prostate158). We strip PHI per DICOM PS 3.15 Annex E and log every tag we remove.</p> <div id="dropzone" role="button" tabindex="0" aria-label="Drop a DICOM zip here or click to browse" style="border:1.5px dashed var(--pv-border);border-radius:12px;padding:28px;text-align:center;color:var(--pv-fg-muted);cursor:pointer;"> <strong>Drop a .zip here</strong> <div class="pv-faint" style="margin-top:6px;">or click to browse &middot; max 2048 MB</div> <input id="file" type="file" accept=".zip,application/zip" hidden> </div> <div id="upload-status" style="margin-top:14px;min-height:24px;"></div> <p class="pv-faint" style="margin:14px 0 0;">
+Do not upload real NHS patient data. This is a research prototype.
+</p> </div> <div class="pv-card"> <h2 style="margin:0 0 8px;">Try a sample case</h2> <p class="pv-faint" style="margin:0 0 14px;">Pre-staged cases from public datasets, or a synthetic stand-in if no real imaging is present yet.</p> <div id="samples" class="pv-stack"></div> </div> </section> <p class="pv-faint" style="margin-top:18px;">
+Uploads sit on the backend's local disk and can be wiped from each case page. No PHI is permitted. Exploratory model output, not a clinical diagnosis.
+</p> </main> <nav class="pv-bottom-nav" aria-label="Primary mobile"> <a href="/prostateview/"> <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3 3 10v11h6v-7h6v7h6V10z"></path></svg> <span>Home</span> </a> <a href="/prostateview/cases"> <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 6h16v3H4zm0 5h16v3H4zm0 5h16v3H4z"></path></svg> <span>Cases</span> </a> <a href="/prostateview/case/sample-public-prostate158-groundtruth-demo"> <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 4a8 8 0 1 0 8 8 8 8 0 0 0-8-8m0 14a6 6 0 1 1 6-6 6 6 0 0 1-6 6m0-10a4 4 0 1 0 4 4 4 4 0 0 0-4-4m0 6a2 2 0 1 1 2-2 2 2 0 0 1-2 2"></path></svg> <span>Viewer</span> </a> <a href="/prostateview/method"> <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 2v20h12V2zm10 18H8V4h8z M10 7h4v1.5h-4zm0 3.5h4V12h-4zm0 3.5h4v1.5h-4z"></path></svg> <span>Method</span> </a> <a href="/prostateview/about"> <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5z"></path></svg> <span>Safety</span> </a> </nav> <footer>
+Public datasets only. PHI is stripped on every upload. See
+<a href="/prostateview/about">About</a> and the disclaimer above.
+<div style="margin-top:6px;color:var(--pv-fg-faint);">
+Built by Nityanandan G (ST4 Urology, Mersey Deanery) for the UroRef Companion Viewer programme. MIT licensed.
+</div> <div style="margin-top:6px;color:var(--pv-fg-faint);">
+&copy; 2026 Nityanandan G.
+</div> </footer>  </body> </html> <script type="module">const apiBase = "http://localhost:8000";
+const maxUploadMb = 2048;
+const routeBase = "/prostateview/";
+const demoCasesIndexUrl = "/prostateview/demo-cases/index.json";
+
+  const dz = document.getElementById("dropzone");
+  const fi = document.getElementById("file");
+  const status = document.getElementById("upload-status");
+  const samples = document.getElementById("samples");
+
+  const maxBytes = maxUploadMb * 1024 * 1024;
+
+  function setStatus(html, kind) {
+    const cls = kind === "error" ? "danger" : kind === "ok" ? "success" : "";
+    status.innerHTML = cls === "success"
+      ? `<span class="pv-pill" style="color:var(--pv-success);border-color:rgba(76,175,115,0.4);">${html}</span>`
+      : cls === "danger"
+        ? `<span class="pv-pill danger">${html}</span>`
+        : html;
+  }
+
+  function escapeHtml(s) {
+    return String(s ?? "").replace(/[&<>"']/g, (c) => ({
+      "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;",
+    })[c]);
+  }
+
+  function validate(file) {
+    if (!file) return "no file";
+    const okType = file.type === "application/zip"
+      || file.type === "application/x-zip-compressed"
+      || file.name.toLowerCase().endsWith(".zip");
+    if (!okType) return "file must be a .zip archive of DICOM files";
+    if (file.size === 0) return "file is empty";
+    if (file.size > maxBytes) {
+      const mb = (file.size / (1024 * 1024)).toFixed(0);
+      return `file is ${mb} MB; the backend limit is ${maxUploadMb} MB`;
+    }
+    return null;
+  }
+
+  dz.addEventListener("click", () => fi.click());
+  dz.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fi.click(); }
+  });
+  dz.addEventListener("dragover", (e) => { e.preventDefault(); dz.style.borderColor = "var(--pv-accent)"; });
+  dz.addEventListener("dragleave", () => dz.style.borderColor = "");
+  dz.addEventListener("drop", (e) => {
+    e.preventDefault();
+    dz.style.borderColor = "";
+    const f = e.dataTransfer?.files?.[0];
+    if (f) upload(f);
+  });
+  fi.addEventListener("change", () => fi.files?.[0] && upload(fi.files[0]));
+
+  async function upload(file) {
+    const bad = validate(file);
+    if (bad) {
+      setStatus(escapeHtml(bad), "error");
+      return;
+    }
+    setStatus(`<div class="pv-skeleton" style="height:12px;width:60%;"></div><div class="pv-faint" style="margin-top:6px;">Uploading ${escapeHtml(file.name)} (${(file.size/1024/1024).toFixed(1)} MB)...</div>`);
+    const form = new FormData();
+    form.append("file", file);
+    try {
+      const r = await fetch(`${apiBase}/cases`, { method: "POST", body: form });
+      if (!r.ok) {
+        let detail = "";
+        try { detail = (await r.json()).detail || (await r.text()); } catch {}
+        if (r.status === 413) throw new Error("upload exceeds the server limit (413)");
+        if (r.status === 0 || r.status >= 500) throw new Error(`backend error ${r.status} ${escapeHtml(String(detail))}`);
+        throw new Error(`upload failed (${r.status}) ${escapeHtml(String(detail))}`);
+      }
+      const { data } = await r.json();
+      setStatus(`uploaded, redirecting to case ${escapeHtml(data.case_id)}...`, "ok");
+      location.href = `${routeBase}case/${data.case_id}`;
+    } catch (e) {
+      setStatus(`error: ${escapeHtml(e.message)} - is the backend reachable at <code>${escapeHtml(apiBase)}</code>?`, "error");
+    }
+  }
+
+  async function loadSamples() {
+    samples.innerHTML = `<div class="pv-skeleton" style="height:60px;"></div>`;
+    try {
+      // Prefer the static index that the build ships in /public/demo-cases.
+      // Fall back to the backend /samples API only if the static index is missing.
+      let data;
+      const staticRes = await fetch(demoCasesIndexUrl).catch(() => null);
+      if (staticRes && staticRes.ok) {
+        data = await staticRes.json();
+      } else {
+        const r = await fetch(`${apiBase}/samples`);
+        if (!r.ok) throw new Error(`samples request failed (${r.status})`);
+        data = (await r.json()).data;
+      }
+      samples.innerHTML = "";
+      if (!data.samples?.length) {
+        samples.innerHTML = `<p class="pv-faint">No samples staged yet. On Jarvis run <code>docker compose exec backend bash scripts/fetch_sample_cases.sh</code> then <code>python scripts/stage_demo_cases.py</code>.</p>`;
+        return;
+      }
+      // Sort: public-research-dataset cases first, then model-inferred, then synthetic.
+      const order = (s) => {
+        if (s.synthetic) return 9;
+        if ((s.badges || []).includes("model-inferred")) return 1;
+        if (s.public_dataset) return 0;
+        return 5;
+      };
+      data.samples.sort((a, b) => order(a) - order(b));
+      for (const s of data.samples) {
+        const a = document.createElement("a");
+        a.href = `${routeBase}case/sample-${encodeURIComponent(s.id)}`;
+        a.style.cssText = "border:1px solid var(--pv-border);border-radius:10px;padding:12px;display:block;color:inherit;text-decoration:none;";
+        const pills = [];
+        if (s.synthetic) {
+          pills.push('<span class="pv-pill warn">synthetic</span>');
+        }
+        if (s.public_dataset) {
+          pills.push('<span class="pv-pill" style="color:var(--pv-accent);border-color:rgba(217,133,88,0.4);background:rgba(217,133,88,0.08);">public dataset</span>');
+        }
+        if ((s.badges || []).includes("model-inferred")) {
+          pills.push('<span class="pv-pill" style="color:#9ec7f0;border-color:rgba(158,199,240,0.4);background:rgba(158,199,240,0.08);">MONAI inferred</span>');
+        }
+        if ((s.badges || []).includes("not-clinically-validated")) {
+          pills.push('<span class="pv-pill warn">not clinically validated</span>');
+        }
+        const label = s.picker_label || s.title;
+        a.innerHTML = `
+          <div class="pv-row" style="justify-content:space-between;gap:8px;">
+            <strong>${escapeHtml(label)}</strong>
+            <div class="pv-row" style="gap:4px;">${pills.join("")}</div>
+          </div>
+          <div class="pv-faint" style="margin-top:4px;">${escapeHtml(s.source)} &middot; ${escapeHtml(s.licence)}</div>
+          <div class="pv-faint" style="margin-top:4px;">${escapeHtml(s.notes || "")}</div>
+        `;
+        samples.appendChild(a);
+      }
+    } catch (e) {
+      samples.innerHTML = `<span class="pv-pill danger">samples error: ${escapeHtml(e.message)}</span><div class="pv-faint" style="margin-top:6px;">Backend at <code>${escapeHtml(apiBase)}</code> appears unreachable. Start the stack with <code>docker compose up</code>.</div>`;
+    }
+  }
+  loadSamples();
+</script>

@@ -1,0 +1,35 @@
+{
+  "case_id": "48160eeb3b14c863",
+  "segmentation_backend": "synthetic",
+  "structure_volumes_mm3": {
+    "gland": 6390.75,
+    "pz": 5336.375,
+    "tz": 1054.375
+  },
+  "lesions": [
+    {
+      "index": 1,
+      "node_name": "lesion_01",
+      "centroid_mm": [
+        43.5,
+        56.0,
+        24.0
+      ],
+      "volume_mm3": 15.375,
+      "max_diameter_mm": 3.0,
+      "predominant_zone": "pz",
+      "sector_27": "mid-posterior-midline",
+      "sector_12": "mid-back-right",
+      "pi_rads": 0,
+      "notes": "",
+      "confidence_flag": "low"
+    }
+  ],
+  "sector_map_default": "pi-rads-27",
+  "sector_maps_available": [
+    "pi-rads-27",
+    "lay-12"
+  ],
+  "notes": "Synthetic masks: not a clinical model. Used to exercise the rest of the pipeline.",
+  "disclaimer": "Research and educational prototype. Not a medical device. Not for clinical decision-making."
+}

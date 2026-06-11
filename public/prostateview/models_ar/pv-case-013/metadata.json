@@ -1,0 +1,23 @@
+{
+  "case_id": "pv-case-013",
+  "source": "C:/Users/nityj/OneDrive/Desktop/2 - Projects/Prostate View/.codex-worktrees/prostateview-ar-model-pipeline/public/demo-cases/pv-case-013/model.glb",
+  "output_glb": "C:/Users/nityj/OneDrive/Desktop/2 - Projects/Prostate View/.codex-worktrees/prostateview-ar-model-pipeline/models_ar/pv-case-013/model.glb",
+  "output_usdz": "C:/Users/nityj/OneDrive/Desktop/2 - Projects/Prostate View/.codex-worktrees/prostateview-ar-model-pipeline/models_ar/pv-case-013/model.usdz",
+  "model_viewer_check": "C:/Users/nityj/OneDrive/Desktop/2 - Projects/Prostate View/.codex-worktrees/prostateview-ar-model-pipeline/models_ar/pv-case-013/model-viewer-check.html",
+  "orientation_convention": "source axes +X=patient left, -X=patient right, +Y=posterior, +Z=base/superior, -Z=apex/inferior; AR export remaps to +X=patient left, -X=patient right, +Y=anterior/screen-up, -Y=posterior/screen-down, +Z=apex/front/user side, -Z=base/back",
+  "palette": "teal",
+  "ablr_markers": "A=apex/front, B=base/back, L=patient left, R=patient right; on by default; hide nodes/meshes named orientation_* or AR_orientation_markers to toggle",
+  "scale_factor": 1.0,
+  "anatomy_bounds_m": "{\"min\":[-0.023871,-0.018581,-0.023945],\"max\":[0.023871,0.018581,0.023945]}",
+  "triangle_budget": {
+    "target": 60000,
+    "max_before_marker_allowance": 80000,
+    "reason": "30k-80k triangles keeps phone AR smooth while preserving gland/zonal shape."
+  },
+  "validation_status": "gltf_valid|size_ok|triangles_ok|usdz_present",
+  "usdz_status": "ok",
+  "notes": [
+    "source_meter_scale_preserved",
+    "decimation_not_needed"
+  ]
+}

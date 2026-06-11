@@ -1,0 +1,17 @@
+{
+  "case_id": "f63c9df2dc9eacbc",
+  "segmentation_backend": "ground_truth_derived",
+  "structure_volumes_mm3": {
+    "gland": 99172.52837271383,
+    "pz": 12001.320585828591,
+    "tz": 87171.20778688524
+  },
+  "lesions": [],
+  "sector_map_default": "pi-rads-27",
+  "sector_maps_available": [
+    "pi-rads-27",
+    "lay-12"
+  ],
+  "notes": "Public Prostate158 ground-truth labels imported directly. No model inference. Not clinically validated.",
+  "disclaimer": "Research and educational prototype. Not a medical device. Not for clinical decision-making."
+}

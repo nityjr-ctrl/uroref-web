@@ -1,0 +1,17 @@
+{
+  "case_id": "ab65476525e6f4a8",
+  "segmentation_backend": "ground_truth_import",
+  "structure_volumes_mm3": {
+    "gland": 51831.16414919877,
+    "pz": 18096.258834070166,
+    "tz": 33734.905315128606
+  },
+  "lesions": [],
+  "sector_map_default": "pi-rads-27",
+  "sector_maps_available": [
+    "pi-rads-27",
+    "lay-12"
+  ],
+  "notes": "Public dataset ground-truth labels imported directly. No model inference was run. Not clinically validated.",
+  "disclaimer": "Research and educational prototype. Not a medical device. Not for clinical decision-making."
+}

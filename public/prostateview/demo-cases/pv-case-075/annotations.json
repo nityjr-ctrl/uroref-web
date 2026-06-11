@@ -1,0 +1,35 @@
+{
+  "case_id": "e97657f65fb5e332",
+  "segmentation_backend": "ground_truth_derived",
+  "structure_volumes_mm3": {
+    "gland": 29948.333953716727,
+    "pz": 8083.856310021824,
+    "tz": 21864.477643694903
+  },
+  "lesions": [
+    {
+      "index": 1,
+      "node_name": "lesion_01",
+      "centroid_mm": [
+        54.55651422314187,
+        39.45079661823333,
+        36.242553191489364
+      ],
+      "volume_mm3": 682.8563022484287,
+      "max_diameter_mm": 12.0,
+      "predominant_zone": "tz",
+      "sector_27": "mid-anterior-midline",
+      "sector_12": "mid-front-left",
+      "pi_rads": 0,
+      "notes": "",
+      "confidence_flag": "exploratory"
+    }
+  ],
+  "sector_map_default": "pi-rads-27",
+  "sector_maps_available": [
+    "pi-rads-27",
+    "lay-12"
+  ],
+  "notes": "Public Prostate158 ground-truth labels imported directly. No model inference. Not clinically validated.",
+  "disclaimer": "Research and educational prototype. Not a medical device. Not for clinical decision-making."
+}

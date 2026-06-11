@@ -1,0 +1,41 @@
+{
+  "case_id": "pv-case-094",
+  "slice_index": 14,
+  "total_slices": 24,
+  "sequence_t2w": "T2-weighted axial (Prostate158)",
+  "mask_source": "Prostate158 GT (Adams et al. 2022)",
+  "mask_kind": "ground-truth",
+  "label_ids": {
+    "tz": 1,
+    "pz": 2,
+    "lesion": null
+  },
+  "warning": "MRI preview is downsampled and not diagnostic. Use PACS / the formal report for clinical review.",
+  "files": {
+    "full_slice_source": "t2_full_slice.png",
+    "full_slice_overlay": "t2_full_slice_overlay.png",
+    "lesion_zoom": null
+  },
+  "legend": [
+    {
+      "key": "gland",
+      "label": "Whole gland",
+      "colour": "rgb(235,200,192)"
+    },
+    {
+      "key": "pz",
+      "label": "Peripheral zone",
+      "colour": "rgb(245,212,158)"
+    },
+    {
+      "key": "tz",
+      "label": "Transition zone",
+      "colour": "rgb(158,199,240)"
+    },
+    {
+      "key": "lesion",
+      "label": "Lesion candidate",
+      "colour": "rgb(219,36,36)"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "pv-case-086",
+  "title": "BPH morphology, no lesion (PROSTATE_067)",
+  "source": "Prostate158 (Adams et al. 2022, doi:10.5281/zenodo.6481141)",
+  "licence": "CC BY 4.0",
+  "source_case": "PROSTATE_067",
+  "pi_rads_truth": null,
+  "synthetic": false,
+  "public_dataset": true,
+  "inference_backend": "ground_truth_derived",
+  "notes": "Real Prostate158 case PROSTATE_067. BPH morphology, no lesion. Gland ~37.5 ml (medium BPH). GT-derived gland + zones (anatomy-only, no lesion).",
+  "imported_at": "2026-05-30T17:23:53Z",
+  "badges": [
+    "public-research-dataset-derived",
+    "ground-truth-label-derived",
+    "not-clinically-validated",
+    "mobile-optimised"
+  ],
+  "mesh_nodes": {
+    "prostate_gland": "Whole prostate gland",
+    "peripheral_zone": "Peripheral zone",
+    "transition_zone": "Transition zone"
+  },
+  "purpose": "Teaching and orientation rehearsal",
+  "disclaimer": "Research and educational prototype. Not a medical device. Not for diagnosis, PI-RADS, staging or biopsy targeting. Not clinically validated in this app.",
+  "model_reuse_note": null
+}

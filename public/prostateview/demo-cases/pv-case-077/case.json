@@ -1,0 +1,64 @@
+{
+  "id": "pv-case-077",
+  "caseNumber": 77,
+  "title": "Multifocal apical PZ lesion, dominant left (PROSTATE_078)",
+  "subtitle": "Prostate158 PROSTATE_078. lesion: multifocal, dominant left, PZ, apex, posterior",
+  "status": "READY_GT_DERIVED",
+  "sourceDataset": "Prostate158",
+  "sourceType": "public_research_dataset",
+  "generationType": "ground_truth_derived",
+  "modelPath": "/demo-cases/pv-case-077/model.glb",
+  "annotationsPath": "/demo-cases/pv-case-077/annotations.json",
+  "previewImages": {
+    "full_slice_source": "/demo-cases/pv-case-077/preview/t2_full_slice.png",
+    "full_slice_overlay": "/demo-cases/pv-case-077/preview/t2_full_slice_overlay.png",
+    "lesion_zoom": "/demo-cases/pv-case-077/preview/t2_lesion_zoom.png"
+  },
+  "zone": "PZ",
+  "side": "left",
+  "level": "apex",
+  "anteriorPosterior": "posterior",
+  "hasLesion": true,
+  "modelStatus": "READY_GT_DERIVED",
+  "validationStatus": "Not clinically validated in this app",
+  "technicalValidation": {
+    "hasMetrics": false,
+    "diceWholeGland": null,
+    "dicePZ": null,
+    "diceTZ": null,
+    "volumeDifferenceWholeGlandPercent": null,
+    "volumeDifferencePZPercent": null,
+    "volumeDifferenceTZPercent": null
+  },
+  "clinicalUse": "Research and education only",
+  "safeSummary": "Real Prostate158 case PROSTATE_078. Multifocal apical PZ lesion, dominant left. Gland ~61.4 ml (large balanced). GT-derived gland + zones + lesion.",
+  "teachingValue": "Orientation rehearsal: multifocal lesion. Correlate the 3D zonal model with the axial T2W preview. Educational only; not for diagnosis or PI-RADS.",
+  "whatNotToClaim": [
+    "No diagnosis",
+    "No PI-RADS assignment by ProstateView",
+    "No staging",
+    "No biopsy targeting",
+    "No clinical validation"
+  ],
+  "disclaimer": "Research and educational prototype. Not a medical device. Not for diagnosis, PI-RADS, staging or biopsy targeting. Not clinically validated in this app.",
+  "mobileOptimised": {
+    "triangles": 62016,
+    "glbBytes": 117596,
+    "draco": true
+  },
+  "modelReuseNote": null,
+  "lesionGlbOffsetM": [
+    0.00099,
+    -0.01362,
+    -0.01744
+  ],
+  "glandHalfM": [
+    0.02701,
+    0.02849,
+    0.02263
+  ],
+  "hasLesionMarker": true,
+  "mriPreviewVersion": "full-slice-v2",
+  "lesionMultifocal": true,
+  "arOriented": true
+}

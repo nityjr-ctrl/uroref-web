@@ -1,0 +1,9 @@
+{
+  "id": "synthetic-demo",
+  "title": "Synthetic demo - smoke test output",
+  "source": "Locally generated",
+  "licence": "MIT (artificial)",
+  "pi_rads_truth": null,
+  "synthetic": true,
+  "notes": "Artificial ellipsoidal anatomy. NOT a real prostate. For UI and AR smoke testing only."
+}

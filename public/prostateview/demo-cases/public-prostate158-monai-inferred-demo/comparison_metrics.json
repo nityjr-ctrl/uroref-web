@@ -1,0 +1,60 @@
+{
+  "case": "PROSTATE_103",
+  "resampled_to": "ground-truth geometry (nearest neighbour)",
+  "voxel_volume_mm3": 0.222,
+  "labels": {
+    "gt_inner_gland_voxels": 57499,
+    "gt_pz_voxels": 82575,
+    "pred_tz_voxels": 31904,
+    "pred_pz_voxels": 27809
+  },
+  "volumes_ml": {
+    "gt_inner_gland": 12.74,
+    "gt_pz": 18.29,
+    "pred_tz": 7.07,
+    "pred_pz": 6.16
+  },
+  "dice_single_case": {
+    "central_gland_vs_inner": 0.002,
+    "peripheral_zone": 0.029
+  },
+  "lesion_inference": {
+    "gt_tumor_voxels": 10206,
+    "pred_lesion_voxels": 0,
+    "note": "MONAI prostate_mri_anatomy bundle has no lesion class; lesion candidates absent in inference output by design."
+  },
+  "volume_diff_ml": {
+    "central_gland_pred_minus_gt": -5.67,
+    "peripheral_zone_pred_minus_gt": -12.13
+  },
+  "volume_diff_pct": {
+    "central_gland": -44.5,
+    "peripheral_zone": -66.3
+  },
+  "centroid_mm": {
+    "gt_inner": [
+      56.63,
+      62.88,
+      42.3
+    ],
+    "pred_tz": [
+      38.35,
+      43.5,
+      42.93
+    ],
+    "gt_pz": [
+      54.55,
+      70.94,
+      39.88
+    ],
+    "pred_pz": [
+      36.72,
+      46.92,
+      38.87
+    ]
+  },
+  "centroid_distance_mm": {
+    "central_gland": 26.65,
+    "peripheral_zone": 29.93
+  }
+}

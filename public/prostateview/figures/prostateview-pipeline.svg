@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 440" font-family="Inter, Segoe UI, system-ui, sans-serif" role="img" aria-label="ProstateView pipeline: from public MRI to mobile 3D">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0a141d"/>
+      <stop offset="1" stop-color="#071018"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#4a6075"/>
+    </marker>
+    <style>
+      .stage { fill:#0e1c28; stroke:#1d3346; stroke-width:1.5; rx:12; }
+      .num { fill:#d9a15c; font-size:13px; font-weight:700; }
+      .title { fill:#eaf2f8; font-size:15px; font-weight:700; }
+      .sub { fill:#9fb3c4; font-size:12px; }
+      .gpu { fill:#0c2230; stroke:#2a5a6e; }
+      .callout { fill:#78aeda; font-size:12px; font-weight:600; }
+      .calloutbox { fill:#0c1a26; stroke:#27506a; stroke-width:1.2; rx:8; }
+      .accent { fill:#d9a15c; font-size:12px; font-weight:600; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1240" height="440" fill="url(#bg)" rx="14"/>
+  <text x="32" y="44" fill="#eaf2f8" font-size="22" font-weight="800">ProstateView v2 &#8212; public MRI labels to mobile 3D</text>
+  <text x="32" y="68" fill="#9fb3c4" font-size="13">GPU-accelerated, mobile-optimised teaching models from the public Prostate158 dataset. Educational only; not a medical device.</text>
+
+  <!-- Stage boxes -->
+  <g>
+    <!-- 1 -->
+    <rect class="stage" x="32" y="110" width="176" height="150" rx="12"/>
+    <text class="num" x="48" y="136">01</text>
+    <text class="title" x="48" y="160">Public T2W MRI</text>
+    <text class="sub" x="48" y="182">Prostate158</text>
+    <text class="sub" x="48" y="200">(Adams et al. 2022)</text>
+    <text class="sub" x="48" y="218">CC BY 4.0</text>
+    <text class="sub" x="48" y="242">No local patient data</text>
+
+    <!-- 2 -->
+    <rect class="stage gpu" x="240" y="110" width="176" height="150" rx="12"/>
+    <text class="num" x="256" y="136">02</text>
+    <text class="title" x="256" y="160">Zonal labels</text>
+    <text class="sub" x="256" y="182">Expert ground truth</text>
+    <text class="sub" x="256" y="200">(TZ / PZ / lesion)</text>
+    <text class="accent" x="256" y="226">+ MONAI on GPU</text>
+    <text class="sub" x="256" y="244">CUDA - AMP</text>
+
+    <!-- 3 -->
+    <rect class="stage" x="448" y="110" width="176" height="150" rx="12"/>
+    <text class="num" x="464" y="136">03</text>
+    <text class="title" x="464" y="160">Smooth mesh</text>
+    <text class="sub" x="464" y="182">0.5 isolevel</text>
+    <text class="sub" x="464" y="200">per structure</text>
+    <text class="sub" x="464" y="224">Taubin smoothing,</text>
+    <text class="sub" x="464" y="242">physical-space</text>
+
+    <!-- 4 -->
+    <rect class="stage" x="656" y="110" width="176" height="150" rx="12"/>
+    <text class="num" x="672" y="136">04</text>
+    <text class="title" x="672" y="160">Optimise</text>
+    <text class="sub" x="672" y="182">Decimate ~60k tris</text>
+    <text class="sub" x="672" y="200">Mobile budget</text>
+    <text class="sub" x="672" y="224">Preserve shape,</text>
+    <text class="sub" x="672" y="242">reduce weight</text>
+
+    <!-- 5 -->
+    <rect class="stage" x="864" y="110" width="176" height="150" rx="12"/>
+    <text class="num" x="880" y="136">05</text>
+    <text class="title" x="880" y="160">GLB + Draco</text>
+    <text class="sub" x="880" y="182">Binary glTF,</text>
+    <text class="sub" x="880" y="200">single file</text>
+    <text class="accent" x="880" y="226">~0.1 MB / model</text>
+    <text class="sub" x="880" y="244">QA checked</text>
+
+    <!-- 6 -->
+    <rect class="stage" x="1032" y="110" width="176" height="150" rx="12"/>
+    <text class="num" x="1048" y="136">06</text>
+    <text class="title" x="1048" y="160">Mobile + AR</text>
+    <text class="sub" x="1048" y="182">three.js viewer,</text>
+    <text class="sub" x="1048" y="200">touch + lazy-load</text>
+    <text class="sub" x="1048" y="224">Layer opacity,</text>
+    <text class="sub" x="1048" y="242">compass, AR</text>
+  </g>
+
+  <!-- arrows -->
+  <g stroke="#4a6075" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="210" y1="185" x2="236" y2="185"/>
+    <line x1="418" y1="185" x2="444" y2="185"/>
+    <line x1="626" y1="185" x2="652" y2="185"/>
+    <line x1="834" y1="185" x2="860" y2="185"/>
+    <line x1="1042" y1="185" x2="1028" y2="185" transform="translate(0,0)"/>
+  </g>
+  <line x1="1042" y1="185" x2="1030" y2="185" stroke="#4a6075" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- GPU validation callout under stage 2 -->
+  <rect class="calloutbox" x="240" y="286" width="384" height="118" rx="8"/>
+  <text class="callout" x="258" y="312">Technical validation (100 cases, this build)</text>
+  <text class="sub" x="258" y="336">Automated MONAI segmentation vs expert ground truth</text>
+  <text x="258" y="362" fill="#eaf2f8" font-size="13" font-weight="700">Dice &#8212; gland 0.91 &#183; TZ 0.87 &#183; PZ 0.77</text>
+  <text class="sub" x="258" y="384">1.2 s/case on GPU &#183; model-vs-expert agreement, not clinical validation</text>
+
+  <!-- library callout under stage 5/6 -->
+  <rect class="calloutbox" x="656" y="286" width="552" height="118" rx="8"/>
+  <text class="callout" x="674" y="312">Library &#38; mobile footprint</text>
+  <text x="674" y="338" fill="#eaf2f8" font-size="13" font-weight="700">97 teaching-grade models &#183; 100-model set &#183; mean ~0.11 MB each</text>
+  <text class="sub" x="674" y="362">Whole set ~11.5 MB &#183; every model under the 80k-triangle / 3 MB mobile budget</text>
+  <text class="sub" x="674" y="384">Orientation QA: 14 automated passes; 88 human orientation corrections completed</text>
+</svg>

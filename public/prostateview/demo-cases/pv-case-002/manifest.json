@@ -1,0 +1,27 @@
+{
+  "id": "pv-case-002",
+  "title": "Anterior transition-zone lesion (PROSTATE_138)",
+  "source": "Prostate158 (Adams et al. 2022, doi:10.5281/zenodo.6481141)",
+  "licence": "CC BY 4.0",
+  "pi_rads_truth": null,
+  "synthetic": false,
+  "public_dataset": true,
+  "inference_backend": "ground_truth_derived",
+  "notes": "Real Prostate158 case PROSTATE_138. Anterior transition-zone lesion. Lesion drawn from t2_tumor_reader1.",
+  "imported_at": "2026-05-16T20:10:43Z",
+  "badges": [
+    "public-research-dataset-derived",
+    "not-clinically-validated",
+    "ground-truth-derived",
+    "mobile-optimised"
+  ],
+  "mesh_nodes": {
+    "prostate_gland": "Whole prostate gland",
+    "peripheral_zone": "Peripheral zone",
+    "transition_zone": "Transition zone",
+    "lesion_01": "Lesion candidate"
+  },
+  "purpose": "Teaching and orientation rehearsal",
+  "disclaimer": "Research and educational prototype. Not a medical device. Not for diagnosis, PI-RADS, staging or biopsy targeting. Not clinically validated in this app.",
+  "model_reuse_note": null
+}

@@ -1,0 +1,9 @@
+{
+  "case_id": "pv-case-010",
+  "generated_at": "2026-05-16T20:11:27Z",
+  "stager": "scripts/generate_real_case.py",
+  "status": "READY_GT_DERIVED",
+  "generation_type": "ground_truth_derived",
+  "monai_used_gpu": false,
+  "glb_bytes": 4316312
+}

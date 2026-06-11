@@ -1,0 +1,11 @@
+{
+  "id": "public-prostate158-monai-inferred-demo",
+  "hasLesion": false,
+  "_note": "orientation metadata for the viewer; legacy demo case",
+  "glandHalfM": [
+    0.01706,
+    0.01836,
+    0.01087
+  ],
+  "arOriented": true
+}

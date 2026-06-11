@@ -1,0 +1,20 @@
+{
+  "labelled_as": "Technical comparison against public dataset annotations. Not clinical validation.",
+  "dice": {
+    "tz": 0.0022594320101115175,
+    "pz": 0.029497028554863025
+  },
+  "gt_volumes_ml": {
+    "tz": 12.737547277018669,
+    "pz": 18.292543633799138
+  },
+  "pred_volumes_ml": {
+    "tz": 7.067578711386348,
+    "pz": 6.160428046167971
+  },
+  "volume_diff_percent": {
+    "whole_gland": null,
+    "pz": -66.32,
+    "tz": -44.51
+  }
+}

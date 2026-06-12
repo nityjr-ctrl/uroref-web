@@ -1,0 +1,825 @@
+<!DOCTYPE html><html lang="en-GB"> <head>
+    <meta name="robots" content="noindex">
+    <link rel="canonical" href="https://prostateview.com/v2/learn/match-the-slice/">
+    <meta charset="UTF-8"><script>
+      /* set theme + accessibility prefs before paint to avoid a flash */
+      (function(){try{
+        var d=document.documentElement;
+        var t=localStorage.getItem('pv-theme');
+        if(t==='light')d.classList.add('light');
+        else if(t==='reading')d.classList.add('reading');
+        ['reduce-motion','large-text','dyslexia'].forEach(function(k){
+          if(localStorage.getItem('pv-a11y-'+k)==='1')d.classList.add('a11y-'+k);
+        });
+      }catch(e){}})();
+    </script><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"><meta name="description" content="An interactive Match the Slice prototype for aligning a 2D slice preview with a 3D target."><meta name="theme-color" content="#0f172a"><link rel="manifest" href="/prostateview/manifest-v2.webmanifest"><link rel="icon" href="/prostateview/icons/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/prostateview/icons/icon-192.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,560;0,9..144,640;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet"><title>Match the Slice - ProstateView Spatial Lab</title><!-- Social sharing previews (WhatsApp / Slack / LinkedIn / X) --><meta property="og:type" content="website"><meta property="og:site_name" content="ProstateView"><meta property="og:title" content="Match the Slice - ProstateView Spatial Lab"><meta property="og:description" content="An interactive Match the Slice prototype for aligning a 2D slice preview with a 3D target."><meta property="og:url" content="https://prostateview.com/prostateview/v2/learn/match-the-slice/"><meta property="og:image" content="https://prostateview.com/social-preview.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Match the Slice - ProstateView Spatial Lab"><meta name="twitter:description" content="An interactive Match the Slice prototype for aligning a 2D slice preview with a 3D target."><meta name="twitter:image" content="https://prostateview.com/social-preview.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Match the Slice","description":"An interactive Match the Slice prototype for aligning a 2D slice preview with a 3D target.","url":"https://prostateview.com/v2/learn/match-the-slice/","educationalUse":"Medical education","teaches":"2D slice to 3D spatial alignment"}</script><link rel="stylesheet" href="/prostateview/_astro/about.hFqiksV5.css">
+<link rel="stylesheet" href="/prostateview/_astro/_id_.6RLGKaZX.css">
+<link rel="stylesheet" href="/prostateview/_astro/match-the-slice.CCBsF0Dp.css"></head> <body class="pv2-body pv2-body-learn"> <header class="pv2-header"> <a class="pv2-brand" href="/prostateview/v2" aria-label="ProstateView home"> <span class="pv2-brand-mark" aria-hidden="true"> <img class="pv2-brand-logo" src="/prostateview/logo.png" alt="" width="120" height="120"> </span> <span class="pv2-wordmark">Prostate<span class="pv2-wordmark-accent">View</span></span> </a> <nav class="pv2-nav" aria-label="Primary"> <a href="/prostateview/v2"> Home </a><a href="/prostateview/v2/learn" aria-current="page"> Learn </a><a href="/prostateview/v2/safety"> Safety </a><a href="/prostateview/v2/cases/#curated-mri"> Case library </a><a href="/prostateview/v2/poster"> Poster </a><a class="pv2-uroref-link" href="https://uroref.com" target="_blank" rel="noopener"> UroRef </a> <div class="pv2-a11y"> <button type="button" class="pv2-a11y-btn" data-a11y-toggle aria-label="Display and accessibility settings" aria-expanded="false"> <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg> </button> <div class="pv2-a11y-panel" data-a11y-panel hidden> <h3>Theme</h3> <div class="pv2-a11y-theme" role="group" aria-label="Theme"> <button type="button" data-theme-set="dark">Dark</button> <button type="button" data-theme-set="light">Light</button> <button type="button" data-theme-set="reading">Reading</button> </div> <h3>Accessibility</h3> <label class="pv2-a11y-opt"><input type="checkbox" data-a11y="dyslexia"> Dyslexia mode</label> <label class="pv2-a11y-opt"><input type="checkbox" data-a11y="large-text"> Large text</label> <label class="pv2-a11y-opt"><input type="checkbox" data-a11y="reduce-motion"> Less motion</label> </div> </div> </nav> </header> <div class="pv2-safety-strip" role="note"> <svg class="pv2-safety-svg" viewBox="0 0 24 24" aria-hidden="true"> <path d="M12 3l7 3v5c0 4.4-2.8 8.4-7 10-4.2-1.6-7-5.6-7-10V6l7-3z"></path> <path d="M8.5 12.2l2.2 2.2 4.8-5"></path> </svg> <span>Teaching only. Not for diagnosis, PI&#8209;RADS, biopsy planning or navigation.</span> </div> <main class="pv2-main">  <section class="pv2-learn pv2-drill-page pv2-spatial-lab-route"> <a class="pv2-back" href="/prostateview/v2/learn">&larr; Spatial Lab</a> <header class="pv2-drill-head"> <div> <p class="pv2-eyebrow">Spatial Lab 03</p> <h1>Match the Slice</h1> <p class="pv2-copy">Move depth and side controls until the slice preview locks onto the hidden target signal.</p> </div> <div class="pv2-drill-audit" aria-label="Prototype status"> <span>Interactive prototype</span> <strong>50 rounds</strong> </div> </header> <section class="mts" id="mts-root" data-spatial-lab-drill="match-the-slice" aria-label="Match the Slice" data-astro-cid-ffml4pm4> <header class="mts-head" data-astro-cid-ffml4pm4> <p class="mts-eyebrow" data-astro-cid-ffml4pm4>Spatial Alignment Prototype</p> <h2 class="mts-title" data-astro-cid-ffml4pm4>Match the Slice</h2> <p class="mts-sub" data-astro-cid-ffml4pm4>
+A two-dimensional slice is produced by the position of a plane moving through a
+      three-dimensional object. Find the hidden target pocket and lock the alignment.
+</p> <ol class="mts-howto" data-astro-cid-ffml4pm4> <li data-astro-cid-ffml4pm4><strong data-astro-cid-ffml4pm4>Rotate</strong> the object: drag it directly, or use the arrow buttons below it.</li> <li data-astro-cid-ffml4pm4><strong data-astro-cid-ffml4pm4>Zoom</strong> with scroll or the + and &minus; buttons.</li> <li data-astro-cid-ffml4pm4><strong data-astro-cid-ffml4pm4>Scrub</strong> the depth slider to move the slice, and the side slider to place the band.</li> <li data-astro-cid-ffml4pm4><strong data-astro-cid-ffml4pm4>Watch</strong> the slice preview: the signal glows brighter as you close in. Lock when it peaks.</li> </ol> </header> <div class="mts-stats" role="status" data-astro-cid-ffml4pm4> <div data-astro-cid-ffml4pm4><span id="mts-round" data-astro-cid-ffml4pm4>1 / 50</span><small data-astro-cid-ffml4pm4>Round</small></div> <div data-astro-cid-ffml4pm4><span id="mts-acc" data-astro-cid-ffml4pm4>&ndash;</span><small data-astro-cid-ffml4pm4>Accuracy</small></div> <div data-astro-cid-ffml4pm4><span id="mts-exact" data-astro-cid-ffml4pm4>0</span><small data-astro-cid-ffml4pm4>Exact</small></div> <div data-astro-cid-ffml4pm4><span id="mts-streak" data-astro-cid-ffml4pm4>0</span><small data-astro-cid-ffml4pm4>Streak</small></div> </div> <div class="mts-stage" data-astro-cid-ffml4pm4> <div class="mts-left" data-astro-cid-ffml4pm4> <div class="mts-viewcard" data-astro-cid-ffml4pm4> <div class="mts-canvaswrap" data-astro-cid-ffml4pm4> <canvas id="mts-main" width="1040" height="880" data-astro-cid-ffml4pm4></canvas> <div class="mts-dragtip" id="mts-dragtip" data-astro-cid-ffml4pm4>&#8635;&nbsp; Drag to rotate &middot; scroll to zoom</div> </div> <div class="mts-transport" data-astro-cid-ffml4pm4> <span class="mts-tlabel" data-astro-cid-ffml4pm4>Rotate</span> <div class="mts-tgroup" aria-label="Rotate object" data-astro-cid-ffml4pm4> <button id="mts-rl" type="button" title="Rotate left" data-astro-cid-ffml4pm4>&#9664;</button> <button id="mts-ru" type="button" title="Rotate up" data-astro-cid-ffml4pm4>&#9650;</button> <button id="mts-rd" type="button" title="Rotate down" data-astro-cid-ffml4pm4>&#9660;</button> <button id="mts-rr" type="button" title="Rotate right" data-astro-cid-ffml4pm4>&#9654;</button> </div> <span class="mts-tlabel" data-astro-cid-ffml4pm4>Zoom</span> <div class="mts-tgroup" aria-label="Zoom" data-astro-cid-ffml4pm4> <button id="mts-zo" type="button" title="Zoom out" data-astro-cid-ffml4pm4>&minus;</button> <button id="mts-zi" type="button" title="Zoom in" data-astro-cid-ffml4pm4>+</button> </div> </div> </div> <div class="mts-card mts-sliders" id="mts-slidercard" data-astro-cid-ffml4pm4> <div class="mts-sliderrow" data-astro-cid-ffml4pm4> <label for="mts-depth" data-astro-cid-ffml4pm4>Slice depth</label> <div class="mts-scale" data-astro-cid-ffml4pm4><span data-astro-cid-ffml4pm4>near</span><span data-astro-cid-ffml4pm4>middle</span><span data-astro-cid-ffml4pm4>far</span></div> <input id="mts-depth" type="range" min="0" max="1" step="0.005" value="0.5" data-astro-cid-ffml4pm4> </div> <div class="mts-sliderrow" data-astro-cid-ffml4pm4> <label for="mts-side" data-astro-cid-ffml4pm4>Side band</label> <div class="mts-scale" data-astro-cid-ffml4pm4><span data-astro-cid-ffml4pm4>left</span><span data-astro-cid-ffml4pm4>centre</span><span data-astro-cid-ffml4pm4>right</span></div> <input id="mts-side" type="range" min="0" max="1" step="0.005" value="0.5" data-astro-cid-ffml4pm4> </div> </div> <div class="mts-card mts-bands" id="mts-bandcard" hidden data-astro-cid-ffml4pm4> <p class="mts-bandlabel" data-astro-cid-ffml4pm4>Depth band</p> <div class="mts-seg" id="mts-segd" data-astro-cid-ffml4pm4> <button type="button" data-v="near" data-astro-cid-ffml4pm4>near</button> <button type="button" data-v="middle" data-astro-cid-ffml4pm4>middle</button> <button type="button" data-v="far" data-astro-cid-ffml4pm4>far</button> </div> <p class="mts-bandlabel" data-astro-cid-ffml4pm4>Side band</p> <div class="mts-seg" id="mts-segs" data-astro-cid-ffml4pm4> <button type="button" data-v="left" data-astro-cid-ffml4pm4>left</button> <button type="button" data-v="centre" data-astro-cid-ffml4pm4>centre</button> <button type="button" data-v="right" data-astro-cid-ffml4pm4>right</button> </div> </div> </div> <div class="mts-right" data-astro-cid-ffml4pm4> <div class="mts-card mts-preview" data-astro-cid-ffml4pm4> <p class="mts-cardtitle" data-astro-cid-ffml4pm4>Slice preview</p> <canvas id="mts-prev" width="520" height="480" data-astro-cid-ffml4pm4></canvas> <p class="mts-prevnote" id="mts-prevnote" data-astro-cid-ffml4pm4>Live view of the current cutting sheet.</p> </div> <div class="mts-card mts-task" data-astro-cid-ffml4pm4> <div class="mts-chips" data-astro-cid-ffml4pm4> <span class="mts-chip" id="mts-tier" data-astro-cid-ffml4pm4>Tier 1</span> <span class="mts-chip" id="mts-mode" data-astro-cid-ffml4pm4>place</span> </div> <p class="mts-clue" id="mts-clue" data-astro-cid-ffml4pm4>&nbsp;</p> <div class="mts-timer" id="mts-timer" hidden data-astro-cid-ffml4pm4><i id="mts-timerbar" data-astro-cid-ffml4pm4></i></div> <p class="mts-msg" id="mts-msg" aria-live="polite" data-astro-cid-ffml4pm4>&nbsp;</p> <div class="mts-actions" data-astro-cid-ffml4pm4> <button id="mts-lock" class="mts-lockbtn" type="button" data-astro-cid-ffml4pm4>Lock alignment</button> <button id="mts-next" class="mts-ghostbtn" type="button" disabled data-astro-cid-ffml4pm4>Next</button> <button id="mts-reset" class="mts-ghostbtn" type="button" data-astro-cid-ffml4pm4>Reset</button> </div> <label class="mts-motion" data-astro-cid-ffml4pm4> <input type="checkbox" id="mts-motion" data-astro-cid-ffml4pm4> Reduced motion
+</label> </div> </div> </div> </section>  <script>
+(function () {
+  var root = document.getElementById('mts-root');
+  if (!root || root.dataset.mtsInit) return;
+  root.dataset.mtsInit = '1';
+  var STORAGE_KEY = 'pv-spatial-lab:match-the-slice';
+
+  /*CORE-START*/
+  /* ---------- maths ---------- */
+  function matVec(m, v) {
+    return [
+      m[0][0]*v[0] + m[0][1]*v[1] + m[0][2]*v[2],
+      m[1][0]*v[0] + m[1][1]*v[1] + m[1][2]*v[2],
+      m[2][0]*v[0] + m[2][1]*v[1] + m[2][2]*v[2]
+    ];
+  }
+  function matMul(a, b) {
+    var r = [[0,0,0],[0,0,0],[0,0,0]];
+    for (var i = 0; i < 3; i++)
+      for (var j = 0; j < 3; j++)
+        r[i][j] = a[i][0]*b[0][j] + a[i][1]*b[1][j] + a[i][2]*b[2][j];
+    return r;
+  }
+  function viewMat(pitch, yaw) {
+    var rx = [[1,0,0],[0,Math.cos(pitch),-Math.sin(pitch)],[0,Math.sin(pitch),Math.cos(pitch)]];
+    var ry = [[Math.cos(yaw),0,Math.sin(yaw)],[0,1,0],[-Math.sin(yaw),0,Math.cos(yaw)]];
+    return matMul(rx, ry);
+  }
+  function lerp(a, b, t) { return a + (b - a) * t; }
+  function clamp(x, a, b) { return Math.min(b, Math.max(a, x)); }
+
+  /* ---------- object library (lathe forms: profile of [z, radius]) ---------- */
+  var SHAPES = {
+    capsule: {
+      profile: [[-1.25,0],[-1.05,0.5],[-0.7,0.72],[-0.2,0.78],[0.3,0.74],[0.75,0.6],[1.05,0.34],[1.2,0]],
+      n: 20, twist: 0, kx: 1.0, ky: 0.8
+    },
+    crystal: {
+      profile: [[-1.35,0],[-0.85,0.42],[-0.35,0.62],[0.15,0.78],[0.7,0.5],[1.0,0.22],[1.25,0]],
+      n: 6, twist: 0.35, kx: 1.0, ky: 0.9
+    },
+    artefact: {
+      profile: [[-1.15,0],[-0.75,0.55],[-0.15,0.85],[0.35,0.65],[0.8,0.75],[1.15,0]],
+      n: 8, twist: -0.25, kx: 1.0, ky: 0.7
+    }
+  };
+  function zRange(shape) {
+    var p = shape.profile;
+    return [p[0][0], p[p.length-1][0]];
+  }
+  function rAt(shape, z) {
+    var p = shape.profile;
+    if (z <= p[0][0]) return p[0][1];
+    for (var i = 1; i < p.length; i++) {
+      if (z <= p[i][0]) {
+        var t = (z - p[i-1][0]) / (p[i][0] - p[i-1][0]);
+        return lerp(p[i-1][1], p[i][1], t);
+      }
+    }
+    return p[p.length-1][1];
+  }
+  function depthToZ(shape, f) {
+    var zr = zRange(shape);
+    return lerp(zr[0] + 0.12, zr[1] - 0.12, f);
+  }
+  function buildMesh(shape) {
+    var rings = shape.profile.map(function (pr) {
+      var z = pr[0], r = pr[1], ring = [];
+      for (var i = 0; i < shape.n; i++) {
+        var a = shape.twist * z + i * 2 * Math.PI / shape.n;
+        ring.push([shape.kx * r * Math.cos(a), shape.ky * r * Math.sin(a), z]);
+      }
+      return ring;
+    });
+    var tris = [];
+    for (var k = 0; k + 1 < rings.length; k++) {
+      var r0 = rings[k], r1 = rings[k+1];
+      for (var i = 0; i < shape.n; i++) {
+        var j = (i + 1) % shape.n;
+        tris.push([r0[i], r0[j], r1[j]], [r0[i], r1[j], r1[i]]);
+      }
+    }
+    return tris;
+  }
+  /* slice polygon of the lathe form at plane z = off (object space, x-y plane) */
+  function sectionAt(shape, off) {
+    var r = rAt(shape, off);
+    if (r < 0.02) r = 0.02;
+    var pts = [];
+    for (var i = 0; i < shape.n; i++) {
+      var a = shape.twist * off + i * 2 * Math.PI / shape.n;
+      pts.push([shape.kx * r * Math.cos(a), shape.ky * r * Math.sin(a)]);
+    }
+    return pts;
+  }
+  function bbox(pts) {
+    var xs = pts.map(function (p) { return p[0]; });
+    var ys = pts.map(function (p) { return p[1]; });
+    return {
+      minX: Math.min.apply(null, xs), maxX: Math.max.apply(null, xs),
+      minY: Math.min.apply(null, ys), maxY: Math.max.apply(null, ys)
+    };
+  }
+  function inConvex(pts, x, y) {
+    var sgn = 0;
+    for (var i = 0; i < pts.length; i++) {
+      var a = pts[i], b = pts[(i+1) % pts.length];
+      var c = (b[0]-a[0])*(y-a[1]) - (b[1]-a[1])*(x-a[0]);
+      if (Math.abs(c) < 1e-9) continue;
+      if (sgn === 0) sgn = c > 0 ? 1 : -1;
+      else if ((c > 0 ? 1 : -1) !== sgn) return false;
+    }
+    return true;
+  }
+  /* target pocket position derived purely from round data */
+  function pocketFor(round) {
+    var shape = SHAPES[round.assets.shape];
+    var z = depthToZ(shape, round.targetDepthFraction);
+    var sec = sectionAt(shape, z);
+    var bb = bbox(sec);
+    var x = lerp(bb.minX, bb.maxX, round.targetSideFraction);
+    var y = 0;
+    var h = (bb.maxY - bb.minY) * 0.18;
+    var cand = (Math.random() * 2 - 1) * h;
+    if (inConvex(sec, x * 0.92, cand)) y = cand;
+    return { x: x * 0.92, y: y, z: z, r: 0.14 };
+  }
+
+  /* ---------- rounds (data-driven; neutral schema) ---------- */
+  var BANDS_D = ['near', 'middle', 'far'];
+  var BANDS_S = ['left', 'centre', 'right'];
+  function bandOf(f, names) { return names[Math.min(2, Math.floor(f * 3))]; }
+  function makeRounds(total) {
+    var names = Object.keys(SHAPES), rounds = [];
+    for (var i = 0; i < total; i++) {
+      var tier = Math.min(5, 1 + Math.floor(i / (total / 5)));
+      var snap = tier <= 2;
+      var d = 0.12 + Math.random() * 0.76;
+      var s = 0.15 + Math.random() * 0.7;
+      if (snap) { d = Math.round(d * 20) / 20; s = Math.round(s * 20) / 20; }
+      rounds.push({
+        id: 'r-' + String(i + 1).padStart(3, '0'),
+        tier: tier,
+        mode: tier === 4 ? 'identify' : 'place',
+        targetDepthFraction: +d.toFixed(3),
+        targetSideFraction: +s.toFixed(3),
+        targetBand: { depth: bandOf(d, BANDS_D), side: bandOf(s, BANDS_S) },
+        beacon: tier === 1,
+        snap: snap,
+        timed: tier === 5,
+        assets: { shape: names[i % names.length] },
+        feedback: {
+          exact: 'Exact alignment. Signal locked.',
+          near: 'Near alignment. Signal partially captured.',
+          miss: 'Outside tolerance. No signal.'
+        }
+      });
+    }
+    return rounds;
+  }
+  function scorePlace(round, depth, side) {
+    var dErr = Math.abs(depth - round.targetDepthFraction);
+    var sErr = Math.abs(side - round.targetSideFraction);
+    var tolE = round.snap ? 0.052 : 0.045;
+    if (dErr <= tolE && sErr <= tolE) return 'exact';
+    if (dErr <= 0.11 && sErr <= 0.11) return 'near';
+    return 'miss';
+  }
+  function scoreIdentify(round, dBand, sBand) {
+    var hits = (dBand === round.targetBand.depth ? 1 : 0) +
+               (sBand === round.targetBand.side ? 1 : 0);
+    return hits === 2 ? 'exact' : hits === 1 ? 'near' : 'miss';
+  }
+  /*CORE-END*/
+
+  /* ---------- DOM ---------- */
+  var $ = function (id) { return document.getElementById(id); };
+  var mainC = $('mts-main'), prevC = $('mts-prev');
+  var mctx = mainC.getContext('2d'), pctx = prevC.getContext('2d');
+  mctx.setTransform(2, 0, 0, 2, 0, 0);
+  pctx.setTransform(2, 0, 0, 2, 0, 0);
+  var MW = 520, MH = 440, PW = 260, PH = 240;
+
+  var depthIn = $('mts-depth'), sideIn = $('mts-side');
+  var msg = $('mts-msg'), clue = $('mts-clue');
+  var lockBtn = $('mts-lock'), nextBtn = $('mts-next'), resetBtn = $('mts-reset');
+  var motionIn = $('mts-motion');
+  var timerWrap = $('mts-timer'), timerBar = $('mts-timerbar');
+  var segD = $('mts-segd'), segS = $('mts-segs');
+
+  motionIn.checked = window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- session state ---------- */
+  var TOTAL = 50, TIMER_MS = 25000;
+  var session, view, round, mesh, shape, pocket, lockFx = null, timerT0 = null;
+  var pickD = null, pickS = null, locked = false, dirty = true;
+
+  function loadSaved() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) {
+      return null;
+    }
+  }
+  function scorePercent(s) {
+    return s.answered ? Math.round(100 * (s.exact + 0.5 * s.near) / s.answered) : 0;
+  }
+  function freshSession(saved) {
+    saved = saved || {};
+    var savedRounds = Array.isArray(saved.rounds) && saved.rounds.length === TOTAL ? saved.rounds : null;
+    return {
+      rounds: savedRounds || makeRounds(TOTAL),
+      idx: Math.max(0, Math.min(TOTAL - 1, saved.idx || 0)),
+      answered: saved.answered || 0,
+      exact: saved.exact || 0,
+      near: saved.near || 0,
+      streak: saved.streak || 0,
+      done: !!saved.done,
+      pendingNext: !!saved.pendingNext,
+      bestStreak: saved.bestStreak || 0,
+      bestScore: saved.bestScore || 0,
+      completed: !!saved.completed
+    };
+  }
+  function progressPayload() {
+    return {
+      id: 'match-the-slice',
+      label: 'Match the Slice',
+      rounds: session.rounds,
+      idx: session.idx,
+      answered: session.answered,
+      exact: session.exact,
+      near: session.near,
+      streak: session.streak,
+      done: !!session.done,
+      pendingNext: !!session.pendingNext,
+      bestStreak: session.bestStreak || 0,
+      bestScore: session.bestScore || 0,
+      completed: !!session.completed,
+      accuracy: scorePercent(session),
+      updatedAt: new Date().toISOString()
+    };
+  }
+  function saveProgress() {
+    if (!session) return;
+    session.bestStreak = Math.max(session.bestStreak || 0, session.streak || 0);
+    session.bestScore = Math.max(session.bestScore || 0, scorePercent(session));
+    if (session.done || session.answered >= TOTAL) session.completed = true;
+    var payload = progressPayload();
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+      window.dispatchEvent(new CustomEvent('pv-spatial-progress', { detail: payload }));
+    } catch (e) {}
+  }
+  function freshView() { return { pitch: -0.35, yaw: 0.6, zoom: 1 }; }
+
+  /* ---------- rendering: main view ---------- */
+  var PARTICLES = [];
+  for (var pi = 0; pi < 24; pi++) {
+    PARTICLES.push({ x: Math.random(), y: Math.random(),
+      vx: (Math.random()-0.5)*0.00012, vy: (Math.random()-0.5)*0.00010,
+      r: 0.7 + Math.random()*1.3, a: 0.04 + Math.random()*0.08 });
+  }
+
+  function drawMain(t) {
+    var ctx = mctx;
+    ctx.clearRect(0, 0, MW, MH);
+    var motion = !motionIn.checked;
+
+    /* ambient particles */
+    if (motion) {
+      PARTICLES.forEach(function (p) {
+        p.x = (p.x + p.vx + 1) % 1; p.y = (p.y + p.vy + 1) % 1;
+        ctx.beginPath();
+        ctx.arc(p.x * MW, p.y * MH, p.r, 0, 7);
+        ctx.fillStyle = 'rgba(150,230,220,' + p.a + ')';
+        ctx.fill();
+      });
+    }
+
+    var V = viewMat(view.pitch, view.yaw);
+    var scale = 92 * view.zoom;
+    var ox = MW / 2, oy = MH / 2 - 6;
+    function px(p) {
+      var q = matVec(V, p);
+      return [ox + q[0]*scale, oy - q[1]*scale, q[2]];
+    }
+    var zr = zRange(shape);
+    var off = lerp(zr[0] + 0.12, zr[1] - 0.12, state.depth);
+    var showPlane = round.mode === 'place';
+
+    /* classify faces by side of the cutting plane (plane normal = object z) */
+    var nearT = [], farT = [];
+    mesh.forEach(function (tr) {
+      var cz = (tr[0][2] + tr[1][2] + tr[2][2]) / 3;
+      var q0 = px(tr[0]), q1 = px(tr[1]), q2 = px(tr[2]);
+      var z = (q0[2] + q1[2] + q2[2]) / 3;
+      var item = { p: [q0, q1, q2], z: z };
+      (showPlane && cz > off ? nearT : farT).push(item);
+    });
+    var nz = matVec(V, [0, 0, 1])[2];
+    var firstGrp = nz > 0 ? farT : nearT;
+    var secondGrp = nz > 0 ? nearT : farT;
+
+    function glass(list) {
+      list.sort(function (a, b) { return a.z - b.z; });
+      list.forEach(function (f) {
+        var fog = clamp(0.55 + 0.45 * (f.z / 2 + 0.5), 0.45, 1);
+        ctx.beginPath();
+        ctx.moveTo(f.p[0][0], f.p[0][1]);
+        ctx.lineTo(f.p[1][0], f.p[1][1]);
+        ctx.lineTo(f.p[2][0], f.p[2][1]);
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(140,210,230,' + (0.055 * fog).toFixed(3) + ')';
+        ctx.strokeStyle = 'rgba(170,235,228,' + (0.16 * fog).toFixed(3) + ')';
+        ctx.lineWidth = 0.7;
+        ctx.fill(); ctx.stroke();
+      });
+    }
+    function beacon() {
+      var q = px([pocket.x, pocket.y, pocket.z]);
+      var pulse = motion ? 1 + 0.18 * Math.sin(t / 320) : 1;
+      var R = 9 * view.zoom * pulse;
+      var g = ctx.createRadialGradient(q[0], q[1], 0, q[0], q[1], R * 2.4);
+      g.addColorStop(0, 'rgba(120,255,235,0.95)');
+      g.addColorStop(0.35, 'rgba(45,212,191,0.45)');
+      g.addColorStop(1, 'rgba(45,212,191,0)');
+      ctx.beginPath(); ctx.arc(q[0], q[1], R * 2.4, 0, 7);
+      ctx.fillStyle = g; ctx.fill();
+      ctx.beginPath(); ctx.arc(q[0], q[1], R * 0.45, 0, 7);
+      ctx.fillStyle = '#dffcf6'; ctx.fill();
+    }
+    function planeSheet() {
+      var sec = sectionAt(shape, off);
+      var bb = bbox(sec);
+      var mX = 0.18, mY = 0.18;
+      var quad = [
+        [bb.minX - mX, bb.minY - mY], [bb.maxX + mX, bb.minY - mY],
+        [bb.maxX + mX, bb.maxY + mY], [bb.minX - mX, bb.maxY + mY]
+      ];
+      ctx.beginPath();
+      quad.forEach(function (p2, i) {
+        var q = px([p2[0], p2[1], off]);
+        i === 0 ? ctx.moveTo(q[0], q[1]) : ctx.lineTo(q[0], q[1]);
+      });
+      ctx.closePath();
+      ctx.fillStyle = 'rgba(45,212,191,0.10)';
+      ctx.strokeStyle = 'rgba(45,212,191,0.85)';
+      ctx.lineWidth = 1.4;
+      ctx.fill(); ctx.stroke();
+
+      /* side band strip on the sheet */
+      var w = bb.maxX - bb.minX;
+      var bx = lerp(bb.minX, bb.maxX, state.side);
+      var bh = Math.max(0.05 * w, 0.05);
+      ctx.beginPath();
+      [[bx - bh, bb.minY - mY], [bx + bh, bb.minY - mY],
+       [bx + bh, bb.maxY + mY], [bx - bh, bb.maxY + mY]].forEach(function (p2, i) {
+        var q = px([p2[0], p2[1], off]);
+        i === 0 ? ctx.moveTo(q[0], q[1]) : ctx.lineTo(q[0], q[1]);
+      });
+      ctx.closePath();
+      ctx.fillStyle = 'rgba(120,255,235,0.20)';
+      ctx.fill();
+
+      /* crisp intersection outline */
+      ctx.beginPath();
+      sec.forEach(function (p2, i) {
+        var q = px([p2[0], p2[1], off]);
+        i === 0 ? ctx.moveTo(q[0], q[1]) : ctx.lineTo(q[0], q[1]);
+      });
+      ctx.closePath();
+      ctx.save();
+      ctx.shadowColor = 'rgba(120,255,235,0.8)';
+      ctx.shadowBlur = motion ? 9 : 0;
+      ctx.strokeStyle = '#8df5e4';
+      ctx.lineWidth = 1.8;
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    glass(firstGrp);
+    var pocketNear = pocket.z > off;
+    var pocketInFirst = showPlane && ((nz > 0) ? !pocketNear : pocketNear);
+    var showBeacon = round.beacon && round.mode === 'place';
+    if (showBeacon && (pocketInFirst || !showPlane)) beacon();
+    if (showPlane) planeSheet();
+    if (showBeacon && showPlane && !pocketInFirst) beacon();
+    glass(secondGrp);
+
+    /* lock feedback ripple */
+    if (lockFx && motion) {
+      var dt = t - lockFx.t0;
+      if (dt < 700) {
+        var r = 30 + dt * 0.32;
+        ctx.beginPath(); ctx.arc(ox, oy, r, 0, 7);
+        ctx.strokeStyle = lockFx.col.replace('A', (0.5 * (1 - dt / 700)).toFixed(3));
+        ctx.lineWidth = 2.5;
+        ctx.stroke();
+      } else lockFx = null;
+    }
+  }
+
+  /* ---------- rendering: slice preview ---------- */
+  function drawPreview() {
+    var ctx = pctx;
+    ctx.clearRect(0, 0, PW, PH);
+    var identify = round.mode === 'identify';
+    var zr = zRange(shape);
+    var off = identify
+      ? depthToZ(shape, round.targetDepthFraction)
+      : lerp(zr[0] + 0.12, zr[1] - 0.12, state.depth);
+    var sec = sectionAt(shape, off);
+    var bb = bbox(sec);
+    var s = Math.min((PW - 60) / Math.max(bb.maxX - bb.minX, 0.2),
+                     (PH - 60) / Math.max(bb.maxY - bb.minY, 0.2));
+    s = Math.min(s, 120);
+    var cx = PW / 2, cy = PH / 2;
+    var mx = (bb.minX + bb.maxX) / 2, my = (bb.minY + bb.maxY) / 2;
+    function P(p2) { return [cx + (p2[0]-mx)*s, cy - (p2[1]-my)*s]; }
+
+    /* slice glass body */
+    ctx.beginPath();
+    sec.forEach(function (p2, i) {
+      var q = P(p2);
+      i === 0 ? ctx.moveTo(q[0], q[1]) : ctx.lineTo(q[0], q[1]);
+    });
+    ctx.closePath();
+    ctx.fillStyle = 'rgba(140,210,230,0.10)';
+    ctx.fill();
+    ctx.save();
+    ctx.shadowColor = 'rgba(120,255,235,0.7)';
+    ctx.shadowBlur = motionIn.checked ? 0 : 8;
+    ctx.strokeStyle = '#8df5e4';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    ctx.restore();
+
+    /* side band strip */
+    if (!identify) {
+      var bx = cx + (lerp(bb.minX, bb.maxX, state.side) - mx) * s;
+      var bw = Math.max(0.05 * (bb.maxX - bb.minX) * s, 7);
+      ctx.fillStyle = 'rgba(120,255,235,0.13)';
+      ctx.fillRect(bx - bw, 16, bw * 2, PH - 32);
+      ctx.strokeStyle = 'rgba(120,255,235,0.5)';
+      ctx.lineWidth = 1;
+      ctx.strokeRect(bx - bw, 16, bw * 2, PH - 32);
+    }
+
+    /* revealed target pocket signal */
+    var prox = identify ? 1
+      : clamp(1 - Math.abs(off - pocket.z) / (pocket.r * 1.7), 0, 1);
+    if (prox > 0) {
+      var q = P([pocket.x, pocket.y]);
+      var R = 4 + 9 * prox;
+      var g = ctx.createRadialGradient(q[0], q[1], 0, q[0], q[1], R * 2.2);
+      g.addColorStop(0, 'rgba(140,255,240,' + (0.95 * prox).toFixed(3) + ')');
+      g.addColorStop(0.4, 'rgba(45,212,191,' + (0.4 * prox).toFixed(3) + ')');
+      g.addColorStop(1, 'rgba(45,212,191,0)');
+      ctx.beginPath(); ctx.arc(q[0], q[1], R * 2.2, 0, 7);
+      ctx.fillStyle = g; ctx.fill();
+      ctx.beginPath(); ctx.arc(q[0], q[1], Math.max(1.6, R * 0.35), 0, 7);
+      ctx.fillStyle = '#eafffb'; ctx.fill();
+    }
+
+    /* edge labels */
+    ctx.fillStyle = 'rgba(163,156,148,0.8)';
+    ctx.font = '10px inherit';
+    ctx.textAlign = 'left';  ctx.fillText('left', 8, PH - 8);
+    ctx.textAlign = 'right'; ctx.fillText('right', PW - 8, PH - 8);
+  }
+
+  /* ---------- game flow ---------- */
+  var state = { depth: 0.5, side: 0.5 };
+  var GRADE = function (tier) { return 'Tier ' + tier; };
+
+  function loadRound() {
+    round = session.rounds[session.idx];
+    shape = SHAPES[round.assets.shape];
+    mesh = buildMesh(shape);
+    pocket = pocketFor(round);
+    state.depth = 0.5; state.side = 0.5;
+    depthIn.value = 0.5; sideIn.value = 0.5;
+    var step = round.snap ? 0.05 : 0.005;
+    depthIn.step = step; sideIn.step = step;
+    pickD = null; pickS = null; locked = false;
+
+    var identify = round.mode === 'identify';
+    $('mts-slidercard').hidden = identify;
+    $('mts-bandcard').hidden = !identify;
+    Array.prototype.forEach.call(root.querySelectorAll('.mts-seg button'),
+      function (b) { b.classList.remove('sel'); });
+
+    $('mts-tier').textContent = GRADE(round.tier);
+    $('mts-mode').textContent = round.mode;
+    $('mts-round').textContent = (session.idx + 1) + ' / ' + TOTAL;
+    $('mts-prevnote').textContent = identify
+      ? 'This slice was produced by one plane position. Name its bands.'
+      : 'Live view of the current cutting sheet.';
+    clue.textContent = identify
+      ? 'Study the slice. Which depth band and side band produced it?'
+      : 'Target pocket: ' + round.targetBand.depth + ' depth, ' +
+        round.targetBand.side + ' band.' +
+        (round.beacon ? ' Beacon visible.' : ' Beacon hidden \u2013 sweep the sheet.');
+    msg.textContent = '\u00a0'; msg.className = 'mts-msg';
+    lockBtn.disabled = identify; /* identify needs both bands picked first */
+    nextBtn.disabled = true;
+
+    timerWrap.hidden = !round.timed;
+    timerT0 = round.timed ? performance.now() : null;
+    timerBar.style.width = '100%';
+
+    if (session.pendingNext) {
+      locked = true;
+      timerT0 = null;
+      lockBtn.disabled = true;
+      nextBtn.disabled = false;
+      msg.textContent = 'Round saved. Continue to the next alignment.';
+      msg.className = 'mts-msg ok';
+    }
+    if (session.done) {
+      locked = true;
+      timerT0 = null;
+      lockBtn.disabled = true;
+      nextBtn.disabled = true;
+      clue.textContent = 'Session complete: ' + session.exact + ' exact, ' +
+        session.near + ' near, across ' + TOTAL + ' rounds. Reset to run again.';
+      msg.textContent = 'Completed.';
+      msg.className = 'mts-msg ok';
+    }
+
+    dirty = true;
+    drawPreview();
+    saveProgress();
+  }
+
+  function fmtStats() {
+    $('mts-acc').textContent = session.answered
+      ? Math.round(100 * (session.exact + 0.5 * session.near) / session.answered) + '%'
+      : '\u2013';
+    $('mts-exact').textContent = session.exact;
+    $('mts-streak').textContent = session.streak;
+  }
+
+  function lock(auto) {
+    if (locked) return;
+    locked = true;
+    timerT0 = null;
+    var result;
+    if (round.mode === 'identify') {
+      result = scoreIdentify(round, pickD, pickS);
+    } else {
+      result = scorePlace(round, state.depth, state.side);
+    }
+    session.answered++;
+    if (result === 'exact') { session.exact++; session.streak++; }
+    else if (result === 'near') { session.near++; session.streak++; }
+    else session.streak = 0;
+
+    var pre = auto ? 'Time elapsed. ' : '';
+    msg.textContent = pre + round.feedback[result];
+    msg.className = 'mts-msg ' + (result === 'exact' ? 'ok' : result === 'near' ? 'near' : 'bad');
+    lockFx = { t0: performance.now(),
+      col: result === 'exact' ? 'rgba(45,212,191,A)'
+         : result === 'near' ? 'rgba(251,191,36,A)' : 'rgba(248,113,113,A)' };
+
+    lockBtn.disabled = true;
+    if (session.idx + 1 >= TOTAL) {
+      session.done = true;
+      session.pendingNext = false;
+      clue.textContent = 'Session complete: ' + session.exact + ' exact, ' +
+        session.near + ' near, across ' + TOTAL + ' rounds. Reset to run again.';
+      nextBtn.disabled = true;
+    } else {
+      session.pendingNext = true;
+      nextBtn.disabled = false;
+    }
+    fmtStats();
+    saveProgress();
+    dirty = true;
+  }
+
+  /* ---------- input wiring ---------- */
+  depthIn.addEventListener('input', function () {
+    state.depth = parseFloat(depthIn.value); dirty = true; drawPreview();
+  });
+  sideIn.addEventListener('input', function () {
+    state.side = parseFloat(sideIn.value); dirty = true; drawPreview();
+  });
+
+  function segWire(seg, set) {
+    Array.prototype.forEach.call(seg.querySelectorAll('button'), function (b) {
+      b.addEventListener('click', function () {
+        if (locked) return;
+        Array.prototype.forEach.call(seg.querySelectorAll('button'),
+          function (x) { x.classList.remove('sel'); });
+        b.classList.add('sel');
+        set(b.dataset.v);
+        if (pickD && pickS) lockBtn.disabled = false;
+      });
+    });
+  }
+  segWire(segD, function (v) { pickD = v; });
+  segWire(segS, function (v) { pickS = v; });
+
+  lockBtn.addEventListener('click', function () { lock(false); });
+  nextBtn.addEventListener('click', function () {
+    if (session.done) return;
+    session.pendingNext = false;
+    session.idx++;
+    loadRound();
+  });
+  resetBtn.addEventListener('click', function () {
+    session = freshSession({
+      bestStreak: session.bestStreak,
+      bestScore: session.bestScore,
+      completed: session.completed
+    });
+    view = freshView();
+    fmtStats(); loadRound();
+  });
+  motionIn.addEventListener('change', function () { dirty = true; drawPreview(); });
+
+  /* rotate / zoom */
+  var dragging = false, lx = 0, ly = 0;
+  mainC.addEventListener('pointerdown', function (e) {
+    dragging = true; lx = e.clientX; ly = e.clientY;
+    mainC.setPointerCapture(e.pointerId);
+  });
+  function tipOff() { $('mts-dragtip').classList.add('off'); }
+  mainC.addEventListener('pointermove', function (e) {
+    if (!dragging) return;
+    tipOff();
+    lastInteract = performance.now();
+    view.yaw += (e.clientX - lx) * 0.008;
+    view.pitch = clamp(view.pitch + (e.clientY - ly) * 0.008, -1.25, 1.25);
+    lx = e.clientX; ly = e.clientY; dirty = true;
+  });
+  mainC.addEventListener('pointerup', function () {
+    dragging = false; lastInteract = performance.now();
+  });
+  mainC.addEventListener('wheel', function (e) {
+    e.preventDefault();
+    lastInteract = performance.now();
+    view.zoom = clamp(view.zoom * (e.deltaY > 0 ? 0.92 : 1.08), 0.6, 1.9);
+    dirty = true;
+  }, { passive: false });
+
+  function rot(dy, dp) {
+    tipOff();
+    lastInteract = performance.now();
+    view.yaw += dy;
+    view.pitch = clamp(view.pitch + dp, -1.25, 1.25);
+    dirty = true;
+  }
+  $('mts-rl').addEventListener('click', function () { rot(-0.22, 0); });
+  $('mts-rr').addEventListener('click', function () { rot(0.22, 0); });
+  $('mts-ru').addEventListener('click', function () { rot(0, -0.18); });
+  $('mts-rd').addEventListener('click', function () { rot(0, 0.18); });
+  $('mts-zi').addEventListener('click', function () {
+    view.zoom = clamp(view.zoom * 1.12, 0.6, 1.9); dirty = true;
+  });
+  $('mts-zo').addEventListener('click', function () {
+    view.zoom = clamp(view.zoom * 0.89, 0.6, 1.9); dirty = true;
+  });
+
+  /* ---------- main loop ---------- */
+  var lastT = null, lastInteract = -9999;
+  var inView = true, active = !document.hidden, pausedAt = null, raf = null;
+  function startLoop() {
+    if (raf === null) raf = requestAnimationFrame(loop);
+  }
+  function stopLoop() {
+    if (raf !== null) cancelAnimationFrame(raf);
+    raf = null;
+    lastT = null;
+  }
+  function updateActive() {
+    var nextActive = inView && !document.hidden;
+    if (nextActive === active) return;
+    active = nextActive;
+    if (!active) {
+      pausedAt = performance.now();
+      stopLoop();
+      return;
+    }
+    if (pausedAt !== null && timerT0 !== null) timerT0 += performance.now() - pausedAt;
+    pausedAt = null;
+    dirty = true;
+    startLoop();
+  }
+  document.addEventListener('visibilitychange', updateActive);
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      inView = entries.some(function (entry) { return entry.isIntersecting; });
+      updateActive();
+    }, { rootMargin: '120px' }).observe(root);
+  }
+  function loop(t) {
+    raf = null;
+    if (!active) return;
+    var motion = !motionIn.checked;
+    var dt = lastT === null ? 16 : Math.min(48, t - lastT);
+    lastT = t;
+    /* idle drift: the object slowly turns by itself; pauses briefly after any input */
+    if (motion && !dragging && t - lastInteract > 1600) {
+      view.yaw += dt * 0.00018;
+      dirty = true;
+    }
+    if (timerT0 !== null) {
+      var left = clamp(1 - (t - timerT0) / TIMER_MS, 0, 1);
+      timerBar.style.width = (left * 100).toFixed(1) + '%';
+      if (left <= 0) lock(true);
+      dirty = true;
+    }
+    if (motion || dirty || lockFx) {
+      drawMain(t);
+      dirty = false;
+    }
+    startLoop();
+  }
+
+  session = freshSession(loadSaved());
+  view = freshView();
+  fmtStats();
+  loadRound();
+  updateActive();
+  startLoop();
+})();
+</script> <nav class="pv2-drill-next" aria-label="Spatial Lab completion"> <a class="pv2-button" href="/prostateview/v2/learn">Back to Spatial Lab</a> </nav> </section>  </main> <nav class="pv2-bottom-nav" aria-label="Primary"> <a href="/prostateview/v2"> Home </a><a href="/prostateview/v2/learn" aria-current="page"> Learn </a><a href="/prostateview/v2/safety"> Safety </a><a href="/prostateview/v2/cases/#curated-mri"> Case library </a><a href="/prostateview/v2/poster"> Poster </a><a href="https://uroref.com" target="_blank" rel="noopener"> UroRef </a> </nav> <footer class="pv2-footer"> <div>Education prototype. Public Prostate158 assets.</div> <div class="pv2-footer-uroref">A <a href="https://uroref.com" target="_blank" rel="noopener">UroRef</a> project</div> <div class="pv2-credit">Created by Nity G, Urology ST4</div> <div class="pv2-copyright">&copy; 2026 Nityanandan G.</div> </footer>  <script>
+      (function () {
+        var root = document.documentElement;
+        var btn = document.querySelector("[data-a11y-toggle]");
+        var panel = document.querySelector("[data-a11y-panel]");
+        if (!btn || !panel) return;
+        btn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          var show = panel.hasAttribute("hidden");
+          if (show) { panel.removeAttribute("hidden"); btn.setAttribute("aria-expanded", "true"); }
+          else { panel.setAttribute("hidden", ""); btn.setAttribute("aria-expanded", "false"); }
+        });
+        document.addEventListener("click", function (e) {
+          if (!panel.contains(e.target) && !btn.contains(e.target)) {
+            panel.setAttribute("hidden", ""); btn.setAttribute("aria-expanded", "false");
+          }
+        });
+        function currentTheme() {
+          return root.classList.contains("light") ? "light"
+            : root.classList.contains("reading") ? "reading" : "dark";
+        }
+        function markTheme() {
+          var t = currentTheme();
+          panel.querySelectorAll("[data-theme-set]").forEach(function (b) {
+            b.setAttribute("aria-pressed", b.getAttribute("data-theme-set") === t ? "true" : "false");
+          });
+        }
+        panel.querySelectorAll("[data-theme-set]").forEach(function (b) {
+          b.addEventListener("click", function () {
+            var t = b.getAttribute("data-theme-set");
+            root.classList.remove("light", "reading");
+            if (t === "light") root.classList.add("light");
+            else if (t === "reading") root.classList.add("reading");
+            try { localStorage.setItem("pv-theme", t); } catch (e) {}
+            markTheme();
+          });
+        });
+        markTheme();
+        panel.querySelectorAll("input[data-a11y]").forEach(function (inp) {
+          var k = inp.getAttribute("data-a11y");
+          inp.checked = root.classList.contains("a11y-" + k);
+          inp.addEventListener("change", function () {
+            root.classList.toggle("a11y-" + k, inp.checked);
+            try { localStorage.setItem("pv-a11y-" + k, inp.checked ? "1" : "0"); } catch (e) {}
+          });
+        });
+      })();
+    </script> <script>
+      (function () {
+        if (!("serviceWorker" in navigator)) return;
+        window.addEventListener("load", function () {
+          var hadController = !!navigator.serviceWorker.controller;
+          Promise.all([
+            navigator.serviceWorker.getRegistrations()
+              .then(function (regs) { return Promise.all(regs.map(function (reg) { return reg.unregister(); })); })
+              .catch(function () {}),
+            "caches" in window
+              ? caches.keys()
+                .then(function (keys) {
+                  return Promise.all(keys.filter(function (key) { return key.indexOf("pv-") === 0; }).map(function (key) { return caches.delete(key); }));
+                })
+                .catch(function () {})
+              : Promise.resolve(),
+          ]).then(function () {
+            if (!hadController) return;
+            try {
+              if (sessionStorage.getItem("pv-sw-retired") === "1") return;
+              sessionStorage.setItem("pv-sw-retired", "1");
+            } catch (e) {}
+            location.reload();
+          });
+        });
+      })();
+    </script> </body> </html>

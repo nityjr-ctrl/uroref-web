@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "kind": "prostateview-template-gland",
+  "templateCount": 1,
+  "createdBy": "scripts/template_mesh_pipeline.py",
+  "dryRun": false,
+  "coordinateConvention": {
+    "frame": "ProstateView template normalised frame",
+    "units": "normalised",
+    "origin": "centred combined gland-zone bounding box",
+    "axes": {
+      "+X": "patient left",
+      "-X": "patient right",
+      "+Y": "posterior",
+      "-Y": "anterior",
+      "+Z": "base / superior",
+      "-Z": "apex / inferior"
+    }
+  },
+  "normalisation": {
+    "sourceCenter": [
+      -8.546894060803494,
+      18.02861931072169,
+      102.91474970023714
+    ],
+    "sourceExtent": [
+      61.38469250995789,
+      47.70639360301909,
+      54.29090790500992
+    ],
+    "normaliseScale": 61.38469250995789,
+    "normalisedMaxExtent": 1.0
+  },
+  "meshes": {
+    "PZ": {
+      "file": "pz.glb",
+      "displayName": "peripheral zone",
+      "source": "template_input.nii.gz",
+      "empty": false,
+      "vertexCount": 6000,
+      "faceCount": 12000,
+      "colourRgba": [
+        217,
+        142,
+        50,
+        210
+      ],
+      "compression": "draco",
+      "compressor": "C:\\Users\\nityj\\AppData\\Roaming\\npm\\gltf-transform.CMD",
+      "bytes": 24864
+    },
+    "TZ": {
+      "file": "tz.glb",
+      "displayName": "transition zone",
+      "source": "template_input.nii.gz",
+      "empty": false,
+      "vertexCount": 6002,
+      "faceCount": 12000,
+      "colourRgba": [
+        58,
+        124,
+        165,
+        220
+      ],
+      "compression": "draco",
+      "compressor": "C:\\Users\\nityj\\AppData\\Roaming\\npm\\gltf-transform.CMD",
+      "bytes": 24836
+    },
+    "CZ": {
+      "file": "cz.glb",
+      "displayName": "central zone",
+      "source": "template_input.nii.gz",
+      "empty": false,
+      "vertexCount": 6000,
+      "faceCount": 12000,
+      "colourRgba": [
+        22,
+        104,
+        95,
+        220
+      ],
+      "compression": "draco",
+      "compressor": "C:\\Users\\nityj\\AppData\\Roaming\\npm\\gltf-transform.CMD",
+      "bytes": 19700
+    },
+    "AFS": {
+      "file": "afs.glb",
+      "displayName": "anterior fibromuscular stroma",
+      "source": "template_input.nii.gz",
+      "empty": false,
+      "vertexCount": 2746,
+      "faceCount": 5492,
+      "colourRgba": [
+        200,
+        80,
+        46,
+        220
+      ],
+      "compression": "draco",
+      "compressor": "C:\\Users\\nityj\\AppData\\Roaming\\npm\\gltf-transform.CMD",
+      "bytes": 10120
+    },
+    "URETHRA": {
+      "file": "urethra.glb",
+      "displayName": "urethra",
+      "source": "template_input.nii.gz",
+      "empty": false,
+      "vertexCount": 2292,
+      "faceCount": 4580,
+      "colourRgba": [
+        255,
+        248,
+        240,
+        255
+      ],
+      "compression": "draco",
+      "compressor": "C:\\Users\\nityj\\AppData\\Roaming\\npm\\gltf-transform.CMD",
+      "bytes": 8912
+    }
+  },
+  "sectorMap": "sectors.json",
+  "sectorCount": 41,
+  "notes": [
+    "Teaching template only. Not for diagnosis, navigation, treatment planning, or patient-specific interpretation.",
+    "User must verify ProstateZones / PROSTATEx licence terms before published use."
+  ]
+}

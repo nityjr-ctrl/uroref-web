@@ -1,0 +1,593 @@
+{
+  "schemaVersion": 1,
+  "coordinateConvention": {
+    "frame": "ProstateView template normalised frame",
+    "units": "normalised",
+    "origin": "centred combined gland-zone bounding box",
+    "axes": {
+      "+X": "patient left",
+      "-X": "patient right",
+      "+Y": "posterior",
+      "-Y": "anterior",
+      "+Z": "base / superior",
+      "-Z": "apex / inferior"
+    }
+  },
+  "keyFormat": "zone|level|sub_position",
+  "normalisedLevels": [
+    "base",
+    "mid",
+    "apex"
+  ],
+  "centroids": {
+    "PZ|base|left_anterior": [
+      0.397436,
+      -0.149688,
+      0.084084
+    ],
+    "PZ|base|right_anterior": [
+      -0.354279,
+      -0.140617,
+      0.145463
+    ],
+    "PZ|base|left_posterolateral": [
+      0.320474,
+      0.226968,
+      0.113575
+    ],
+    "PZ|base|right_posterolateral": [
+      -0.354656,
+      0.190457,
+      0.115463
+    ],
+    "PZ|base|midline_posterior": [
+      -0.003496,
+      0.059425,
+      0.115412
+    ],
+    "PZ|base|bilateral_posterior": [
+      -0.003082,
+      0.209673,
+      0.114341
+    ],
+    "PZ|mid|left_anterior": [
+      0.283255,
+      -0.209128,
+      -0.092139
+    ],
+    "PZ|mid|right_anterior": [
+      -0.276497,
+      -0.180588,
+      -0.102735
+    ],
+    "PZ|mid|left_posterolateral": [
+      0.258116,
+      0.170858,
+      -0.068599
+    ],
+    "PZ|mid|right_posterolateral": [
+      -0.278093,
+      0.201137,
+      -0.070991
+    ],
+    "PZ|mid|midline_posterior": [
+      0.001872,
+      0.229603,
+      -0.080287
+    ],
+    "PZ|mid|bilateral_posterior": [
+      -0.027916,
+      0.201067,
+      -0.073223
+    ],
+    "PZ|apex|left_anterior": [
+      0.209561,
+      -0.13905,
+      -0.291465
+    ],
+    "PZ|apex|right_anterior": [
+      -0.198039,
+      -0.127012,
+      -0.289784
+    ],
+    "PZ|apex|left_posterolateral": [
+      0.204029,
+      0.107044,
+      -0.324362
+    ],
+    "PZ|apex|right_posterolateral": [
+      -0.195107,
+      0.111567,
+      -0.307037
+    ],
+    "PZ|apex|midline_posterior": [
+      -0.00325,
+      0.094664,
+      -0.363996
+    ],
+    "PZ|apex|bilateral_posterior": [
+      0.001783,
+      0.101446,
+      -0.341633
+    ],
+    "TZ|base|left_anterior": [
+      0.230914,
+      -0.19997,
+      0.323795
+    ],
+    "TZ|base|right_anterior": [
+      -0.228446,
+      -0.215613,
+      0.308159
+    ],
+    "TZ|base|left_posterior": [
+      0.266269,
+      0.068521,
+      0.259861
+    ],
+    "TZ|base|right_posterior": [
+      -0.263607,
+      0.086223,
+      0.273431
+    ],
+    "TZ|mid|left_anterior": [
+      0.292856,
+      -0.217849,
+      0.05085
+    ],
+    "TZ|mid|right_anterior": [
+      -0.264527,
+      -0.220407,
+      0.043528
+    ],
+    "TZ|mid|left_posterior": [
+      0.261881,
+      0.090209,
+      0.059286
+    ],
+    "TZ|mid|right_posterior": [
+      -0.256995,
+      0.10653,
+      0.077251
+    ],
+    "TZ|apex|left_anterior": [
+      0.186171,
+      -0.248108,
+      -0.16744
+    ],
+    "TZ|apex|right_anterior": [
+      -0.165422,
+      -0.237822,
+      -0.161426
+    ],
+    "TZ|apex|left_posterior": [
+      0.156649,
+      0.014002,
+      -0.210509
+    ],
+    "TZ|apex|right_posterior": [
+      -0.162604,
+      0.030055,
+      -0.198707
+    ],
+    "CZ|base|left": [
+      0.133045,
+      0.162114,
+      0.272819
+    ],
+    "CZ|base|right": [
+      -0.183305,
+      0.168247,
+      0.274949
+    ],
+    "CZ|mid|left": [
+      0.131525,
+      0.242134,
+      0.149761
+    ],
+    "CZ|mid|right": [
+      -0.191561,
+      0.259375,
+      0.147018
+    ],
+    "AFS|base|left_anterior": [
+      0.12239,
+      -0.369559,
+      0.129039
+    ],
+    "AFS|base|right_anterior": [
+      -0.115618,
+      -0.363224,
+      0.128493
+    ],
+    "AFS|base|midline_anterior": [
+      0.000499,
+      -0.372836,
+      0.127271
+    ],
+    "AFS|mid|left_anterior": [
+      0.16251,
+      -0.377004,
+      0.019261
+    ],
+    "AFS|mid|right_anterior": [
+      -0.137495,
+      -0.366972,
+      0.025438
+    ],
+    "AFS|mid|midline_anterior": [
+      -0.003035,
+      -0.38619,
+      0.029851
+    ],
+    "URETHRA|mid|central": [
+      -0.000298,
+      0.121686,
+      0.009157
+    ]
+  },
+  "radii": {
+    "PZ|base|left_anterior": 0.20705,
+    "PZ|base|right_anterior": 0.222147,
+    "PZ|base|left_posterolateral": 0.275371,
+    "PZ|base|right_posterolateral": 0.22827,
+    "PZ|base|midline_posterior": 0.550602,
+    "PZ|base|bilateral_posterior": 0.534343,
+    "PZ|mid|left_anterior": 0.306117,
+    "PZ|mid|right_anterior": 0.293801,
+    "PZ|mid|left_posterolateral": 0.278138,
+    "PZ|mid|right_posterolateral": 0.265036,
+    "PZ|mid|midline_posterior": 0.250111,
+    "PZ|mid|bilateral_posterior": 0.542718,
+    "PZ|apex|left_anterior": 0.214332,
+    "PZ|apex|right_anterior": 0.209041,
+    "PZ|apex|left_posterolateral": 0.186968,
+    "PZ|apex|right_posterolateral": 0.186731,
+    "PZ|apex|midline_posterior": 0.249348,
+    "PZ|apex|bilateral_posterior": 0.353267,
+    "TZ|base|left_anterior": 0.251764,
+    "TZ|base|right_anterior": 0.222086,
+    "TZ|base|left_posterior": 0.225229,
+    "TZ|base|right_posterior": 0.208405,
+    "TZ|mid|left_anterior": 0.261268,
+    "TZ|mid|right_anterior": 0.240436,
+    "TZ|mid|left_posterior": 0.25123,
+    "TZ|mid|right_posterior": 0.240755,
+    "TZ|apex|left_anterior": 0.227221,
+    "TZ|apex|right_anterior": 0.198019,
+    "TZ|apex|left_posterior": 0.174165,
+    "TZ|apex|right_posterior": 0.160984,
+    "CZ|base|left": 0.123798,
+    "CZ|base|right": 0.183775,
+    "CZ|mid|left": 0.133579,
+    "CZ|mid|right": 0.168077,
+    "AFS|base|left_anterior": 0.106904,
+    "AFS|base|right_anterior": 0.085906,
+    "AFS|base|midline_anterior": 0.084416,
+    "AFS|mid|left_anterior": 0.108209,
+    "AFS|mid|right_anterior": 0.070608,
+    "AFS|mid|midline_anterior": 0.077994,
+    "URETHRA|mid|central": 0.167412
+  },
+  "checklistAliases": {
+    "PZ|base|left|anterior": "PZ|base|left_anterior",
+    "PZ|base|left|posterior": "PZ|base|left_posterolateral",
+    "PZ|base|left|posterolateral": "PZ|base|left_posterolateral",
+    "PZ|base|right|anterior": "PZ|base|right_anterior",
+    "PZ|base|right|posterior": "PZ|base|right_posterolateral",
+    "PZ|base|right|posterolateral": "PZ|base|right_posterolateral",
+    "PZ|base|midline|anterior": "PZ|base|midline_posterior",
+    "PZ|base|midline|posterior": "PZ|base|midline_posterior",
+    "PZ|base|midline|posterolateral": "PZ|base|midline_posterior",
+    "PZ|base|bilateral|anterior": "PZ|base|midline_posterior",
+    "PZ|base|bilateral|posterior": "PZ|base|bilateral_posterior",
+    "PZ|base|bilateral|posterolateral": "PZ|base|bilateral_posterior",
+    "PZ|mid|left|anterior": "PZ|mid|left_anterior",
+    "PZ|mid|left|posterior": "PZ|mid|left_posterolateral",
+    "PZ|mid|left|posterolateral": "PZ|mid|left_posterolateral",
+    "PZ|mid|right|anterior": "PZ|mid|right_anterior",
+    "PZ|mid|right|posterior": "PZ|mid|right_posterolateral",
+    "PZ|mid|right|posterolateral": "PZ|mid|right_posterolateral",
+    "PZ|mid|midline|anterior": "PZ|mid|midline_posterior",
+    "PZ|mid|midline|posterior": "PZ|mid|midline_posterior",
+    "PZ|mid|midline|posterolateral": "PZ|mid|midline_posterior",
+    "PZ|mid|bilateral|anterior": "PZ|mid|midline_posterior",
+    "PZ|mid|bilateral|posterior": "PZ|mid|bilateral_posterior",
+    "PZ|mid|bilateral|posterolateral": "PZ|mid|bilateral_posterior",
+    "PZ|apex|left|anterior": "PZ|apex|left_anterior",
+    "PZ|apex|left|posterior": "PZ|apex|left_posterolateral",
+    "PZ|apex|left|posterolateral": "PZ|apex|left_posterolateral",
+    "PZ|apex|right|anterior": "PZ|apex|right_anterior",
+    "PZ|apex|right|posterior": "PZ|apex|right_posterolateral",
+    "PZ|apex|right|posterolateral": "PZ|apex|right_posterolateral",
+    "PZ|apex|midline|anterior": "PZ|apex|midline_posterior",
+    "PZ|apex|midline|posterior": "PZ|apex|midline_posterior",
+    "PZ|apex|midline|posterolateral": "PZ|apex|midline_posterior",
+    "PZ|apex|bilateral|anterior": "PZ|apex|midline_posterior",
+    "PZ|apex|bilateral|posterior": "PZ|apex|bilateral_posterior",
+    "PZ|apex|bilateral|posterolateral": "PZ|apex|bilateral_posterior",
+    "TZ|base|left|anterior": "TZ|base|left_anterior",
+    "TZ|base|left|posterior": "TZ|base|left_posterior",
+    "TZ|base|left|posterolateral": "TZ|base|left_posterior",
+    "TZ|base|right|anterior": "TZ|base|right_anterior",
+    "TZ|base|right|posterior": "TZ|base|right_posterior",
+    "TZ|base|right|posterolateral": "TZ|base|right_posterior",
+    "TZ|base|midline|anterior": "TZ|base|left_posterior",
+    "TZ|base|midline|posterior": "TZ|base|left_posterior",
+    "TZ|base|midline|posterolateral": "TZ|base|left_posterior",
+    "TZ|base|bilateral|anterior": "TZ|base|left_posterior",
+    "TZ|base|bilateral|posterior": "TZ|base|left_posterior",
+    "TZ|base|bilateral|posterolateral": "TZ|base|left_posterior",
+    "TZ|mid|left|anterior": "TZ|mid|left_anterior",
+    "TZ|mid|left|posterior": "TZ|mid|left_posterior",
+    "TZ|mid|left|posterolateral": "TZ|mid|left_posterior",
+    "TZ|mid|right|anterior": "TZ|mid|right_anterior",
+    "TZ|mid|right|posterior": "TZ|mid|right_posterior",
+    "TZ|mid|right|posterolateral": "TZ|mid|right_posterior",
+    "TZ|mid|midline|anterior": "TZ|mid|left_posterior",
+    "TZ|mid|midline|posterior": "TZ|mid|left_posterior",
+    "TZ|mid|midline|posterolateral": "TZ|mid|left_posterior",
+    "TZ|mid|bilateral|anterior": "TZ|mid|left_posterior",
+    "TZ|mid|bilateral|posterior": "TZ|mid|left_posterior",
+    "TZ|mid|bilateral|posterolateral": "TZ|mid|left_posterior",
+    "TZ|apex|left|anterior": "TZ|apex|left_anterior",
+    "TZ|apex|left|posterior": "TZ|apex|left_posterior",
+    "TZ|apex|left|posterolateral": "TZ|apex|left_posterior",
+    "TZ|apex|right|anterior": "TZ|apex|right_anterior",
+    "TZ|apex|right|posterior": "TZ|apex|right_posterior",
+    "TZ|apex|right|posterolateral": "TZ|apex|right_posterior",
+    "TZ|apex|midline|anterior": "TZ|apex|left_posterior",
+    "TZ|apex|midline|posterior": "TZ|apex|left_posterior",
+    "TZ|apex|midline|posterolateral": "TZ|apex|left_posterior",
+    "TZ|apex|bilateral|anterior": "TZ|apex|left_posterior",
+    "TZ|apex|bilateral|posterior": "TZ|apex|left_posterior",
+    "TZ|apex|bilateral|posterolateral": "TZ|apex|left_posterior",
+    "CZ|base|left|anterior": "CZ|base|left",
+    "CZ|base|left|posterior": "CZ|base|left",
+    "CZ|base|left|posterolateral": "CZ|base|left",
+    "CZ|base|right|anterior": "CZ|base|right",
+    "CZ|base|right|posterior": "CZ|base|right",
+    "CZ|base|right|posterolateral": "CZ|base|right",
+    "CZ|base|midline|anterior": "CZ|base|left",
+    "CZ|base|midline|posterior": "CZ|base|left",
+    "CZ|base|midline|posterolateral": "CZ|base|left",
+    "CZ|base|bilateral|anterior": "CZ|base|left",
+    "CZ|base|bilateral|posterior": "CZ|base|left",
+    "CZ|base|bilateral|posterolateral": "CZ|base|left",
+    "CZ|mid|left|anterior": "CZ|mid|left",
+    "CZ|mid|left|posterior": "CZ|mid|left",
+    "CZ|mid|left|posterolateral": "CZ|mid|left",
+    "CZ|mid|right|anterior": "CZ|mid|right",
+    "CZ|mid|right|posterior": "CZ|mid|right",
+    "CZ|mid|right|posterolateral": "CZ|mid|right",
+    "CZ|mid|midline|anterior": "CZ|mid|left",
+    "CZ|mid|midline|posterior": "CZ|mid|left",
+    "CZ|mid|midline|posterolateral": "CZ|mid|left",
+    "CZ|mid|bilateral|anterior": "CZ|mid|left",
+    "CZ|mid|bilateral|posterior": "CZ|mid|left",
+    "CZ|mid|bilateral|posterolateral": "CZ|mid|left",
+    "CZ|apex|left|anterior": "CZ|mid|left",
+    "CZ|apex|left|posterior": "CZ|mid|left",
+    "CZ|apex|left|posterolateral": "CZ|mid|left",
+    "CZ|apex|right|anterior": "CZ|mid|right",
+    "CZ|apex|right|posterior": "CZ|mid|right",
+    "CZ|apex|right|posterolateral": "CZ|mid|right",
+    "CZ|apex|midline|anterior": "CZ|mid|left",
+    "CZ|apex|midline|posterior": "CZ|mid|left",
+    "CZ|apex|midline|posterolateral": "CZ|mid|left",
+    "CZ|apex|bilateral|anterior": "CZ|mid|left",
+    "CZ|apex|bilateral|posterior": "CZ|mid|left",
+    "CZ|apex|bilateral|posterolateral": "CZ|mid|left",
+    "AFS|base|left|anterior": "AFS|base|left_anterior",
+    "AFS|base|left|posterior": "AFS|base|left_anterior",
+    "AFS|base|left|posterolateral": "AFS|base|left_anterior",
+    "AFS|base|right|anterior": "AFS|base|right_anterior",
+    "AFS|base|right|posterior": "AFS|base|right_anterior",
+    "AFS|base|right|posterolateral": "AFS|base|right_anterior",
+    "AFS|base|midline|anterior": "AFS|base|midline_anterior",
+    "AFS|base|midline|posterior": "AFS|base|midline_anterior",
+    "AFS|base|midline|posterolateral": "AFS|base|midline_anterior",
+    "AFS|base|bilateral|anterior": "AFS|base|midline_anterior",
+    "AFS|base|bilateral|posterior": "AFS|base|midline_anterior",
+    "AFS|base|bilateral|posterolateral": "AFS|base|midline_anterior",
+    "AFS|mid|left|anterior": "AFS|mid|left_anterior",
+    "AFS|mid|left|posterior": "AFS|mid|left_anterior",
+    "AFS|mid|left|posterolateral": "AFS|mid|left_anterior",
+    "AFS|mid|right|anterior": "AFS|mid|right_anterior",
+    "AFS|mid|right|posterior": "AFS|mid|right_anterior",
+    "AFS|mid|right|posterolateral": "AFS|mid|right_anterior",
+    "AFS|mid|midline|anterior": "AFS|mid|midline_anterior",
+    "AFS|mid|midline|posterior": "AFS|mid|midline_anterior",
+    "AFS|mid|midline|posterolateral": "AFS|mid|midline_anterior",
+    "AFS|mid|bilateral|anterior": "AFS|mid|midline_anterior",
+    "AFS|mid|bilateral|posterior": "AFS|mid|midline_anterior",
+    "AFS|mid|bilateral|posterolateral": "AFS|mid|midline_anterior",
+    "AFS|apex|left|anterior": "AFS|mid|left_anterior",
+    "AFS|apex|left|posterior": "AFS|mid|left_anterior",
+    "AFS|apex|left|posterolateral": "AFS|mid|left_anterior",
+    "AFS|apex|right|anterior": "AFS|mid|right_anterior",
+    "AFS|apex|right|posterior": "AFS|mid|right_anterior",
+    "AFS|apex|right|posterolateral": "AFS|mid|right_anterior",
+    "AFS|apex|midline|anterior": "AFS|mid|midline_anterior",
+    "AFS|apex|midline|posterior": "AFS|mid|midline_anterior",
+    "AFS|apex|midline|posterolateral": "AFS|mid|midline_anterior",
+    "AFS|apex|bilateral|anterior": "AFS|mid|midline_anterior",
+    "AFS|apex|bilateral|posterior": "AFS|mid|midline_anterior",
+    "AFS|apex|bilateral|posterolateral": "AFS|mid|midline_anterior",
+    "PZ|base|left_posterior": "PZ|base|left_posterolateral",
+    "PZ|base|posterolateral": "PZ|base|right_posterolateral",
+    "PZ|base|right_posterior": "PZ|base|right_posterolateral",
+    "PZ|mid|left_posterior": "PZ|mid|left_posterolateral",
+    "PZ|mid|posterolateral": "PZ|mid|right_posterolateral",
+    "PZ|mid|right_posterior": "PZ|mid|right_posterolateral",
+    "PZ|apex|left_posterior": "PZ|apex|left_posterolateral",
+    "PZ|apex|posterolateral": "PZ|apex|right_posterolateral",
+    "PZ|apex|right_posterior": "PZ|apex|right_posterolateral"
+  },
+  "diagnostics": {
+    "PZ|base|left_anterior": {
+      "vertexCount": 403,
+      "fallback": false
+    },
+    "PZ|base|right_anterior": {
+      "vertexCount": 462,
+      "fallback": false
+    },
+    "PZ|base|left_posterolateral": {
+      "vertexCount": 611,
+      "fallback": false
+    },
+    "PZ|base|right_posterolateral": {
+      "vertexCount": 563,
+      "fallback": false
+    },
+    "PZ|base|midline_posterior": {
+      "vertexCount": 2041,
+      "fallback": true
+    },
+    "PZ|base|bilateral_posterior": {
+      "vertexCount": 1176,
+      "fallback": false
+    },
+    "PZ|mid|left_anterior": {
+      "vertexCount": 553,
+      "fallback": false
+    },
+    "PZ|mid|right_anterior": {
+      "vertexCount": 434,
+      "fallback": false
+    },
+    "PZ|mid|left_posterolateral": {
+      "vertexCount": 342,
+      "fallback": false
+    },
+    "PZ|mid|right_posterolateral": {
+      "vertexCount": 434,
+      "fallback": false
+    },
+    "PZ|mid|midline_posterior": {
+      "vertexCount": 361,
+      "fallback": false
+    },
+    "PZ|mid|bilateral_posterior": {
+      "vertexCount": 1137,
+      "fallback": false
+    },
+    "PZ|apex|left_anterior": {
+      "vertexCount": 276,
+      "fallback": false
+    },
+    "PZ|apex|right_anterior": {
+      "vertexCount": 209,
+      "fallback": false
+    },
+    "PZ|apex|left_posterolateral": {
+      "vertexCount": 162,
+      "fallback": false
+    },
+    "PZ|apex|right_posterolateral": {
+      "vertexCount": 157,
+      "fallback": false
+    },
+    "PZ|apex|midline_posterior": {
+      "vertexCount": 368,
+      "fallback": false
+    },
+    "PZ|apex|bilateral_posterior": {
+      "vertexCount": 687,
+      "fallback": false
+    },
+    "TZ|base|left_anterior": {
+      "vertexCount": 443,
+      "fallback": false
+    },
+    "TZ|base|right_anterior": {
+      "vertexCount": 347,
+      "fallback": false
+    },
+    "TZ|base|left_posterior": {
+      "vertexCount": 489,
+      "fallback": false
+    },
+    "TZ|base|right_posterior": {
+      "vertexCount": 491,
+      "fallback": false
+    },
+    "TZ|mid|left_anterior": {
+      "vertexCount": 493,
+      "fallback": false
+    },
+    "TZ|mid|right_anterior": {
+      "vertexCount": 392,
+      "fallback": false
+    },
+    "TZ|mid|left_posterior": {
+      "vertexCount": 467,
+      "fallback": false
+    },
+    "TZ|mid|right_posterior": {
+      "vertexCount": 375,
+      "fallback": false
+    },
+    "TZ|apex|left_anterior": {
+      "vertexCount": 361,
+      "fallback": false
+    },
+    "TZ|apex|right_anterior": {
+      "vertexCount": 216,
+      "fallback": false
+    },
+    "TZ|apex|left_posterior": {
+      "vertexCount": 172,
+      "fallback": false
+    },
+    "TZ|apex|right_posterior": {
+      "vertexCount": 205,
+      "fallback": false
+    },
+    "CZ|base|left": {
+      "vertexCount": 547,
+      "fallback": false
+    },
+    "CZ|base|right": {
+      "vertexCount": 1120,
+      "fallback": false
+    },
+    "CZ|mid|left": {
+      "vertexCount": 478,
+      "fallback": false
+    },
+    "CZ|mid|right": {
+      "vertexCount": 773,
+      "fallback": false
+    },
+    "AFS|base|left_anterior": {
+      "vertexCount": 180,
+      "fallback": false
+    },
+    "AFS|base|right_anterior": {
+      "vertexCount": 132,
+      "fallback": false
+    },
+    "AFS|base|midline_anterior": {
+      "vertexCount": 263,
+      "fallback": false
+    },
+    "AFS|mid|left_anterior": {
+      "vertexCount": 114,
+      "fallback": false
+    },
+    "AFS|mid|right_anterior": {
+      "vertexCount": 79,
+      "fallback": false
+    },
+    "AFS|mid|midline_anterior": {
+      "vertexCount": 73,
+      "fallback": false
+    },
+    "URETHRA|mid|central": {
+      "vertexCount": 197,
+      "fallback": false
+    }
+  }
+}

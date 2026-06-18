@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="robots" content="noindex">
+    <link rel="canonical" href="https://prostateview.com/template-gland/preview/">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Template gland preview</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --paper: #faf6ee;
+        --ink: #211e18;
+        --muted: #b9b0a0;
+        --line: rgba(250, 246, 238, 0.2);
+        --stage: #0e141b;
+        --panel: #151d26;
+        --pz: #d98e32;
+        --tz: #3a7ca5;
+        --cz: #16685f;
+        --afs: #c8502e;
+        --urethra: #fff8f0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+      }
+
+      body {
+        background: var(--stage);
+        color: var(--paper);
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        overflow: hidden;
+      }
+
+      canvas {
+        display: block;
+        height: 100%;
+        width: 100%;
+      }
+
+      .panel {
+        background: rgba(14, 20, 27, 0.88);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        box-shadow: 0 18px 44px rgba(0, 0, 0, 0.35);
+        left: 18px;
+        max-width: 360px;
+        padding: 16px;
+        position: fixed;
+        top: 18px;
+      }
+
+      h1 {
+        font-size: 18px;
+        line-height: 1.15;
+        margin: 0 0 8px;
+      }
+
+      p {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.45;
+        margin: 0 0 12px;
+      }
+
+      .row {
+        align-items: center;
+        display: flex;
+        gap: 8px;
+        justify-content: space-between;
+        margin-top: 8px;
+      }
+
+      label {
+        align-items: center;
+        color: var(--paper);
+        display: flex;
+        font-size: 13px;
+        gap: 8px;
+      }
+
+      input {
+        accent-color: #c8502e;
+      }
+
+      .swatch {
+        border-radius: 999px;
+        display: inline-block;
+        height: 10px;
+        width: 10px;
+      }
+
+      .status {
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-family: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+        font-size: 11px;
+        margin-top: 12px;
+        padding-top: 10px;
+      }
+
+      .badge {
+        background: rgba(250, 246, 238, 0.08);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: var(--paper);
+        display: inline-block;
+        font-size: 11px;
+        margin: 4px 4px 0 0;
+        padding: 4px 7px;
+      }
+
+      .axis {
+        background: rgba(14, 20, 27, 0.78);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        bottom: 18px;
+        color: var(--paper);
+        font-family: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+        font-size: 11px;
+        padding: 10px 12px;
+        position: fixed;
+        right: 18px;
+      }
+
+      .error {
+        background: rgba(200, 80, 46, 0.14);
+        border-color: rgba(200, 80, 46, 0.5);
+        color: #ffd7ca;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="stage" aria-label="Template gland 3D preview"></canvas>
+    <section class="panel" aria-live="polite">
+      <h1>Template Gland Preview</h1>
+      <p>Loads the generated zonal GLBs and sector centroids. Drag to rotate, scroll to zoom. Add <code>?dryrun=1</code> for the synthetic dry-run.</p>
+      <div class="row"><label><input type="checkbox" data-zone="PZ" checked /><span class="swatch" style="background: var(--pz)"></span>PZ</label></div>
+      <div class="row"><label><input type="checkbox" data-zone="TZ" checked /><span class="swatch" style="background: var(--tz)"></span>TZ</label></div>
+      <div class="row"><label><input type="checkbox" data-zone="CZ" checked /><span class="swatch" style="background: var(--cz)"></span>CZ</label></div>
+      <div class="row"><label><input type="checkbox" data-zone="AFS" checked /><span class="swatch" style="background: var(--afs)"></span>AFS</label></div>
+      <div class="row"><label><input type="checkbox" data-zone="URETHRA" checked /><span class="swatch" style="background: var(--urethra)"></span>Urethra</label></div>
+      <div class="row"><label><input type="checkbox" id="sectors" checked />Sector dots</label></div>
+      <div id="chips"></div>
+      <div id="status" class="status">Loading...</div>
+    </section>
+    <div class="axis">
+      +X left<br />
+      +Y posterior<br />
+      +Z base
+    </div>
+
+    <script type="module">
+      import * as THREE from "https://esm.sh/three@0.165.0";
+      import { OrbitControls } from "https://esm.sh/three@0.165.0/examples/jsm/controls/OrbitControls.js";
+      import { GLTFLoader } from "https://esm.sh/three@0.165.0/examples/jsm/loaders/GLTFLoader.js";
+      import { DRACOLoader } from "https://esm.sh/three@0.165.0/examples/jsm/loaders/DRACOLoader.js";
+
+      const zoneColours = {
+        PZ: "#d98e32",
+        TZ: "#3a7ca5",
+        CZ: "#16685f",
+        AFS: "#c8502e",
+        URETHRA: "#fff8f0",
+      };
+
+      const status = document.getElementById("status");
+      const chips = document.getElementById("chips");
+      const canvas = document.getElementById("stage");
+      const useDryRun = new URLSearchParams(location.search).get("dryrun") === "1";
+      const assetBase = new URL(useDryRun ? "_dryrun/" : "./", location.href);
+
+      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+      renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
+      renderer.setClearColor(new THREE.Color("#0e141b"), 1);
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+      const scene = new THREE.Scene();
+      scene.fog = new THREE.FogExp2("#0e141b", 0.06);
+      const camera = new THREE.PerspectiveCamera(35, 1, 0.01, 100);
+      camera.position.set(1.1, -1.25, -1.0);
+
+      const controls = new OrbitControls(camera, canvas);
+      controls.enableDamping = true;
+      controls.target.set(0, 0, 0);
+      controls.minDistance = 0.35;
+      controls.maxDistance = 5;
+
+      scene.add(new THREE.HemisphereLight(0xfff3e6, 0x111923, 2.0));
+      const key = new THREE.DirectionalLight(0xffffff, 1.7);
+      key.position.set(1.5, -1.8, 2.2);
+      scene.add(key);
+      const rim = new THREE.DirectionalLight(0x9fd7ff, 0.9);
+      rim.position.set(-1.4, 1.6, -1.0);
+      scene.add(rim);
+
+      const root = new THREE.Group();
+      const sectorRoot = new THREE.Group();
+      const meshes = new Map();
+      scene.add(root);
+      scene.add(sectorRoot);
+
+      const draco = new DRACOLoader();
+      draco.setDecoderPath("/prostateview/draco/");
+      draco.setDecoderConfig({ type: "wasm" });
+      const loader = new GLTFLoader();
+      loader.setDRACOLoader(draco);
+
+      function setStatus(message, danger = false) {
+        status.textContent = message;
+        status.classList.toggle("error", danger);
+      }
+
+      function resize() {
+        const width = Math.max(1, window.innerWidth);
+        const height = Math.max(1, window.innerHeight);
+        renderer.setSize(width, height, false);
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+      }
+
+      function applyZoneMaterial(zone, object) {
+        const opacity = {
+          PZ: 0.46,
+          TZ: 0.78,
+          CZ: 0.7,
+          AFS: 0.78,
+          URETHRA: 1,
+        }[zone] || 0.7;
+        object.traverse((child) => {
+          if (!child.isMesh) return;
+          child.material = new THREE.MeshBasicMaterial({
+            color: new THREE.Color(zoneColours[zone] || "#faf6ee"),
+            transparent: true,
+            opacity,
+            side: THREE.DoubleSide,
+            depthWrite: zone === "URETHRA",
+          });
+          child.renderOrder = zone === "URETHRA" ? 8 : 2;
+        });
+      }
+
+      function frameScene() {
+        const box = new THREE.Box3().setFromObject(root);
+        if (box.isEmpty()) return;
+        const center = box.getCenter(new THREE.Vector3());
+        const size = box.getSize(new THREE.Vector3());
+        root.position.sub(center);
+        sectorRoot.position.sub(center);
+        const maxDim = Math.max(size.x, size.y, size.z, 0.4);
+        camera.position.set(maxDim * 1.65, -maxDim * 1.9, -maxDim * 1.35);
+        camera.near = maxDim / 100;
+        camera.far = maxDim * 20;
+        camera.updateProjectionMatrix();
+        controls.target.set(0, 0, 0);
+        controls.update();
+      }
+
+      function makeSectorDot(zone, position, radius) {
+        const dot = new THREE.Mesh(
+          new THREE.SphereGeometry(Math.max(radius * 0.055, 0.008), 16, 10),
+          new THREE.MeshBasicMaterial({
+            color: new THREE.Color(zoneColours[zone] || "#faf6ee"),
+            transparent: true,
+            opacity: 0.95,
+            depthTest: false,
+          }),
+        );
+        dot.position.fromArray(position);
+        dot.renderOrder = 20;
+        return dot;
+      }
+
+      async function loadJson(name) {
+        const response = await fetch(new URL(name, assetBase));
+        if (!response.ok) throw new Error(`Could not fetch ${name}`);
+        return response.json();
+      }
+
+      async function loadMesh(zone, file) {
+        const gltf = await loader.loadAsync(String(new URL(file, assetBase)));
+        applyZoneMaterial(zone, gltf.scene);
+        root.add(gltf.scene);
+        meshes.set(zone, gltf.scene);
+      }
+
+      async function boot() {
+        try {
+          const manifest = await loadJson("manifest.json");
+          const sectors = await loadJson("sectors.json");
+          const entries = Object.entries(manifest.meshes).filter(([, meta]) => meta.file);
+
+          setStatus(`Loading ${entries.length} zonal meshes...`);
+          await Promise.all(entries.map(([zone, meta]) => loadMesh(zone, meta.file)));
+
+          Object.entries(sectors.centroids || {}).forEach(([key, position]) => {
+            const [zone] = key.split("|");
+            sectorRoot.add(makeSectorDot(zone, position, sectors.radii?.[key] || 0.05));
+          });
+
+          chips.innerHTML = [
+            `<span class="badge">${manifest.sectorCount || Object.keys(sectors.centroids || {}).length} sectors</span>`,
+            `<span class="badge">${useDryRun ? "dry-run" : "real assets"}</span>`,
+            `<span class="badge">${entries.length} GLBs</span>`,
+          ].join("");
+          frameScene();
+          setStatus(`Loaded ${entries.map(([zone]) => zone).join(", ")} from ${assetBase.pathname}`);
+        } catch (error) {
+          console.error(error);
+          setStatus(error.message || String(error), true);
+        }
+      }
+
+      document.querySelectorAll("[data-zone]").forEach((box) => {
+        box.addEventListener("change", () => {
+          const mesh = meshes.get(box.dataset.zone);
+          if (mesh) mesh.visible = box.checked;
+        });
+      });
+
+      document.getElementById("sectors").addEventListener("change", (event) => {
+        sectorRoot.visible = event.currentTarget.checked;
+      });
+
+      window.addEventListener("resize", resize);
+      resize();
+      boot();
+
+      function tick() {
+        controls.update();
+        renderer.render(scene, camera);
+        requestAnimationFrame(tick);
+      }
+      tick();
+    </script>
+  </body>
+</html>

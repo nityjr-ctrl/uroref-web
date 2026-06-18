@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="en-GB"> <head>
+    <meta name="robots" content="noindex">
+    <link rel="canonical" href="https://prostateview.com/v2/report-visualiser/">
+    <meta charset="UTF-8"><script>
+      /* set theme + accessibility prefs before paint to avoid a flash */
+      (function(){try{
+        var d=document.documentElement;
+        var t=localStorage.getItem('pv-theme');
+        if(t==='light')d.classList.add('light');
+        else if(t==='reading')d.classList.add('reading');
+        ['reduce-motion','large-text','dyslexia'].forEach(function(k){
+          if(localStorage.getItem('pv-a11y-'+k)==='1')d.classList.add('a11y-'+k);
+        });
+      }catch(e){}})();
+    </script><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"><meta name="description" content="A structured, client-side ProstateView teaching visualiser that turns report checklist findings into a representative 3D gland."><meta name="theme-color" content="#0f172a"><link rel="manifest" href="/prostateview/manifest-v2.webmanifest"><link rel="icon" href="/prostateview/icons/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/prostateview/icons/icon-192.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,560;0,9..144,640;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet"><title>Report visualiser - ProstateView</title><!-- Social sharing previews (WhatsApp / Slack / LinkedIn / X) --><meta property="og:type" content="website"><meta property="og:site_name" content="ProstateView"><meta property="og:title" content="Report visualiser - ProstateView"><meta property="og:description" content="A structured, client-side ProstateView teaching visualiser that turns report checklist findings into a representative 3D gland."><meta property="og:url" content="https://prostateview.com/prostateview/v2/report-visualiser/"><meta property="og:image" content="https://prostateview.com/social-preview.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Report visualiser - ProstateView"><meta name="twitter:description" content="A structured, client-side ProstateView teaching visualiser that turns report checklist findings into a representative 3D gland."><meta name="twitter:image" content="https://prostateview.com/social-preview.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"ProstateView report checklist visualiser","description":"A structured, client-side ProstateView teaching visualiser that turns report checklist findings into a representative 3D gland.","url":"https://prostateview.com/v2/report-visualiser/","provider":{"@type":"Organization","name":"ProstateView, a UroRef project","url":"https://prostateview.com/v2/"},"author":{"@type":"Person","name":"Nity G"},"educationalUse":"Medical education"}</script><link rel="stylesheet" href="/prostateview/_astro/about.hFqiksV5.css">
+<link rel="stylesheet" href="/prostateview/_astro/_id_.6RLGKaZX.css">
+<link rel="stylesheet" href="/prostateview/_astro/report-visualiser.Dt_TkZ8_.css"></head> <body class="pv2-body pv2-body-learn"> <header class="pv2-header"> <a class="pv2-brand" href="/prostateview/v2" aria-label="ProstateView home"> <span class="pv2-brand-mark" aria-hidden="true"> <img class="pv2-brand-logo" src="/prostateview/logo.png" alt="" width="120" height="120"> </span> <span class="pv2-wordmark">Prostate<span class="pv2-wordmark-accent">View</span></span> </a> <nav class="pv2-nav" aria-label="Primary"> <a href="/prostateview/v2"> Home </a><a href="/prostateview/v2/learn" aria-current="page"> Spatial Lab </a><a href="/prostateview/v2/template-report-visualiser"> Visualiser </a><a href="/prostateview/v2/safety"> Safety </a><a href="/prostateview/v2/cases/#curated-mri"> Case library </a><a href="/prostateview/v2/poster"> Poster </a><a class="pv2-uroref-link" href="https://uroref.com" target="_blank" rel="noopener"> UroRef </a> <div class="pv2-a11y"> <button type="button" class="pv2-a11y-btn" data-a11y-toggle aria-label="Display and accessibility settings" aria-expanded="false"> <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg> </button> <div class="pv2-a11y-panel" data-a11y-panel hidden> <h3>Theme</h3> <div class="pv2-a11y-theme" role="group" aria-label="Theme"> <button type="button" data-theme-set="dark">Dark</button> <button type="button" data-theme-set="light">Light</button> <button type="button" data-theme-set="reading">Reading</button> </div> <h3>Accessibility</h3> <label class="pv2-a11y-opt"><input type="checkbox" data-a11y="dyslexia"> Dyslexia mode</label> <label class="pv2-a11y-opt"><input type="checkbox" data-a11y="large-text"> Large text</label> <label class="pv2-a11y-opt"><input type="checkbox" data-a11y="reduce-motion"> Less motion</label> </div> </div> </nav> </header> <div class="pv2-safety-strip" role="note"> <svg class="pv2-safety-svg" viewBox="0 0 24 24" aria-hidden="true"> <path d="M12 3l7 3v5c0 4.4-2.8 8.4-7 10-4.2-1.6-7-5.6-7-10V6l7-3z"></path> <path d="M8.5 12.2l2.2 2.2 4.8-5"></path> </svg> <span>Teaching only. Not for diagnosis, PI&#8209;RADS, biopsy planning or navigation.</span> </div> <main class="pv2-main">  <section class="pv2-report-viz" data-report-visualiser aria-labelledby="report-visualiser-title" data-astro-cid-brdqnnhw> <header class="pv2-report-head" data-astro-cid-brdqnnhw> <div data-astro-cid-brdqnnhw> <p class="pv2-eyebrow" data-astro-cid-brdqnnhw>Checklist to 3D</p> <h1 id="report-visualiser-title" data-astro-cid-brdqnnhw>Report findings, spatially rehearsed.</h1> </div> <p class="pv2-copy" data-astro-cid-brdqnnhw>
+Structured report inputs render on a normalised Prostate158 gland. Representative teaching only, not scan interpretation.
+</p> </header> <div class="pv2-report-grid" data-astro-cid-brdqnnhw> <form class="pv2-report-panel" data-report-form aria-label="Report checklist" data-astro-cid-brdqnnhw> <fieldset class="pv2-report-fieldset" data-astro-cid-brdqnnhw> <legend data-astro-cid-brdqnnhw>Gland</legend> <div class="pv2-report-control" data-astro-cid-brdqnnhw> <label for="pv-report-volume" data-astro-cid-brdqnnhw>Gland volume</label> <div class="pv2-report-number" data-astro-cid-brdqnnhw> <input id="pv-report-volume" data-field="volumeMl" name="volumeMl" type="number" min="12" max="220" step="1" value="45" inputmode="decimal" data-astro-cid-brdqnnhw> <span data-astro-cid-brdqnnhw>ml</span> </div> </div> <div class="pv2-report-dims" aria-label="Optional dimensions" data-astro-cid-brdqnnhw> <div class="pv2-report-control" data-astro-cid-brdqnnhw> <label for="pv-report-ap" data-astro-cid-brdqnnhw>AP</label> <div class="pv2-report-number" data-astro-cid-brdqnnhw> <input id="pv-report-ap" data-field="apMm" name="apMm" type="number" min="20" max="90" step="1" placeholder="optional" inputmode="decimal" data-astro-cid-brdqnnhw> <span data-astro-cid-brdqnnhw>mm</span> </div> </div> <div class="pv2-report-control" data-astro-cid-brdqnnhw> <label for="pv-report-transverse" data-astro-cid-brdqnnhw>Transverse</label> <div class="pv2-report-number" data-astro-cid-brdqnnhw> <input id="pv-report-transverse" data-field="transverseMm" name="transverseMm" type="number" min="25" max="100" step="1" placeholder="optional" inputmode="decimal" data-astro-cid-brdqnnhw> <span data-astro-cid-brdqnnhw>mm</span> </div> </div> <div class="pv2-report-control" data-astro-cid-brdqnnhw> <label for="pv-report-longitudinal" data-astro-cid-brdqnnhw>Longitudinal</label> <div class="pv2-report-number" data-astro-cid-brdqnnhw> <input id="pv-report-longitudinal" data-field="longitudinalMm" name="longitudinalMm" type="number" min="25" max="100" step="1" placeholder="optional" inputmode="decimal" data-astro-cid-brdqnnhw> <span data-astro-cid-brdqnnhw>mm</span> </div> </div> </div> <p class="pv2-report-help" data-astro-cid-brdqnnhw>Three dimensions reshape the gland anisotropically. Volume alone scales it isotropically.</p> </fieldset> <fieldset class="pv2-report-fieldset" data-astro-cid-brdqnnhw> <legend data-astro-cid-brdqnnhw>Lesions</legend> <label class="pv2-report-toggle" data-astro-cid-brdqnnhw> <input type="checkbox" data-field="noLesion" data-astro-cid-brdqnnhw> <span data-astro-cid-brdqnnhw>No significant lesion</span> </label> <div class="pv2-report-lesions" data-lesion-list data-astro-cid-brdqnnhw></div> <button type="button" class="pv2-button secondary pv2-report-add" data-add-lesion data-astro-cid-brdqnnhw>Add lesion</button> </fieldset> </form> <section class="pv2-report-stage-panel" aria-label="Representative 3D gland" data-astro-cid-brdqnnhw> <div class="pv2-report-stage" data-report-stage data-astro-cid-brdqnnhw> <canvas data-report-canvas data-astro-cid-brdqnnhw></canvas> <div class="pv2-report-overlay" data-report-overlay data-astro-cid-brdqnnhw> <strong data-astro-cid-brdqnnhw>Loading representative gland</strong> <span data-astro-cid-brdqnnhw>Using ProstateView source mesh and local Draco decoder.</span> </div> <div class="pv2-report-compass" aria-hidden="true" data-astro-cid-brdqnnhw> <span class="base" data-astro-cid-brdqnnhw>Base</span> <span class="apex" data-astro-cid-brdqnnhw>Apex</span> <span class="left" data-astro-cid-brdqnnhw>L</span> <span class="right" data-astro-cid-brdqnnhw>R</span> </div> <p class="pv2-report-disclaimer" data-astro-cid-brdqnnhw>Representative teaching model. Not diagnostic.</p> </div> <div class="pv2-report-readout" aria-live="polite" data-astro-cid-brdqnnhw> <div data-astro-cid-brdqnnhw> <span data-astro-cid-brdqnnhw>Index lesion</span> <strong data-index-readout data-astro-cid-brdqnnhw>PI-RADS 4, left mid PZ</strong> </div> <div data-astro-cid-brdqnnhw> <span data-astro-cid-brdqnnhw>Scale</span> <strong data-scale-readout data-astro-cid-brdqnnhw>Volume scale pending</strong> </div> <div data-astro-cid-brdqnnhw> <span data-astro-cid-brdqnnhw>Model</span> <strong data-astro-cid-brdqnnhw>pv-case-018 source GLB</strong> </div> </div> <ol class="pv2-report-caption" data-astro-cid-brdqnnhw> <li data-astro-cid-brdqnnhw>Highest PI-RADS becomes index lesion.</li> <li data-astro-cid-brdqnnhw>Ties resolve by largest lesion size.</li> <li data-astro-cid-brdqnnhw>Labels are approximate sector centroids on a normalised gland.</li> </ol> </section> </div> <script type="application/json" data-report-visualiser-config>{"modelSrc":"/prostateview/demo-cases/pv-case-018/model.glb","caseId":"pv-case-018","baseVolumeMl":109.5,"baseHalfM":[0.03344,0.03442,0.02846],"palette":{"paper":"#faf6ee","ink":"#211e18","card":"#fffefb","muted":"#5a554a","line":"#ddd5c4","teal":"#16685f","terracotta":"#c8502e","stage":"#0e141b","stageHi":"#16202b","gland":"#c2738f","pz":"#d98e32","tz":"#3a7ca5","lesion":"#c8502e","pirads3":"#b97a1f","pirads4":"#c8502e","pirads5":"#b3261e"}}</script> </section> <script type="module" src="/prostateview/_astro/ReportChecklistVisualiser.astro_astro_type_script_index_0_lang.DQOo2Gxw.js"></script>   </main> <nav class="pv2-bottom-nav" aria-label="Primary"> <a href="/prostateview/v2"> Home </a><a href="/prostateview/v2/learn" aria-current="page"> Spatial Lab </a><a href="/prostateview/v2/template-report-visualiser"> Visualiser </a><a href="/prostateview/v2/safety"> Safety </a><a href="/prostateview/v2/cases/#curated-mri"> Case library </a><a href="/prostateview/v2/poster"> Poster </a><a href="https://uroref.com" target="_blank" rel="noopener"> UroRef </a> </nav> <footer class="pv2-footer"> <div>Education prototype. Public Prostate158 assets.</div> <div class="pv2-footer-uroref">A <a href="https://uroref.com" target="_blank" rel="noopener">UroRef</a> project</div> <div class="pv2-credit">Created by Nity G, Urology ST4</div> <div class="pv2-copyright">&copy; 2026 Nityanandan G.</div> </footer>  <script>
+      (function () {
+        var root = document.documentElement;
+        var btn = document.querySelector("[data-a11y-toggle]");
+        var panel = document.querySelector("[data-a11y-panel]");
+        if (!btn || !panel) return;
+        btn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          var show = panel.hasAttribute("hidden");
+          if (show) { panel.removeAttribute("hidden"); btn.setAttribute("aria-expanded", "true"); }
+          else { panel.setAttribute("hidden", ""); btn.setAttribute("aria-expanded", "false"); }
+        });
+        document.addEventListener("click", function (e) {
+          if (!panel.contains(e.target) && !btn.contains(e.target)) {
+            panel.setAttribute("hidden", ""); btn.setAttribute("aria-expanded", "false");
+          }
+        });
+        function currentTheme() {
+          return root.classList.contains("light") ? "light"
+            : root.classList.contains("reading") ? "reading" : "dark";
+        }
+        function markTheme() {
+          var t = currentTheme();
+          panel.querySelectorAll("[data-theme-set]").forEach(function (b) {
+            b.setAttribute("aria-pressed", b.getAttribute("data-theme-set") === t ? "true" : "false");
+          });
+        }
+        panel.querySelectorAll("[data-theme-set]").forEach(function (b) {
+          b.addEventListener("click", function () {
+            var t = b.getAttribute("data-theme-set");
+            root.classList.remove("light", "reading");
+            if (t === "light") root.classList.add("light");
+            else if (t === "reading") root.classList.add("reading");
+            try { localStorage.setItem("pv-theme", t); } catch (e) {}
+            markTheme();
+          });
+        });
+        markTheme();
+        panel.querySelectorAll("input[data-a11y]").forEach(function (inp) {
+          var k = inp.getAttribute("data-a11y");
+          inp.checked = root.classList.contains("a11y-" + k);
+          inp.addEventListener("change", function () {
+            root.classList.toggle("a11y-" + k, inp.checked);
+            try { localStorage.setItem("pv-a11y-" + k, inp.checked ? "1" : "0"); } catch (e) {}
+          });
+        });
+      })();
+    </script> <script>
+      (function () {
+        if (!("serviceWorker" in navigator)) return;
+        window.addEventListener("load", function () {
+          var hadController = !!navigator.serviceWorker.controller;
+          Promise.all([
+            navigator.serviceWorker.getRegistrations()
+              .then(function (regs) { return Promise.all(regs.map(function (reg) { return reg.unregister(); })); })
+              .catch(function () {}),
+            "caches" in window
+              ? caches.keys()
+                .then(function (keys) {
+                  return Promise.all(keys.filter(function (key) { return key.indexOf("pv-") === 0; }).map(function (key) { return caches.delete(key); }));
+                })
+                .catch(function () {})
+              : Promise.resolve(),
+          ]).then(function () {
+            if (!hadController) return;
+            try {
+              if (sessionStorage.getItem("pv-sw-retired") === "1") return;
+              sessionStorage.setItem("pv-sw-retired", "1");
+            } catch (e) {}
+            location.reload();
+          });
+        });
+      })();
+    </script> </body> </html>

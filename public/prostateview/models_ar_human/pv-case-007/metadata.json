@@ -6,8 +6,8 @@
   "model_viewer_check": "C:/Users/nityj/OneDrive/Desktop/2 - Projects/Prostate View/prostateview-web-publish/models_ar_human/pv-case-007/model-viewer-check.html",
   "orientation_convention": "source axes +X=patient left, -X=patient right, +Y=posterior, +Z=base/superior, -Z=apex/inferior; AR export remaps to +X=patient left, -X=patient right, +Y=anterior/screen-up, -Y=posterior/screen-down, -Z=apex/front/user side, +Z=base/back",
   "palette": "human",
-  "ablr_markers": "A=apex/front, B=base/back, L=patient left, R=patient right; side labels face the apex-forward default view; on by default; hide nodes/meshes named orientation_* or AR_orientation_markers to toggle",
-  "scale_factor": 1.0,
+  "ablr_markers": "A=apex/front, B=base/back; side labels use the apex-facing lithotomy screen convention: R appears viewer-left, L appears viewer-right; hide nodes/meshes named orientation_* or AR_orientation_markers to toggle",
+  "scale_factor": 1,
   "anatomy_bounds_m": "{\"min\":[-0.034871,-0.027973,-0.036199],\"max\":[0.034871,0.027973,0.036199]}",
   "triangle_budget": {
     "target": 60000,
@@ -20,5 +20,7 @@
     "source_meter_scale_preserved",
     "decimation_not_needed",
     "lesion_visibility_halos_added_1"
-  ]
+  ],
+  "side_marker_lithotomy_repaired": true,
+  "usdz_side_marker_lithotomy_repaired": true
 }

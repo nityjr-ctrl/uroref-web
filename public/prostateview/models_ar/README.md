@@ -105,9 +105,9 @@ phone teaching frame:
 
 - `+X` remains patient left, `-X` remains patient right
 - `+Y` becomes anterior/screen-up, `-Y` becomes posterior/screen-down
-- `+Z` becomes apex/front, so the default model-viewer/AR pose opens with
+- `-Z` becomes apex/front, so the default model-viewer/AR pose opens with
   `A` facing the viewer
-- `-Z` becomes base/back, away from the viewer
+- `+Z` becomes base/back, away from the viewer
 
 A/B/L/R markers:
 
@@ -117,8 +117,8 @@ A/B/L/R markers:
 - `R` = patient right
 
 Patient left/right here are anatomical patient left/right, not screen left/right.
-The patient left marker is `L`; patient right is `R`. In the default AR view,
-patient right appears on screen-left and patient left appears on screen-right.
+The patient left marker is `L`; patient right is `R`. Screen-left/screen-right
+depends on the current camera or physical viewing position.
 
 To toggle markers in a viewer, hide meshes/nodes named `orientation_*`. They are
 kept on by default for AR handoff and visual QA.

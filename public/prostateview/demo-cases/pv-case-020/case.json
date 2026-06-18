@@ -7,15 +7,15 @@
   "sourceDataset": "Prostate158",
   "sourceType": "public_research_dataset",
   "generationType": "ground_truth_derived",
-  "modelPath": "/demo-cases/pv-case-020/model.glb",
-  "annotationsPath": "/demo-cases/pv-case-020/annotations.json",
+  "modelPath": "/prostateview/demo-cases/pv-case-020/model.glb",
+  "annotationsPath": "/prostateview/demo-cases/pv-case-020/annotations.json",
   "previewImages": [
     {
       "id": "full_slice_overlay",
       "label": "T2 + overlay",
       "type": "full_slice_overlay",
       "sequence": "T2W",
-      "path": "/demo-cases/pv-case-020/preview/t2_full_slice_overlay.png",
+      "path": "/prostateview/demo-cases/pv-case-020/preview/t2_full_slice_overlay.png",
       "source": "Prostate158 GT-derived overlay",
       "isDiagnostic": false
     },
@@ -24,7 +24,7 @@
       "label": "T2 axial",
       "type": "full_slice_source",
       "sequence": "T2W",
-      "path": "/demo-cases/pv-case-020/preview/t2_full_slice.png",
+      "path": "/prostateview/demo-cases/pv-case-020/preview/t2_full_slice.png",
       "source": "Prostate158 source",
       "isDiagnostic": false
     },
@@ -33,7 +33,7 @@
       "label": "Lesion zoom",
       "type": "lesion_zoom",
       "sequence": "T2W",
-      "path": "/demo-cases/pv-case-020/preview/t2_lesion_zoom.png",
+      "path": "/prostateview/demo-cases/pv-case-020/preview/t2_lesion_zoom.png",
       "source": "Prostate158 GT-derived overlay",
       "isDiagnostic": false
     }
@@ -104,15 +104,15 @@
     "overlayAlignment": "PASS"
   },
   "safeToDemo": true,
-  "cardImage": "/demo-cases/pv-case-020/preview/t2_full_slice_overlay.png",
-  "thumbnail": "/demo-cases/pv-case-020/preview/t2_full_slice_overlay.png",
-  "previewImage": "/demo-cases/pv-case-020/preview/t2_full_slice_overlay.png",
+  "cardImage": "/prostateview/demo-cases/pv-case-020/preview/t2_full_slice_overlay.png",
+  "thumbnail": "/prostateview/demo-cases/pv-case-020/preview/t2_full_slice_overlay.png",
+  "previewImage": "/prostateview/demo-cases/pv-case-020/preview/t2_full_slice_overlay.png",
   "overlayQa": {
     "alignmentStatus": "PASS",
     "automatedCheckPassed": true,
     "manuallyReviewed": false,
     "reasons": [],
-    "qaImage": "/demo-cases/pv-case-020/qa/alignment_check.png",
+    "qaImage": "/prostateview/demo-cases/pv-case-020/qa/alignment_check.png",
     "lateralityStatus": "MISMATCH_FIXED_IN_METADATA",
     "orientationStatus": "PASS"
   },

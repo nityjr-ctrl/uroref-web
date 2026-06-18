@@ -7,12 +7,12 @@
   "sourceDataset": "Prostate158",
   "sourceType": "public_research_dataset",
   "generationType": "ground_truth_derived",
-  "modelPath": "/demo-cases/pv-case-035/model.glb",
-  "annotationsPath": "/demo-cases/pv-case-035/annotations.json",
+  "modelPath": "/prostateview/demo-cases/pv-case-035/model.glb",
+  "annotationsPath": "/prostateview/demo-cases/pv-case-035/annotations.json",
   "previewImages": {
-    "full_slice_source": "/demo-cases/pv-case-035/preview/t2_full_slice.png",
-    "full_slice_overlay": "/demo-cases/pv-case-035/preview/t2_full_slice_overlay.png",
-    "lesion_zoom": "/demo-cases/pv-case-035/preview/t2_lesion_zoom.png"
+    "full_slice_source": "/prostateview/demo-cases/pv-case-035/preview/t2_full_slice.png",
+    "full_slice_overlay": "/prostateview/demo-cases/pv-case-035/preview/t2_full_slice_overlay.png",
+    "lesion_zoom": "/prostateview/demo-cases/pv-case-035/preview/t2_lesion_zoom.png"
   },
   "zone": "PZ",
   "side": "left",

@@ -1,14 +1,14 @@
 {
   "case_id": "pv-case-020",
-  "source": "C:/Users/nityj/OneDrive/Desktop/2 - Projects/Prostate View/.codex-worktrees/prostateview-ar-model-pipeline/public/demo-cases/pv-case-020/model.glb",
-  "output_glb": "C:/Users/nityj/OneDrive/Desktop/2 - Projects/Prostate View/.codex-worktrees/prostateview-ar-model-pipeline/models_ar_human/pv-case-020/model.glb",
-  "output_usdz": "C:/Users/nityj/OneDrive/Desktop/2 - Projects/Prostate View/.codex-worktrees/prostateview-ar-model-pipeline/models_ar_human/pv-case-020/model.usdz",
-  "model_viewer_check": "C:/Users/nityj/OneDrive/Desktop/2 - Projects/Prostate View/.codex-worktrees/prostateview-ar-model-pipeline/models_ar_human/pv-case-020/model-viewer-check.html",
-  "orientation_convention": "source axes +X=patient left, -X=patient right, +Y=posterior, +Z=base/superior, -Z=apex/inferior; AR export remaps to +X=patient left, -X=patient right, +Y=anterior/screen-up, -Y=posterior/screen-down, +Z=apex/front/user side, -Z=base/back",
+  "source": "C:/Users/nityj/OneDrive/Desktop/2 - Projects/Prostate View/prostateview-web-publish/public/demo-cases/pv-case-020/model.glb",
+  "output_glb": "C:/Users/nityj/OneDrive/Desktop/2 - Projects/Prostate View/prostateview-web-publish/models_ar_human/pv-case-020/model.glb",
+  "output_usdz": "C:/Users/nityj/OneDrive/Desktop/2 - Projects/Prostate View/prostateview-web-publish/models_ar_human/pv-case-020/model.usdz",
+  "model_viewer_check": "C:/Users/nityj/OneDrive/Desktop/2 - Projects/Prostate View/prostateview-web-publish/models_ar_human/pv-case-020/model-viewer-check.html",
+  "orientation_convention": "source axes +X=patient left, -X=patient right, +Y=posterior, +Z=base/superior, -Z=apex/inferior; AR export remaps to +X=patient left, -X=patient right, +Y=anterior/screen-up, -Y=posterior/screen-down, -Z=apex/front/user side, +Z=base/back",
   "palette": "human",
-  "ablr_markers": "A=apex/front, B=base/back, L=patient left, R=patient right; on by default; hide nodes/meshes named orientation_* or AR_orientation_markers to toggle",
+  "ablr_markers": "A=apex/front, B=base/back, L=patient left, R=patient right; side labels face the apex-forward default view; on by default; hide nodes/meshes named orientation_* or AR_orientation_markers to toggle",
   "scale_factor": 1.0,
-  "anatomy_bounds_m": "{\"min\":[-0.025301,-0.02297,-0.031457],\"max\":[0.025301,0.02297,0.031457]}",
+  "anatomy_bounds_m": "{\"min\":[-0.028402,-0.023292,-0.034546],\"max\":[0.028402,0.02297,0.034546]}",
   "triangle_budget": {
     "target": 60000,
     "max_before_marker_allowance": 80000,
@@ -18,6 +18,7 @@
   "usdz_status": "ok",
   "notes": [
     "source_meter_scale_preserved",
-    "decimation_not_needed"
+    "decimation_not_needed",
+    "lesion_visibility_halos_added_1"
   ]
 }

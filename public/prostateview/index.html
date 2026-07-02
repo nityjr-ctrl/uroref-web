@@ -1,6 +1,957 @@
-<!DOCTYPE html><html lang="en-GB"> <head>
-    <meta name="robots" content="noindex">
-    <link rel="canonical" href="https://prostateview.com/">
-    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta http-equiv="refresh" content="0; url=/prostateview/v2/"><title>ProstateView</title></head> <body> <p>Opening <a href="/prostateview/v2/">ProstateView</a>.</p> <script>
-      location.replace("/prostateview/v2/");
-    </script> </body> </html>
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Spatial Translator · ProstateView 2026-2031</title>
+<meta name="description" content="A five-year development plan for ProstateView, told as a fable: the private, unpaid work of turning seventy-two greyscale MRI slices into one gland a trainee can hold, turn, and never lose again.">
+<link rel="canonical" href="https://uroref.com/prostateview/">
+<meta property="og:title" content="The Spatial Translator">
+<meta property="og:description" content="ProstateView, 2026-2031. A development plan told as a fable, read the way the gland is read: apex first, base last, nothing skipped in between.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://uroref.com/prostateview/">
+<meta property="og:image" content="https://uroref.com/prostateview/social-preview.png">
+<meta name="theme-color" content="#17100A">
+<link rel="icon" href="/prostateview/v2/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   The Spatial Translator - ProstateView development plan
+   Third-generation design language: warm-technical dark theatre,
+   humanist typography, the living light-to-dark hue shift.
+   The page descends: paper at the apex, theatre at the base.
+   ============================================================ */
+
+:root{
+  /* depth stops: apex (paper) to base (theatre) */
+  --d0:#F6EFDF; --d1:#EFE2C6; --d2:#E9D8B4; --d3:#DFC89D;
+  --d4:#45311C; --d5:#2B1D0E; --d6:#1C1207; --d7:#140C05; --d8:#0D0803;
+  --strip:#120C05;
+  --bar:#17100A;
+
+  /* ink on paper */
+  --ink:#241708;
+  --ink-muted:#4E3A1E;
+  --link-light:#8A300E;
+
+  /* paper on theatre */
+  --paper:#F3E9D5;
+  --paper-muted:#CDBB9B;
+  --link-dark:#F08E5C;
+
+  /* accents */
+  --acc:#C8502E;
+  --acc-bright:#E97E4A;
+
+  --hair-dark:rgba(36,23,8,.24);
+  --hair-paper:rgba(243,233,213,.16);
+
+  --serif:"Source Serif 4", Georgia, "Times New Roman", serif;
+  --display:"Fraunces", Georgia, serif;
+  --mono:"IBM Plex Mono", "SF Mono", ui-monospace, Menlo, monospace;
+
+  --measure:46rem;
+  --wide:70rem;
+  --pad-x:clamp(1.25rem, 4vw, 3rem);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--d8); scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{
+  margin:0;
+  font-family:var(--serif);
+  font-size:1.0625rem;
+  line-height:1.7;
+  color:var(--ink);
+  background:var(--d0);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+h1,h2,h3{font-family:var(--display); font-weight:500; line-height:1.12; letter-spacing:-0.015em; text-wrap:balance; margin:0}
+p{margin:0 0 1.35em; text-wrap:pretty}
+a{color:var(--link-light); text-decoration-color:rgba(138,48,14,.4); text-underline-offset:3px}
+a:hover{text-decoration-color:currentColor}
+:focus-visible{outline:2px solid var(--acc); outline-offset:3px; border-radius:1px}
+strong{font-weight:600}
+::selection{background:rgba(200,80,46,.28)}
+
+.skip{position:absolute; left:-9999px; top:0; z-index:60; background:var(--paper); color:var(--ink); padding:.6rem 1rem; font-family:var(--mono); font-size:.8rem}
+.skip:focus{left:.5rem; top:.5rem}
+
+/* ---------- locked orientation bar: identical on every screen ---------- */
+.orientation{
+  position:sticky; top:0; z-index:40;
+  background:var(--bar);
+  border-bottom:1px solid var(--hair-paper);
+  color:#EFE4CE;
+  font-family:var(--mono); font-size:.625rem; letter-spacing:.14em; text-transform:uppercase;
+  display:flex; align-items:center; justify-content:center; flex-wrap:wrap;
+  gap:.1rem 1.1rem;
+  padding:.55rem var(--pad-x);
+}
+.orientation span{white-space:nowrap}
+.orientation span + span::before{content:"·"; margin-right:1.1rem; opacity:.45}
+.orientation .lockmark{color:var(--acc-bright); opacity:.95}
+@media (max-width:760px){
+  .orientation{font-size:.5625rem; gap:0 .8rem; flex-wrap:nowrap; justify-content:flex-start;
+    overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch}
+  .orientation::-webkit-scrollbar{display:none}
+  .orientation span + span::before{margin-right:.8rem}
+}
+
+/* ---------- depth gauge (desktop): apex to base scan position ---------- */
+.gauge{
+  position:fixed; right:1.1rem; top:50%; transform:translateY(-50%); z-index:30;
+  display:none; flex-direction:column; align-items:center; gap:.55rem;
+  background:rgba(18,12,5,.88); border:1px solid var(--hair-paper); border-radius:999px;
+  padding:.8rem .55rem;
+}
+@media (min-width:1180px){ .gauge{display:flex} }
+.g-label{font-family:var(--mono); font-size:.5rem; letter-spacing:.18em; color:var(--paper-muted)}
+.g-track{position:relative; width:2px; height:min(38vh,340px); background:rgba(243,233,213,.18); border-radius:2px}
+.g-tick{position:absolute; left:-2px; width:6px; height:1px; background:rgba(243,233,213,.5)}
+.g-dot{position:absolute; left:50%; top:0; width:9px; height:9px; border-radius:50%;
+  background:var(--acc-bright); transform:translate(-50%,-50%);
+  box-shadow:0 0 0 3px rgba(233,126,74,.18)}
+
+/* ---------- shared layout ---------- */
+.shell{max-width:var(--wide); margin-inline:auto; padding-inline:var(--pad-x)}
+.prose{max-width:var(--measure)}
+.kicker{
+  font-family:var(--mono); font-size:.6875rem; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--link-light); margin:0 0 1.1rem;
+}
+.theatre .kicker{color:var(--link-dark)}
+
+/* ---------- hero ---------- */
+.hero{background:var(--d0); padding:1.4rem 0 5rem}
+.hero-top{
+  display:flex; justify-content:space-between; align-items:baseline; gap:1rem;
+  font-family:var(--mono); font-size:.6875rem; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--ink-muted);
+  border-bottom:1px solid var(--hair-dark); padding-bottom:1rem; margin-bottom:clamp(3rem,7vh,5rem);
+}
+.hero-top a{color:var(--link-light); text-decoration:none; padding:.65rem 0; margin:-.65rem 0}
+.hero-top a:hover{text-decoration:underline; text-underline-offset:4px}
+.hero-grid{display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:clamp(2rem,5vw,4.5rem); align-items:center}
+@media (max-width:900px){ .hero-grid{grid-template-columns:1fr} }
+.hero h1{
+  font-size:clamp(2.9rem, 7vw, 5.3rem);
+  font-weight:500; line-height:1.02; letter-spacing:-0.025em;
+  margin:.9rem 0 1.6rem;
+}
+.hero .standfirst{
+  font-size:clamp(1.05rem, 1.6vw, 1.2rem); line-height:1.65; color:var(--ink-muted);
+  max-width:34em; margin-bottom:0;
+}
+.hero-art{margin:0}
+.hero-art svg{display:block; width:100%; height:auto}
+.hero-art figcaption{
+  font-family:var(--mono); font-size:.625rem; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--ink-muted); margin-top:.9rem; text-align:center;
+}
+.sl{stroke:#6B573A; stroke-width:1.6; transform-origin:50% 50%; transform-box:fill-box}
+.sl.lesion{stroke:var(--acc); stroke-width:3; stroke-opacity:.9}
+@keyframes slicein{from{transform:scaleX(0); opacity:0}}
+.sl{animation:slicein .8s cubic-bezier(.16,1,.3,1) both; animation-delay:var(--d)}
+@media (prefers-reduced-motion: reduce){ .sl{animation:none} }
+
+/* ---------- series index (contents) ---------- */
+.index{margin-top:clamp(3.5rem,8vh,6rem)}
+.index h2{font-size:1rem; font-family:var(--mono); font-weight:500; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-muted); margin-bottom:.4rem}
+.index ol{list-style:none; margin:0; padding:0; border-top:1px solid var(--hair-dark)}
+.index li{border-bottom:1px solid var(--hair-dark)}
+.index a{
+  display:flex; align-items:baseline; gap:1.1rem;
+  padding:.78rem .35rem; text-decoration:none; color:var(--ink);
+  transition:background-color .18s ease-out;
+}
+.index a:hover{background:rgba(36,23,8,.05)}
+.index .n{font-family:var(--mono); font-size:.7rem; color:var(--link-light); min-width:1.6rem}
+.index .t{font-family:var(--display); font-size:1.02rem; flex:1}
+.index .lvl-tag{font-family:var(--mono); font-size:.6rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-muted); white-space:nowrap}
+@media (max-width:640px){ .index .lvl-tag{display:none} }
+
+/* ---------- prose sections ---------- */
+.chapter{padding:clamp(4.5rem,10vh,7.5rem) 0}
+.chapter h2{font-size:clamp(1.8rem,3.6vw,2.6rem); margin-bottom:1.8rem}
+.lede::first-letter{
+  font-family:var(--display); font-weight:600;
+  font-size:3.4em; line-height:.82; float:left;
+  padding:.06em .12em 0 0; color:var(--acc);
+}
+.theatre .lede::first-letter{color:var(--acc-bright)}
+
+/* section 02 : vision facets */
+.facets{border-top:1px solid var(--hair-dark); margin:2.8rem 0 0}
+.facet{
+  display:grid; grid-template-columns:minmax(160px,230px) 1fr; gap:1.2rem 2.4rem;
+  padding:1.5rem 0; border-bottom:1px solid var(--hair-dark);
+}
+@media (max-width:680px){ .facet{grid-template-columns:1fr; gap:.35rem} }
+.facet dt{font-family:var(--display); font-weight:600; font-size:1.12rem; line-height:1.3}
+.facet dd{margin:0; color:var(--ink-muted); font-size:1rem; line-height:1.65; max-width:46rem}
+.vision-outro{margin-top:2.6rem}
+
+/* ---------- year scan strips ---------- */
+.strip{
+  background:var(--strip);
+  background-image:repeating-linear-gradient(180deg, rgba(243,233,213,.028) 0 1px, transparent 1px 7px);
+  border-top:1px solid var(--hair-paper);
+  border-bottom:1px solid var(--hair-paper);
+  color:var(--paper);
+  padding:clamp(2.2rem,5vh,3.4rem) 0;
+}
+.strip-inner{display:grid; grid-template-columns:1fr auto; gap:1.5rem 3rem; align-items:center}
+@media (max-width:720px){ .strip-inner{grid-template-columns:1fr} }
+.strip .pre-kicker{
+  font-family:var(--mono); font-size:.625rem; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--paper-muted); margin:0 0 1.4rem;
+}
+.strip .series{
+  font-family:var(--mono); font-size:.7rem; letter-spacing:.15em; text-transform:uppercase;
+  color:var(--acc-bright); margin:0 0 .7rem;
+}
+.strip .series em{font-style:normal; color:var(--paper-muted)}
+.strip h2{font-size:clamp(2.1rem,4.6vw,3.3rem); font-weight:500; color:var(--paper); margin:0}
+.strip .lvl-box{display:flex; flex-direction:column; align-items:center; gap:.55rem}
+.lvl-outline{fill:none; stroke:rgba(243,233,213,.4); stroke-width:1.5}
+.lvl-line{stroke:rgba(243,233,213,.26); stroke-width:1.5}
+.lvl-line.on{stroke:var(--acc-bright); stroke-width:3}
+.lvl-caption{font-family:var(--mono); font-size:.625rem; letter-spacing:.16em; text-transform:uppercase; color:var(--paper-muted)}
+.lvl-caption b{font-weight:500; color:var(--paper)}
+
+/* ---------- year bodies ---------- */
+.year-body{padding:clamp(3.5rem,8vh,6rem) 0 clamp(4.5rem,10vh,7rem)}
+.year-lede{font-size:clamp(1.1rem,1.7vw,1.28rem); line-height:1.6; font-family:var(--display); font-weight:400; font-style:italic; max-width:36em; margin-bottom:0}
+.group{margin-top:clamp(3rem,6vh,4.2rem)}
+.g-kicker{
+  display:block; font-family:var(--mono); font-size:.6563rem; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--link-light); margin-bottom:.55rem;
+}
+.theatre .g-kicker{color:var(--link-dark)}
+.group h3{font-size:clamp(1.35rem,2.4vw,1.7rem); font-weight:500; margin-bottom:1.4rem}
+
+ul.slices{list-style:none; margin:0; padding:0}
+ul.slices li{position:relative; padding-left:2.1rem; margin-bottom:1.15rem}
+ul.slices li::before{
+  content:""; position:absolute; left:0; top:.72em; width:1.15rem; height:2px;
+  background:var(--acc); opacity:.65;
+}
+.theatre ul.slices li::before{background:var(--acc-bright); opacity:.8}
+
+.checkpoint{
+  border:1px solid var(--hair-dark); border-radius:2px;
+  padding:1.6rem 1.8rem 1.5rem; margin-top:clamp(3rem,6vh,4.2rem);
+  background:rgba(36,23,8,.04);
+}
+.theatre .checkpoint{border-color:var(--hair-paper); background:rgba(243,233,213,.045)}
+.checkpoint .g-kicker{margin-bottom:.8rem}
+.checkpoint p{margin:0; font-size:1rem; line-height:1.68; color:var(--ink-muted)}
+.theatre .checkpoint p{color:var(--paper-muted)}
+
+/* ---------- depth themes ---------- */
+.s-fable{background:var(--d0)}
+.s-vision{background:linear-gradient(180deg, var(--d0) 0, var(--d1) 220px)}
+.y1-body{background:var(--d2)}
+.y2-body{background:var(--d3)}
+.theatre{color:var(--paper)}
+.theatre a{color:var(--link-dark); text-decoration-color:rgba(240,142,92,.4)}
+.theatre h2,.theatre h3{color:var(--paper)}
+.theatre p{line-height:1.75}
+.y3-body{background:var(--d4)}
+.y4-body{background:var(--d5)}
+.y5-body{background:var(--d6)}
+.s-guardrails{background:linear-gradient(180deg, var(--d6) 0, var(--d7) 240px)}
+.s-closing{background:linear-gradient(180deg, var(--d7) 0, var(--d8) 260px)}
+.theatre .year-lede{color:var(--paper)}
+.muted{color:var(--ink-muted)}
+.theatre .muted{color:var(--paper-muted)}
+
+/* ---------- metrics table ---------- */
+.table-scroll{overflow-x:auto; margin:2.2rem 0 1.6rem; -webkit-overflow-scrolling:touch}
+table.metrics{border-collapse:collapse; width:100%; min-width:640px}
+.metrics caption{text-align:left; font-family:var(--mono); font-size:.625rem; letter-spacing:.16em; text-transform:uppercase; color:var(--paper-muted); padding-bottom:.8rem}
+.metrics th,.metrics td{padding:.7rem .9rem; text-align:left; border-bottom:1px solid var(--hair-paper); font-size:.92rem; line-height:1.45}
+.metrics thead th{font-family:var(--mono); font-weight:500; font-size:.6563rem; letter-spacing:.12em; text-transform:uppercase; color:var(--acc-bright); border-bottom:1px solid rgba(243,233,213,.4)}
+.metrics tbody th{font-weight:600; font-family:var(--serif); color:var(--paper)}
+.metrics td{font-family:var(--mono); font-size:.8rem; color:var(--paper-muted)}
+.metrics td:first-child,.metrics th:first-child{padding-left:0}
+
+/* ---------- closing stamp ---------- */
+.stamp{
+  display:inline-block; font-family:var(--mono); font-size:.8rem; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--acc-bright); border:2px solid var(--acc-bright); border-radius:3px;
+  padding:.75rem 1.3rem; transform:rotate(-2deg); margin-top:2.6rem;
+}
+
+/* ---------- footer ---------- */
+footer{background:var(--d8); color:var(--paper-muted); border-top:1px solid var(--hair-paper);
+  padding:3.2rem 0 3.8rem; font-size:.95rem}
+.foot-grid{display:flex; flex-wrap:wrap; gap:2rem 4rem; justify-content:space-between; align-items:flex-start}
+.foot-brand{font-family:var(--display); font-size:1.15rem; color:var(--paper); margin-bottom:.5rem}
+.foot-note{max-width:34em; margin:0; line-height:1.7}
+footer nav{display:flex; flex-direction:column; font-family:var(--mono); font-size:.75rem; letter-spacing:.06em}
+footer nav a{padding:.7rem 0}
+footer a{color:var(--link-dark)}
+.foot-legal{margin-top:2.6rem; padding-top:1.4rem; border-top:1px solid var(--hair-paper);
+  font-family:var(--mono); font-size:.6563rem; letter-spacing:.12em; text-transform:uppercase;
+  display:flex; flex-wrap:wrap; gap:.5rem 2rem; color:var(--paper-muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="orientation" role="note" aria-label="Locked orientation convention">
+  <span class="lockmark">⌖ locked</span>
+  <span>Apex toward viewer</span>
+  <span>Base deep</span>
+  <span>Anterior up</span>
+  <span>Posterior down</span>
+  <span>Patient left on screen right</span>
+</div>
+
+<div class="gauge" aria-hidden="true">
+  <span class="g-label">APEX</span>
+  <div class="g-track"><i class="g-dot"></i></div>
+  <span class="g-label">BASE</span>
+</div>
+
+<header class="hero">
+  <div class="shell">
+    <div class="hero-top">
+      <span>ProstateView · Development plan · 2026-2031</span>
+      <a href="v2/">Open the live app →</a>
+    </div>
+    <div class="hero-grid">
+      <div>
+        <h1>The Spatial Translator</h1>
+        <p class="standfirst">A development plan told as a fable, because the problem it solves is a human one: the private, unpaid, invisible work of turning seventy-two greyscale slices into one gland that a trainee can hold, turn, and never lose again.</p>
+      </div>
+      <figure class="hero-art">
+        <svg viewBox="0 0 560 380" role="img" aria-label="Seventy-two horizontal greyscale lines stacked to form the silhouette of a prostate gland, with one short terracotta line marking a lesion on the patient's right side">
+<line class="sl" x1="223.1" y1="14.0" x2="329.9" y2="14.0" stroke-opacity="0.24" style="--d:0.00s"/>
+<line class="sl" x1="218.2" y1="19.0" x2="339.4" y2="19.0" stroke-opacity="0.25" style="--d:0.02s"/>
+<line class="sl" x1="213.5" y1="23.9" x2="350.8" y2="23.9" stroke-opacity="0.27" style="--d:0.04s"/>
+<line class="sl" x1="204.8" y1="28.9" x2="358.3" y2="28.9" stroke-opacity="0.28" style="--d:0.06s"/>
+<line class="sl" x1="197.9" y1="33.8" x2="367.6" y2="33.8" stroke-opacity="0.30" style="--d:0.08s"/>
+<line class="sl" x1="187.3" y1="38.8" x2="372.9" y2="38.8" stroke-opacity="0.31" style="--d:0.10s"/>
+<line class="sl" x1="179.7" y1="43.7" x2="380.9" y2="43.7" stroke-opacity="0.32" style="--d:0.12s"/>
+<line class="sl" x1="170.9" y1="48.7" x2="387.4" y2="48.7" stroke-opacity="0.34" style="--d:0.14s"/>
+<line class="sl" x1="162.2" y1="53.7" x2="393.7" y2="53.7" stroke-opacity="0.35" style="--d:0.16s"/>
+<line class="sl" x1="155.1" y1="58.6" x2="401.2" y2="58.6" stroke-opacity="0.36" style="--d:0.18s"/>
+<line class="sl" x1="146.5" y1="63.6" x2="406.9" y2="63.6" stroke-opacity="0.38" style="--d:0.20s"/>
+<line class="sl" x1="144.5" y1="68.5" x2="418.8" y2="68.5" stroke-opacity="0.39" style="--d:0.22s"/>
+<line class="sl" x1="135.0" y1="73.5" x2="422.8" y2="73.5" stroke-opacity="0.40" style="--d:0.24s"/>
+<line class="sl" x1="129.0" y1="78.5" x2="429.9" y2="78.5" stroke-opacity="0.41" style="--d:0.26s"/>
+<line class="sl" x1="124.9" y1="83.4" x2="438.6" y2="83.4" stroke-opacity="0.43" style="--d:0.28s"/>
+<line class="sl" x1="120.1" y1="88.4" x2="446.0" y2="88.4" stroke-opacity="0.44" style="--d:0.30s"/>
+<line class="sl" x1="110.7" y1="93.3" x2="448.6" y2="93.3" stroke-opacity="0.45" style="--d:0.32s"/>
+<line class="sl" x1="105.4" y1="98.3" x2="454.7" y2="98.3" stroke-opacity="0.46" style="--d:0.34s"/>
+<line class="sl" x1="101.5" y1="103.2" x2="461.9" y2="103.2" stroke-opacity="0.47" style="--d:0.36s"/>
+<line class="sl" x1="96.2" y1="108.2" x2="467.2" y2="108.2" stroke-opacity="0.48" style="--d:0.38s"/>
+<line class="sl" x1="91.2" y1="113.2" x2="472.4" y2="113.2" stroke-opacity="0.49" style="--d:0.40s"/>
+<line class="sl" x1="83.1" y1="118.1" x2="474.0" y2="118.1" stroke-opacity="0.50" style="--d:0.42s"/>
+<line class="sl" x1="78.7" y1="123.1" x2="478.8" y2="123.1" stroke-opacity="0.51" style="--d:0.44s"/>
+<line class="sl" x1="72.6" y1="128.0" x2="481.4" y2="128.0" stroke-opacity="0.52" style="--d:0.46s"/>
+<line class="sl" x1="74.5" y1="133.0" x2="491.6" y2="133.0" stroke-opacity="0.52" style="--d:0.48s"/>
+<line class="sl" x1="67.0" y1="137.9" x2="491.9" y2="137.9" stroke-opacity="0.53" style="--d:0.50s"/>
+<line class="sl" x1="64.7" y1="142.9" x2="496.8" y2="142.9" stroke-opacity="0.54" style="--d:0.52s"/>
+<line class="sl" x1="58.0" y1="147.9" x2="496.9" y2="147.9" stroke-opacity="0.54" style="--d:0.54s"/>
+<line class="sl lesion" x1="122.0" y1="147.9" x2="214.2" y2="147.9" style="--d:1.04s"/>
+<line class="sl" x1="57.0" y1="152.8" x2="502.0" y2="152.8" stroke-opacity="0.55" style="--d:0.56s"/>
+<line class="sl" x1="54.4" y1="157.8" x2="505.1" y2="157.8" stroke-opacity="0.56" style="--d:0.58s"/>
+<line class="sl" x1="54.1" y1="162.7" x2="509.9" y2="162.7" stroke-opacity="0.56" style="--d:0.60s"/>
+<line class="sl" x1="48.5" y1="167.7" x2="508.8" y2="167.7" stroke-opacity="0.56" style="--d:0.62s"/>
+<line class="sl" x1="46.4" y1="172.6" x2="510.7" y2="172.6" stroke-opacity="0.57" style="--d:0.64s"/>
+<line class="sl" x1="47.8" y1="177.6" x2="515.5" y2="177.6" stroke-opacity="0.57" style="--d:0.66s"/>
+<line class="sl" x1="43.7" y1="182.6" x2="514.3" y2="182.6" stroke-opacity="0.57" style="--d:0.68s"/>
+<line class="sl" x1="41.1" y1="187.5" x2="514.0" y2="187.5" stroke-opacity="0.58" style="--d:0.70s"/>
+<line class="sl" x1="39.3" y1="192.5" x2="513.8" y2="192.5" stroke-opacity="0.58" style="--d:0.72s"/>
+<line class="sl" x1="39.3" y1="197.4" x2="514.8" y2="197.4" stroke-opacity="0.58" style="--d:0.74s"/>
+<line class="sl" x1="43.2" y1="202.4" x2="519.2" y2="202.4" stroke-opacity="0.58" style="--d:0.76s"/>
+<line class="sl" x1="42.9" y1="207.4" x2="518.7" y2="207.4" stroke-opacity="0.58" style="--d:0.78s"/>
+<line class="sl" x1="39.2" y1="212.3" x2="514.3" y2="212.3" stroke-opacity="0.58" style="--d:0.80s"/>
+<line class="sl" x1="45.5" y1="217.3" x2="519.1" y2="217.3" stroke-opacity="0.58" style="--d:0.82s"/>
+<line class="sl" x1="46.2" y1="222.2" x2="517.8" y2="222.2" stroke-opacity="0.58" style="--d:0.84s"/>
+<line class="sl" x1="45.1" y1="227.2" x2="514.0" y2="227.2" stroke-opacity="0.57" style="--d:0.86s"/>
+<line class="sl" x1="48.7" y1="232.1" x2="514.3" y2="232.1" stroke-opacity="0.57" style="--d:0.88s"/>
+<line class="sl" x1="49.1" y1="237.1" x2="510.8" y2="237.1" stroke-opacity="0.57" style="--d:0.90s"/>
+<line class="sl" x1="51.5" y1="242.1" x2="508.6" y2="242.1" stroke-opacity="0.56" style="--d:0.92s"/>
+<line class="sl" x1="55.9" y1="247.0" x2="507.8" y2="247.0" stroke-opacity="0.56" style="--d:0.94s"/>
+<line class="sl" x1="56.0" y1="252.0" x2="501.9" y2="252.0" stroke-opacity="0.55" style="--d:0.96s"/>
+<line class="sl" x1="62.6" y1="256.9" x2="502.0" y2="256.9" stroke-opacity="0.54" style="--d:0.98s"/>
+<line class="sl" x1="61.7" y1="261.9" x2="493.9" y2="261.9" stroke-opacity="0.54" style="--d:1.00s"/>
+<line class="sl" x1="67.8" y1="266.8" x2="492.1" y2="266.8" stroke-opacity="0.53" style="--d:1.02s"/>
+<line class="sl" x1="71.5" y1="271.8" x2="487.3" y2="271.8" stroke-opacity="0.52" style="--d:1.04s"/>
+<line class="sl" x1="75.5" y1="276.8" x2="482.1" y2="276.8" stroke-opacity="0.51" style="--d:1.06s"/>
+<line class="sl" x1="78.8" y1="281.7" x2="475.5" y2="281.7" stroke-opacity="0.50" style="--d:1.08s"/>
+<line class="sl" x1="89.7" y1="286.7" x2="475.8" y2="286.7" stroke-opacity="0.49" style="--d:1.10s"/>
+<line class="sl" x1="91.1" y1="291.6" x2="465.9" y2="291.6" stroke-opacity="0.48" style="--d:1.12s"/>
+<line class="sl" x1="101.3" y1="296.6" x2="464.2" y2="296.6" stroke-opacity="0.47" style="--d:1.14s"/>
+<line class="sl" x1="104.7" y1="301.5" x2="454.9" y2="301.5" stroke-opacity="0.46" style="--d:1.16s"/>
+<line class="sl" x1="111.8" y1="306.5" x2="448.6" y2="306.5" stroke-opacity="0.45" style="--d:1.18s"/>
+<line class="sl" x1="121.1" y1="311.5" x2="443.8" y2="311.5" stroke-opacity="0.43" style="--d:1.20s"/>
+<line class="sl" x1="128.1" y1="316.4" x2="436.0" y2="316.4" stroke-opacity="0.42" style="--d:1.22s"/>
+<line class="sl" x1="134.5" y1="321.4" x2="426.8" y2="321.4" stroke-opacity="0.41" style="--d:1.24s"/>
+<line class="sl" x1="143.1" y1="326.3" x2="418.9" y2="326.3" stroke-opacity="0.39" style="--d:1.26s"/>
+<line class="sl" x1="148.7" y1="331.3" x2="407.3" y2="331.3" stroke-opacity="0.37" style="--d:1.28s"/>
+<line class="sl" x1="162.5" y1="336.3" x2="402.9" y2="336.3" stroke-opacity="0.36" style="--d:1.30s"/>
+<line class="sl" x1="172.7" y1="341.2" x2="394.1" y2="341.2" stroke-opacity="0.34" style="--d:1.32s"/>
+<line class="sl" x1="178.6" y1="346.2" x2="379.9" y2="346.2" stroke-opacity="0.32" style="--d:1.34s"/>
+<line class="sl" x1="190.3" y1="351.1" x2="370.3" y2="351.1" stroke-opacity="0.30" style="--d:1.36s"/>
+<line class="sl" x1="198.1" y1="356.1" x2="355.4" y2="356.1" stroke-opacity="0.28" style="--d:1.38s"/>
+<line class="sl" x1="212.0" y1="361.0" x2="345.1" y2="361.0" stroke-opacity="0.26" style="--d:1.40s"/>
+<line class="sl" x1="227.9" y1="366.0" x2="334.7" y2="366.0" stroke-opacity="0.24" style="--d:1.42s"/>
+        </svg>
+        <figcaption>Fig. 01 — seventy-two slices, one gland · T2W ax stack</figcaption>
+      </figure>
+    </div>
+
+    <nav class="index" aria-label="Contents">
+      <h2>Series index</h2>
+      <ol>
+        <li><a href="#fable"><span class="n">01</span><span class="t">Opening fable</span><span class="lvl-tag">The emotional through-line</span></a></li>
+        <li><a href="#vision"><span class="n">02</span><span class="t">The 2031 vision</span><span class="lvl-tag">Where this ends up</span></a></li>
+        <li><a href="#year-1"><span class="n">1/5</span><span class="t">Year 1 · 2026-27 · The Fixed Point</span><span class="lvl-tag">Level: apex</span></a></li>
+        <li><a href="#year-2"><span class="n">2/5</span><span class="t">Year 2 · 2027-28 · The Forge</span><span class="lvl-tag">Level: apex-mid</span></a></li>
+        <li><a href="#year-3"><span class="n">3/5</span><span class="t">Year 3 · 2028-29 · The Open Air</span><span class="lvl-tag">Level: mid gland</span></a></li>
+        <li><a href="#year-4"><span class="n">4/5</span><span class="t">Year 4 · 2029-30 · The Second Pair of Eyes</span><span class="lvl-tag">Level: mid-base</span></a></li>
+        <li><a href="#year-5"><span class="n">5/5</span><span class="t">Year 5 · 2030-31 · The Standing Stone</span><span class="lvl-tag">Level: base</span></a></li>
+        <li><a href="#guardrails"><span class="n">08</span><span class="t">Risks, guardrails, success metrics</span><span class="lvl-tag">The lines that do not move</span></a></li>
+        <li><a href="#closing"><span class="n">09</span><span class="t">Closing fable · 2031</span><span class="lvl-tag">The legacy moment</span></a></li>
+      </ol>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ Section 01 · opening fable ============ -->
+<section class="chapter s-fable" id="fable">
+  <div class="shell">
+    <div class="prose">
+      <p class="kicker">Section 01 · The emotional through-line</p>
+      <h2>Nobody warns you that the prostate arrives in pieces</h2>
+      <p class="lede">It comes to you at eleven at night as seventy-two greyscale shadows. Axial, sagittal, coronal. Each slice is true and none of them is whole. In the MDT the radiologist reads fast: right posterolateral peripheral zone, mid gland extending to apex, broad capsular abutment, PI-RADS 4. Around the table, consultants nod. And the registrar in the second row does what every registrar has always done. Scrolls. Squints. Quietly builds a prostate out of nothing, slice by slice, in the private theatre behind their eyes.</p>
+      <p>That theatre is the most expensive room in surgical training and nobody pays the rent but you. There is no module for it. No sign-off. No consultant ever says, out loud, that the real skill is not reading the report but reconstructing the organ, holding apex and base and zones and lesion in one rotating mental object while someone asks you where you would put the needle. Some trainees finish building the theatre in a year. Some take five. And some never finish at all: they learn the words instead of the shape, and a lesion becomes a phrase to repeat rather than a place to find. Those are the ones the apex punishes later.</p>
+      <p>In 2025, a registrar who codes decided the translation should stop being private. He took the open Prostate158 dataset and fed it through a pipeline he wrote at his own kitchen table between on-calls: segment, mesh, check, compress, publish. He measured the meshes against expert annotations until the numbers held, a mean Dice of 0.947, a mean HD95 of 1.46 millimetres, ninety-seven of one hundred models across the teaching-ready line. Then he put the result in a browser, where a night-shift SHO with a dying phone battery could reach it without an app store, a password, or permission.</p>
+      <p>He locked one convention into the code and swore never to move it: apex toward the viewer, base deep, anterior up, patient left on screen right. The operative view. The view you will actually stand in. And he drew a second line in the very first commit, deeper than the first: this thing teaches. It never diagnoses. No patient's scan, no clinical decision, no exceptions dressed up as features. A translator carries meaning between two languages; it does not sign the consent form.</p>
+      <p>By 2026 the translator had a name, ProstateView, and a working voice: a Spatial Lab where Locate the Lesion climbs five tiers from &ldquo;find the zone&rdquo; to &ldquo;call it before the report does&rdquo;, where Match the Plane and Anchor the Level drill the slice-to-space reflex until it stops being effortful, a visualiser that turns a template report into a lesion sitting in a turnable gland, and an AR pathway waiting for its moment. What follows is the next five years of that story, told plainly, level by level, the way the gland itself is read: apex first, base last, nothing skipped in between.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Section 02 · the 2031 vision ============ -->
+<section class="chapter s-vision" id="vision">
+  <div class="shell">
+    <div class="prose">
+      <p class="kicker">Section 02 · Where this ends up</p>
+      <h2>The 2031 vision: the reconstruction becomes a reflex</h2>
+      <p>By July 2031, ProstateView is the assumed answer to a question training never used to ask out loud: how does a trainee learn to see in three dimensions? It is not the biggest thing in medical education. It is the definitive thing in its narrow lane, and the lane was chosen on purpose.</p>
+    </div>
+    <dl class="facets">
+      <div class="facet">
+        <dt>Models &amp; quality</dt>
+        <dd>200+ teaching-grade models, every one human-verified and carrying a public provenance line: dataset origin, pipeline version, QA result, verifier, date. Fidelity metrics are published per release and the framing discipline holds absolutely: the numbers describe mesh reconstruction fidelity against expert annotations, never diagnostic accuracy.</dd>
+      </div>
+      <div class="facet">
+        <dt>Spatial Lab</dt>
+        <dd>Seven evidence-backed drills including a timed exam mode, each with a published or in-press efficacy signal. Locate the Lesion remains the flagship, its five-tier ladder now calibrated against thousands of real attempts. Drills are studied before they are celebrated.</dd>
+      </div>
+      <div class="facet">
+        <dt>AR maturity</dt>
+        <dd>One-tap phone handoff from any case: a QR code on the desktop opens the same gland on the table in front of you. Stable tabletop AR on mid-range hospital phones, a presenter mode for seminar rooms and MDT teaching, and graceful fallback to flat 3D everywhere else.</dd>
+      </div>
+      <div class="facet">
+        <dt>Case library</dt>
+        <dd>Curated collections: anterior lesions, transition-zone-dominant disease, apex-threatening lesions, post-treatment appearances. Each case has teaching notes and classic pitfalls. The report visualiser turns anonymised structured reports into confirmed spatial scenes, with a human confirmation gate that has never once been bypassed.</dd>
+      </div>
+      <div class="facet">
+        <dt>Ecosystem position</dt>
+        <dd>ProstateView is the pre-operative door of a three-product family: ProstateView before the case, UroOops3D inside it, UroRef around it. One design system, one mesh pipeline, one philosophy, three doors.</dd>
+      </div>
+      <div class="facet">
+        <dt>Design language</dt>
+        <dd>Humanist typography, the living light-to-dark hue shift in its third generation, a warm-technical dark theatre for reading, and the locked orientation bar on every screen. A stranger landing on any page knows within four seconds that a human who has sat in an MDT built this.</dd>
+      </div>
+    </dl>
+    <div class="prose vision-outro">
+      <p class="muted">Everything below is the route between the 97 models of today and that room in 2031, written for a builder who also carries a clinical workload, sat in hours that are real: 90 minutes a week before FRCS, four to five hours a week after, and not a minute stolen from the exam or from patients.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Year 1 ============ -->
+<div class="strip" id="year-1" data-series="1">
+  <div class="shell strip-inner">
+    <div>
+      <p class="pre-kicker">Section 03 · Yearly chapters</p>
+      <p class="series">Series 1/5 · T2W AX <em>· Year 1 · Aug 2026 - Jul 2027</em></p>
+      <h2>The Fixed Point</h2>
+    </div>
+    <div class="lvl-box">
+      <svg class="lvl" viewBox="0 0 120 84" width="104" height="73" aria-hidden="true">
+        <path class="lvl-outline" d="M60 6 C88 6 106 22 106 44 C106 64 86 78 60 78 C34 78 14 64 14 44 C14 22 32 6 60 6 Z"/>
+        <line class="lvl-line on" x1="34" y1="16" x2="86" y2="16"/>
+        <line class="lvl-line" x1="18" y1="30" x2="102" y2="30"/>
+        <line class="lvl-line" x1="15" y1="44" x2="105" y2="44"/>
+        <line class="lvl-line" x1="19" y1="58" x2="101" y2="58"/>
+        <line class="lvl-line" x1="34" y1="72" x2="86" y2="72"/>
+      </svg>
+      <span class="lvl-caption">Level: <b>Apex</b></span>
+    </div>
+  </div>
+</div>
+<section class="chapter year-body y1-body" aria-labelledby="year-1">
+  <div class="shell">
+    <div class="prose">
+      <p class="year-lede">FRCS in July 2027 is the immovable object. The translator does not grow this year. It holds still, gets sharper, and earns its academic passport.</p>
+
+      <div class="group">
+        <span class="g-kicker">Project milestones &amp; feature roadmap</span>
+        <h3>Consolidate, verify, publish</h3>
+        <ul class="slices">
+          <li><strong>Ship the validation manuscript.</strong> JMIR Medical Education as primary target, BMC Medical Education and BJUI Compass as fallbacks. The framing memo comes before any prose: the paper defends mesh reconstruction fidelity against expert annotations and pre-empts the circularity objection, the outlier question, and the absence of trainee outcome data. This is the single flagship deliverable of the year.</li>
+          <li><strong>Grow the personally verified teaching set from 20 to 30 cases,</strong> at one case per fortnight, and only because each verification doubles as FRCS prostate MRI revision: zonal anatomy, PI-RADS logic, staging landmarks. If a verification session does not count as revision, it does not happen.</li>
+          <li><strong>Tune, do not add.</strong> Locate the Lesion tier thresholds recalibrated from real trainee attempts; friction fixes in Match the Plane and Anchor the Level; the arcade shelf left exactly as it is. No new drills, no new systems, no accounts.</li>
+          <li><strong>Report visualiser at bug-level polish only.</strong> The centroid mapping and orientation fixes stay locked, and every deploy runs a regression test against the operative orientation convention. The convention is load-bearing; treat it like an implant.</li>
+          <li><strong>Land at Liverpool.</strong> One ProstateView teaching afternoon at RLUH in autumn 2026, and one radiologist recruited as a standing verification partner before Christmas. This relationship is the seed crystal of Years 2 to 5.</li>
+          <li><strong>Anonymous telemetry, minimal by design:</strong> drill completions and tier progression only. No identifiers, no accounts, nothing to breach.</li>
+        </ul>
+      </div>
+
+      <div class="group">
+        <span class="g-kicker">Tech skills to deliberately develop</span>
+        <h3>Depth in the tools already in hand</h3>
+        <ul class="slices">
+          <li><strong>Advanced Three.js through React Three Fiber and Drei,</strong> learned inside the refinement work rather than tutorials: camera choreography for drill reveals, instanced rendering where zones repeat, Suspense-driven progressive loading, and a hard Draco-compressed budget of under 3 MB per case GLB.</li>
+          <li><strong>WebXR on paper only.</strong> Read the spec, study the model-viewer and iOS Quick Look pathways, and write a one-page AR architecture note dated but not built. The XR gate holds until FRCS results unless the Google Catalyst Programme explicitly directs otherwise; the note means Year 2 starts running, not planning.</li>
+          <li><strong>Performance as craft:</strong> frame-time and Lighthouse budgets measured on real hospital wifi through the uroref.com/prostateview mirror, because the NHS network is the true production environment.</li>
+        </ul>
+      </div>
+
+      <div class="group">
+        <span class="g-kicker">Personal &amp; general development</span>
+        <h3>The exam, and the anatomy that survives it</h3>
+        <ul class="slices">
+          <li><strong>Pass FRCS (Urology), July 2027.</strong> Every other line on this page is subordinate to this one, without resentment and without exception.</li>
+          <li><strong>Prostate MRI mastery by deliberate practice:</strong> one case per week read fully, cold, before checking the annotations, with a running error log. The log is where the teaching notes of Year 3 come from.</li>
+          <li><strong>Conference output within the exam budget:</strong> present the SIU 2026 Florence abstract if accepted, and extract one poster from the validation dataset. Nothing that requires new data collection.</li>
+          <li><strong>Deep work protection:</strong> a single 90-minute ProstateView block per week, in the calendar, and outside it the repository stays closed. The plan bends around night shifts; the guardrail does not.</li>
+          <li><strong>Begin the relationships the next four years stand on:</strong> RLUH radiology, the deanery teaching programme lead, and the trainee cohort who will become the beta panel.</li>
+        </ul>
+      </div>
+
+      <aside class="checkpoint">
+        <span class="g-kicker">Cross-ecosystem integration checkpoint · Year 1</span>
+        <p>Every verified ProstateView case footer links to the matching UroRef prostate cancer pathway, and UroRef's prostate pages deep-link back into the visualiser. The shared design tokens, zone colours, type scale and hue-shift specification, are extracted into one documented file consumed by all three products, so a decision made once is made everywhere.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Year 2 ============ -->
+<div class="strip" id="year-2" data-series="2">
+  <div class="shell strip-inner">
+    <div>
+      <p class="series">Series 2/5 · T2W AX <em>· Year 2 · Aug 2027 - Jul 2028</em></p>
+      <h2>The Forge</h2>
+    </div>
+    <div class="lvl-box">
+      <svg class="lvl" viewBox="0 0 120 84" width="104" height="73" aria-hidden="true">
+        <path class="lvl-outline" d="M60 6 C88 6 106 22 106 44 C106 64 86 78 60 78 C34 78 14 64 14 44 C14 22 32 6 60 6 Z"/>
+        <line class="lvl-line" x1="34" y1="16" x2="86" y2="16"/>
+        <line class="lvl-line on" x1="18" y1="30" x2="102" y2="30"/>
+        <line class="lvl-line" x1="15" y1="44" x2="105" y2="44"/>
+        <line class="lvl-line" x1="19" y1="58" x2="101" y2="58"/>
+        <line class="lvl-line" x1="34" y1="72" x2="86" y2="72"/>
+      </svg>
+      <span class="lvl-caption">Level: <b>Apex-mid</b></span>
+    </div>
+  </div>
+</div>
+<section class="chapter year-body y2-body" aria-labelledby="year-2">
+  <div class="shell">
+    <div class="prose">
+      <p class="year-lede">Results arrive in September. The gate lifts. The forge lights, and the pipeline stops being a kitchen-table script and becomes a machine.</p>
+
+      <div class="group">
+        <span class="g-kicker">Project milestones &amp; feature roadmap</span>
+        <h3>Automate the pipeline, double the library, study the first drill</h3>
+        <ul class="slices">
+          <li><strong>Pipeline v2: one command from NIfTI to published case.</strong> Segmentation candidate, mesh, automated QA report, compressed GLB, provenance stamp. Hard gates built in: watertight check, volume plausibility bounds, an HD95 ceiling, and the centroid laterality cross-check promoted from safety net to gate.</li>
+          <li><strong>Verified library from 30 to 60 cases,</strong> with the RLUH radiologist double-reading every new addition under a written, one-page verification SOP. Two names on every case.</li>
+          <li><strong>One new drill, evidence first: Call the Level.</strong> Slice-to-level mapping against the biopsy template, designed from day one with a pre/post spatial reasoning measure so it can be studied rather than merely shipped.</li>
+          <li><strong>Report visualiser v2:</strong> structured PI-RADS report parsing with an explicit human confirmation step before any lesion renders. Nothing appears in the gland that a human has not confirmed.</li>
+          <li><strong>WebXR viewer v1 with phone handoff.</strong> A QR code on the desktop case page opens the same model in AR on the phone. Built alongside the UroRef Spatial Catalyst work targeting September 2027, sharing the same R3F and XR foundations so one learning curve serves two products.</li>
+          <li><strong>First efficacy pilot:</strong> ten to fifteen registrars, pre/post design, service-evaluation framing, protocol written before recruitment. The BAUS 2028 abstract comes from this.</li>
+        </ul>
+      </div>
+
+      <div class="group">
+        <span class="g-kicker">Tech skills to deliberately develop</span>
+        <h3>Model pipeline automation and asset discipline</h3>
+        <ul class="slices">
+          <li><strong>Python and headless Blender:</strong> bpy scripts for decimation, smoothing and export presets, run identically on the Jarvis PC and in CI, so a case built twice is bit-identical.</li>
+          <li><strong>MONAI-adjacent tooling for candidate segmentations,</strong> with the rule stated in the code comments: candidates enter the QA queue, humans decide what leaves it.</li>
+          <li><strong>GLB optimisation properly:</strong> Draco versus meshopt trade-offs measured not assumed, KTX2 texture compression, and LOD variants generated per device class.</li>
+          <li><strong>CI for assets:</strong> every case build emits a QA artefact that is reviewed before merge, turning quality from a habit into infrastructure.</li>
+        </ul>
+      </div>
+
+      <div class="group">
+        <span class="g-kicker">Personal &amp; general development</span>
+        <h3>Convert the post-exam energy without burning it</h3>
+        <ul class="slices">
+          <li><strong>Publish the validation paper and submit the efficacy pilot to BAUS 2028;</strong> two academic proof points in the first post-exam year.</li>
+          <li><strong>Formalise the RLUH radiology collaboration:</strong> named co-authors, the verification SOP, and a standing monthly slot. Verified content is the moat; radiologists are the moat's water supply.</li>
+          <li><strong>Stand up a trainee beta panel</strong> of roughly ten registrars across the deanery with one thirty-minute call a month. They find what a builder can no longer see.</li>
+          <li><strong>Guard the post-exam surge.</strong> Cap the week at four to five hours even when momentum makes more feel free. Post-exam years are where solo clinician-builders quietly burn down; this plan refuses to be a case report.</li>
+        </ul>
+      </div>
+
+      <aside class="checkpoint">
+        <span class="g-kicker">Cross-ecosystem integration checkpoint · Year 2</span>
+        <p>The TURP AR guided procedure simulator hands off directly to the relevant UroOops3D danger cards, now that UroOops3D is unparked post-FRCS, and every ProstateView case footer offers a &ldquo;next step&rdquo; into the UroRef biopsy and MDT pathways using shared components rather than copied code.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Year 3 : the theatre goes dark at mid gland ============ -->
+<div class="strip" id="year-3" data-series="3">
+  <div class="shell strip-inner">
+    <div>
+      <p class="series">Series 3/5 · T2W AX <em>· Year 3 · Aug 2028 - Jul 2029</em></p>
+      <h2>The Open Air</h2>
+    </div>
+    <div class="lvl-box">
+      <svg class="lvl" viewBox="0 0 120 84" width="104" height="73" aria-hidden="true">
+        <path class="lvl-outline" d="M60 6 C88 6 106 22 106 44 C106 64 86 78 60 78 C34 78 14 64 14 44 C14 22 32 6 60 6 Z"/>
+        <line class="lvl-line" x1="34" y1="16" x2="86" y2="16"/>
+        <line class="lvl-line" x1="18" y1="30" x2="102" y2="30"/>
+        <line class="lvl-line on" x1="15" y1="44" x2="105" y2="44"/>
+        <line class="lvl-line" x1="19" y1="58" x2="101" y2="58"/>
+        <line class="lvl-line" x1="34" y1="72" x2="86" y2="72"/>
+      </svg>
+      <span class="lvl-caption">Level: <b>Mid gland</b></span>
+    </div>
+  </div>
+</div>
+<section class="chapter year-body y3-body theatre" aria-labelledby="year-3">
+  <div class="shell">
+    <div class="prose">
+      <p class="year-lede">The models leave the screen and land on the table. AR that only works in a demo video is a lie with good lighting; this year it has to survive a seminar room.</p>
+
+      <div class="group">
+        <span class="g-kicker">Project milestones &amp; feature roadmap</span>
+        <h3>AR that survives contact with reality</h3>
+        <ul class="slices">
+          <li><strong>A real device matrix, tested and published:</strong> mid-range Android, three-to-four-year-old iPhones, hospital iPads. Stable anchors, measured thermal behaviour, a 60 fps target with a graceful, honest 30 where hardware demands it.</li>
+          <li><strong>Tabletop teaching mode:</strong> presenter view plus QR join, so an MDT room or a seminar group orbits the same gland on their own phones, each seeing the same lesion from their own seat.</li>
+          <li><strong>Library from 60 to 100 verified cases</strong> with structured metadata: zone, level, source PI-RADS category, teaching points, and the classic pitfall each case exists to teach.</li>
+          <li><strong>Curated collections launch:</strong> anterior lesions, transition-zone-dominant disease, apex-threatening lesions, and a collection honestly titled &ldquo;the ones that hide&rdquo;.</li>
+          <li><strong>Export and share:</strong> stable per-case links, image and short-clip export watermarked teaching-only, and session summaries a presenter can drop straight into a teaching log or portfolio.</li>
+          <li><strong>Multi-site Spatial Lab efficacy study</strong> across two to three deaneries, powered by the Year 2 pilot, submitted as the platform's second paper.</li>
+        </ul>
+      </div>
+
+      <div class="group">
+        <span class="g-kicker">Tech skills to deliberately develop</span>
+        <h3>AR stability and performance on real devices</h3>
+        <ul class="slices">
+          <li><strong>AR as an engineering discipline:</strong> light estimation, plane-detection quirks, anchor drift, and the iOS Quick Look USDZ pipeline maintained alongside WebXR because iOS decides half the room.</li>
+          <li><strong>Device-adaptive asset delivery:</strong> the right LOD served by measured capability, not by asking the user to choose.</li>
+          <li><strong>Accessibility for 3D taken seriously:</strong> keyboard orbit, reduced-motion paths, and a written descriptive alternative for every drill, because a teaching tool that excludes is not a teaching tool.</li>
+        </ul>
+      </div>
+
+      <div class="group">
+        <span class="g-kicker">Personal &amp; general development</span>
+        <h3>Senior years, national rooms</h3>
+        <ul class="slices">
+          <li><strong>Align the platform with the training endgame:</strong> the final registrar years are shaped so ProstateView reads as evidence of an endourology and imaging interest, not competition with it.</li>
+          <li><strong>Take the spatial cognition story on the road:</strong> one national course slot and one international abstract, EAU or SIU, on how trainees actually learn 3D reconstruction.</li>
+          <li><strong>Deepen radiology relationships to two or three departments.</strong> Verified content at scale needs more than one generous colleague.</li>
+          <li><strong>Mentor one junior trainee into a named contributor role</strong> with a tightly scoped, fully verified task. The first test of whether this outlives one person begins here.</li>
+        </ul>
+      </div>
+
+      <aside class="checkpoint">
+        <span class="g-kicker">Cross-ecosystem integration checkpoint · Year 3</span>
+        <p>The day-of-surgery journey ships as a visible pattern: the ProstateView case the night before, the UroOops3D danger cards in the coffee room, the UroRef pathway when the patient leaves recovery. Cross-product footers are measured with the same anonymous telemetry, and any link that does not earn its place is cut.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Year 4 ============ -->
+<div class="strip" id="year-4" data-series="4">
+  <div class="shell strip-inner">
+    <div>
+      <p class="series">Series 4/5 · T2W AX <em>· Year 4 · Aug 2029 - Jul 2030</em></p>
+      <h2>The Second Pair of Eyes</h2>
+    </div>
+    <div class="lvl-box">
+      <svg class="lvl" viewBox="0 0 120 84" width="104" height="73" aria-hidden="true">
+        <path class="lvl-outline" d="M60 6 C88 6 106 22 106 44 C106 64 86 78 60 78 C34 78 14 64 14 44 C14 22 32 6 60 6 Z"/>
+        <line class="lvl-line" x1="34" y1="16" x2="86" y2="16"/>
+        <line class="lvl-line" x1="18" y1="30" x2="102" y2="30"/>
+        <line class="lvl-line" x1="15" y1="44" x2="105" y2="44"/>
+        <line class="lvl-line on" x1="19" y1="58" x2="101" y2="58"/>
+        <line class="lvl-line" x1="34" y1="72" x2="86" y2="72"/>
+      </svg>
+      <span class="lvl-caption">Level: <b>Mid-base</b></span>
+    </div>
+  </div>
+</div>
+<section class="chapter year-body y4-body theatre" aria-labelledby="year-4">
+  <div class="shell">
+    <div class="prose">
+      <p class="year-lede">The pipeline learns to say &ldquo;look again&rdquo;. It never, ever learns to say &ldquo;publish&rdquo;.</p>
+
+      <div class="group">
+        <span class="g-kicker">Project milestones &amp; feature roadmap</span>
+        <h3>Machine-assisted QA, human-signed cases, first institutions</h3>
+        <ul class="slices">
+          <li><strong>The automated QA assistant ships:</strong> a light model watches every candidate mesh for outliers, volume anomalies, shape-prior violations, metric spikes, laterality doubt, and flags them for human review. Its only power is escalation. Approval remains a human signature, on every case, forever.</li>
+          <li><strong>Library from 100 to 150.</strong> Throughput rises because humans now review flags instead of everything, and yet every published case still carries a named verifier. Faster, not looser.</li>
+          <li><strong>The provenance ledger goes public:</strong> dataset origin, pipeline version, QA result, verifier and date on every case page. Trust is shown, not claimed.</li>
+          <li><strong>Institutional pilots:</strong> two or three trusts or deaneries adopt ProstateView formally for teaching under a simple licence, and the licence's first clause keeps individual trainee access free.</li>
+          <li><strong>Report visualiser v3:</strong> broader tolerance of real-world report formats, visible confidence display, and the human confirmation gate untouched and untouchable.</li>
+        </ul>
+      </div>
+
+      <div class="group">
+        <span class="g-kicker">Tech skills to deliberately develop</span>
+        <h3>Light computer vision and ML, with full human oversight</h3>
+        <ul class="slices">
+          <li><strong>PyTorch and MONAI inference in anger:</strong> anomaly detection on mesh and volume statistics, thresholds tuned against three years of accumulated QA records rather than intuition.</li>
+          <li><strong>Human-in-the-loop workflow design as a first-class skill:</strong> review queues, audit trails, model cards, and documented failure modes, written up as if a regulator will read them, because one day one might.</li>
+          <li><strong>Data discipline:</strong> the QA model trains only on open datasets and the platform's own non-patient assets. There is no version of this plan where patient data enters the pipeline.</li>
+        </ul>
+      </div>
+
+      <div class="group">
+        <span class="g-kicker">Personal &amp; general development</span>
+        <h3>CCT, first revenue, and the keynote</h3>
+        <ul class="slices">
+          <li><strong>Plan fellowship or consultant interviews around the roadmap, not against it.</strong> By now ProstateView is interview evidence: a validated pipeline, two studies, adopting institutions. It answers the &ldquo;what makes you different&rdquo; question before it is asked.</li>
+          <li><strong>Run the first revenue experiment, narrowly:</strong> institutional teaching licences only, individual access free, nothing that touches patient data or diagnostic workflows. Trust is the product; revenue is a by-product that must never invert that order.</li>
+          <li><strong>One keynote-level talk</strong> on making spatial anatomy learnable, and a short methods paper on machine-assisted QA under human oversight, because the approach is itself publishable.</li>
+          <li><strong>Renegotiate the weekly hours honestly</strong> as CCT-year pressures land, in writing, in the plan, rather than by silent erosion.</li>
+        </ul>
+      </div>
+
+      <aside class="checkpoint">
+        <span class="g-kicker">Cross-ecosystem integration checkpoint · Year 4</span>
+        <p>A shared provenance and &ldquo;verified by&rdquo; badge system rolls out across ProstateView, UroRef and UroOops3D, and shared 3D assets move into one versioned store, so a mesh corrected once is corrected everywhere the ecosystem shows it.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Year 5 ============ -->
+<div class="strip" id="year-5" data-series="5">
+  <div class="shell strip-inner">
+    <div>
+      <p class="series">Series 5/5 · T2W AX <em>· Year 5 · Aug 2030 - Jul 2031</em></p>
+      <h2>The Standing Stone</h2>
+    </div>
+    <div class="lvl-box">
+      <svg class="lvl" viewBox="0 0 120 84" width="104" height="73" aria-hidden="true">
+        <path class="lvl-outline" d="M60 6 C88 6 106 22 106 44 C106 64 86 78 60 78 C34 78 14 64 14 44 C14 22 32 6 60 6 Z"/>
+        <line class="lvl-line" x1="34" y1="16" x2="86" y2="16"/>
+        <line class="lvl-line" x1="18" y1="30" x2="102" y2="30"/>
+        <line class="lvl-line" x1="15" y1="44" x2="105" y2="44"/>
+        <line class="lvl-line" x1="19" y1="58" x2="101" y2="58"/>
+        <line class="lvl-line on" x1="34" y1="72" x2="86" y2="72"/>
+      </svg>
+      <span class="lvl-caption">Level: <b>Base</b></span>
+    </div>
+  </div>
+</div>
+<section class="chapter year-body y5-body theatre" aria-labelledby="year-5">
+  <div class="shell">
+    <div class="prose">
+      <p class="year-lede">Built to outlast the spare time of the person who built it.</p>
+
+      <div class="group">
+        <span class="g-kicker">Project milestones &amp; feature roadmap</span>
+        <h3>Complete the curriculum, industrialise the delivery, secure the succession</h3>
+        <ul class="slices">
+          <li><strong>200+ teaching-grade models completing curriculum coverage:</strong> biopsy planning, MDT anatomy, focal therapy anatomy, and post-treatment appearances as explicit teaching cases with their own pitfalls.</li>
+          <li><strong>A production asset platform:</strong> versioned releases with integrity hashes, edge-cached delivery, device-adaptive variants, and measured load times from real users on real networks, including the NHS ones.</li>
+          <li><strong>Exam mode ships in the Spatial Lab:</strong> timed, tiered, honest about what it measures, and adopted by at least one training programme as a formative assessment tool.</li>
+          <li><strong>Succession-proofing as a deliverable:</strong> a contributor handbook, the verification SOP, and a pipeline runbook tested by someone who is not the author. If the platform cannot survive a fortnight of the founder's silence, it is not finished.</li>
+          <li><strong>International mirrors and language-light design</strong> so the tool travels without accumulating translation debt, with the orientation convention as the universal grammar.</li>
+        </ul>
+      </div>
+
+      <div class="group">
+        <span class="g-kicker">Tech skills to deliberately develop</span>
+        <h3>Production-grade 3D asset management and CDN strategy</h3>
+        <ul class="slices">
+          <li><strong>Content-addressed asset storage on Cloudflare R2</strong> with release channels and one-command rollback, treating meshes with the seriousness other teams reserve for binaries.</li>
+          <li><strong>CDN strategy and observability:</strong> cache hit rates, real-user monitoring, and a cost per served case that stays boring at ten times the traffic.</li>
+          <li><strong>Documentation as engineering:</strong> runbooks that pass the &ldquo;someone else runs it cold&rdquo; test, because that test is the whole point of the year.</li>
+        </ul>
+      </div>
+
+      <div class="group">
+        <span class="g-kicker">Personal &amp; general development</span>
+        <h3>New consultant, old promise</h3>
+        <ul class="slices">
+          <li><strong>Face the new-consultant reality honestly:</strong> the protected weekly block shrinks but survives, because a platform this mature needs an editor more than a builder.</li>
+          <li><strong>Hand teaching delivery to trained faculty</strong> and move from performer to author: course materials, train-the-trainer sessions, and the discipline to sit in the back row.</li>
+          <li><strong>Consolidate the brand deliberately:</strong> the person who makes spatial anatomy click, now in print, a book chapter or invited review, as well as on stage.</li>
+          <li><strong>Open the Singapore horizon file:</strong> a sober audit of what in this ecosystem travels, what is NHS-shaped, and what the long-planned relocation would mean for stewardship of all three products.</li>
+        </ul>
+      </div>
+
+      <aside class="checkpoint">
+        <span class="g-kicker">Cross-ecosystem integration checkpoint · Year 5</span>
+        <p>The three products behave as one family: a single design-system release cadence, one shared mesh pipeline, continuity between products without accounts or tracking, and an annual cull in which every cross-link either proves its value in the telemetry or is removed. The ecosystem stays lean the same way the plan did: by refusing.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Section 08 · guardrails, risks, metrics ============ -->
+<section class="chapter s-guardrails theatre" id="guardrails">
+  <div class="shell">
+    <div class="prose">
+      <p class="kicker">Section 08 · The lines that do not move</p>
+      <h2>Risks, guardrails &amp; success metrics</h2>
+
+      <div class="group">
+        <span class="g-kicker">Guardrails</span>
+        <h3>Non-negotiable in every year of this plan</h3>
+        <ul class="slices">
+          <li><strong>Teaching only, never diagnostic.</strong> No patient-identifiable data, no upload of clinical imaging without formal information governance (the Companion Viewer's DICOM gate is the standing precedent), a visible teaching-only statement on every case, and refusal treated as a feature. When a consultant asks &ldquo;can I load my patient's MRI into this&rdquo;, the answer is a warm, immovable no.</li>
+          <li><strong>Framing discipline.</strong> Every published metric describes mesh reconstruction fidelity against expert annotations. The phrase &ldquo;diagnostic accuracy&rdquo; never appears beside ProstateView's numbers, in a paper, a slide, or a tweet.</li>
+          <li><strong>No unverified model in the teaching set, ever.</strong> NEEDS_QA is a quarantine, not a backlog, and quantity never buys its way past it.</li>
+          <li><strong>The gates hold.</strong> No XR build before FRCS results unless Catalyst explicitly directs otherwise; no new platform before its evidence and governance are ready; the locked orientation convention regression-tested on every deploy.</li>
+          <li><strong>Serial focus.</strong> One flagship deliverable per year. The parked list is not a graveyard; it is the reason the shipped list exists.</li>
+          <li><strong>Hour caps, renegotiated honestly each August:</strong> 90 minutes weekly before FRCS, four to five hours after, and never by silent erosion in either direction.</li>
+        </ul>
+      </div>
+
+      <div class="group">
+        <span class="g-kicker">Risks</span>
+        <h3>Named, so they can be watched</h3>
+        <ul class="slices">
+          <li><strong>Solo bus factor.</strong> Mitigated deliberately: documentation from Year 2, a named contributor from Year 3, succession-proofing as a Year 5 deliverable.</li>
+          <li><strong>Dataset and licence drift.</strong> Annual review of Prostate158 licence terms, a permanent attribution page, and no asset shipped whose provenance cannot be stated in one line.</li>
+          <li><strong>AR platform fragmentation.</strong> The device matrix and an always-available flat-3D fallback mean no trainee is ever locked out by their phone.</li>
+          <li><strong>Efficacy studies showing a weak effect.</strong> Publish anyway, adjust the drills, and say so publicly. Honesty about a null result is worth more to this platform's reputation than a flattering silence.</li>
+          <li><strong>Clinical workload spikes and exam or interview years.</strong> The plan bends, the guardrails do not, and a slipped quarter is recorded, not hidden.</li>
+          <li><strong>Scope creep from enthusiastic seniors.</strong> A commissioned feature enters the roadmap only by displacing another, in writing, with the displaced item named.</li>
+        </ul>
+      </div>
+
+      <div class="group">
+        <span class="g-kicker">Success metrics</span>
+        <h3>Quantitative spine, year by year</h3>
+      </div>
+    </div>
+
+    <div class="table-scroll">
+      <table class="metrics">
+        <thead>
+          <tr>
+            <th scope="col">Measure</th>
+            <th scope="col">Y1 &rsquo;26-27</th>
+            <th scope="col">Y2 &rsquo;27-28</th>
+            <th scope="col">Y3 &rsquo;28-29</th>
+            <th scope="col">Y4 &rsquo;29-30</th>
+            <th scope="col">Y5 &rsquo;30-31</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Verified teaching models</th><td>30</td><td>60</td><td>100</td><td>150</td><td>200+</td></tr>
+          <tr><th scope="row">Spatial Lab drills live</th><td>3</td><td>4</td><td>5</td><td>6</td><td>7 + exam mode</td></tr>
+          <tr><th scope="row">Peer-reviewed outputs (cumulative)</th><td>1 submitted</td><td>1 + pilot</td><td>2</td><td>3</td><td>4+</td></tr>
+          <tr><th scope="row">Adopting sites / programmes</th><td>1 informal</td><td>beta panel</td><td>2-3 study sites</td><td>2-3 licences</td><td>5+ incl. exam use</td></tr>
+          <tr><th scope="row">AR maturity</th><td>architecture note</td><td>handoff v1</td><td>device matrix</td><td>MDT mode stable</td><td>boringly reliable</td></tr>
+          <tr><th scope="row">Weekly hours honoured</th><td>&le;1.5</td><td>&le;5</td><td>&le;5</td><td>&le;5</td><td>renegotiated</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="prose">
+      <p class="muted">And the qualitative metric that outranks the table: unprompted &ldquo;click&rdquo; testimony. A trainee saying, in their own words, that the gland now turns in their head; a radiologist recommending the platform without being asked; a course director assuming it will be in the room. When those stop arriving, the numbers above are vanity, and the plan says so out loud.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Section 09 · closing fable ============ -->
+<section class="chapter s-closing theatre" id="closing">
+  <div class="shell">
+    <div class="prose">
+      <p class="kicker">Section 09 · The legacy moment</p>
+      <h2>2031: the translator falls silent</h2>
+      <p class="lede">A Thursday teaching afternoon, Liverpool, spring 2031. A CT2 stands at the front of the room holding her phone over the desk, and on twelve other phones the same gland sits on the same table, apex toward each viewer, base deep, anterior up. She walks the group through an anterior transition-zone lesion, the kind that hides, the kind that used to live only in the private theatre nobody could visit. Tier five of Locate the Lesion took her four months. She talks about it the way people talk about learning to ride a bicycle: she cannot fully remember not being able to see it.</p>
+      <p>Three hundred miles away, in a viva room, a candidate is asked where an apical lesion sits relative to the sphincter, and something quiet happens. She does not open an app. She does not need one. The gland simply turns in her head, the way it has turned ten thousand times in a browser at midnight, and she points into the empty air between herself and the examiner with total confidence and complete accuracy. The examiner writes something down. Neither of them mentions ProstateView, because the whole point was that one day nobody would have to.</p>
+      <p>Somewhere in a clinic, the builder, a consultant now, greyer, still keeping one protected block in the diary, gets a message from a registrar he has never met in a country he has never worked in: <em>I finally see it. I don't know how to explain it. It's just there now.</em> He has a folder of these. He reads every one.</p>
+      <p>A translator's finest hour is silence: the moment both sides speak the language fluently and nobody remembers there was ever a gap. Seventy-two shadows still arrive at eleven at night, axial, sagittal, coronal, and they always will. But the trainees who meet them now rebuild the whole from the pieces in seconds, automatically, unforgettably, because someone once decided that the hardest unpaid work in surgical training deserved a tool, a boundary, and five patient years.</p>
+      <p class="stamp">Base reached. Deep margin clear.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="shell">
+    <div class="foot-grid">
+      <div>
+        <p class="foot-brand">ProstateView</p>
+        <p class="foot-note">The pre-operative door of a three-product family: ProstateView before the case, UroOops3D inside it, UroRef around it. Built on the open Prostate158 dataset. Teaching only, never diagnostic; no patient data, no accounts, no tracking.</p>
+      </div>
+      <nav aria-label="Related sites">
+        <a href="v2/">Open ProstateView (live app)</a>
+        <a href="https://prostateview.com">prostateview.com</a>
+        <a href="https://uroref.com">uroref.com</a>
+        <a href="v2/safety/">Safety &amp; scope</a>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <span>© 2026-2031 ProstateView · a UroRef family product</span>
+      <span>Teaching only · never diagnostic</span>
+      <span>Orientation convention locked at first commit</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var gauge=document.querySelector('.gauge'); if(!gauge)return;
+  var dot=gauge.querySelector('.g-dot'), track=gauge.querySelector('.g-track');
+  var strips=[].slice.call(document.querySelectorAll('[data-series]'));
+  function docH(){return Math.max(1,document.documentElement.scrollHeight-window.innerHeight);}
+  function layoutTicks(){
+    [].slice.call(track.querySelectorAll('.g-tick')).forEach(function(t){t.remove();});
+    var h=docH();
+    strips.forEach(function(s){
+      var p=Math.min(1,Math.max(0,s.offsetTop/h));
+      var t=document.createElement('i'); t.className='g-tick'; t.style.top=(p*100)+'%';
+      track.appendChild(t);
+    });
+  }
+  function onScroll(){
+    var p=Math.min(1,Math.max(0,window.scrollY/docH()));
+    dot.style.top=(p*100)+'%';
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',function(){layoutTicks();onScroll();});
+  if(document.readyState==='complete'){layoutTicks();onScroll();}
+  else{window.addEventListener('load',function(){layoutTicks();onScroll();});}
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+Self-hosted web fonts for uroref.com/prostateview (The Spatial Translator).
+All three families are licensed under the SIL Open Font License, Version 1.1
+(https://openfontlicense.org).
+
+- Fraunces (variable, roman + italic)
+  Copyright 2020 The Fraunces Project Authors (https://github.com/undercasetype/Fraunces)
+
+- Source Serif 4 (variable, roman + italic)
+  Copyright 2014-2021 Adobe (http://www.adobe.com/), with Reserved Font Name 'Source'
+  (https://github.com/adobe-fonts/source-serif)
+
+- IBM Plex Mono (Regular, Medium)
+  Copyright 2017 IBM Corp. (https://github.com/IBM/plex)
+
+The full text of the SIL Open Font License, Version 1.1 is available at:
+https://openfontlicense.org/open-font-license-official-text/
+and in each project's repository alongside the font sources.

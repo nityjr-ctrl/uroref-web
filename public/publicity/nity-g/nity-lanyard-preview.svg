@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440mm" height="20mm" viewBox="0 0 440 20" font-family="'Geist','Inter',-apple-system,'Segoe UI',Arial,sans-serif">
+  <rect width="440" height="20" fill="#0B0B0D"/>
+  <!-- stitch guides: keep artwork inside -->
+  <line x1="0" y1="2" x2="440" y2="2" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="0.2" stroke-dasharray="1.2 1.2"/>
+  <line x1="0" y1="18" x2="440" y2="18" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="0.2" stroke-dasharray="1.2 1.2"/>
+  
+  <g transform="translate(6,0)" font-family="'Geist','Inter',-apple-system,'Segoe UI',Arial,sans-serif" font-weight="700" font-size="6">
+    <text x="0" y="12.1" fill="#FFFFFF" textLength="13" lengthAdjust="spacingAndGlyphs">URO</text>
+    <text x="14" y="12.1" fill="#00D4C8" textLength="13" lengthAdjust="spacingAndGlyphs">REF</text>
+    <circle cx="31.5" cy="10" r="0.8" fill="#00D4C8"/>
+    <text x="36" y="12.1" fill="#FFFFFF" textLength="22" lengthAdjust="spacingAndGlyphs">NITY G</text>
+    <circle cx="62.5" cy="10" r="0.8" fill="#00D4C8"/>
+    <text x="67" y="12.1" fill="#FFFFFF" textLength="75" lengthAdjust="spacingAndGlyphs">ST5 UROLOGY REGISTRAR</text>
+    <circle cx="146.5" cy="10" r="0.8" fill="#00D4C8"/>
+    <text x="152" y="12.1" fill="#B8C5D6" textLength="37" lengthAdjust="spacingAndGlyphs">UROREF.COM</text>
+    <text x="194" y="11.7" fill="#F5D76E" font-size="3.1" font-weight="500" font-style="italic" font-family="'JetBrains Mono','SF Mono',Consolas,monospace" textLength="13" lengthAdjust="spacingAndGlyphs">by Nity G</text>
+  </g>
+  
+  <g transform="translate(226,0)" font-family="'Geist','Inter',-apple-system,'Segoe UI',Arial,sans-serif" font-weight="700" font-size="6">
+    <text x="0" y="12.1" fill="#FFFFFF" textLength="13" lengthAdjust="spacingAndGlyphs">URO</text>
+    <text x="14" y="12.1" fill="#00D4C8" textLength="13" lengthAdjust="spacingAndGlyphs">REF</text>
+    <circle cx="31.5" cy="10" r="0.8" fill="#00D4C8"/>
+    <text x="36" y="12.1" fill="#FFFFFF" textLength="22" lengthAdjust="spacingAndGlyphs">NITY G</text>
+    <circle cx="62.5" cy="10" r="0.8" fill="#00D4C8"/>
+    <text x="67" y="12.1" fill="#FFFFFF" textLength="75" lengthAdjust="spacingAndGlyphs">ST5 UROLOGY REGISTRAR</text>
+    <circle cx="146.5" cy="10" r="0.8" fill="#00D4C8"/>
+    <text x="152" y="12.1" fill="#B8C5D6" textLength="37" lengthAdjust="spacingAndGlyphs">UROREF.COM</text>
+    <text x="194" y="11.7" fill="#F5D76E" font-size="3.1" font-weight="500" font-style="italic" font-family="'JetBrains Mono','SF Mono',Consolas,monospace" textLength="13" lengthAdjust="spacingAndGlyphs">by Nity G</text>
+  </g>
+</svg>

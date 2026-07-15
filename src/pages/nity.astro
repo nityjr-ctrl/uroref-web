@@ -1,0 +1,816 @@
+---
+// Nity G — personal publicity / project-ecosystem landing page.
+// Standalone document (not Base.astro) so the QR-scan landing experience is a
+// focused calling card with its own exact metadata, while reusing the UroRef
+// design tokens from global.css. All copy lives in src/data/nity.ts.
+import '../styles/global.css';
+import { identity, meta, projects, publicity, utm } from '../data/nity';
+
+const canonicalURL = new URL('/nity', Astro.site ?? Astro.url);
+const ogImage = new URL(meta.ogImage, Astro.site ?? Astro.url);
+
+const projectHref = (url: string) => `${url}/?${utm}`;
+
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: identity.name,
+  jobTitle: identity.role,
+  description: meta.description,
+  email: `mailto:${identity.email}`,
+  url: canonicalURL.toString(),
+  knowsAbout: ['Urology', 'Medical education', 'Digital health'],
+  sameAs: projects.map((p) => p.url),
+};
+
+const pageJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  name: meta.title,
+  url: canonicalURL.toString(),
+  description: meta.description,
+  mainEntity: { '@type': 'Person', name: identity.name },
+};
+---
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{meta.title}</title>
+  <meta name="description" content={meta.description} />
+  <link rel="canonical" href={canonicalURL} />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="alternate icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="theme-color" content="#050F1C" />
+
+  <meta property="og:type" content="profile" />
+  <meta property="og:site_name" content="UroRef" />
+  <meta property="og:title" content={meta.title} />
+  <meta property="og:description" content={meta.description} />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={meta.title} />
+  <meta name="twitter:description" content={meta.description} />
+  <meta name="twitter:image" content={ogImage} />
+
+  <script type="application/ld+json" set:html={JSON.stringify(personJsonLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(pageJsonLd)} />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script defer data-domain="uroref.com" src="https://plausible.io/js/script.js"></script>
+</head>
+<body class="nity-body">
+
+  <a class="nity-skip" href="#projects">Skip to projects</a>
+
+  <!-- Decorative full-width backdrop, clipped so it can never cause overflow -->
+  <div class="nity-backdrop" aria-hidden="true">
+    <div class="nity-hero-grid"></div>
+    <div class="nity-hero-glow"></div>
+  </div>
+
+  <div class="nity-page">
+
+    <!-- ═══ Hero ═══ -->
+    <header class="nity-hero">
+      <div class="nity-hero-inner">
+        <a href={identity.website} class="nity-wordmark" data-track="nity_project_click" data-project="UroRef" aria-label="UroRef home">
+          <span class="uro">Uro</span><span class="ref">Ref</span><span class="dot" aria-hidden="true"></span>
+        </a>
+
+        <p class="nity-eyebrow">{identity.eyebrow}</p>
+
+        <h1 class="nity-name">{identity.name}<span class="nity-name-dot" aria-hidden="true">.</span></h1>
+
+        <p class="nity-role">
+          <span class="nity-role-main">{identity.role}</span>
+          <span class="nity-role-sep" aria-hidden="true"></span>
+          <span class="nity-role-sub">{identity.strapline}</span>
+        </p>
+
+        <p class="nity-intro">{identity.description}</p>
+        <p class="nity-support">{identity.supportingLine}</p>
+
+        <div class="nity-hero-actions">
+          <a href="#projects" class="u-cta-primary">Explore the projects</a>
+          <a href={publicity.vcard} download="Nity-G.vcf" class="u-cta-ghost" data-track="nity_vcard_download">Save my contact</a>
+        </div>
+        <p class="nity-hero-email">
+          <a href={`mailto:${identity.email}`} data-track="nity_email_click">Email Nity — {identity.email}</a>
+        </p>
+
+        <!-- Compact quick links: the four projects reachable without scrolling -->
+        <nav class="nity-quicklinks" aria-label="Projects — quick links">
+          {projects.map((p) => (
+            <a
+              href={projectHref(p.url)}
+              style={`--accent:${p.accent}`}
+              data-track="nity_project_click"
+              data-project={p.name}
+              rel="noopener"
+            >
+              <span class="qdot" aria-hidden="true"></span>{p.name}
+            </a>
+          ))}
+        </nav>
+      </div>
+    </header>
+
+    <!-- ═══ Projects ═══ -->
+    <section id="projects" class="nity-section" aria-labelledby="projects-heading">
+      <h2 id="projects-heading" class="nity-h2">
+        <span class="nity-h2-kicker">The ecosystem</span>
+        Four tools. One goal: urology made clearer.
+      </h2>
+
+      <div class="nity-projects">
+        {projects.map((p) => (
+          <article class="nity-card" style={`--accent:${p.accent}`}>
+            <div class="nity-card-top">
+              {p.logo ? (
+                <img class="nity-card-logo" src={p.logo} alt="" width="44" height="44" loading="lazy" decoding="async" />
+              ) : (
+                <span class="nity-card-mark" aria-hidden="true">{p.name.charAt(0)}</span>
+              )}
+              <p class="nity-card-label">{p.label}</p>
+            </div>
+            <h3 class="nity-card-title">{p.name}</h3>
+            <p class="nity-card-desc">{p.description}</p>
+            <a
+              class="nity-card-cta"
+              href={projectHref(p.url)}
+              rel="noopener"
+              data-track="nity_project_click"
+              data-project={p.name}
+              aria-label={`${p.cta} — ${p.url.replace('https://', '')}`}
+            >
+              {p.cta}
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- ═══ Contact ═══ -->
+    <section id="contact" class="nity-section" aria-labelledby="contact-heading">
+      <h2 id="contact-heading" class="nity-h2">
+        <span class="nity-h2-kicker">Get in touch</span>
+        Work with me, or just say hello.
+      </h2>
+
+      <div class="nity-contact">
+        <div class="nity-contact-id">
+          <p class="nity-contact-name">{identity.name}</p>
+          <p class="nity-contact-role">{identity.role}</p>
+          <p class="nity-contact-strap">{identity.strapline}</p>
+          <p class="nity-contact-email"><a href={`mailto:${identity.email}`} data-track="nity_email_click">{identity.email}</a></p>
+        </div>
+
+        <div class="nity-contact-actions" role="group" aria-label="Contact actions">
+          <a class="nity-action" href={`mailto:${identity.email}`} data-track="nity_email_click">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m3 6 9 7 9-7"/></svg>
+            Email Nity
+          </a>
+          <a class="nity-action" href={publicity.vcard} download="Nity-G.vcf" data-track="nity_vcard_download">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 19h16"/></svg>
+            Save contact
+          </a>
+          <button type="button" class="nity-action" id="copy-email" data-email={identity.email}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>
+            Copy email
+          </button>
+          <button type="button" class="nity-action" id="share-page">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="12" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="m8.7 10.6 6.6-3.2M8.7 13.4l6.6 3.2"/></svg>
+            Share this page
+          </button>
+          <a class="nity-action" href={projectHref(identity.website)} rel="noopener" data-track="nity_project_click" data-project="UroRef">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18"/></svg>
+            Open UroRef
+          </a>
+        </div>
+
+        <p class="nity-feedback" id="action-feedback" role="status" aria-live="polite"></p>
+      </div>
+
+      <!-- QR downloads drawer -->
+      <details class="nity-qr-drawer">
+        <summary>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14h1M14 20h1M18 18h3v3h-3z"/></svg>
+          QR codes &amp; print assets
+          <span class="chev" aria-hidden="true">▾</span>
+        </summary>
+        <p class="nity-qr-note">
+          Every code below points to <span class="mono">uroref.com/nity</span>. Print at 15&nbsp;mm or larger.
+        </p>
+        <ul class="nity-qr-list">
+          {publicity.qrAssets.map((a) => (
+            <li>
+              <a href={`${publicity.dir}/${a.file}`} download data-track="nity_qr_download" data-file={a.file}>
+                {a.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </details>
+    </section>
+
+    <!-- ═══ Footer ═══ -->
+    <footer class="nity-footer">
+      <p class="nity-sig">Built by <span class="gold">Nity G</span></p>
+      <p class="nity-foot-links">
+        <a href={identity.website}>uroref.com</a>
+        <span aria-hidden="true">·</span>
+        <a href={`mailto:${identity.email}`} data-track="nity_email_click">{identity.email}</a>
+      </p>
+    </footer>
+
+  </div>
+
+  <!-- Mobile sticky save-contact bar -->
+  <div class="nity-sticky" id="sticky-save">
+    <a href={publicity.vcard} download="Nity-G.vcf" data-track="nity_vcard_download">Save my contact</a>
+  </div>
+
+  <script>
+    // Progressive enhancement only: tracking, copy email and Web Share.
+    // Every link, download and mailto works without this script.
+    const plausible = (name: string, props?: Record<string, string>) => {
+      const w = window as unknown as { plausible?: (n: string, o?: object) => void };
+      try { w.plausible?.(name, props ? { props } : undefined); } catch { /* analytics must never break the page */ }
+    };
+
+    plausible('nity_page_view');
+
+    document.querySelectorAll<HTMLElement>('[data-track]').forEach((el) => {
+      el.addEventListener('click', () => {
+        const event = el.dataset.track!;
+        const props: Record<string, string> = {};
+        if (el.dataset.project) props.project = el.dataset.project;
+        if (el.dataset.file) props.file = el.dataset.file;
+        plausible(event, Object.keys(props).length ? props : undefined);
+      });
+    });
+
+    const feedback = document.getElementById('action-feedback');
+    let feedbackTimer: ReturnType<typeof setTimeout> | undefined;
+    const announce = (msg: string) => {
+      if (!feedback) return;
+      feedback.textContent = msg;
+      feedback.classList.add('show');
+      clearTimeout(feedbackTimer);
+      feedbackTimer = setTimeout(() => feedback.classList.remove('show'), 2400);
+    };
+
+    const copyText = async (text: string) => {
+      try {
+        await navigator.clipboard.writeText(text);
+        return true;
+      } catch {
+        return false;
+      }
+    };
+
+    document.getElementById('copy-email')?.addEventListener('click', async (e) => {
+      const email = (e.currentTarget as HTMLElement).dataset.email ?? '';
+      const ok = await copyText(email);
+      announce(ok ? 'Email address copied' : 'Copy failed — long-press the address instead');
+      if (ok) plausible('nity_copy_email');
+    });
+
+    document.getElementById('share-page')?.addEventListener('click', async () => {
+      const url = 'https://uroref.com/nity';
+      if (navigator.share) {
+        try {
+          await navigator.share({ title: 'Nity G — Urology, Education and Digital Innovation', url });
+          plausible('nity_share', { method: 'web-share' });
+        } catch { /* user dismissed the share sheet */ }
+      } else {
+        const ok = await copyText(url);
+        announce(ok ? 'Link copied to clipboard' : url);
+        if (ok) plausible('nity_share', { method: 'copy-link' });
+      }
+    });
+
+    // Hide the sticky bar once the in-page save button is visible.
+    const sticky = document.getElementById('sticky-save');
+    const heroActions = document.querySelector('.nity-hero-actions');
+    if (sticky && heroActions && 'IntersectionObserver' in window) {
+      new IntersectionObserver(
+        ([entry]) => sticky.classList.toggle('hidden', entry.isIntersecting),
+        { threshold: 0.4 }
+      ).observe(heroActions);
+    }
+  </script>
+
+  <style>
+    /* ══════════ Nity page — charcoal variant of the UroRef system ══════════ */
+    .nity-body {
+      background: var(--navy-900);
+      min-height: 100dvh;
+    }
+    .nity-page {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .nity-skip {
+      position: absolute;
+      left: -9999px;
+      top: 12px;
+      z-index: 100;
+      background: var(--teal-500);
+      color: var(--navy-900);
+      padding: 10px 18px;
+      border-radius: var(--r-full);
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .nity-skip:focus-visible { left: 12px; }
+
+    /* ── Backdrop (full-bleed, clipped) ── */
+    .nity-backdrop {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 640px;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .nity-hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(90deg, transparent 0 56px, rgba(255,255,255,0.022) 56px 57px),
+        repeating-linear-gradient(0deg, transparent 0 56px, rgba(255,255,255,0.022) 56px 57px);
+      mask-image: radial-gradient(ellipse 70% 90% at 50% 0%, black 20%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse 70% 90% at 50% 0%, black 20%, transparent 75%);
+    }
+    .nity-hero-glow {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 45% at 75% -5%, rgba(0,212,200,0.14) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 30% at 15% 10%, rgba(245,215,110,0.05) 0%, transparent 60%);
+    }
+
+    /* ── Hero ── */
+    .nity-hero {
+      position: relative;
+      z-index: 1;
+      padding: 28px 0 40px;
+    }
+    .nity-page { position: relative; z-index: 1; }
+    .nity-hero-inner { padding-top: 26px; }
+
+    .nity-wordmark {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 19px;
+      letter-spacing: -0.04em;
+      display: inline-flex;
+      align-items: baseline;
+      padding: 4px 0;
+    }
+    .nity-wordmark .uro { color: var(--text-primary); }
+    .nity-wordmark .ref { color: var(--teal-500); }
+    .nity-wordmark .dot {
+      width: 4px; height: 4px;
+      background: var(--teal-500);
+      border-radius: 50%;
+      margin-left: 5px;
+      align-self: center;
+    }
+
+    .nity-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--teal-500);
+      margin: 34px 0 10px;
+    }
+    .nity-name {
+      font-size: clamp(2.6rem, 9vw, 4.4rem);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      line-height: 1.02;
+      margin: 0 0 14px;
+      color: var(--text-primary);
+    }
+    .nity-name-dot { color: var(--cat-landmark); }
+
+    .nity-role {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px 12px;
+      margin: 0 0 18px;
+      font-size: 15px;
+    }
+    .nity-role-main { color: var(--text-primary); font-weight: 600; }
+    .nity-role-sep {
+      width: 22px; height: 1px;
+      background: var(--cat-landmark);
+      opacity: 0.6;
+    }
+    .nity-role-sub { color: var(--text-secondary); font-weight: 500; }
+
+    .nity-intro {
+      font-family: var(--font-serif);
+      font-size: clamp(1.05rem, 2.6vw, 1.25rem);
+      line-height: 1.65;
+      color: var(--text-secondary);
+      max-width: 34em;
+      margin: 0 0 8px;
+    }
+    .nity-support {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin: 0 0 26px;
+    }
+
+    .nity-hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .nity-hero-email { margin: 0 0 30px; font-size: 0.85rem; }
+    .nity-hero-email a {
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(255,255,255,0.25);
+      padding: 6px 0;
+      display: inline-block;
+      transition: color 0.15s;
+    }
+    .nity-hero-email a:hover { color: var(--teal-400); }
+
+    .nity-quicklinks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .nity-quicklinks a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      min-height: 44px;
+      border: 1px solid var(--border-strong);
+      border-radius: var(--r-full);
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      background: rgba(255,255,255,0.02);
+      transition: border-color 0.15s, color 0.15s, background 0.15s;
+    }
+    .nity-quicklinks a:hover {
+      color: var(--text-primary);
+      border-color: var(--accent);
+      background: rgba(255,255,255,0.04);
+    }
+    .nity-quicklinks .qdot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* ── Sections ── */
+    .nity-section { padding: 44px 0 8px; }
+    .nity-h2 {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: clamp(1.35rem, 3.5vw, 1.7rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin: 0 0 26px;
+    }
+    .nity-h2-kicker {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--cat-landmark);
+    }
+
+    /* ── Project cards ── */
+    .nity-projects {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .nity-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, transparent 45%), var(--navy-800);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      padding: 24px 24px 22px;
+      overflow: hidden;
+      transition: border-color 0.15s, transform 0.15s;
+    }
+    .nity-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 24px; right: 24px;
+      height: 2px;
+      border-radius: 0 0 2px 2px;
+      background: linear-gradient(90deg, var(--accent), transparent 70%);
+      opacity: 0.85;
+    }
+    .nity-card:hover {
+      border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+      transform: translateY(-2px);
+    }
+    .nity-card-top {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .nity-card-logo {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.92);
+      padding: 3px;
+      flex-shrink: 0;
+    }
+    .nity-card-mark {
+      width: 44px; height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--accent);
+      background: color-mix(in srgb, var(--accent) 12%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+      flex-shrink: 0;
+    }
+    .nity-card-label {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0;
+    }
+    .nity-card-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0 0 10px;
+      color: var(--text-primary);
+    }
+    .nity-card-desc {
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: var(--text-secondary);
+      margin: 0 0 20px;
+      flex-grow: 1;
+    }
+    .nity-card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 44px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent);
+      align-self: flex-start;
+      padding: 4px 0;
+      transition: gap 0.15s;
+    }
+    .nity-card-cta:hover { gap: 12px; }
+
+    /* ── Contact ── */
+    .nity-contact {
+      background: var(--navy-800);
+      border: 1px solid var(--border);
+      border-radius: var(--r-2xl);
+      padding: 28px;
+    }
+    .nity-contact-id {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+    }
+    .nity-contact-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin: 0 0 2px;
+    }
+    .nity-contact-role { font-size: 0.95rem; color: var(--text-secondary); margin: 0 0 2px; font-weight: 500; }
+    .nity-contact-strap { font-size: 0.85rem; color: var(--cat-landmark); margin: 0 0 10px; }
+    .nity-contact-email { margin: 0; }
+    .nity-contact-email a {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      color: var(--teal-500);
+      padding: 4px 0;
+      display: inline-block;
+      transition: color 0.15s;
+    }
+    .nity-contact-email a:hover { color: var(--teal-400); }
+
+    .nity-contact-actions {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 10px;
+    }
+    .nity-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 48px;
+      padding: 10px 14px;
+      border: 1px solid var(--border-strong);
+      border-radius: var(--r-lg);
+      background: rgba(255,255,255,0.02);
+      color: var(--text-primary);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      text-align: center;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .nity-action:hover {
+      border-color: var(--teal-500);
+      background: rgba(0,212,200,0.06);
+    }
+    .nity-action svg { width: 17px; height: 17px; flex-shrink: 0; color: var(--teal-500); }
+
+    .nity-feedback {
+      margin: 14px 0 0;
+      min-height: 1.2em;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--teal-400);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .nity-feedback.show { opacity: 1; }
+
+    /* ── QR drawer ── */
+    .nity-qr-drawer {
+      margin-top: 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      background: var(--navy-800);
+    }
+    .nity-qr-drawer summary {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 20px;
+      min-height: 48px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      list-style: none;
+      transition: color 0.15s;
+    }
+    .nity-qr-drawer summary::-webkit-details-marker { display: none; }
+    .nity-qr-drawer summary:hover { color: var(--text-primary); }
+    .nity-qr-drawer summary svg { width: 17px; height: 17px; color: var(--cat-landmark); }
+    .nity-qr-drawer summary .chev { margin-left: auto; transition: transform 0.15s; color: var(--text-muted); }
+    .nity-qr-drawer[open] summary .chev { transform: rotate(180deg); }
+    .nity-qr-note {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin: 0;
+      padding: 0 20px 12px;
+    }
+    .nity-qr-note .mono { font-family: var(--font-mono); color: var(--text-secondary); }
+    .nity-qr-list {
+      list-style: none;
+      margin: 0;
+      padding: 0 12px 12px;
+    }
+    .nity-qr-list a {
+      display: block;
+      padding: 11px 10px;
+      border-radius: var(--r-md);
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      color: var(--text-secondary);
+      transition: background 0.15s, color 0.15s;
+    }
+    .nity-qr-list a:hover { background: rgba(255,255,255,0.04); color: var(--teal-400); }
+
+    /* ── Footer ── */
+    .nity-footer {
+      margin-top: 56px;
+      padding: 28px 0 110px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .nity-sig {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin: 0;
+    }
+    .nity-sig .gold { color: var(--cat-landmark); }
+    .nity-foot-links {
+      margin: 0;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .nity-foot-links a { padding: 4px 0; transition: color 0.15s; }
+    .nity-foot-links a:hover { color: var(--teal-400); }
+
+    /* ── Mobile sticky save bar ── */
+    .nity-sticky {
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+      background: rgba(5,15,28,0.88);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-top: 1px solid var(--border);
+      z-index: 40;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    .nity-sticky.hidden {
+      transform: translateY(110%);
+      opacity: 0;
+      pointer-events: none;
+    }
+    .nity-sticky a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      background: var(--teal-500);
+      color: var(--navy-900);
+      border-radius: var(--r-full);
+      font-weight: 600;
+      font-size: 15px;
+    }
+    @media (min-width: 821px) {
+      .nity-sticky { display: none; }
+      .nity-footer { padding-bottom: 40px; }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 720px) {
+      .nity-projects { grid-template-columns: 1fr; }
+      .nity-hero { padding-top: 18px; }
+      .nity-eyebrow { margin-top: 26px; }
+      .nity-contact { padding: 22px 18px; }
+      .nity-contact-actions { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 380px) {
+      .nity-contact-actions { grid-template-columns: 1fr; }
+      .nity-hero-actions a { width: 100%; justify-content: center; }
+    }
+
+    /* ── Print: a clean contact card ── */
+    @media print {
+      .nity-body { background: #fff; }
+      .nity-sticky, .nity-qr-drawer, .nity-skip, .nity-hero-grid, .nity-hero-glow { display: none !important; }
+      .nity-page { color: #000; }
+      .nity-name, .nity-card-title, .nity-h2, .nity-contact-name, .nity-role-main { color: #000; }
+      .nity-intro, .nity-card-desc, .nity-role-sub, .nity-contact-role { color: #222; }
+      .nity-card, .nity-contact { border-color: #ccc; background: #fff; }
+      a[href^='http']::after { content: ' (' attr(href) ')'; font-size: 0.75em; color: #555; }
+    }
+  </style>
+</body>
+</html>

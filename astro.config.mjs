@@ -5,6 +5,9 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://uroref.com',
+  redirects: {
+    '/connect': '/nity',
+  },
   integrations: [mdx(), sitemap()],
   vite: {
     plugins: [tailwindcss()],

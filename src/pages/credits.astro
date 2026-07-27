@@ -1,0 +1,252 @@
+---
+import Base from '../layouts/Base.astro';
+
+const clinical = [
+  ['EAU Guidelines', '2024 edition. TNM staging, complication rates, management pathways across urological cancers, stones, and non-oncology conditions.', 'https://uroweb.org/guidelines'],
+  ['NICE NG12', 'Suspected cancer: recognition and referral (2015, updated 2023). 2-week-wait thresholds.', 'https://www.nice.org.uk/guidance/ng12'],
+  ['NICE NG131', 'Prostate cancer: diagnosis and management (2019, updated 2024). CPG stratification and treatment pathways.', 'https://www.nice.org.uk/guidance/ng131'],
+  ['NICE NG203', 'Renal and ureteric stones (2019). Acute colic management and stone-size thresholds.', 'https://www.nice.org.uk/guidance/ng203'],
+  ['BAUS', 'Consent guidance and patient-information leaflets. BAUS leaflets are linked, not reproduced; copyright remains with BAUS.', 'https://www.baus.org.uk'],
+  ['AJCC / UICC', 'Cancer Staging Manual, 8th Edition (2017).', null],
+  ['British National Formulary (BNF)', 'Drug dosing and interactions. The BNF is the authoritative source; UroRef doses are a quick reference only.', 'https://bnf.nice.org.uk'],
+];
+
+const calculators = [
+  ['IDENTIFY', 'Haematuria cancer-risk calculator. Khadhouri S et al. Eur Urol Focus. 2022;8(1):130-138. BURST Urology Research Collaborative.', 'https://bursturology.com/identify-calculator/'],
+  ['MIMIC', 'Ureteric stone passage calculator. Wallis CJD et al. BJU Int. BURST Urology Research Collaborative.', 'https://bursturologycollaborative.github.io/'],
+  ['TWIST Score', 'Testicular torsion risk score. Barbosa JA et al. J Urol. 2013;189(5):1859-1864.', null],
+  ['eGFR (CKD-EPI 2021)', 'Inker LA et al. N Engl J Med. 2021;385:1737-1749.', null],
+  ['Cambridge Prognostic Group (CPG)', 'Gnanapragasam VJ et al. BMC Med. 2016;14:31.', null],
+  ['EORTC risk tables', 'Non-muscle-invasive bladder cancer. Sylvester RJ et al. Eur Urol. 2006;49(3):466-475.', null],
+  ['Clavien-Dindo', 'Dindo D, Demartines N, Clavien PA. Ann Surg. 2004;240(2):205-213.', null],
+];
+
+const textbooks = [
+  ['Campbell-Walsh-Wein Urology', '12th Edition. Elsevier.'],
+  ['Oxford Handbook of Urology', '4th Edition. Oxford University Press.'],
+];
+
+const reviewers = [
+  'Mr Yehia Abdallah',
+  'Mr Grigorios Athanasiadis',
+  'Mr Tom Farmer',
+  'Mr Oladapo Feyisetan',
+  'Mr Rob Mason',
+  'Mr Chirag Patel',
+  'Mr Omar Shareef',
+];
+
+const software = [
+  ['Astro', 'Static site framework. MIT.', 'https://astro.build'],
+  ['Tailwind CSS v4', 'Tailwind Labs. MIT.', 'https://tailwindcss.com'],
+  ['MDX / @astrojs/mdx', 'Long-form Deep Dive authoring. MIT.', 'https://mdxjs.com'],
+  ['@astrojs/sitemap', 'SEO sitemap generation. MIT.', null],
+  ['Sharp', 'Image processing for the asset pipeline. Apache-2.0.', 'https://sharp.pixelplumbing.com'],
+  ['React', 'Used by the companion UroRef app. MIT. Meta Platforms, Inc.', 'https://react.dev'],
+  ['Capacitor', 'Native iOS/Android wrapper for the UroRef app. MIT. Ionic.', 'https://capacitorjs.com'],
+  ['shadcn/ui patterns', 'UI primitives in the app follow the shadcn/ui component pattern. MIT.', 'https://ui.shadcn.com'],
+  ['class-variance-authority', 'Apache-2.0. Joe Bell.', 'https://cva.style'],
+  ['clsx', 'MIT. Luke Edwards.', 'https://github.com/lukeed/clsx'],
+  ['tailwind-merge', 'MIT. Dany Castillo.', 'https://github.com/dcastil/tailwind-merge'],
+  ['Lucide', 'ISC. Icon set used in the app. Forked from Feather Icons (MIT, Cole Bemis).', 'https://lucide.dev'],
+];
+
+const fonts = [
+  ['Geist', 'Vercel. SIL Open Font License.', 'https://vercel.com/font'],
+  ['Source Serif 4', 'Adobe. SIL Open Font License.', null],
+  ['JetBrains Mono', 'JetBrains s.r.o. SIL Open Font License.', null],
+];
+---
+<Base title="Credits & Attributions" description="UroRef is built on published guidelines, peer-reviewed calculators, open-source software and fonts. This page credits the people and projects whose work is referenced or used.">
+
+  <section class="u-hero" style="padding: 5rem 1.5rem 4rem;">
+    <div class="u-hero-bg" aria-hidden="true"></div>
+    <div class="u-hero-grid" aria-hidden="true"></div>
+    <div style="max-width: 750px; margin: 0 auto; position: relative;">
+      <div class="u-eyebrow-pill" style="margin-bottom: 1.5rem;">Credits</div>
+      <h1 class="u-gradient-text" style="font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -0.03em; margin: 0 0 1.25rem; line-height: 1.15;">Built on other people's work.</h1>
+      <p style="color: rgba(255,255,255,0.75); font-size: 1.1rem; line-height: 1.6; margin: 0; max-width: 600px;">
+        UroRef references published guidelines, peer-reviewed calculators, open-source software and fonts. Every source we rely on is listed below.
+      </p>
+    </div>
+  </section>
+
+  <section class="credits-body">
+
+    <div class="credits-block">
+      <h2>Clinical guidelines</h2>
+      <p class="block-lead">UroRef content is an in-house synthesis referenced to the following guidelines. Nothing is reproduced verbatim.</p>
+      <ul class="credits-list">
+        {clinical.map(([name, desc, url]) => (
+          <li>
+            <div class="name">{url ? <a href={url} target="_blank" rel="noopener">{name} <span class="ext">↗</span></a> : name}</div>
+            <div class="desc">{desc}</div>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="credits-block">
+      <h2>Calculators & scoring tools</h2>
+      <p class="block-lead">Implementations or links to published, peer-reviewed tools.</p>
+      <ul class="credits-list">
+        {calculators.map(([name, desc, url]) => (
+          <li>
+            <div class="name">{url ? <a href={url} target="_blank" rel="noopener">{name} <span class="ext">↗</span></a> : name}</div>
+            <div class="desc">{desc}</div>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="credits-block">
+      <h2>Textbooks referenced</h2>
+      <ul class="credits-list">
+        {textbooks.map(([name, desc]) => (
+          <li>
+            <div class="name">{name}</div>
+            <div class="desc">{desc}</div>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="credits-block">
+      <h2>Consultant reviewers</h2>
+      <p class="block-lead">With special thanks for clinical review and feedback during development.</p>
+      <div class="reviewers">
+        {reviewers.map(name => (
+          <div class="reviewer">{name}</div>
+        ))}
+      </div>
+      <p class="block-foot">And urology trainees of the North West Deanery.</p>
+    </div>
+
+    <div class="credits-block">
+      <h2>Open-source software</h2>
+      <p class="block-lead">Used under the licences noted. Nothing in this list is claimed as original work.</p>
+      <ul class="credits-list">
+        {software.map(([name, desc, url]) => (
+          <li>
+            <div class="name">{url ? <a href={url} target="_blank" rel="noopener">{name} <span class="ext">↗</span></a> : name}</div>
+            <div class="desc">{desc}</div>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="credits-block">
+      <h2>Fonts</h2>
+      <p class="block-lead">Loaded via Google Fonts under the SIL Open Font License.</p>
+      <ul class="credits-list">
+        {fonts.map(([name, desc, url]) => (
+          <li>
+            <div class="name">{url ? <a href={url} target="_blank" rel="noopener">{name} <span class="ext">↗</span></a> : name}</div>
+            <div class="desc">{desc}</div>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="credits-foot">
+      <p>
+        If you believe content or code on this site is used without appropriate credit, please email
+        <a href="mailto:nityje@gmail.com">nityje@gmail.com</a> and it will be corrected promptly.
+      </p>
+    </div>
+
+  </section>
+
+  <style>
+    .credits-body {
+      padding: 4rem 1.5rem 6rem;
+      max-width: 750px;
+      margin: 0 auto;
+    }
+    .credits-block { margin-bottom: 3rem; }
+    .credits-body h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0 0 0.6rem;
+      letter-spacing: -0.01em;
+    }
+    .block-lead {
+      font-family: var(--font-serif);
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin: 0 0 1.25rem;
+    }
+    .block-foot {
+      font-family: var(--font-serif);
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      margin: 1rem 0 0;
+    }
+    .credits-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 0.75rem;
+    }
+    .credits-list li {
+      background: var(--navy-700);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 1rem 1.15rem;
+    }
+    .credits-list .name {
+      font-weight: 600;
+      color: var(--text-primary);
+      font-size: 0.98rem;
+      margin-bottom: 0.35rem;
+    }
+    .credits-list .name a {
+      color: var(--text-primary);
+      transition: color 0.15s;
+    }
+    .credits-list .name a:hover { color: var(--teal-500); }
+    .credits-list .name .ext {
+      color: var(--teal-500);
+      font-size: 0.85em;
+      margin-left: 0.15rem;
+    }
+    .credits-list .desc {
+      font-family: var(--font-serif);
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    .reviewers {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 0.6rem 1.25rem;
+      background: var(--navy-700);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 1.25rem 1.5rem;
+    }
+    .reviewer {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+    .credits-foot {
+      margin-top: 2.5rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid var(--border);
+    }
+    .credits-foot p {
+      font-family: var(--font-serif);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.65;
+      margin: 0;
+    }
+    .credits-foot a { color: var(--teal-500); }
+    .credits-foot a:hover { color: var(--teal-400); }
+  </style>
+
+</Base>

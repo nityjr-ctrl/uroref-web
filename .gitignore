@@ -5,6 +5,11 @@ dist/
 
 # dependencies
 node_modules/
+.npm-cache/
+
+# local browser review profile
+.chrome-review/
+review-*.png
 
 # logs
 npm-debug.log*

@@ -1,0 +1,230 @@
+---
+const projects = [
+  {
+    name: 'ProstateView',
+    href: 'https://prostateview.com/',
+    eyebrow: 'MRI spatial training',
+    description: 'A visual bridge from prostate MRI slices to 3D anatomy, biopsy concepts and spatial rehearsal.',
+    accent: 'gold',
+  },
+  {
+    name: 'CalyxView',
+    href: 'https://calyxview.com/',
+    eyebrow: 'Stone anatomy',
+    description: 'Renal stone and collecting-system visualisation for URS and PCNL education workflows.',
+    accent: 'teal',
+  },
+  {
+    name: 'UroOps3D',
+    href: 'https://uroops3d.com/',
+    eyebrow: 'Operative rehearsal',
+    description: 'Three-dimensional operative thinking for urology procedures, anatomy and hazard awareness.',
+    accent: 'violet',
+  },
+  {
+    name: 'CystoSight',
+    href: 'https://cystosight.netlify.app/',
+    eyebrow: 'Bladder vision',
+    description: 'A cystoscopy-facing experiment for visual recognition, structured review and teaching moments.',
+    accent: 'blue',
+  },
+];
+---
+
+<section class="project-ecosystem" aria-labelledby="project-ecosystem-title">
+  <div class="project-ecosystem-inner">
+    <div class="project-ecosystem-copy">
+      <p class="project-ecosystem-kicker">UroRef ecosystem</p>
+      <h2 id="project-ecosystem-title">One urology learning bench, four specialist tools.</h2>
+      <p>
+        UroRef is the quick-reference layer. These companion projects open the same clinical ideas spatially:
+        prostate MRI, renal stones, operative rehearsal and cystoscopy.
+      </p>
+    </div>
+
+    <div class="project-ecosystem-grid" aria-label="Related UroRef projects">
+      {projects.map((project) => (
+        <a class={`project-card project-card-${project.accent}`} href={project.href} target="_blank" rel="noopener">
+          <span class="project-card-top">
+            <span class="project-card-mark" aria-hidden="true">{project.name.slice(0, 2)}</span>
+            <span class="project-card-arrow" aria-hidden="true">↗</span>
+          </span>
+          <span class="project-card-eyebrow">{project.eyebrow}</span>
+          <strong>{project.name}</strong>
+          <span class="project-card-description">{project.description}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .project-ecosystem {
+    padding: 28px 32px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .project-ecosystem-inner {
+    max-width: var(--container);
+    margin: 0 auto;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--r-xl);
+    background:
+      radial-gradient(circle at 12% 0%, rgba(0, 212, 200, 0.16), transparent 34%),
+      linear-gradient(135deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025));
+    box-shadow: 0 24px 70px -42px rgba(0, 0, 0, 0.9);
+    padding: clamp(24px, 4vw, 38px);
+    display: grid;
+    grid-template-columns: minmax(260px, 0.82fr) minmax(0, 1.18fr);
+    gap: clamp(22px, 4vw, 44px);
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .project-ecosystem-inner::after {
+    content: '';
+    position: absolute;
+    inset: auto 24px 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 212, 200, 0.65), transparent);
+    opacity: 0.7;
+  }
+
+  .project-ecosystem-copy {
+    position: relative;
+    z-index: 1;
+  }
+
+  .project-ecosystem-kicker {
+    margin: 0 0 14px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--teal-500);
+  }
+
+  .project-ecosystem h2 {
+    margin: 0;
+    font-size: clamp(28px, 4.2vw, 48px);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    font-weight: 600;
+    max-width: 13ch;
+    text-wrap: balance;
+  }
+
+  .project-ecosystem-copy > p:last-child {
+    margin: 18px 0 0;
+    max-width: 46ch;
+    font-family: var(--font-serif);
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--text-secondary);
+  }
+
+  .project-ecosystem-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .project-card {
+    min-height: 186px;
+    color: inherit;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    background: rgba(2, 16, 30, 0.42);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--project-accent);
+    background: rgba(2, 16, 30, 0.64);
+  }
+
+  .project-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+
+  .project-card-mark {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    border: 1px solid color-mix(in srgb, var(--project-accent) 50%, transparent);
+    background: color-mix(in srgb, var(--project-accent) 13%, transparent);
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .project-card-arrow {
+    color: var(--project-accent);
+    font-size: 18px;
+  }
+
+  .project-card-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--project-accent);
+  }
+
+  .project-card strong {
+    font-size: 20px;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+  }
+
+  .project-card-description {
+    color: var(--text-secondary);
+    font-family: var(--font-serif);
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .project-card-gold { --project-accent: #f6c453; }
+  .project-card-teal { --project-accent: var(--teal-500); }
+  .project-card-violet { --project-accent: #b8a4ff; }
+  .project-card-blue { --project-accent: #8fc7ff; }
+
+  @media (max-width: 940px) {
+    .project-ecosystem-inner {
+      grid-template-columns: 1fr;
+    }
+
+    .project-ecosystem h2 {
+      max-width: 18ch;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .project-ecosystem {
+      padding: 20px 20px 0;
+    }
+
+    .project-ecosystem-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .project-card {
+      min-height: 0;
+    }
+  }
+</style>

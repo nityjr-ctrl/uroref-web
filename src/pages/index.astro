@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import ProjectEcosystem from '../components/ProjectEcosystem.astro';
 import { getCollection } from 'astro:content';
 
 const APP_STORE_URL = 'https://apps.apple.com/us/app/uroref/id6761680168';
@@ -91,6 +92,8 @@ function catColor(slot: string): string {
 
     </div>
   </section>
+
+  <ProjectEcosystem />
 
   <!-- [2] Key value section -->
   <section class="value-band">

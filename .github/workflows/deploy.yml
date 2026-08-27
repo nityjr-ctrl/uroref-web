@@ -27,6 +27,11 @@ jobs:
 
       - run: npm ci
       - run: npm run build
+      - run: npm run check:links
+      - run: npm run audit:production
+      - run: npm run eval:ariadne:fixtures
+      - run: npx playwright install --with-deps chromium
+      - run: npm run check:a11y
 
       - uses: actions/upload-pages-artifact@v5
         with:

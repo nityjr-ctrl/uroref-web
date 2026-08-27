@@ -7,6 +7,7 @@ export default defineConfig({
   site: 'https://uroref.com',
   redirects: {
     '/connect': '/nity',
+    '/ecosystem': '/showcase',
   },
   integrations: [mdx(), sitemap()],
   vite: {

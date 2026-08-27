@@ -1,57 +1,31 @@
 ---
-const projects = [
-  {
-    name: 'ProstateView',
-    href: 'https://prostateview.com/',
-    eyebrow: 'MRI spatial training',
-    description: 'A visual bridge from prostate MRI slices to 3D anatomy, biopsy concepts and spatial rehearsal.',
-    accent: 'gold',
-  },
-  {
-    name: 'CalyxView',
-    href: 'https://calyxview.com/',
-    eyebrow: 'Stone anatomy',
-    description: 'Renal stone and collecting-system visualisation for URS and PCNL education workflows.',
-    accent: 'teal',
-  },
-  {
-    name: 'UroOps3D',
-    href: 'https://uroops3d.com/',
-    eyebrow: 'Operative rehearsal',
-    description: 'Three-dimensional operative thinking for urology procedures, anatomy and hazard awareness.',
-    accent: 'violet',
-  },
-  {
-    name: 'CystoSight',
-    href: 'https://cystosight.netlify.app/',
-    eyebrow: 'Bladder vision',
-    description: 'A cystoscopy-facing experiment for visual recognition, structured review and teaching moments.',
-    accent: 'blue',
-  },
-];
+import { ecosystemProjects } from '../data/ecosystem';
+
+const projects = ecosystemProjects.filter((project) => project.id !== 'uroref');
 ---
 
 <section class="project-ecosystem" aria-labelledby="project-ecosystem-title">
   <div class="project-ecosystem-inner">
     <div class="project-ecosystem-copy">
       <p class="project-ecosystem-kicker">UroRef ecosystem</p>
-      <h2 id="project-ecosystem-title">One urology learning bench, four specialist tools.</h2>
+      <h2 id="project-ecosystem-title">One connected learning system.</h2>
       <p>
-        UroRef is the quick-reference layer. These companion projects open the same clinical ideas spatially:
-        prostate MRI, renal stones, operative rehearsal and cystoscopy.
+        Start with concise reference, then move into spatial anatomy, deliberate practice and source-labelled teaching—without losing the route back to the evidence.
       </p>
+      <a class="project-ecosystem-cta" href="/showcase">Enter the UroRef Mega Hub →</a>
     </div>
 
     <div class="project-ecosystem-grid" aria-label="Related UroRef projects">
       {projects.map((project) => (
-        <a class={`project-card project-card-${project.accent}`} href={project.href} target="_blank" rel="noopener">
+        <a class="project-card" style={`--project-accent:${project.accent}`} href={`/showcase#${project.id}`}>
           <span class="project-card-top">
-            <span class="project-card-mark" aria-hidden="true">{project.name.slice(0, 2)}</span>
-            <span class="project-card-arrow" aria-hidden="true">↗</span>
+            <span class="project-card-mark" aria-hidden="true">{project.mark}</span>
+            <span class="project-card-status">{project.stageLabel}</span>
           </span>
-          <span class="project-card-eyebrow">{project.eyebrow}</span>
+          <span class="project-card-eyebrow">{project.category}</span>
           <strong>{project.name}</strong>
           <span class="project-card-description">{project.description}</span>
+          <span class="project-card-arrow">See in the hub →</span>
         </a>
       ))}
     </div>
@@ -115,13 +89,21 @@ const projects = [
     text-wrap: balance;
   }
 
-  .project-ecosystem-copy > p:last-child {
+  .project-ecosystem-copy > p:not(.project-ecosystem-kicker) {
     margin: 18px 0 0;
     max-width: 46ch;
     font-family: var(--font-serif);
     font-size: 16px;
     line-height: 1.55;
     color: var(--text-secondary);
+  }
+
+  .project-ecosystem-cta {
+    display: inline-flex;
+    margin-top: 20px;
+    color: var(--teal-500);
+    font-size: 14px;
+    font-weight: 650;
   }
 
   .project-ecosystem-grid {
@@ -159,6 +141,17 @@ const projects = [
     margin-bottom: 4px;
   }
 
+  .project-card-status {
+    max-width: 16ch;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 8px;
+    line-height: 1.35;
+    letter-spacing: .07em;
+    text-align: right;
+    text-transform: uppercase;
+  }
+
   .project-card-mark {
     width: 38px;
     height: 38px;
@@ -174,8 +167,10 @@ const projects = [
   }
 
   .project-card-arrow {
+    margin-top: auto;
     color: var(--project-accent);
-    font-size: 18px;
+    font-size: 12px;
+    font-weight: 650;
   }
 
   .project-card-eyebrow {
@@ -198,11 +193,6 @@ const projects = [
     font-size: 14px;
     line-height: 1.45;
   }
-
-  .project-card-gold { --project-accent: #f6c453; }
-  .project-card-teal { --project-accent: var(--teal-500); }
-  .project-card-violet { --project-accent: #b8a4ff; }
-  .project-card-blue { --project-accent: #8fc7ff; }
 
   @media (max-width: 940px) {
     .project-ecosystem-inner {

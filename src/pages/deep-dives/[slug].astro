@@ -4,16 +4,24 @@ import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
   const articles = await getCollection('deep-dives');
-  return articles.map(article => ({
+  return articles
+    .filter((article) => article.id !== 'inside-the-uroref-app')
+    .map(article => ({
     params: { slug: article.id },
     props: { article },
-  }));
+    }));
 }
 
 const { article } = Astro.props;
 const { Content } = await render(article);
 ---
-<Base title={article.data.title} description={article.data.description} image="/og-image.png">
+<Base
+  title={article.data.title}
+  description={article.data.description}
+  image="/og-image.png"
+  searchTopics={article.data.tags?.length ? article.data.tags : ['Evidence']}
+  searchContentType="Deep Dive"
+>
 
   <section class="u-hero" style="padding: 4.5rem 1.5rem 3.25rem;">
     <div class="u-hero-bg" aria-hidden="true"></div>
@@ -31,7 +39,7 @@ const { Content } = await render(article);
       {article.data.anchor && (
         <p class="article-anchor">{article.data.anchor}</p>
       )}
-      <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin: 0 0 0.6rem;">{article.data.date} · Written by {article.data.author || 'Nity G, Urology SpR'}</p>
+      <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin: 0 0 0.6rem;">{article.data.date} · Written by {article.data.author || 'Nity G, ST5 Urology Registrar'}</p>
       <p class="article-safety-note">For reference only — not a substitute for clinical judgement.</p>
     </div>
   </section>
@@ -160,12 +168,12 @@ const { Content } = await render(article);
     }
     .prose tr:last-child td { border-bottom: 0; }
     .prose tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
-    .prose a {
+    .prose :global(a) {
       color: var(--teal-500);
       text-decoration: underline;
       text-underline-offset: 3px;
     }
-    .prose a:hover { color: var(--teal-400); }
+    .prose :global(a:hover) { color: var(--teal-400); }
 
     /* ══════════ Article visual panels ══════════ */
 

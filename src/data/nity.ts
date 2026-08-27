@@ -1,3 +1,5 @@
+import { ecosystemProjects } from './ecosystem';
+
 /**
  * Nity G — personal profile page configuration.
  * Single source of truth for /nity (and the /connect alias).
@@ -8,7 +10,7 @@ export const identity = {
   name: 'Nity G',
   role: 'ST5 Urology Registrar',
   strapline: 'Medical Educator · Digital Health Builder',
-  creatorLine: 'Creator of UroRef, ProstateView, CalyxView and UroOps3D',
+  creatorLine: 'Creator of the connected UroRef learning ecosystem',
   email: 'nity@uroref.com',
   website: 'https://uroref.com',
   profileUrl: 'https://uroref.com/nity',
@@ -23,7 +25,7 @@ export const identity = {
 export const meta = {
   title: 'Nity G | Urology, Education and Digital Innovation',
   description:
-    'Meet Nity G, ST5 Urology Registrar and creator of UroRef, ProstateView, CalyxView and UroOps3D.',
+    'Meet Nity G, ST5 Urology Registrar and creator of UroRef, ProstateView, CalyxView, UrOops3D and Cystosight by UroRef.',
   ogImage: '/publicity/nity-g/nity-g-social-1200x630.png',
 };
 
@@ -43,50 +45,19 @@ export interface Project {
   logoAlt?: string;
 }
 
-export const projects: Project[] = [
-  {
-    key: 'uroref',
-    name: 'UroRef',
-    label: 'On-call clinical education',
-    description:
-      'A practical on-call companion for real-world urology. Decision pathways, procedures, calculators and clinical reference tools, available when they are needed most.',
-    url: 'https://uroref.com',
-    cta: 'Explore UroRef',
-    accent: '#00D4C8',
-  },
-  {
-    key: 'prostateview',
-    name: 'ProstateView',
-    label: 'MRI and 3D anatomy',
-    description:
-      'Interactive MRI-to-3D prostate anatomy teaching designed to improve spatial understanding, orientation and interpretation.',
-    url: 'https://prostateview.com',
-    cta: 'Open ProstateView',
-    accent: '#38BDF8',
-    logo: '/prostateview/logo-symbol.png',
-    logoAlt: 'ProstateView logo',
-  },
-  {
-    key: 'calyxview',
-    name: 'CalyxView',
-    label: 'Renal anatomy and stone planning',
-    description:
-      'CT-derived renal collecting-system and stone visualisation for education and ureteroscopy or PCNL planning review.',
-    url: 'https://calyxview.com',
-    cta: 'Open CalyxView',
-    accent: '#F59E0B',
-  },
-  {
-    key: 'uroops3d',
-    name: 'UroOps3D',
-    label: '3D operative education',
-    description:
-      'Interactive 3D endourology and operative teaching scenarios designed to help trainees learn by seeing, exploring and practising.',
-    url: 'https://uroops3d.com',
-    cta: 'Open UroOps3D',
-    accent: '#A78BFA',
-  },
-];
+export const projects: Project[] = ecosystemProjects
+  .filter((project) => project.showOnProfile)
+  .map((project) => ({
+    key: project.id,
+    name: project.name,
+    label: project.category,
+    description: project.description,
+    url: project.href,
+    cta: `Open ${project.name}`,
+    accent: project.accent,
+    logo: project.id === 'prostateview' ? '/prostateview/logo-symbol.png' : undefined,
+    logoAlt: project.id === 'prostateview' ? 'ProstateView logo' : undefined,
+  }));
 
 export const publicity = {
   dir: '/publicity/nity-g',

@@ -1,20 +1,48 @@
 ---
 import '../styles/global.css';
+import Analytics from '../components/Analytics.astro';
+import HubSearch from '../components/HubSearch.astro';
 
 interface Props {
   title: string;
   description?: string;
   image?: string;
+  searchAudiences?: string[];
+  searchTopics?: string[];
+  searchContentType?: string;
 }
 
 const {
   title,
   description = "UroRef — evidence for UK urology trainees. A weekly publication on landmark trials, on-call pathways and FRCS-standard summaries, paired with the UroRef app.",
   image = '/og-image.png',
+  searchAudiences: suppliedSearchAudiences,
+  searchTopics: suppliedSearchTopics,
+  searchContentType: suppliedSearchContentType,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
 const ogImage = new URL(image, Astro.site ?? Astro.url);
+const pathname = Astro.url.pathname;
+const isActive = (href: string) => href === '/' ? pathname === '/' : pathname.startsWith(href);
+const searchContentType = suppliedSearchContentType
+  ?? (pathname.startsWith('/deep-dives/') ? 'Deep Dive'
+    : pathname === '/showcase/' || pathname === '/showcase' ? 'Hub'
+    : pathname.startsWith('/imaging-lab') ? 'Lab'
+    : pathname.startsWith('/app') ? 'App'
+    : pathname.startsWith('/last30days') ? 'Governance'
+    : 'Page');
+const searchAudiences = suppliedSearchAudiences
+  ?? (pathname.startsWith('/showcase') ? ['Trainees', 'Trainers', 'Leaders']
+    : pathname.startsWith('/imaging-lab') ? ['Trainers', 'Leaders']
+    : ['Trainees']);
+const searchTopics = suppliedSearchTopics
+  ?? (pathname.startsWith('/showcase') ? ['Stones', 'Innovation', 'Evidence']
+    : pathname.startsWith('/imaging-lab') ? ['Imaging', 'Innovation']
+    : pathname.startsWith('/last30days') ? ['Measurement', 'Governance']
+    : pathname.startsWith('/deep-dives') ? ['Evidence']
+    : pathname.startsWith('/app') ? ['Clinical reference']
+    : ['Urology']);
 
 const orgJsonLd = {
   '@context': 'https://schema.org',
@@ -47,6 +75,11 @@ const siteJsonLd = {
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
   <meta name="theme-color" content="#0A2540" />
+  <meta data-pagefind-meta="site[content]" content="UroRef" />
+  <meta data-pagefind-meta="contentType[content]" content={searchContentType} />
+  {searchAudiences.map((audience) => <meta data-pagefind-filter="audience[content]" content={audience} />)}
+  {searchTopics.map((topic) => <meta data-pagefind-filter="topic[content]" content={topic} />)}
+  <meta data-pagefind-filter="contentType[content]" content={searchContentType} />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="UroRef" />
@@ -68,13 +101,14 @@ const siteJsonLd = {
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-  <script defer data-domain="uroref.com" src="https://plausible.io/js/script.js"></script>
+  <Analytics />
 </head>
 <body>
 
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
   <!-- Nav -->
   <header class="site-nav">
-    <input type="checkbox" id="site-nav-toggle" class="site-nav-toggle" aria-hidden="true" />
     <div class="site-nav-inner">
       <a href="/" class="u-wordmark" style="font-size: 22px;" aria-label="UroRef home">
         <span class="uro">Uro</span><span class="ref">Ref</span>
@@ -82,21 +116,23 @@ const siteJsonLd = {
       </a>
 
       <nav class="site-nav-links" aria-label="Primary">
-        <a href="/deep-dives">Deep Dives</a>
-        <a href="/about">About</a>
-        <a href="/contact">Contact</a>
-        <a href="/app" class="site-nav-app">Get the app</a>
+        <a href="/showcase" class:list={{ on: isActive('/showcase') }} aria-current={isActive('/showcase') ? 'page' : undefined}>Mega Hub</a>
+        <a href="/deep-dives" class:list={{ on: isActive('/deep-dives') }} aria-current={isActive('/deep-dives') ? 'page' : undefined}>Deep Dives</a>
+        <a href="/about" class:list={{ on: isActive('/about') }} aria-current={isActive('/about') ? 'page' : undefined}>About</a>
+        <a href="/contact" class:list={{ on: isActive('/contact') }} aria-current={isActive('/contact') ? 'page' : undefined}>Contact</a>
+        <a href="/app" class:list={{ 'site-nav-app': true, on: isActive('/app') }} aria-current={isActive('/app') ? 'page' : undefined}>Get the app</a>
       </nav>
 
       <div class="site-nav-actions">
-        <label for="site-nav-toggle" class="site-nav-burger" aria-label="Open menu">
+        <HubSearch />
+        <button type="button" class="site-nav-burger" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav-drawer" data-site-menu-button>
           <span></span><span></span><span></span>
-        </label>
+        </button>
       </div>
     </div>
 
-    <!-- Mobile drawer (CSS-only, driven by #site-nav-toggle) -->
-    <nav class="site-nav-drawer" aria-label="Mobile">
+    <nav id="site-nav-drawer" class="site-nav-drawer" aria-label="Mobile" data-site-menu hidden>
+      <a href="/showcase">Mega Hub</a>
       <a href="/deep-dives">Deep Dives</a>
       <a href="/about">About</a>
       <a href="/contact">Contact</a>
@@ -104,7 +140,7 @@ const siteJsonLd = {
     </nav>
   </header>
 
-  <main>
+  <main id="main-content" tabindex="-1">
     <slot />
   </main>
 
@@ -117,15 +153,15 @@ const siteJsonLd = {
             <span class="uro">Uro</span><span class="ref">Ref</span>
             <span class="dot" style="width: 4px; height: 4px; margin-bottom: 1px;"></span>
           </span>
-          <p>A weekly urology training publication. Written by Nity G, Urology SpR, North West Deanery.</p>
+          <p>A weekly urology training publication. Written by Nity G, ST5 Urology Registrar, North West Deanery.</p>
           <p class="site-footer-email"><a href="mailto:nity@uroref.com">nity@uroref.com</a></p>
         </div>
         <div>
           <h4>Read</h4>
           <ul>
+            <li><a href="/showcase">Mega Hub</a></li>
             <li><a href="/deep-dives">Deep Dives</a></li>
             <li><a href="https://forms.gle/4QTK3MSgMsedJQEw7" target="_blank" rel="noopener">Newsletter</a></li>
-            <li><a href="/last30days">Last 30 days</a></li>
           </ul>
         </div>
         <div>
@@ -133,6 +169,7 @@ const siteJsonLd = {
           <ul>
             <li><a href="/app">iOS app</a></li>
             <li><a href="/app">Android app</a></li>
+            <li><a href="/imaging-lab">Imaging lab</a></li>
             <li><a href="/updates">Changelog</a></li>
           </ul>
         </div>
@@ -152,7 +189,7 @@ const siteJsonLd = {
       </div>
 
       <div class="site-footer-legal">
-        <span>© 2026 UroRef · Nity G, Urology SpR</span>
+        <span>© 2026 UroRef · Nity G, ST5 Urology Registrar</span>
         <div>
           <a href="/privacy">Privacy</a>
           <a href="/terms">Terms</a>
@@ -161,6 +198,31 @@ const siteJsonLd = {
       </div>
     </div>
   </footer>
+
+  <script>
+    const setupSiteMenu = () => {
+      const button = document.querySelector('[data-site-menu-button]');
+      const menu = document.querySelector('[data-site-menu]');
+      if (!(button instanceof HTMLButtonElement) || !(menu instanceof HTMLElement) || button.dataset.ready === 'true') return;
+      button.dataset.ready = 'true';
+      const setOpen = (open) => {
+        button.setAttribute('aria-expanded', String(open));
+        button.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        menu.hidden = !open;
+        button.classList.toggle('is-open', open);
+      };
+      button.addEventListener('click', () => setOpen(button.getAttribute('aria-expanded') !== 'true'));
+      menu.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setOpen(false)));
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && button.getAttribute('aria-expanded') === 'true') {
+          setOpen(false);
+          button.focus();
+        }
+      });
+    };
+    setupSiteMenu();
+    document.addEventListener('astro:page-load', setupSiteMenu);
+  </script>
 
 </body>
 </html>
@@ -197,10 +259,8 @@ const siteJsonLd = {
   .site-nav-links a.site-nav-app { color: var(--teal-500); }
   .site-nav-links a.site-nav-app:hover { color: var(--teal-400); }
 
-  .site-nav-actions { display: flex; align-items: center; gap: 12px; }
+  .site-nav-actions { display: flex; align-items: center; gap: 10px; }
 
-  /* Hamburger toggle (hidden checkbox controls drawer) */
-  .site-nav-toggle { position: absolute; opacity: 0; pointer-events: none; }
   .site-nav-burger {
     display: none;
     width: 40px; height: 40px;
@@ -234,6 +294,7 @@ const siteJsonLd = {
     -webkit-backdrop-filter: blur(12px);
     border-top: 1px solid var(--border);
   }
+  .site-nav-drawer:not([hidden]) { display: flex; }
   .site-nav-drawer a {
     padding: 14px 4px;
     font-size: 16px;
@@ -245,15 +306,13 @@ const siteJsonLd = {
   .site-nav-drawer a.drawer-app { color: var(--teal-500); }
   .site-nav-drawer a.drawer-app:hover { color: var(--teal-400); }
 
-  /* Drawer open state */
-  .site-nav-toggle:checked ~ .site-nav-drawer { display: flex; }
-  .site-nav-toggle:checked ~ .site-nav-inner .site-nav-burger span:nth-child(1) {
+  .site-nav-burger.is-open span:nth-child(1) {
     transform: translateY(7px) rotate(45deg);
   }
-  .site-nav-toggle:checked ~ .site-nav-inner .site-nav-burger span:nth-child(2) {
+  .site-nav-burger.is-open span:nth-child(2) {
     opacity: 0;
   }
-  .site-nav-toggle:checked ~ .site-nav-inner .site-nav-burger span:nth-child(3) {
+  .site-nav-burger.is-open span:nth-child(3) {
     transform: translateY(-7px) rotate(-45deg);
   }
 

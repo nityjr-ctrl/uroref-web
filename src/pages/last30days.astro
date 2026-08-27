@@ -1,709 +1,195 @@
 ---
 import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
+import { CONTENT_VERSION, LINK_CHECKED_LABEL, ecosystemProjects } from '../data/ecosystem';
 
 const allDeepDives = await getCollection('deep-dives');
+const formatter = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
 
-const trending = [
-  {
-    rank: 1,
-    title: 'Acute urinary retention — on-call decision tree',
-    category: 'Emergency',
-    delta: '+312%',
-    views: '4.2k',
-    href: '/app',
-    hot: true,
-  },
-  {
-    rank: 2,
-    title: 'Ureteric colic on call: a registrar\u2019s guide',
-    category: 'Deep Dive',
-    delta: '+187%',
-    views: '3.6k',
-    href: '/deep-dives/ureteric-colic-on-call',
-    hot: true,
-  },
-  {
-    rank: 3,
-    title: 'Tamsulosin — dose, renal adjustment, interactions',
-    category: 'Drugs',
-    delta: '+94%',
-    views: '2.9k',
-    href: '/app',
-    hot: false,
-  },
-  {
-    rank: 4,
-    title: 'TURBT — consent, steps and post-op orders',
-    category: 'Procedures',
-    delta: '+71%',
-    views: '2.4k',
-    href: '/app',
-    hot: false,
-  },
-  {
-    rank: 5,
-    title: 'IDENTIFY — haematuria cancer risk',
-    category: 'Calculators',
-    delta: '+58%',
-    views: '2.1k',
-    href: '/app',
-    hot: false,
-  },
+const datedDives = allDeepDives
+  .map((article) => ({ article, date: new Date(article.data.date) }))
+  .filter(({ date }) => !Number.isNaN(date.valueOf()))
+  .sort((a, b) => b.date.valueOf() - a.date.valueOf());
+
+const latestDive = datedDives[0];
+const currentSignals = [
+  { value: ecosystemProjects.length, label: 'connected public projects', detail: 'Counted from the shared project register' },
+  { value: allDeepDives.length, label: 'published Deep Dives', detail: 'Counted from the current site build' },
+  { value: '2', label: 'installable app platforms', detail: 'iOS and Android' },
+  { value: '0', label: 'invented usage metrics', detail: 'No audience figures shown without a real source' },
 ];
 
-const recentUpdates = [
-  { date: '14 Apr', label: 'v2.3', title: 'Home redesign — context modes, Daily Pearl, On-Call Hub' },
-  { date: '10 Apr', label: 'v2.3 P2', title: 'Search + pinned + recently used across all content' },
-  { date: '04 Apr', label: 'v2.3 P1', title: 'Trust layer + governance view' },
-  { date: '22 Mar', label: 'v2.2', title: 'BAUS QR codes (31 patient leaflets) added' },
-  { date: '15 Mar', label: 'v2.2', title: 'Op notes library (16 templates) + Leibovich Score' },
+const pilotMeasures = [
+  { measure: 'Time to source', question: 'Can a trainee reach the relevant original guidance quickly?', method: 'Observed, timed tasks using pre-agreed clinical learning scenarios.', status: 'Pilot measure' },
+  { measure: 'Task completion', question: 'Can the learner complete the intended education task without facilitator rescue?', method: 'Binary completion plus short structured observation notes.', status: 'Pilot measure' },
+  { measure: 'Source freshness', question: 'Are links live, dates visible and summaries still bounded by the source?', method: 'Scheduled link check and named content-owner review.', status: 'Build evidence' },
+  { measure: 'Accessibility', question: 'Can the core journey be completed with keyboard, zoom and assistive technology?', method: 'axe-core checks followed by manual keyboard, contrast and 200% zoom review.', status: 'Build evidence' },
+  { measure: 'Safety defects', question: 'Does any card overstate evidence, hide a boundary or imply patient-specific advice?', method: 'Claims register, reviewer sign-off and severity-tagged defect log.', status: 'Pilot measure' },
+  { measure: 'Acceptability', question: 'Would trainees, trainers and patients use or recommend this learning format?', method: 'Short post-task survey, reported with sample size and question wording.', status: 'Pilot measure' },
 ];
-
-const stats = [
-  { label: 'Active trainees this month', value: '1,247', delta: '+38%' },
-  { label: 'Protocols viewed', value: '18.6k', delta: '+62%' },
-  { label: 'Deep dives read', value: '4.1k', delta: '+114%' },
-  { label: 'Avg. session', value: '2m 41s', delta: '+9%' },
-];
-
-const recentDeepDives = allDeepDives.slice(0, 3);
 ---
-<Base title="Last 30 days — what's trending" description="What urology trainees are reading on UroRef this month — trending protocols, deep dives, drug doses and emergency guides.">
 
-  <!-- Animated hero -->
-  <section class="t-hero">
-    <div class="t-hero-bg" aria-hidden="true"></div>
-    <div class="t-hero-grid" aria-hidden="true"></div>
-
-    <div class="t-hero-inner">
-      <div class="t-live">
-        <span class="t-live-dot"></span>
-        <span class="t-live-text">Live · updated daily</span>
+<Base
+  title="Impact and freshness — measured without theatre"
+  description="UroRef's transparent measurement framework: current build facts, source freshness and proposed 90-day pilot outcomes."
+>
+  <section class="impact-hero">
+    <div class="impact-glow" aria-hidden="true"></div>
+    <div class="impact-wrap">
+      <p class="u-eyebrow-pill">Transparent impact framework</p>
+      <h1>Measure what matters.<br /><span class="u-gradient-text">Publish what is real.</span></h1>
+      <p class="impact-lede">This page deliberately contains no simulated readership, engagement or outcome figures. It separates facts available from the current build from measures that need a properly governed pilot.</p>
+      <div class="impact-stamps" aria-label="Build status">
+        <span>Content version {CONTENT_VERSION}</span>
+        <span>{LINK_CHECKED_LABEL}</span>
+        <span>Education only</span>
       </div>
-
-      <h1 class="t-title">
-        <span class="t-title-eyebrow">Last 30 days</span>
-        <span class="t-title-main">What urology trainees are reading right now.</span>
-      </h1>
-
-      <p class="t-sub">
-        A live snapshot of the protocols, drug doses and deep dives that other trainees opened this month.
-        Rankings refresh every 24 hours.
-      </p>
-
-      <div class="t-stats">
-        {stats.map(s => (
-          <div class="t-stat">
-            <div class="t-stat-value">{s.value}</div>
-            <div class="t-stat-label">{s.label}</div>
-            <div class="t-stat-delta">{s.delta}<span class="t-stat-arrow">▲</span></div>
-          </div>
-        ))}
+      <div class="impact-actions">
+        <a class="impact-primary" href="/showcase#pilot">See the 90-day proposal <span aria-hidden="true">→</span></a>
+        <a class="impact-secondary" href="/showcase#evidence-desk">Open the evidence desk</a>
       </div>
     </div>
   </section>
 
-  <!-- Trending list -->
-  <section class="t-section">
-    <div class="t-section-head">
-      <div>
-        <div class="t-eyebrow">🔥 Trending now</div>
-        <h2 class="t-h2">Top 5 this month</h2>
+  <section class="impact-section impact-snapshot" aria-labelledby="snapshot-title">
+    <div class="impact-wrap">
+      <div class="impact-heading">
+        <div>
+          <p class="impact-kicker">Current snapshot</p>
+          <h2 id="snapshot-title">Facts generated from this build</h2>
+        </div>
+        <p>Counts update only when the underlying project register or publication collection changes.</p>
       </div>
-      <a href="/app" class="t-link">Open in app →</a>
-    </div>
-
-    <div class="t-trend-list">
-      {trending.map(item => (
-        <a href={item.href} class={`t-trend ${item.hot ? 't-trend-hot' : ''}`}>
-          <div class="t-rank">
-            <span class="t-rank-num">{String(item.rank).padStart(2, '0')}</span>
-            {item.hot && <span class="t-flame">🔥</span>}
-          </div>
-          <div class="t-trend-body">
-            <div class="t-trend-meta">
-              <span class="t-tag">{item.category}</span>
-              <span class="t-views">{item.views} reads</span>
-            </div>
-            <div class="t-trend-title">{item.title}</div>
-          </div>
-          <div class="t-delta">
-            <span class="t-delta-num">{item.delta}</span>
-            <span class="t-delta-label">vs. last 30d</span>
-          </div>
-        </a>
-      ))}
-    </div>
-
-    <p class="t-disclaimer">
-      Demo metrics shown — real ranking goes live the day analytics ships (expected next release).
-    </p>
-  </section>
-
-  <!-- Two-column: updates + new deep dives -->
-  <section class="t-grid-section">
-    <div class="t-col">
-      <div class="t-eyebrow">📡 Shipped this month</div>
-      <h2 class="t-h2">Recent updates</h2>
-      <div class="t-updates">
-        {recentUpdates.map(u => (
-          <div class="t-update">
-            <div class="t-update-date">{u.date}</div>
-            <div class="t-update-body">
-              <span class="t-tag-mono">{u.label}</span>
-              <p class="t-update-title">{u.title}</p>
-            </div>
-          </div>
+      <div class="signal-grid">
+        {currentSignals.map((signal) => (
+          <article class="signal-card">
+            <strong>{signal.value}</strong>
+            <h3>{signal.label}</h3>
+            <p>{signal.detail}</p>
+          </article>
         ))}
       </div>
-      <a href="/updates" class="t-link">Full changelog →</a>
+      {latestDive && (
+        <p class="latest-note">
+          Latest dated publication: <a href={`/deep-dives/${latestDive.article.id}`}>{latestDive.article.data.title}</a>
+          <span> · {formatter.format(latestDive.date)}</span>
+        </p>
+      )}
     </div>
+  </section>
 
-    <div class="t-col">
-      <div class="t-eyebrow">📖 Fresh deep dives</div>
-      <h2 class="t-h2">Newly published</h2>
-      <div class="t-dives">
-        {recentDeepDives.length === 0 ? (
-          <p style="color: rgba(255,255,255,0.5);">No new deep dives this month.</p>
-        ) : (
-          recentDeepDives.map(article => (
-            <a href={`/deep-dives/${article.id}`} class="t-dive">
-              <div class="t-dive-tags">
-                {article.data.tags && article.data.tags.slice(0, 2).map((tag: string) => (
-                  <span class="t-tag-amber">{tag}</span>
-                ))}
+  <section class="impact-section impact-dark" aria-labelledby="measurement-title">
+    <div class="impact-wrap">
+      <div class="impact-heading">
+        <div>
+          <p class="impact-kicker">Proposed pilot scorecard</p>
+          <h2 id="measurement-title">Six outcomes, agreed before collection</h2>
+        </div>
+        <p>No proxy will be presented as clinical benefit, competence or improved patient outcome.</p>
+      </div>
+      <div class="measure-list">
+        {pilotMeasures.map((item, index) => (
+          <article class="measure-row">
+            <div class="measure-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</div>
+            <div class="measure-copy">
+              <div class="measure-title-line">
+                <h3>{item.measure}</h3>
+                <span>{item.status}</span>
               </div>
-              <h3 class="t-dive-title">{article.data.title}</h3>
-              <p class="t-dive-desc">{article.data.description}</p>
-              <span class="t-dive-cta">Read →</span>
-            </a>
-          ))
-        )}
+              <p class="measure-question">{item.question}</p>
+              <p class="measure-method"><strong>Method:</strong> {item.method}</p>
+            </div>
+          </article>
+        ))}
       </div>
-      <a href="/deep-dives" class="t-link">All deep dives →</a>
     </div>
   </section>
 
-  <!-- Newsletter capture -->
-  <section class="t-cta">
-    <div class="t-cta-card">
-      <div class="t-cta-glow" aria-hidden="true"></div>
-      <div class="t-cta-inner">
-        <div class="t-eyebrow t-eyebrow-amber">Stay current</div>
-        <h2 class="t-cta-title">Trending list, in your inbox.</h2>
-        <p class="t-cta-sub">Once a month — what's new in UroRef, what trainees are reading, and the on-call topics worth re-reading. No spam, no marketing.</p>
-        <a href="https://forms.gle/4QTK3MSgMsedJQEw7" target="_blank" rel="noopener" class="t-cta-btn">Get the monthly digest →</a>
-        <p class="t-cta-note">Until our list is live we'll collect interest via the feedback form.</p>
+  <section class="impact-section impact-principles" aria-labelledby="principles-title">
+    <div class="impact-wrap principles-grid">
+      <div>
+        <p class="impact-kicker">Reporting contract</p>
+        <h2 id="principles-title">Every number keeps its context.</h2>
       </div>
+      <div class="principle-cards">
+        <article><span aria-hidden="true">01</span><h3>Show the denominator</h3><p>Every result carries its sample size, audience, dates and collection method.</p></article>
+        <article><span aria-hidden="true">02</span><h3>Separate learning from outcomes</h3><p>Usability and confidence are not evidence of competence, safety or patient benefit.</p></article>
+        <article><span aria-hidden="true">03</span><h3>Respect privacy</h3><p>Aggregate, privacy-first events only; no patient-identifiable data and no captured search text.</p></article>
+        <article><span aria-hidden="true">04</span><h3>Report defects too</h3><p>Broken links, stale summaries, accessibility issues and unsafe claims belong in the result.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="impact-close">
+    <div class="impact-wrap impact-close-inner">
+      <div>
+        <p class="impact-kicker">The honest baseline</p>
+        <h2>There is no “live impact” claim today.</h2>
+        <p>Umami is ready to be configured for privacy-first aggregate events after governance and consent choices are agreed. Until then, the site reports build facts—not pretend behaviour.</p>
+      </div>
+      <a href="/contact">Discuss measurement governance <span aria-hidden="true">→</span></a>
     </div>
   </section>
 
   <style>
-    /* ---- Hero ---- */
-    .t-hero {
-      position: relative;
-      overflow: hidden;
-      background-color: #050F1C;
-      padding: 6rem 1.5rem 5rem;
-      isolation: isolate;
-    }
-    .t-hero-bg {
-      position: absolute;
-      inset: -20%;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(0,212,200,0.35), transparent 45%),
-        radial-gradient(circle at 80% 30%, rgba(56,189,248,0.25), transparent 45%),
-        radial-gradient(circle at 50% 90%, rgba(0,212,200,0.18), transparent 50%);
-      filter: blur(40px);
-      animation: t-float 18s ease-in-out infinite alternate;
-      z-index: -2;
-    }
-    .t-hero-grid {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-      background-size: 48px 48px;
-      mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
-      z-index: -1;
-    }
-    @keyframes t-float {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(2%, -3%) scale(1.05); }
-    }
-    .t-hero-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      position: relative;
-    }
-
-    .t-live {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.4rem 0.85rem;
-      border-radius: 100px;
-      background: rgba(34,197,94,0.12);
-      border: 1px solid rgba(34,197,94,0.35);
-      margin-bottom: 1.75rem;
-    }
-    .t-live-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #22c55e;
-      box-shadow: 0 0 0 0 rgba(34,197,94,0.7);
-      animation: t-pulse 2s infinite;
-    }
-    .t-live-text {
-      color: #4ade80;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-    @keyframes t-pulse {
-      0% { box-shadow: 0 0 0 0 rgba(34,197,94,0.7); }
-      70% { box-shadow: 0 0 0 12px rgba(34,197,94,0); }
-      100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
-    }
-
-    .t-title {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      margin: 0 0 1.25rem;
-      max-width: 850px;
-    }
-    .t-title-eyebrow {
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: #00D4C8;
-    }
-    .t-title-main {
-      font-size: clamp(2.25rem, 5.5vw, 4rem);
-      font-weight: 800;
-      letter-spacing: -0.035em;
-      line-height: 1.05;
-      background: linear-gradient(135deg, #ffffff 0%, #ffffff 40%, #33DDD3 80%, #00D4C8 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    .t-sub {
-      color: rgba(255,255,255,0.7);
-      font-size: 1.1rem;
-      line-height: 1.65;
-      max-width: 620px;
-      margin: 0 0 3rem;
-    }
-
-    .t-stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-    }
-    .t-stat {
-      position: relative;
-      padding: 1.5rem 1.25rem;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.1);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      overflow: hidden;
-      transition: transform 0.2s, border-color 0.2s;
-    }
-    .t-stat:hover {
-      transform: translateY(-2px);
-      border-color: rgba(0,212,200,0.4);
-    }
-    .t-stat::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(0,212,200,0.6), transparent);
-    }
-    .t-stat-value {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 1.85rem;
-      font-weight: 700;
-      color: white;
-      letter-spacing: -0.02em;
-      line-height: 1;
-      margin-bottom: 0.4rem;
-    }
-    .t-stat-label {
-      color: rgba(255,255,255,0.55);
-      font-size: 0.78rem;
-      margin-bottom: 0.6rem;
-    }
-    .t-stat-delta {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      color: #4ade80;
-      font-size: 0.78rem;
-      font-weight: 700;
-    }
-    .t-stat-arrow {
-      font-size: 0.6rem;
-    }
-
-    /* ---- Sections ---- */
-    .t-section {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 5rem 1.5rem 1rem;
-    }
-    .t-section-head {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      margin-bottom: 2rem;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .t-eyebrow {
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: #00D4C8;
-      margin-bottom: 0.5rem;
-    }
-    .t-eyebrow-amber {
-      color: #33DDD3;
-    }
-    .t-h2 {
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      font-weight: 700;
-      color: var(--text-primary);
-      margin: 0;
-      letter-spacing: -0.025em;
-    }
-    .t-link {
-      color: #00D4C8;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.9rem;
-      transition: opacity 0.15s;
-    }
-    .t-link:hover { opacity: 0.7; }
-
-    /* ---- Trending list ---- */
-    .t-trend-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-    .t-trend {
-      display: grid;
-      grid-template-columns: 70px 1fr auto;
-      gap: 1.25rem;
-      align-items: center;
-      padding: 1.25rem 1.5rem;
-      background: var(--navy-700);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      text-decoration: none;
-      transition: transform 0.18s, border-color 0.18s, box-shadow 0.18s;
-      position: relative;
-      overflow: hidden;
-    }
-    .t-trend::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 0; bottom: 0;
-      width: 3px;
-      background: linear-gradient(180deg, #00D4C8, transparent);
-      opacity: 0;
-      transition: opacity 0.18s;
-    }
-    .t-trend:hover {
-      transform: translateX(4px);
-      border-color: #00D4C8;
-      box-shadow: 0 8px 24px -12px rgba(0,212,200,0.3);
-    }
-    .t-trend:hover::before { opacity: 1; }
-    .t-trend-hot {
-      background:
-        radial-gradient(circle at 0% 0%, rgba(0,212,200,0.1) 0%, transparent 50%),
-        var(--navy-700);
-      border-color: rgba(0,212,200,0.25);
-    }
-    .t-rank {
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
-    }
-    .t-rank-num {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--text-muted);
-      letter-spacing: -0.04em;
-    }
-    .t-trend-hot .t-rank-num {
-      background: linear-gradient(135deg, #00D4C8, #00A89E);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    .t-flame {
-      font-size: 1rem;
-      animation: t-flicker 1.6s ease-in-out infinite alternate;
-    }
-    @keyframes t-flicker {
-      0% { transform: scale(1) rotate(-3deg); }
-      100% { transform: scale(1.1) rotate(3deg); }
-    }
-    .t-trend-body {
-      min-width: 0;
-    }
-    .t-trend-meta {
-      display: flex;
-      gap: 0.75rem;
-      align-items: center;
-      margin-bottom: 0.35rem;
-    }
-    .t-tag {
-      background: var(--navy-800);
-      color: var(--text-secondary);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
-      font-weight: 500;
-      padding: 0.18rem 0.55rem;
-      border-radius: 4px;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      border: 1px solid var(--border);
-    }
-    .t-views {
-      color: var(--text-muted);
-      font-size: 0.78rem;
-      font-family: 'JetBrains Mono', monospace;
-    }
-    .t-trend-title {
-      color: var(--text-primary);
-      font-size: 1rem;
-      font-weight: 600;
-      line-height: 1.4;
-    }
-    .t-delta {
-      text-align: right;
-      flex-shrink: 0;
-    }
-    .t-delta-num {
-      display: block;
-      font-family: 'JetBrains Mono', monospace;
-      color: #4ade80;
-      font-size: 1.05rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-    .t-delta-label {
-      color: var(--text-muted);
-      font-size: 0.7rem;
-    }
-    .t-disclaimer {
-      color: var(--text-muted);
-      font-size: 0.78rem;
-      margin: 1.5rem 0 0;
-      font-style: italic;
-    }
-
-    /* ---- Two-column section ---- */
-    .t-grid-section {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 4rem 1.5rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-    }
-    @media (max-width: 768px) {
-      .t-grid-section { grid-template-columns: 1fr; gap: 3rem; }
-      .t-trend { grid-template-columns: 50px 1fr; }
-      .t-delta { grid-column: 2; text-align: left; margin-top: 0.4rem; }
-    }
-    .t-col h2 {
-      margin-bottom: 1.5rem;
-    }
-
-    .t-updates {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
-    }
-    .t-update {
-      display: flex;
-      gap: 1rem;
-      padding: 0.875rem 1rem;
-      background: var(--navy-700);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      transition: border-color 0.15s;
-    }
-    .t-update:hover { border-color: var(--border-strong); }
-    .t-update-date {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      width: 50px;
-      flex-shrink: 0;
-      padding-top: 0.15rem;
-    }
-    .t-update-body {
-      flex: 1;
-    }
-    .t-tag-mono {
-      display: inline-block;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
-      color: var(--text-primary);
-      background: var(--navy-800);
-      border: 1px solid var(--border);
-      padding: 0.1rem 0.45rem;
-      border-radius: 4px;
-      margin-bottom: 0.3rem;
-    }
-    .t-update-title {
-      font-family: var(--font-serif);
-      color: var(--text-secondary);
-      font-size: 0.92rem;
-      margin: 0;
-      line-height: 1.5;
-    }
-
-    .t-dives {
-      display: flex;
-      flex-direction: column;
-      gap: 0.875rem;
-      margin-bottom: 1.5rem;
-    }
-    .t-dive {
-      display: block;
-      padding: 1.5rem;
-      background: var(--navy-700);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      text-decoration: none;
-      transition: transform 0.18s, border-color 0.18s, box-shadow 0.18s;
-    }
-    .t-dive:hover {
-      transform: translateY(-2px);
-      border-color: var(--teal-500);
-      box-shadow: 0 12px 28px -16px rgba(0,212,200,0.25);
-    }
-    .t-dive-tags {
-      display: flex;
-      gap: 0.4rem;
-      margin-bottom: 0.6rem;
-      flex-wrap: wrap;
-    }
-    .t-tag-amber {
-      background: rgba(0,212,200,0.12);
-      color: var(--teal-500);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
-      font-weight: 500;
-      padding: 0.18rem 0.55rem;
-      border-radius: 4px;
-      border: 1px solid rgba(0,212,200,0.25);
-    }
-    .t-dive-title {
-      color: var(--text-primary);
-      font-size: 1.05rem;
-      font-weight: 600;
-      margin: 0 0 0.4rem;
-      letter-spacing: -0.015em;
-      line-height: 1.35;
-    }
-    .t-dive-desc {
-      font-family: var(--font-serif);
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-      margin: 0 0 0.75rem;
-      line-height: 1.55;
-    }
-    .t-dive-cta {
-      color: var(--teal-500);
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
-
-    /* ---- Newsletter CTA ---- */
-    .t-cta {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 3rem 1.5rem 5rem;
-    }
-    .t-cta-card {
-      position: relative;
-      border-radius: 24px;
-      padding: 3.5rem 2rem;
-      background: linear-gradient(135deg, #050F1C 0%, #0A2540 50%, #163A62 100%);
-      overflow: hidden;
-      isolation: isolate;
-    }
-    .t-cta-glow {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 25% 30%, rgba(0,212,200,0.45), transparent 45%),
-        radial-gradient(circle at 75% 80%, rgba(56,189,248,0.25), transparent 50%);
-      filter: blur(50px);
-      z-index: -1;
-      animation: t-float 12s ease-in-out infinite alternate;
-    }
-    .t-cta-inner {
-      max-width: 580px;
-      margin: 0 auto;
-      text-align: center;
-      position: relative;
-    }
-    .t-cta-title {
-      font-size: clamp(1.75rem, 4vw, 2.5rem);
-      font-weight: 800;
-      color: white;
-      margin: 0.5rem 0 1rem;
-      letter-spacing: -0.025em;
-      line-height: 1.15;
-    }
-    .t-cta-sub {
-      color: rgba(255,255,255,0.7);
-      font-size: 1rem;
-      line-height: 1.65;
-      margin: 0 0 2rem;
-    }
-    .t-cta-btn {
-      display: inline-block;
-      padding: 0.95rem 2.25rem;
-      background: linear-gradient(135deg, #00D4C8 0%, #00A89E 100%);
-      color: #050F1C;
-      font-weight: 800;
-      font-size: 1rem;
-      border-radius: 12px;
-      text-decoration: none;
-      box-shadow: 0 12px 30px -8px rgba(0,212,200,0.5);
-      transition: transform 0.15s, box-shadow 0.15s;
-    }
-    .t-cta-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 18px 40px -8px rgba(0,212,200,0.6);
-    }
-    .t-cta-note {
-      color: rgba(255,255,255,0.4);
-      font-size: 0.78rem;
-      margin: 1.25rem 0 0;
+    .impact-wrap { width: min(1120px, calc(100% - 2.5rem)); margin-inline: auto; }
+    .impact-hero { position: relative; overflow: hidden; padding: clamp(6rem, 11vw, 9rem) 0 5.5rem; color: #f4fbff; background: #03111f; isolation: isolate; }
+    .impact-glow { position: absolute; inset: -30% 35% 20% -15%; z-index: -1; background: radial-gradient(circle, rgba(24, 211, 190, .25), transparent 65%); filter: blur(25px); }
+    .impact-hero h1 { max-width: 850px; margin: 1.2rem 0; font-size: clamp(2.7rem, 7vw, 5.8rem); line-height: .95; letter-spacing: -.065em; }
+    .impact-lede { max-width: 720px; color: rgba(232, 245, 251, .76); font-size: clamp(1.05rem, 2vw, 1.3rem); line-height: 1.7; }
+    .impact-stamps { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 2rem; }
+    .impact-stamps span { padding: .45rem .7rem; border: 1px solid rgba(137, 237, 224, .3); border-radius: 999px; color: #b8fff2; font: 700 .72rem/1.2 ui-monospace, monospace; letter-spacing: .06em; text-transform: uppercase; }
+    .impact-actions { display: flex; flex-wrap: wrap; gap: .85rem; margin-top: 2.1rem; }
+    .impact-actions a, .impact-close a { display: inline-flex; align-items: center; justify-content: center; gap: .65rem; min-height: 48px; padding: .8rem 1.1rem; border-radius: 12px; font-weight: 800; text-decoration: none; }
+    .impact-primary { color: #021719; background: #5ff2df; }
+    .impact-secondary { color: #eafcff; border: 1px solid rgba(255,255,255,.24); }
+    .impact-section { padding: clamp(4.5rem, 8vw, 7rem) 0; }
+    .impact-snapshot { background: #f3f8fa; color: #092134; }
+    .impact-heading { display: flex; justify-content: space-between; align-items: end; gap: 2rem; margin-bottom: 2.3rem; }
+    .impact-heading > p { max-width: 420px; margin: 0; color: #536b7a; line-height: 1.65; }
+    .impact-kicker { margin: 0 0 .65rem; color: #006b65; font: 800 .75rem/1.2 ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; }
+    .impact-heading h2, .principles-grid h2, .impact-close h2 { margin: 0; font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1.02; letter-spacing: -.045em; }
+    .signal-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .signal-card { padding: 1.55rem; border: 1px solid #d4e2e6; border-radius: 18px; background: rgba(255,255,255,.8); box-shadow: 0 14px 35px rgba(4, 31, 48, .06); }
+    .signal-card strong { display: block; color: #006f69; font-size: clamp(2.4rem, 5vw, 4.2rem); line-height: 1; letter-spacing: -.06em; }
+    .signal-card h3 { margin: .8rem 0 .35rem; font-size: 1rem; }
+    .signal-card p, .latest-note { margin: 0; color: #5a707e; font-size: .88rem; line-height: 1.55; }
+    .latest-note { margin-top: 1.25rem; }
+    .latest-note a { color: #006f69; font-weight: 800; }
+    .impact-dark { color: #edfaff; background: #071827; }
+    .impact-dark .impact-kicker { color: #66ebdc; }
+    .impact-dark .impact-heading > p { color: rgba(226, 241, 247, .65); }
+    .measure-list { border-top: 1px solid rgba(255,255,255,.14); }
+    .measure-row { display: grid; grid-template-columns: 90px 1fr; gap: 1rem; padding: 1.7rem 0; border-bottom: 1px solid rgba(255,255,255,.14); }
+    .measure-number { color: #61e9d9; font: 700 1rem/1 ui-monospace, monospace; }
+    .measure-title-line { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .75rem; }
+    .measure-title-line h3 { margin: 0; font-size: 1.25rem; }
+    .measure-title-line span { color: #9cf8eb; font: 700 .68rem/1.2 ui-monospace, monospace; letter-spacing: .08em; text-transform: uppercase; }
+    .measure-copy p { max-width: 780px; }
+    .measure-question { margin: .55rem 0 .35rem; color: rgba(240, 250, 253, .88); }
+    .measure-method { margin: 0; color: rgba(217, 235, 242, .6); font-size: .9rem; }
+    .impact-principles { background: #fff; color: #0b2234; }
+    .principles-grid { display: grid; grid-template-columns: .75fr 1.25fr; gap: clamp(2rem, 7vw, 6rem); }
+    .principle-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .principle-cards article { padding: 1.35rem; border-radius: 16px; background: #edf6f7; }
+    .principle-cards span { color: #006b65; font: 800 .72rem/1 ui-monospace, monospace; }
+    .principle-cards h3 { margin: .7rem 0 .4rem; font-size: 1.04rem; }
+    .principle-cards p { margin: 0; color: #576d79; font-size: .9rem; line-height: 1.6; }
+    .impact-close { padding: 4.5rem 0; color: #ecfbff; background: linear-gradient(135deg, #073b42, #092035); }
+    .impact-close-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+    .impact-close-inner > div { max-width: 720px; }
+    .impact-close p:last-child { color: rgba(231, 247, 251, .72); line-height: 1.65; }
+    .impact-close a { flex: 0 0 auto; color: #032328; background: #67efdf; }
+    @media (max-width: 850px) {
+      .signal-grid { grid-template-columns: 1fr 1fr; }
+      .principles-grid { grid-template-columns: 1fr; }
+      .impact-close-inner { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 600px) {
+      .impact-wrap { width: min(100% - 1.5rem, 1120px); }
+      .impact-heading { align-items: flex-start; flex-direction: column; }
+      .signal-grid, .principle-cards { grid-template-columns: 1fr; }
+      .measure-row { grid-template-columns: 42px 1fr; }
     }
   </style>
-
 </Base>

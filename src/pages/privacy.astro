@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-const lastUpdated = 'April 2026';
+const lastUpdated = '27 August 2026';
 ---
 <Base title="Privacy" description="UroRef privacy policy — what data we collect, why, and your rights.">
 
@@ -18,7 +18,7 @@ const lastUpdated = 'April 2026';
     <article class="legal">
 
       <p>
-        UroRef is built by Nity G (Urology SpR, North West Deanery). This page explains what
+        UroRef is built by Nity G (ST5 Urology Registrar, North West Deanery). This page explains what
         information the UroRef website (uroref.com) and the UroRef mobile app collect, why,
         and what your rights are. We aim for the absolute minimum.
       </p>
@@ -31,17 +31,36 @@ const lastUpdated = 'April 2026';
 
       <h2>What this website collects</h2>
       <ul>
-        <li><strong>No account, no login.</strong> The marketing site does not require an account.</li>
+        <li><strong>No account, no login.</strong> The public website does not require an account.</li>
         <li>
-          <strong>Anonymised analytics</strong> (privacy-respecting, cookie-free — e.g. Plausible /
-          Cloudflare Web Analytics). We see aggregate page views, country, referrer, and device
-          type. We do <em>not</em> track you across sites and cannot identify you.
+          <strong>Private site search.</strong> Pagefind processes a downloaded static index in your
+          browser. Search text is not added to result URLs or sent to an analytics service.
+        </li>
+        <li>
+          <strong>Analytics are disabled by default.</strong> The site can be connected to an approved
+          Umami installation for limited, aggregate measurement. It will not be enabled until its
+          hosting, retention, consent position and event list are agreed. Search text, free text,
+          patient details and session replay must not be collected.
         </li>
         <li>
           <strong>Feedback form</strong> — if you submit our Google feedback form, the data goes to
           Google Forms under their privacy policy. We use it only to improve UroRef.
         </li>
       </ul>
+
+      <h2>Ask Ariadne and connected features</h2>
+      <p>
+        The Ask Ariadne panel in the public showcase is fixed demonstration copy: it does not send
+        the example question to a model or external service. A future live feature would require an
+        internet connection and would transmit the text entered to an approved service. It remains
+        gated until the provider, purpose, controller roles, data location, retention and deletion
+        arrangements are disclosed where the feature is used and the safety evaluation is complete.
+      </p>
+      <p>
+        Do not enter patient-identifiable or confidential information into Ariadne, site search,
+        feedback forms or any demonstration. Ariadne is an educational navigation aid, not a
+        patient-specific decision tool.
+      </p>
 
       <h2>What the mobile app collects</h2>
       <ul>
@@ -50,33 +69,38 @@ const lastUpdated = 'April 2026';
         </li>
         <li>
           <strong>Crash + diagnostic data</strong> through the platform (Apple / Google) so we can
-          fix issues. This is anonymised and aggregated by the platform.
+          fix issues. Collection and retention depend on your platform settings and the relevant
+          Apple or Google terms.
         </li>
         <li>
-          <strong>No clinical data leaves your device.</strong> Anything you pin or favourite is
-          stored locally on your phone.
+          <strong>Pins and favourites stay local.</strong> These preferences are stored on your phone.
+          Connected features and external source links require internet access and send the request
+          to the relevant service; never enter patient-identifiable information.
         </li>
       </ul>
 
       <h2>Cookies</h2>
       <p>
-        The website does not set tracking cookies. If we add a privacy-respecting analytics
-        provider it will be cookieless. Embedded resources (Google Fonts) may set technical
-        cookies — these are not used for tracking.
+        UroRef does not set tracking cookies by default. If approved Umami measurement is enabled,
+        it will use its cookieless mode. External services you choose to open may apply their own
+        policies.
       </p>
 
       <h2>Third-party services</h2>
       <ul>
-        <li>Hosting — static site host (e.g. Cloudflare Pages / Netlify).</li>
-        <li>Google Fonts — to load Inter and JetBrains Mono.</li>
+        <li>Hosting — the static site host receives ordinary web-request information needed to serve the site.</li>
+        <li>Google Fonts — the browser may request Geist, Source Serif 4 and JetBrains Mono from Google; system fonts provide an offline fallback.</li>
         <li>Google Forms — for feedback collection.</li>
+        <li>Apple and Google — for app distribution and any platform diagnostics you permit.</li>
+        <li>Umami — optional aggregate site measurement, currently disabled unless explicitly configured.</li>
+        <li>A live Ariadne provider — only after the in-product disclosure and governance gate described above.</li>
       </ul>
 
       <h2>Your rights</h2>
       <p>
         Under UK GDPR you have rights of access, rectification, erasure, restriction, portability
         and objection. To exercise any of these, contact us via the feedback form. We respond
-        within 30 days.
+        within one month, subject to the circumstances allowed by law.
       </p>
 
       <h2>Changes</h2>
@@ -125,7 +149,7 @@ const lastUpdated = 'April 2026';
       border: 1px solid var(--border);
       border-radius: var(--r-md);
       font-size: 0.85rem;
-      color: var(--text-muted);
+      color: var(--text-secondary);
       font-family: var(--font-mono);
     }
   </style>

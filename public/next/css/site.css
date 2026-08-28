@@ -641,22 +641,10 @@ html[data-mode="easy"] .appui-search{background:rgba(30,40,51,.04)}
 .pill:hover{border-color:var(--sa);color:var(--text-primary)}
 .scene-visit{display:inline-flex;align-items:center;gap:8px;margin-top:24px;font-family:var(--font-label);font-size:13px;letter-spacing:.03em;color:var(--sa)}
 .scene-visit:hover{color:var(--text-primary)}
+.scene-try{margin-top:26px}
 
 .scene-title{display:flex;align-items:center;gap:14px;margin:0 0 10px}
-.scene-logo{width:44px;height:44px;border-radius:10px;border:1px solid var(--border);flex:0 0 auto}
-
-/* supplied product lockups: light-ground art shown on a deliberate white plate
-   so the blue wordmarks never fight the navy page */
-.lockup-title{display:flex;align-items:center;gap:12px;margin:0;flex-wrap:wrap}
-.scene-lockup{
-  display:block;width:auto;height:auto;max-height:58px;max-width:100%;
-  background:#FFFFFF;border-radius:12px;padding:8px 14px;
-  border:1px solid var(--border-strong);
-}
-.lockup-title a{display:block;max-width:100%}
-.lockup-suffix{font-size:15px;font-weight:600;color:var(--text-muted)}
-@media(max-width:700px){.scene-lockup{max-height:46px}}
-.scene-head .scene-title h3{margin:0}
+.scene-logo{width:44px;height:44px;border-radius:10px;border:1px solid var(--border);flex:0 0 auto}.scene-head .scene-title h3{margin:0}
 .scene-head h3 a{color:inherit;text-decoration:none;transition:color .2s}
 .scene-head h3 a:hover{color:var(--sa)}
 html[data-mode="easy"] .scene-head h3 a{text-decoration:underline;text-underline-offset:.14em}

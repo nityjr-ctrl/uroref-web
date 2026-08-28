@@ -5,9 +5,16 @@ dist/
 
 # dependencies
 node_modules/
+.npm-cache/
+
+# local quality outputs
 .promptfoo-local/
 promptfoo-results.json
 test-results/
+
+# local browser review profile
+.chrome-review/
+review-*.png
 
 # logs
 debug.log

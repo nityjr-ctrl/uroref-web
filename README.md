@@ -69,7 +69,7 @@ For a Claude Design → Claude Code homepage redesign, start with [`docs/CLAUDE-
 
 The production site is published to GitHub Pages at `https://uroref.com` by `.github/workflows/deploy.yml`. Pull requests run the quality workflow; a merge or direct push to `master` runs the same gates, deploys `./dist/`, and verifies that the public homepage exposes the deployed commit SHA in its `uroref-build-ref` meta tag. A feature-branch push alone does not update the public site.
 
-The output remains fully static and portable. The canonical production URL is set in `astro.config.mjs`, while `public/CNAME` keeps the custom GitHub Pages domain.
+The output remains fully static and portable. The canonical production URL is set in `astro.config.mjs`. `public/CNAME` records the intended custom domain for portability; the active `uroref.com` domain and HTTPS setting are managed in GitHub Pages settings.
 
 Umami remains disabled unless both variables in `.env.example` are provided. Do not add search text, patient data or free text to analytics events.
 

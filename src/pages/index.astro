@@ -96,7 +96,7 @@ function catColor(slot: string): string {
           </a>
           <a href="/showcase" class="home-showcase-btn">Explore the Mega Hub →</a>
         </div>
-        <p class="home-hero-trust">Educational reference · original sources and use boundaries stay visible</p>
+        <p class="home-hero-trust">700+ combined App Store + Google Play downloads as of August 2026 · Educational reference with original sources and use boundaries visible</p>
       </div>
 
     </div>
@@ -130,7 +130,7 @@ function catColor(slot: string): string {
     <div class="app-band-inner">
       <div>
         <h2>The same content, in your <em>pocket</em>.</h2>
-        <p>UroRef the app is the on-call companion to this publication: procedures, emergency decision trees, drug doses, calculators, clinic frameworks, Ask Ariadne and links to BAUS patient-information leaflets. Works offline, because wards do not.</p>
+        <p>Downloaded 700+ times across the App Store and Google Play as of August 2026. UroRef the app is the on-call companion to this publication: procedures, emergency decision trees, drug doses, calculators, clinic frameworks and BAUS leaflets. The core reference library works offline. Ask Ariadne and some site-aware or externally linked resources require an internet connection. Do not enter patient-identifiable information into connected features.</p>
         <div class="app-badges">
           <a href={APP_STORE_URL} target="_blank" rel="noopener" class="badge" aria-label="Download UroRef on the App Store">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.07-.48-2.05-.52-3.19 0-1.43.7-2.16.5-3.03-.4C2.08 14.14 2.87 4.9 9.05 4.58c1.43.07 2.44.78 3.29.84 1.29-.25 2.53-1 3.9-.92 1.64.13 2.88.82 3.68 2.06-3.39 2.03-2.59 6.49.54 7.74-.63 1.63-1.44 3.24-2.41 5.98zM12.03 4.5c-.17-2.45 1.8-4.47 4.07-4.67.31 2.83-2.55 4.98-4.07 4.67z"/></svg>
@@ -169,8 +169,12 @@ function catColor(slot: string): string {
     <div class="stats-inner">
       <div class="stats-grid">
         <div class="stat">
-          <div class="stat-num">5</div>
-          <div class="stat-lbl">Connected projects</div>
+          <div class="stat-num">700+</div>
+          <div class="stat-lbl">Combined downloads*</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">3.1→4.4</div>
+          <div class="stat-lbl">Mean self-rated confidence / 5†</div>
         </div>
         <div class="stat">
           <div class="stat-num">{allDives.length}</div>
@@ -181,7 +185,7 @@ function catColor(slot: string): string {
           <div class="stat-lbl">App platforms</div>
         </div>
       </div>
-      <p class="stats-note">Directly countable product and content figures · no demonstration analytics</p>
+      <p class="stats-note">* Combined App Store and Google Play download total as of August 2026. Downloads do not represent verified unique users, active users or trainee status.<br />† Early feedback from a three-site quality-improvement evaluation. This preliminary, self-reported measure did not assess clinical competence, patient safety or patient outcomes. Other figures are current catalogue and platform counts; no demonstration analytics are presented as real usage.</p>
     </div>
   </section>
 
@@ -792,8 +796,8 @@ function catColor(slot: string): string {
   }
   .stats-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 32px;
     margin-bottom: 28px;
   }
   .stats-grid .stat {
@@ -823,6 +827,9 @@ function catColor(slot: string): string {
     font-style: italic;
     color: var(--text-muted);
     margin: 0;
+  }
+  @media (max-width: 960px) {
+    .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 720px) {
     .stats-grid { grid-template-columns: 1fr; gap: 32px; }

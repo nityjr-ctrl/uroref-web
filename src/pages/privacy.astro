@@ -1,8 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
-const lastUpdated = '27 August 2026';
+const lastUpdated = '28 August 2026';
 ---
-<Base title="Privacy" description="UroRef privacy policy — what data we collect, why, and your rights.">
+<Base title="Privacy" description="UroRef privacy notice — how the website, offline reference library, Ask Ariadne and site-aware tools handle data.">
 
   <section class="u-hero" style="padding: 5rem 1.5rem 4rem;">
     <div class="u-hero-bg" aria-hidden="true"></div>
@@ -18,15 +18,17 @@ const lastUpdated = '27 August 2026';
     <article class="legal">
 
       <p>
-        UroRef is built by Nity G (ST5 Urology Registrar, North West Deanery). This page explains what
-        information the UroRef website (uroref.com) and the UroRef mobile app collect, why,
-        and what your rights are. We aim for the absolute minimum.
+        UroRef is an educational urology reference app built by Nity G (Urology SpR, North
+        West Deanery). Its core reference content is bundled with the app and can be used
+        offline. Optional online features include Ask Ariadne, live hospital-profile updates,
+        hospital requests, externally hosted QR images and links to third-party websites. This
+        notice explains what those features process and why.
       </p>
 
       <h2>Who we are</h2>
       <p>
-        Data controller: Nity G, trading as UroRef. Contact via the
-        <a href="https://forms.gle/4QTK3MSgMsedJQEw7" target="_blank" rel="noopener">feedback form</a>.
+        Data controller: Nity G, trading as UroRef. For privacy questions or a deletion request,
+        email <a href="mailto:nity@uroref.com">nity@uroref.com</a>.
       </p>
 
       <h2>What this website collects</h2>
@@ -48,59 +50,130 @@ const lastUpdated = '27 August 2026';
         </li>
       </ul>
 
-      <h2>Ask Ariadne and connected features</h2>
+      <h2>Public showcase demonstration</h2>
       <p>
         The Ask Ariadne panel in the public showcase is fixed demonstration copy: it does not send
-        the example question to a model or external service. A future live feature would require an
-        internet connection and would transmit the text entered to an approved service. It remains
-        gated until the provider, purpose, controller roles, data location, retention and deletion
-        arrangements are disclosed where the feature is used and the safety evaluation is complete.
+        the example question to a model or external service.
       </p>
       <p>
-        Do not enter patient-identifiable or confidential information into Ariadne, site search,
-        feedback forms or any demonstration. Ariadne is an educational navigation aid, not a
-        patient-specific decision tool.
+        Do not enter patient-identifiable or confidential information into site search, feedback
+        forms or any demonstration.
       </p>
 
-      <h2>What the mobile app collects</h2>
+      <h2>Core app and on-device data</h2>
+      <p>
+        The app does not require an account. Core reference content works offline. Preferences,
+        recent searches, pinned items, review-prompt state and your selected hospital are kept
+        on your device. UroRef does not include advertising SDKs or third-party app-analytics
+        SDKs, does not use cross-app tracking and does not sell personal data.
+      </p>
+
+      <h2>Ask Ariadne — optional online feature</h2>
+      <p>
+        Ariadne requires an internet connection. When you submit a question, the app sends the
+        text you enter, up to six recent chat messages, a persistent random pseudonymous device identifier,
+        a session identifier, your selected hospital (if any), and identifiers for hospital
+        contacts already shown in that chat to a UroRef service hosted on Cloudflare. The device
+        identifier is used for service security and rate limiting, not advertising.
+      </p>
+      <p>
+        Some common responses are produced within that service. Other requests are processed
+        using Google Gemini. The prompt sent to Gemini may include your question, recent chat
+        context, relevant guidance and selected-hospital operational context. Creating an SBAR
+        also sends the question, answer, recent history and selected site to the UroRef service;
+        the SBAR is generated there without a further Gemini request.
+      </p>
+      <p>
+        <strong>Never enter patient-identifiable or confidential information</strong>, including
+        names, NHS or hospital numbers, exact dates of birth, addresses or contact details. The
+        app displays this warning, but it does not automatically detect or remove identifiers.
+        If you enter them, they may be transmitted to and processed by the services above.
+      </p>
+
+      <h2>Chat storage and service logs</h2>
       <ul>
         <li>
-          <strong>No personal account.</strong> The app works offline and does not require a login.
+          <strong>On your device:</strong> up to 30 chat messages and related session state are
+          kept for eight hours so an accidentally closed chat can be resumed. Choose
+          <em>New patient</em> to delete them sooner, or clear the app's data.
         </li>
         <li>
-          <strong>Crash + diagnostic data</strong> through the platform (Apple / Google) so we can
-          fix issues. Collection and retention depend on your platform settings and the relevant
-          Apple or Google terms.
+          <strong>Temporary service memory:</strong> the UroRef service keeps a shortened copy of
+          recent session questions and answers in process memory for up to two hours. The current
+          service does not use a persistent answer cache.
         </li>
         <li>
-          <strong>Pins and favourites stay local.</strong> These preferences are stored on your phone.
-          Connected features and external source links require internet access and send the request
-          to the relevant service; never enter patient-identifiable information.
+          <strong>Security counters and logs:</strong> hashed rate-limit counters are retained for
+          up to one hour and one day. UroRef's custom service logs record metadata such as session
+          and selected-site identifiers, response mode, errors, and hashes and lengths of questions
+          and answers; they are designed not to place raw question or answer text in those logs.
         </li>
       </ul>
+      <p>
+        Cloudflare and Google may process network, security, abuse-prevention and diagnostic data
+        under their own terms and the service's account settings. Their infrastructure-level
+        retention cannot be established from the app code alone. UroRef does not use Ariadne
+        conversations for advertising. Do not assume the service has zero provider-side retention.
+      </p>
+
+      <h2>My Hospital and site-aware tools</h2>
+      <p>
+        Your selected hospital is stored on your device. The app may contact the UroRef Cloudflare
+        service to obtain the current list of sites and operational profile; bundled fallback
+        profiles may remain available offline. The selected site is also included in Ariadne
+        requests so that relevant local operational context can be shown.
+      </p>
+      <p>
+        If you choose <em>Request your site</em>, the app sends the hospital name, optional trust
+        name and your NHS email address to the UroRef service. These details are stored in
+        Cloudflare KV for review and may be forwarded through Google Apps Script and Gmail to
+        notify the UroRef administrator. The main request record currently has no automatic
+        expiry. Email <a href="mailto:nity@uroref.com">nity@uroref.com</a> to request deletion.
+      </p>
+
+      <h2>Diagnostics and external services</h2>
+      <p>
+        UroRef does not include a dedicated crash-reporting SDK. Apple, Google, Cloudflare or
+        Google Gemini may nevertheless process platform, network, diagnostic, security or
+        abuse-prevention data under their own settings and privacy terms.
+      </p>
+      <p>
+        Tapping an external resource may open BAUS, MDCalc, BURST, Google Forms or an app store.
+        Some QR images are generated by api.qrserver.com. These services receive ordinary network
+        information such as an IP address and apply their own privacy policies.
+      </p>
 
       <h2>Cookies</h2>
       <p>
-        UroRef does not set tracking cookies by default. If approved Umami measurement is enabled,
-        it will use its cookieless mode. External services you choose to open may apply their own
-        policies.
+        UroRef does not set advertising or cross-site tracking cookies. Analytics are disabled by
+        default; if approved Umami measurement is enabled, it will use its cookieless mode and this
+        notice will be updated. Embedded and external services you choose to open may process
+        ordinary request information under their own terms.
       </p>
 
       <h2>Third-party services</h2>
       <ul>
-        <li>Hosting — the static site host receives ordinary web-request information needed to serve the site.</li>
-        <li>Google Fonts — the browser may request Geist, Source Serif 4 and JetBrains Mono from Google; system fonts provide an offline fallback.</li>
-        <li>Google Forms — for feedback collection.</li>
+        <li>GitHub Pages — website hosting and ordinary web-request processing needed to serve the site.</li>
+        <li>Cloudflare Workers and KV — Ariadne, live hospital data, rate limiting and site requests.</li>
+        <li>Google Gemini — generation of some Ariadne responses.</li>
+        <li>Google Apps Script, Gmail and Google Forms — site-request notification and feedback.</li>
+        <li>Google Fonts — website typefaces; system fonts provide an offline fallback.</li>
+        <li>api.qrserver.com and linked clinical websites — QR images and external resources.</li>
         <li>Apple and Google — for app distribution and any platform diagnostics you permit.</li>
         <li>Umami — optional aggregate site measurement, currently disabled unless explicitly configured.</li>
-        <li>A live Ariadne provider — only after the in-product disclosure and governance gate described above.</li>
       </ul>
+
+      <h2>Security</h2>
+      <p>
+        Connected-feature data is sent over HTTPS. No online service is risk-free, so never submit
+        identifiable patient information or other confidential data to Ask Ariadne.
+      </p>
 
       <h2>Your rights</h2>
       <p>
-        Under UK GDPR you have rights of access, rectification, erasure, restriction, portability
-        and objection. To exercise any of these, contact us via the feedback form. We respond
-        within one month, subject to the circumstances allowed by law.
+        Under UK GDPR you may have rights of access, rectification, erasure, restriction,
+        portability and objection. To exercise a right, email
+        <a href="mailto:nity@uroref.com">nity@uroref.com</a>. We aim to respond within one month.
       </p>
 
       <h2>Changes</h2>

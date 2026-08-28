@@ -1,1 +1,4 @@
 public/prostateview/** linguist-vendored -diff
+public/app-demo/static/** -text linguist-generated
+public/app-demo/index.html text eol=lf
+public/app-demo/manifest.json text eol=lf

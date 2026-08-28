@@ -771,6 +771,8 @@ html[data-mode="easy"] .spin-slow,html.no-motion .spin-slow{animation:none}
   font-size:clamp(18px,1.9vw,21px);line-height:1.5;color:var(--text-primary);
 }
 .who-copy p{font-size:var(--size-body-long);line-height:var(--leading-body);color:var(--text-secondary);max-width:52ch;margin:24px 0 30px}
+.who-actions{display:flex;align-items:center;flex-wrap:wrap;gap:10px}
+.who-actions .btn svg{width:17px;height:17px;flex:0 0 auto}
 
 /* ------------------------------------------------ reading log */
 .log-card{

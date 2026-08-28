@@ -113,6 +113,39 @@
     <div class="seclabel" data-reveal style="--d:0s"><span class="num">01</span><span class="txt">The app</span><span class="rule"></span></div>
     <h2 class="h-section" id="app-h" data-reveal style="--d:.06s">Six things, reachable in <span class="accent">seconds.</span></h2>
 
+    <div class="cards-3" style="margin-top:56px">
+      <article class="card" data-reveal style="--d:0s;--accent:var(--teal-500)">
+        <span class="glyph" aria-hidden="true">🩺</span><span class="tag">Reference</span>
+        <h3>Procedures</h3>
+        <p>Consent risks, operative steps, post-op orders, ward round checklists.</p>
+      </article>
+      <article class="card" data-reveal style="--d:.06s;--accent:var(--cat-oncall)">
+        <span class="glyph" aria-hidden="true">🚨</span><span class="tag" style="color:var(--cat-oncall)">On call</span>
+        <h3>Emergencies</h3>
+        <p>Haematuria, retention, torsion, priapism, penile fracture, paraphimosis, catheter trouble.</p>
+      </article>
+      <article class="card" data-reveal style="--d:.12s;--accent:var(--cat-oncology)">
+        <span class="glyph" aria-hidden="true">💊</span><span class="tag" style="color:var(--cat-oncology)">Prescribing</span>
+        <h3>Drugs</h3>
+        <p>Doses, antibiotic protocols, renal adjustment, interaction flags.</p>
+      </article>
+      <article class="card" data-reveal style="--d:0s;--accent:var(--cat-frcs)">
+        <span class="glyph" aria-hidden="true">🧮</span><span class="tag" style="color:var(--cat-frcs)">Scoring</span>
+        <h3>Calculators</h3>
+        <p>IDENTIFY, MIMIC, TWIST, eGFR, CPG, prostate volume.</p>
+      </article>
+      <article class="card" data-reveal style="--d:.06s;--accent:var(--cat-landmark)">
+        <span class="glyph" aria-hidden="true">🏥</span><span class="tag" style="color:var(--cat-landmark)">Outpatients</span>
+        <h3>Clinic</h3>
+        <p>Presentation frameworks, investigation pathways, referral guidance.</p>
+      </article>
+      <article class="card" data-reveal style="--d:.12s;--accent:var(--cat-default)">
+        <span class="glyph" aria-hidden="true">📄</span><span class="tag" style="color:var(--cat-default)">Patients</span>
+        <h3>BAUS Leaflets</h3>
+        <p>31 leaflets, handed over by QR code at the bedside.</p>
+      </article>
+    </div>
+
     <div class="shots" data-reveal style="--d:.1s" role="group" aria-label="Example app screens">
       <div class="shot">
         <div class="appui" aria-hidden="true">
@@ -149,39 +182,6 @@
       </div>
     </div>
     <div class="shot-caps" aria-hidden="true"><span>Emergencies</span><span>Procedures</span><span>Calculators</span></div>
-
-    <div class="cards-3" style="margin-top:56px">
-      <article class="card" data-reveal style="--d:0s;--accent:var(--teal-500)">
-        <span class="glyph" aria-hidden="true">🩺</span><span class="tag">Reference</span>
-        <h3>Procedures</h3>
-        <p>Consent risks, operative steps, post-op orders, ward round checklists.</p>
-      </article>
-      <article class="card" data-reveal style="--d:.06s;--accent:var(--cat-oncall)">
-        <span class="glyph" aria-hidden="true">🚨</span><span class="tag" style="color:var(--cat-oncall)">On call</span>
-        <h3>Emergencies</h3>
-        <p>Haematuria, retention, torsion, priapism, penile fracture, paraphimosis, catheter trouble.</p>
-      </article>
-      <article class="card" data-reveal style="--d:.12s;--accent:var(--cat-oncology)">
-        <span class="glyph" aria-hidden="true">💊</span><span class="tag" style="color:var(--cat-oncology)">Prescribing</span>
-        <h3>Drugs</h3>
-        <p>Doses, antibiotic protocols, renal adjustment, interaction flags.</p>
-      </article>
-      <article class="card" data-reveal style="--d:0s;--accent:var(--cat-frcs)">
-        <span class="glyph" aria-hidden="true">🧮</span><span class="tag" style="color:var(--cat-frcs)">Scoring</span>
-        <h3>Calculators</h3>
-        <p>IDENTIFY, MIMIC, TWIST, eGFR, CPG, prostate volume.</p>
-      </article>
-      <article class="card" data-reveal style="--d:.06s;--accent:var(--cat-landmark)">
-        <span class="glyph" aria-hidden="true">🏥</span><span class="tag" style="color:var(--cat-landmark)">Outpatients</span>
-        <h3>Clinic</h3>
-        <p>Presentation frameworks, investigation pathways, referral guidance.</p>
-      </article>
-      <article class="card" data-reveal style="--d:.12s;--accent:var(--cat-default)">
-        <span class="glyph" aria-hidden="true">📄</span><span class="tag" style="color:var(--cat-default)">Patients</span>
-        <h3>BAUS Leaflets</h3>
-        <p>31 leaflets, handed over by QR code at the bedside.</p>
-      </article>
-    </div>
     <p class="caveat section-caveat" data-reveal style="--d:.1s">A reference aid for clinicians in training. It does not replace local guidelines, senior review or your own judgement.</p>
   </div>
 </section>
@@ -362,7 +362,17 @@
         <h2 class="h-section" id="who-h">Clinician by training,<br><span class="accent">builder by instinct.</span></h2>
         <blockquote class="pullquote" style="margin-top:24px"><p>I built the thing I wanted in my pocket, then kept building.</p></blockquote>
         <p>Clinics, lists, nights, on-calls, and the hundreds of small decisions that sit between them. The tools came out of the gaps.</p>
-        <a class="btn btn-md btn-ghost" href="/about/">Read the longer story →</a>
+        <nav class="who-actions" aria-label="Nity G profile links">
+          <a class="btn btn-md btn-ghost" href="/about/">Read the longer story →</a>
+          <a class="btn btn-md btn-ghost" href="https://www.linkedin.com/in/nityg" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+          <a class="btn btn-md btn-ghost" href="mailto:nity@uroref.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg>
+            Email Nity
+          </a>
+        </nav>
       </div>
     </div>
   </div>

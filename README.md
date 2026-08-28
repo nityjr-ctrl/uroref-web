@@ -63,11 +63,13 @@ The deterministic Promptfoo fixture suite validates response contracts; it is no
 
 See [`docs/PRESENTATION-RUNBOOK.md`](docs/PRESENTATION-RUNBOOK.md) and [`docs/TECHNOLOGY-READINESS.md`](docs/TECHNOLOGY-READINESS.md).
 
+For a Claude Design → Claude Code homepage redesign, start with [`docs/CLAUDE-DESIGN-HANDOFF.md`](docs/CLAUDE-DESIGN-HANDOFF.md). Claude Code also reads the repository contract in [`CLAUDE.md`](CLAUDE.md).
+
 ## Deploying
 
-The build output in `./dist/` is fully static. Recommended hosts: Cloudflare Pages,
-Netlify, Vercel, or GitHub Pages. Set the production `site` URL in `astro.config.mjs`
-before publishing so canonical URLs and the sitemap are correct.
+The production site is published to GitHub Pages at `https://uroref.com` by `.github/workflows/deploy.yml`. Pull requests run the quality workflow; a merge or direct push to `master` runs the same gates, deploys `./dist/`, and verifies that the public homepage exposes the deployed commit SHA in its `uroref-build-ref` meta tag. A feature-branch push alone does not update the public site.
+
+The output remains fully static and portable. The canonical production URL is set in `astro.config.mjs`, while `public/CNAME` keeps the custom GitHub Pages domain.
 
 Umami remains disabled unless both variables in `.env.example` are provided. Do not add search text, patient data or free text to analytics events.
 

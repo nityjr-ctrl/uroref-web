@@ -23,6 +23,7 @@ const {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
 const ogImage = new URL(image, Astro.site ?? Astro.url);
+const buildRef = import.meta.env.PUBLIC_BUILD_REF?.trim() || 'local';
 const pathname = Astro.url.pathname;
 const isActive = (href: string) => href === '/' ? pathname === '/' : pathname.startsWith(href);
 const searchContentType = suppliedSearchContentType
@@ -68,6 +69,7 @@ const siteJsonLd = {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content={description} />
+  <meta name="uroref-build-ref" content={buildRef} />
   <title>{title} | UroRef</title>
   <link rel="canonical" href={canonicalURL} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

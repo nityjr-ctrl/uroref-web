@@ -17,6 +17,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      PUBLIC_BUILD_REF: ${{ github.sha }}
     steps:
       - uses: actions/checkout@v6
 
@@ -27,17 +30,21 @@ jobs:
 
       - run: npm ci
       - run: npm run build
+      - run: npm run check:logos
       - run: npm run check:links
       - run: npm run audit:production
       - run: npm run eval:ariadne:fixtures
       - run: npx playwright install --with-deps chromium
       - run: npm run check:a11y
 
+      - uses: actions/configure-pages@v5
+
       - uses: actions/upload-pages-artifact@v5
         with:
           path: ./dist
 
   deploy:
+    if: github.ref == 'refs/heads/master'
     needs: build
     runs-on: ubuntu-latest
     environment:
@@ -46,3 +53,26 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v5
+
+      - name: Verify deployed commit on GitHub Pages and uroref.com
+        shell: bash
+        env:
+          DEPLOYED_URL: ${{ steps.deployment.outputs.page_url }}
+          EXPECTED_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          for base_url in "$DEPLOYED_URL" "https://uroref.com/"; do
+            matched=false
+            for attempt in {1..18}; do
+              page="$(curl --fail --silent --show-error --location --header 'Cache-Control: no-cache' "${base_url%/}/?deployment=${EXPECTED_SHA}&attempt=${attempt}" || true)"
+              if grep --fixed-strings --quiet "${EXPECTED_SHA}" <<<"$page"; then
+                matched=true
+                break
+              fi
+              sleep 10
+            done
+            if [[ "$matched" != true ]]; then
+              echo "Expected build ${EXPECTED_SHA} was not visible at ${base_url}" >&2
+              exit 1
+            fi
+          done

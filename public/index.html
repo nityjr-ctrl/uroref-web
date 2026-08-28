@@ -206,7 +206,7 @@
       <div class="scene-title"><img class="scene-logo" src="assets/uroref-mark.svg" alt="" width="44" height="44"><h3 id="sc1-h"><a href="https://uroref.com/">UroRef</a></h3></div>
       <p class="tagline voice">Smarter on-call. Better decisions.</p>
       <p class="scene-body">Pathways, procedures, doses and calculators in one place. The core works with no signal.</p>
-      <div class="pills"><span class="pill">Offline core</span><span class="pill">iOS · Android · Web</span><span class="pill">Free</span></div>
+      <div class="pills"><span class="pill">Offline core</span><span class="pill">iOS · Android · Web</span><span class="pill">On-device state</span><span class="pill">No account</span></div>
       <a class="btn btn-md btn-primary scene-try" href="/try/" data-emu-trigger aria-haspopup="dialog">
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18.5h2"/></svg>
         See it on a phone
@@ -244,7 +244,7 @@
       <div class="scene-title"><img class="scene-logo" src="assets/prostateview-mark.svg" alt="" width="44" height="44"><h3 id="sc2-h"><a href="https://prostateview.com/v2/">ProstateView</a></h3></div>
       <p class="tagline voice">From MRI to 3D understanding.</p>
       <p class="scene-body">A public-research-data teaching prototype that connects MRI slices, sector anatomy, mental rotation and browser-based 3D exploration.</p>
-      <div class="pills"><span class="pill">Spatial Lab</span><span class="pill">Mental Rotation</span><span class="pill">Cross-Section</span><span class="pill">Match the Slice</span></div>
+      <div class="pills"><span class="pill">Public MRI data</span><span class="pill">Browser 3D</span><span class="pill">Slice ↔ model</span><span class="pill">Mental rotation</span><span class="pill">Phone AR</span></div>
       <p class="caveat" style="margin-top:22px">Teaching only. Not for diagnosis, PI-RADS assignment, biopsy planning or navigation.</p>
       <a class="scene-visit" href="https://prostateview.com/v2/">Visit prostateview.com ↗</a>
     </div>
@@ -261,7 +261,7 @@
       <div class="scene-title"><img class="scene-logo" src="assets/calyxview-mark.svg" alt="" width="44" height="44"><h3 id="sc3-h"><a href="https://calyxview.com/">CalyxView</a></h3></div>
       <p class="tagline voice">See every calyx. Plan every step.</p>
       <p class="scene-body">A de-identified, CT-derived teaching prototype for talking through collecting-system orientation, with a simulated scope route and calyceal search.</p>
-      <div class="pills"><span class="pill">CT-derived</span><span class="pill">Simulated scope route</span><span class="pill">Calyceal search</span></div>
+      <div class="pills"><span class="pill">CT-to-3D</span><span class="pill">Layered GLB</span><span class="pill">Scope simulation</span><span class="pill">Local-first</span></div>
       <p class="caveat" style="margin-top:22px">Not for diagnosis, treatment selection, patient-specific surgical planning or intra-operative guidance.</p>
       <a class="scene-visit" href="https://calyxview.com/">Visit calyxview.com ↗</a>
     </div>
@@ -292,7 +292,7 @@
       <div class="scene-title"><img class="scene-logo" src="assets/uroops3d-mark.svg" alt="" width="44" height="44"><h3 id="sc4-h"><a href="https://uroops3d.com/">UrOops3D</a></h3></div>
       <p class="tagline voice">Learn the operation, not just the steps.</p>
       <p class="scene-body">A browser-based operative and complications atlas using stylised 3D scenes, danger zones and active recall, built for rehearsal before a viva or a supervised procedure.</p>
-      <div class="pills"><span class="pill">Danger zones</span><span class="pill">Active recall</span><span class="pill">FRCS prep</span></div>
+      <div class="pills"><span class="pill">Browser 3D</span><span class="pill">Danger zones</span><span class="pill">Active recall</span><span class="pill">Exam prep</span></div>
       <p class="caveat" style="margin-top:22px">Schematic anatomy for teaching only. Review status varies by item and remains visible in the project.</p>
       <a class="scene-visit" href="https://uroops3d.com/">Visit uroops3d.com ↗</a>
     </div>
@@ -309,7 +309,7 @@
       <div class="scene-title"><img class="scene-logo" src="assets/cystosight-mark.svg" alt="" width="44" height="44"><h3 id="sc5-h"><a href="https://cystosight.netlify.app/">Cystosight</a> <span style="font-size:.55em;font-weight:600;color:var(--text-muted)">by UroRef</span></h3></div>
       <p class="tagline voice">Recognise the view. Rehearse the scope.</p>
       <p class="scene-body">Browser-based exercises for spatial bladder and cystoscopy practice, using schematic teaching meshes rather than patient imaging.</p>
-      <div class="pills"><span class="pill">Schematic meshes</span><span class="pill">Spatial practice</span><span class="pill">No patient data</span></div>
+      <div class="pills"><span class="pill">Animated 3D</span><span class="pill">Scope assembly</span><span class="pill">Spatial drills</span><span class="pill">Schematic meshes</span><span class="pill">No patient data</span></div>
       <p class="caveat" style="margin-top:22px">No patient imaging or data. Simplified teaching pathways do not replace current guidance or local policy.</p>
       <a class="scene-visit" href="https://cystosight.netlify.app/">Open Cystosight ↗</a>
     </div>
@@ -336,10 +336,11 @@
       </div>
     </figure>
     <div class="scene-head" data-reveal style="--d:0s">
-      <div class="idx"><span class="n">06</span><span class="cat">Optional feature · inside UroRef</span><span class="status status-dev"><span class="sdot"></span>In development</span></div>
+      <div class="idx"><span class="n">06</span><span class="cat">Optional feature · inside UroRef</span><span class="status status-live"><span class="sdot"></span>Included in the app</span></div>
       <h3 id="sc6-h">Ariadne</h3>
       <p class="tagline voice">A thread through the pathway.</p>
-      <p class="scene-body">The optional online assistant inside UroRef. New hospital, 2am, and you need to book a stent? Ask, and it points you to the right pathway and the numbers to dial. Off by default, and it answers from the same references the rest of the app uses.</p>
+      <p class="scene-body">A retrieval-augmented assistant built into UroRef. Each query is routed through a Cloudflare Worker and combined with curated UroRef guidance, recent chat context and the selected hospital profile when available. Common requests are handled directly by the service; others use Google Gemini to return source-linked educational navigation, with pseudonymous rate limiting and explicit safety boundaries.</p>
+      <div class="pills ariadne-tech" aria-label="Ariadne technical architecture"><span class="pill">RAG</span><span class="pill">Source citations</span><span class="pill">Site-aware context</span><span class="pill">Cloudflare Worker</span><span class="pill">Google Gemini</span></div>
       <div class="callout" style="max-width:46ch"><b>Do not enter patient-identifiable information.</b> Ariadne is optional, online, and off unless you turn it on.</div>
     </div>
   </div>

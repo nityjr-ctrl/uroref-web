@@ -111,13 +111,13 @@
     mix-blend-mode: screen;
   }
 
-  .eye-left  { left: 49.05%; top: 20.25%; }
-  .eye-right { left: 50.10%; top: 20.45%; }
+  .eye-left  { left: 50.08%; top: 25.38%; }
+  .eye-right { left: 50.77%; top: 25.74%; }
 
   .minotaur-breath-cloud {
     position: absolute;
-    left: 50.4%;
-    top: 22.8%;
+    left: 52.64%;
+    top: 27.64%;
     width: 2.6%;
     min-width: 18px;
     height: 1.6%;
@@ -452,16 +452,21 @@
   let aimX = 0, aimY = 0;
   let noticing = 0;
   let twitch = 0, twitchV = 0;
-  let wasAlert = false;
+  let pointerAlert = false;
+  let scrollAlertUntil = 0;
+  let lastSnortAt = -Infinity;
+  let hasScrollSample = false;
   let nextTwitchAt = performance.now() + 5200;
 
-  // Dust and embers thrown from its nostrils when it first notices you.
+  const SNORT_REPEAT_MS = 850;
+
+  // Dust and embers thrown from its nostrils while it tracks interaction.
   const puffs = [];
   function snortBurst() {
     for (let i = 0; i < 9; i++) {
       puffs.push({
-        x: .503 + (Math.random() - .5) * .010,
-        y: .233 + (Math.random() - .5) * .006,
+        x: .5264 + (Math.random() - .5) * .010,
+        y: .2844 + (Math.random() - .5) * .006,
         vx: .0009 + Math.random() * .0016,
         vy: (Math.random() - .62) * .0009,
         r: 4 + Math.random() * 8,
@@ -470,6 +475,20 @@
         ember: Math.random() < .3
       });
     }
+  }
+
+  function animateSnort(now) {
+    if (effReduced || now - lastSnortAt < SNORT_REPEAT_MS) return;
+    lastSnortAt = now;
+    noticing = 1;
+    snortBurst();
+    snortBurst(); // two bursts read as both nostrils
+  }
+
+  function syncMinotaurAlert(now) {
+    const alert = (pointerAlert && scrollP < .80) || now < scrollAlertUntil;
+    sticky.classList.toggle('minotaur-alert', alert);
+    return alert;
   }
 
   const paths = [
@@ -533,21 +552,29 @@
     const dx = artMouseX - .50;
     const dy = artMouseY - .29;
     const nearMinotaur = Math.hypot(dx * 1.35, dy) < .17;
-    const alert = nearMinotaur && scrollP < .80;
-    sticky.classList.toggle('minotaur-alert', alert);
-    // The moment it first notices you: a head-lift, a flare, a snort of dust.
-    if (alert && !wasAlert && !effReduced) {
-      noticing = 1;
-      snortBurst();
-      snortBurst(); // two bursts read as both nostrils
+    const now = performance.now();
+    const entered = nearMinotaur && !pointerAlert;
+    pointerAlert = nearMinotaur;
+    if (pointerAlert && scrollP < .80 && (entered || now - lastSnortAt >= SNORT_REPEAT_MS)) {
+      animateSnort(now);
     }
-    wasAlert = alert;
+    syncMinotaurAlert(now);
   }
   window.addEventListener('message', (event) => {
     const data = event.data;
     if (!data || data.type !== 'ariadne') return;
     if (typeof data.reduced === 'boolean') effReduced = reduced || data.reduced;
-    if (typeof data.p === 'number') scrollP = clamp(data.p);
+    if (typeof data.p === 'number') {
+      const nextP = clamp(data.p);
+      const moved = hasScrollSample && Math.abs(nextP - scrollP) > .0005;
+      scrollP = nextP;
+      hasScrollSample = true;
+      if (moved && !effReduced && scrollP > .04 && scrollP < .78) {
+        const now = performance.now();
+        scrollAlertUntil = now + 1050;
+        animateSnort(now);
+      }
+    }
     if (typeof data.mx === 'number' && typeof data.my === 'number') {
       setPointer(data.mx, data.my);
     }
@@ -555,6 +582,9 @@
 
   function render() {
     const p = ease(scrollP);
+    const now = performance.now();
+    const alerting = syncMinotaurAlert(now);
+    if (now < scrollAlertUntil) animateSnort(now);
 
     // Scroll-driven cinematic zoom and slight rightward drift toward Ariadne.
     const zoom = 1.04 + p * .12;
@@ -582,14 +612,14 @@
 
     // The Minotaur wakes before Ariadne's thread fully reveals.
     // We use a clipped duplicate of the original artwork so only the creature shifts.
-    const t = performance.now();
+    const t = now;
     const wake = clamp((scrollP - .02) / .46);
     const retreat = 1 - clamp((scrollP - .68) / .28);
     const beast = wake * retreat;
 
     // Its attention drifts toward the pointer, smoothed like muscle.
-    aimX += ((artMouseX - .505) * 2.4 - aimX) * .045;
-    aimY += ((artMouseY - .215) * 1.8 - aimY) * .045;
+    aimX += ((artMouseX - .50635) * 2.4 - aimX) * .045;
+    aimY += ((artMouseY - .25939) * 1.8 - aimY) * .045;
     noticing = Math.max(0, noticing - .011);
 
     // Now and then it shifts its weight - small, unpredictable head-tosses.
@@ -635,7 +665,7 @@
       // Ember eyes: faintly alive even at rest, tracking the pointer so its
       // gaze follows you around the room; they flare when it notices you.
       const eyePulse = (.14 + .18 * (0.5 + 0.5 * Math.sin(t / 420))) * (.30 + .70 * beast);
-      const flare = Math.max(eyePulse, noticing * .9, wasAlert ? .5 * beast : 0);
+      const flare = Math.max(eyePulse, noticing * .9, alerting ? .5 * beast : 0);
       const ex = aimX * 4.2, ey = aimY * 2.6;
       minotaurEyes.forEach((eye, i) => {
         const stagger = i ? .05 : 0;

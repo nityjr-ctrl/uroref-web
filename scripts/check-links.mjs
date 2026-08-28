@@ -15,6 +15,8 @@ const requiredPaths = [
   'prostateview/v2/case/pv-case-001/index.html',
   'prostateview/demo-cases/pv-case-001/model.glb',
   'prostateview/demo-cases/pv-case-001/model.usdz',
+  'prostateview/models_ar_human/pv-case-001/model.glb',
+  'prostateview/models_ar_human/pv-case-001/model.usdz',
   'prostateview/demo-cases/pv-case-001/preview/t2_full_slice_overlay.png',
   'prostateview/draco/draco_wasm_wrapper.js',
   'prostateview/draco/draco_decoder.wasm',

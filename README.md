@@ -23,7 +23,7 @@ npm run build    # → ./dist/ plus the Pagefind index
 npm run preview  # serve the production build
 ```
 
-Node `>=22.22.0` is required (see `package.json#engines`).
+Node `>=22.22.0` is required (see `package.json#engines`). GitHub checks and deployment use Node `22.23.2` with npm `10.9.8`; use the pinned package manager when refreshing `package-lock.json`.
 
 The presentation entry point is `/showcase/`. After building, `npm run presentation` serves the fully local fallback at `http://127.0.0.1:4321/showcase/`.
 

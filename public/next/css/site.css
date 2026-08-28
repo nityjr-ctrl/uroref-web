@@ -644,6 +644,18 @@ html[data-mode="easy"] .appui-search{background:rgba(30,40,51,.04)}
 
 .scene-title{display:flex;align-items:center;gap:14px;margin:0 0 10px}
 .scene-logo{width:44px;height:44px;border-radius:10px;border:1px solid var(--border);flex:0 0 auto}
+
+/* supplied product lockups: light-ground art shown on a deliberate white plate
+   so the blue wordmarks never fight the navy page */
+.lockup-title{display:flex;align-items:center;gap:12px;margin:0;flex-wrap:wrap}
+.scene-lockup{
+  display:block;width:auto;height:auto;max-height:58px;max-width:100%;
+  background:#FFFFFF;border-radius:12px;padding:8px 14px;
+  border:1px solid var(--border-strong);
+}
+.lockup-title a{display:block;max-width:100%}
+.lockup-suffix{font-size:15px;font-weight:600;color:var(--text-muted)}
+@media(max-width:700px){.scene-lockup{max-height:46px}}
 .scene-head .scene-title h3{margin:0}
 .scene-head h3 a{color:inherit;text-decoration:none;transition:color .2s}
 .scene-head h3 a:hover{color:var(--sa)}
@@ -1003,7 +1015,7 @@ html.no-motion .emu-backdrop,html.no-motion .emu-panel{transition:none}
 .emu-close:hover{border-color:var(--border-strong);color:var(--text-primary)}
 .emu-stage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center}
 .emu-shell{
-  position:relative;height:min(690px,100%);aspect-ratio:390/780;max-width:100%;
+  position:relative;height:min(760px,100%);aspect-ratio:390/844;max-width:100%;
   background:#0B1420;border-radius:40px;border:1px solid var(--border-strong);
   box-shadow:var(--shadow-lg),inset 0 0 0 3px #1B2A3F;
   padding:12px;
@@ -1032,23 +1044,11 @@ html.no-motion .emu-backdrop,html.no-motion .emu-panel{transition:none}
   text-transform:uppercase;color:#B8C5D6;
 }
 .emu-ready .emu-loading{display:none}
-.emu-track{
-  position:absolute;inset:0;z-index:2;display:flex;
-  overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;
-  overscroll-behavior-x:contain;
+.emu-iframe{
+  position:absolute;left:0;top:0;z-index:2;border:0;
+  width:390px;height:844px;transform-origin:0 0;
+  background:#050F1C;
 }
-.emu-track::-webkit-scrollbar{display:none}
-.emu-track img{
-  flex:0 0 100%;width:100%;height:100%;object-fit:contain;object-position:center;
-  scroll-snap-align:center;scroll-snap-stop:always;
-}
-.emu-dots{display:flex;justify-content:center;gap:9px;flex:0 0 auto}
-.emu-dot{
-  width:9px;height:9px;border-radius:50%;padding:0;border:0;cursor:pointer;
-  background:var(--border-strong);
-}
-.emu-dot:hover{background:var(--text-muted)}
-.emu-dot[aria-current="true"]{background:var(--teal-500)}
 .emu-foot{
   display:flex;align-items:center;justify-content:space-between;gap:10px;
   flex-wrap:wrap;flex:0 0 auto;border-top:1px solid var(--border);padding-top:12px;

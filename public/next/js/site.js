@@ -318,31 +318,28 @@
   var emuBackdrop = document.querySelector('[data-emu-backdrop]');
   if (emuTrigger && emuPanel && emuBackdrop) {
     var emuCloseBtn = emuPanel.querySelector('[data-emu-close]');
-    var emuTrack = emuPanel.querySelector('[data-emu-track]');
-    var emuDots = Array.prototype.slice.call(emuPanel.querySelectorAll('[data-emu-dot]'));
-    var emuShots = Array.prototype.slice.call(emuPanel.querySelectorAll('img[data-emu-src]'));
+    var emuFrame = emuPanel.querySelector('iframe[data-emu-src]');
     var emuArmed = false;
     var emuIsOpen = false;
 
     function emuArm() {
       if (emuArmed) return;
       emuArmed = true;
-      var pending = emuShots.length;
-      if (!pending) { emuPanel.classList.add('emu-ready'); return; }
-      emuShots.forEach(function (img) {
-        img.addEventListener('load', function () {
-          pending -= 1;
-          if (pending <= 0) emuPanel.classList.add('emu-ready');
-        }, { once: true });
-        img.src = img.getAttribute('data-emu-src');
-      });
+      if (!emuFrame) { emuPanel.classList.add('emu-ready'); return; }
+      emuFrame.addEventListener('load', function () {
+        emuPanel.classList.add('emu-ready');
+      }, { once: true });
+      emuFrame.setAttribute('src', emuFrame.getAttribute('data-emu-src'));
     }
-    function emuSetDot(idx) {
-      emuDots.forEach(function (dot, i) {
-        if (i === idx) dot.setAttribute('aria-current', 'true');
-        else dot.removeAttribute('aria-current');
-      });
+    // The app renders at a real 390x844 CSS-pixel phone viewport and the
+    // whole screen scales down to whatever space the shell has.
+    function emuScale() {
+      if (!emuFrame || !emuIsOpen) return;
+      var screen = emuFrame.parentElement;
+      if (!screen) return;
+      emuFrame.style.transform = 'scale(' + (screen.clientWidth / 390) + ')';
     }
+    window.addEventListener('resize', emuScale);
     function emuOpenPanel() {
       if (emuIsOpen) return;
       emuIsOpen = true;
@@ -361,6 +358,7 @@
         emuPanel.classList.add('open');
       }
       document.documentElement.style.overflow = 'hidden';
+      requestAnimationFrame(emuScale);
       emuCloseBtn.focus();
     }
     function emuClosePanel() {
@@ -385,7 +383,7 @@
       if (e.key === 'Escape') { emuClosePanel(); return; }
       if (e.key !== 'Tab') return;
       var items = Array.prototype.slice.call(
-        emuPanel.querySelectorAll('button, a[href], [tabindex]:not([tabindex="-1"])')
+        emuPanel.querySelectorAll('button, a[href], iframe, [tabindex]:not([tabindex="-1"])')
       );
       if (!items.length) return;
       var first = items[0];
@@ -393,16 +391,6 @@
       if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     });
-    emuDots.forEach(function (dot, i) {
-      dot.addEventListener('click', function () {
-        emuTrack.scrollTo({ left: emuTrack.clientWidth * i, behavior: motionOK() ? 'smooth' : 'auto' });
-        emuSetDot(i);
-      });
-    });
-    emuTrack.addEventListener('scroll', function () {
-      var idx = Math.round(emuTrack.scrollLeft / Math.max(1, emuTrack.clientWidth));
-      emuSetDot(Math.max(0, Math.min(emuDots.length - 1, idx)));
-    }, { passive: true });
   }
 
   onScrollFrame();

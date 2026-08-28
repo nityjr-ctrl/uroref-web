@@ -4,6 +4,10 @@ import path from 'node:path';
 const root = path.resolve('dist');
 const requiredPaths = [
   'index.html',
+  'try/index.html',
+  'app-demo/index.html',
+  'app-demo/static/css/main.a0093e4c.css',
+  'app-demo/static/js/main.5d8c9507.js',
   'showcase/index.html',
   'imaging-lab/index.html',
   'last30days/index.html',

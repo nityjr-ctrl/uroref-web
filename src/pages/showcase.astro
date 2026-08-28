@@ -169,7 +169,7 @@ const stoneJourney = [projectById.uroref, projectById.calyxview, projectById.uro
                 <a href={project.localHref ?? project.href} target={project.external ? '_blank' : undefined} rel={project.external ? 'noopener' : undefined}>
                   {project.external ? 'Open project ↗' : 'Open project →'}
                 </a>
-                {project.demoLinks?.[0] && <a href={project.demoLinks[0].href} target="_blank" rel="noopener">Open demo in a new tab ↗</a>}
+                {project.demoLinks?.[0] && <a href={project.demoLinks[0].href} target="_blank" rel="noopener">{project.demoLinks[0].label} ↗</a>}
               </div>
             </div>
           </article>

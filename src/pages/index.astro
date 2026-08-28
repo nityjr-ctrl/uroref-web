@@ -146,6 +146,7 @@ function catColor(slot: string): string {
             <div class="label"><span class="small">Get it on</span><span class="big">Google Play</span></div>
           </a>
         </div>
+        <a class="phone-demo-link" href="/try/">See it on a phone <span aria-hidden="true">↗</span></a>
       </div>
 
       <div class="app-visual">
@@ -660,6 +661,27 @@ function catColor(slot: string): string {
     margin: 0 0 28px 0;
   }
   .app-badges { display: flex; gap: 12px; flex-wrap: wrap; }
+  .phone-demo-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin-top: 22px;
+    color: var(--teal-500);
+    font-family: var(--font-mono);
+    font-size: 16px;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    transition: color 0.15s, transform 0.15s;
+  }
+  .phone-demo-link:hover {
+    color: var(--teal-400);
+    transform: translateX(3px);
+  }
+  .phone-demo-link:focus-visible {
+    outline: 2px solid var(--teal-400);
+    outline-offset: 5px;
+    border-radius: 2px;
+  }
   .badge {
     background: var(--navy-900);
     border: 1px solid var(--border-strong);

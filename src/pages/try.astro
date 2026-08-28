@@ -1,0 +1,345 @@
+---
+import Base from '../layouts/Base.astro';
+
+const APP_STORE_URL = 'https://apps.apple.com/us/app/uroref/id6761680168';
+const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.nityg.uroref';
+---
+
+<Base
+  title="Try UroRef on a phone"
+  description="Explore the real UroRef Android interface in an interactive, scrollable browser preview."
+  searchContentType="App"
+  searchTopics={['Clinical reference']}
+>
+  <section class="try-hero" aria-labelledby="try-title">
+    <div class="try-hero-grid" aria-hidden="true"></div>
+    <div class="try-hero-inner">
+      <p class="try-kicker"><span></span> Interactive Android app preview</p>
+      <h1 id="try-title">UroRef, running <em>in your browser.</em></h1>
+      <p class="try-lead">
+        Tap, search and scroll through the interface shipped inside the signed UroRef Android app—without installing anything.
+      </p>
+      <div class="try-hero-actions">
+        <a class="try-primary" href="#live-preview">Open the live preview ↓</a>
+        <a class="try-secondary" href="/app">Get the app →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="live-preview" class="try-preview" aria-labelledby="preview-title">
+    <div class="try-copy">
+      <p class="try-kicker try-kicker-dark"><span></span> Android package · 3.0.1</p>
+      <h2 id="preview-title">The real interface, not a mock-up.</h2>
+      <p>
+        This preview runs the web interface packaged inside the official Android release. Core navigation, search,
+        calculators, pathways and scrolling work here; Android-only system features may behave differently in a browser.
+      </p>
+      <div class="try-note" role="note" aria-label="Safe-use notice">
+        <strong>Educational reference only.</strong>
+        Do not enter patient-identifiable or confidential information. Follow local guidance, senior advice and clinical judgement.
+      </div>
+      <ul class="try-checks" aria-label="Preview capabilities">
+        <li>Scroll through the complete app home screen</li>
+        <li>Open procedures, emergency pathways and calculators</li>
+        <li>Use search, pinned tools and theme controls</li>
+      </ul>
+    </div>
+
+    <div class="device-column" data-pagefind-ignore>
+      <div class="device-shell">
+        <div class="device-speaker" aria-hidden="true"></div>
+        <iframe
+          src="/app-demo/"
+          title="Interactive UroRef Android app preview"
+          loading="eager"
+          referrerpolicy="strict-origin-when-cross-origin"
+          sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-modals"
+          allow="clipboard-write"
+        ></iframe>
+      </div>
+      <div class="device-actions">
+        <a href="/app-demo/" target="_blank" rel="noopener">Open full screen ↗</a>
+        <a href={PLAY_STORE_URL} target="_blank" rel="noopener">Google Play ↗</a>
+      </div>
+      <p class="device-version">Signed Android package 3.0.1 · version code 63</p>
+    </div>
+  </section>
+
+  <section class="try-download" aria-labelledby="download-title">
+    <div>
+      <p class="try-kicker try-kicker-dark"><span></span> Keep it on your phone</p>
+      <h2 id="download-title">Ready for the full app?</h2>
+      <p>The installed app includes the offline core and the normal iOS or Android system experience.</p>
+    </div>
+    <div class="download-links">
+      <a href={APP_STORE_URL} target="_blank" rel="noopener">Download for iPhone ↗</a>
+      <a href={PLAY_STORE_URL} target="_blank" rel="noopener">Download for Android ↗</a>
+    </div>
+  </section>
+
+  <style>
+    .try-hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(5rem, 10vw, 8rem) 1.5rem;
+      background: linear-gradient(145deg, #07192b 0%, #0a2540 54%, #0a3349 100%);
+      color: white;
+    }
+    .try-hero-grid {
+      position: absolute;
+      inset: 0;
+      opacity: 0.12;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, black, transparent 88%);
+    }
+    .try-hero-inner {
+      position: relative;
+      max-width: 920px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .try-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      margin: 0 0 1.25rem;
+      color: #5ce8df;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .try-kicker span {
+      width: 0.45rem;
+      height: 0.45rem;
+      border-radius: 999px;
+      background: #00d4c8;
+      box-shadow: 0 0 0 5px rgba(0, 212, 200, 0.12);
+    }
+    .try-kicker-dark { color: #087f79; }
+    .try-hero h1 {
+      max-width: 800px;
+      margin: 0 auto 1.5rem;
+      color: white;
+      font-size: clamp(2.6rem, 8vw, 5.6rem);
+      font-weight: 650;
+      letter-spacing: -0.055em;
+      line-height: 0.98;
+    }
+    .try-hero h1 em {
+      display: block;
+      color: #5ce8df;
+      font-family: var(--font-serif);
+      font-weight: 500;
+    }
+    .try-lead {
+      max-width: 640px;
+      margin: 0 auto;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      line-height: 1.7;
+    }
+    .try-hero-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 2.25rem;
+    }
+    .try-primary,
+    .try-secondary,
+    .device-actions a,
+    .download-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 0.85rem 1.25rem;
+      font-size: 0.84rem;
+      font-weight: 750;
+      text-decoration: none;
+      transition: transform 150ms ease, border-color 150ms ease, background 150ms ease;
+    }
+    .try-primary {
+      background: #00d4c8;
+      color: #051623;
+    }
+    .try-secondary {
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      color: white;
+      background: rgba(255, 255, 255, 0.05);
+    }
+    .try-primary:hover,
+    .try-secondary:hover,
+    .device-actions a:hover,
+    .download-links a:hover { transform: translateY(-2px); }
+    .try-preview {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(340px, 470px);
+      align-items: center;
+      gap: clamp(3rem, 8vw, 7rem);
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(4rem, 8vw, 7.5rem) 1.5rem;
+      scroll-margin-top: 2rem;
+    }
+    .try-copy h2,
+    .try-download h2 {
+      margin: 0 0 1.25rem;
+      color: var(--text-primary);
+      font-size: clamp(2rem, 5vw, 3.7rem);
+      letter-spacing: -0.045em;
+      line-height: 1;
+    }
+    .try-copy > p,
+    .try-download p {
+      color: var(--text-secondary);
+      font-size: 1.04rem;
+      line-height: 1.75;
+    }
+    .try-note {
+      margin-top: 1.75rem;
+      border: 1px solid rgba(0, 168, 158, 0.28);
+      border-left: 4px solid #00a89e;
+      border-radius: 0.85rem;
+      padding: 1rem 1.1rem;
+      background: rgba(0, 168, 158, 0.08);
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      line-height: 1.55;
+    }
+    .try-note strong {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: var(--text-primary);
+    }
+    .try-checks {
+      display: grid;
+      gap: 0.75rem;
+      margin: 1.5rem 0 0;
+      padding: 0;
+      list-style: none;
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+    }
+    .try-checks li {
+      display: flex;
+      gap: 0.7rem;
+      align-items: flex-start;
+    }
+    .try-checks li::before {
+      content: '✓';
+      color: #008f87;
+      font-weight: 800;
+    }
+    .device-column { min-width: 0; text-align: center; }
+    .device-shell {
+      position: relative;
+      width: min(100%, 414px);
+      margin: 0 auto;
+      padding: 13px;
+      border: 1px solid #314257;
+      border-radius: 3.25rem;
+      background: linear-gradient(145deg, #1f2937, #020617 64%);
+      box-shadow: 0 2.5rem 5rem -2rem rgba(7, 25, 43, 0.55), 0 0 0 5px #0a0f18;
+    }
+    .device-speaker {
+      position: absolute;
+      z-index: 2;
+      top: 1.3rem;
+      left: 50%;
+      width: 5.25rem;
+      height: 1.25rem;
+      transform: translateX(-50%);
+      border-radius: 999px;
+      background: #05070b;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+      pointer-events: none;
+    }
+    .device-shell iframe {
+      display: block;
+      width: 100%;
+      height: min(800px, 78dvh);
+      min-height: 620px;
+      border: 0;
+      border-radius: 2.5rem;
+      background: #f0f4f8;
+    }
+    .device-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+    }
+    .device-actions a,
+    .download-links a {
+      border: 1px solid var(--border-strong);
+      background: var(--surface, #fff);
+      color: var(--text-primary);
+    }
+    .device-version {
+      margin: 0.85rem 0 0;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.03em;
+    }
+    .try-download {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 2rem;
+      max-width: 1180px;
+      margin: 0 auto clamp(4rem, 8vw, 7rem);
+      padding: clamp(2rem, 5vw, 3.5rem);
+      border: 1px solid var(--border);
+      border-radius: 1.5rem;
+      background: linear-gradient(135deg, rgba(0, 212, 200, 0.08), rgba(10, 37, 64, 0.04));
+    }
+    .try-download h2 { font-size: clamp(1.8rem, 4vw, 3rem); }
+    .try-download p { max-width: 620px; margin-bottom: 0; }
+    .download-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 0.65rem;
+      flex: 0 0 auto;
+    }
+    @media (max-width: 860px) {
+      .try-preview { grid-template-columns: 1fr; }
+      .try-copy { max-width: 680px; margin: 0 auto; }
+      .try-download { margin-inline: 1rem; align-items: flex-start; flex-direction: column; }
+      .download-links { justify-content: flex-start; }
+    }
+    @media (max-width: 520px) {
+      .try-hero { padding-inline: 1rem; }
+      .try-preview { padding-inline: 0.75rem; }
+      .device-shell {
+        width: 100%;
+        padding: 7px;
+        border-radius: 2.3rem;
+        box-shadow: 0 1.5rem 3rem -1.5rem rgba(7, 25, 43, 0.45), 0 0 0 3px #0a0f18;
+      }
+      .device-shell iframe {
+        height: min(760px, 78dvh);
+        min-height: 580px;
+        border-radius: 1.9rem;
+      }
+      .device-speaker { top: 0.9rem; }
+      .try-download { border-radius: 1.1rem; padding: 1.5rem; }
+      .download-links { width: 100%; }
+      .download-links a { width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .try-primary,
+      .try-secondary,
+      .device-actions a,
+      .download-links a { transition: none; }
+    }
+  </style>
+</Base>

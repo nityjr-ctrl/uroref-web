@@ -1,13 +1,28 @@
-import { spawn } from 'node:child_process';
-import { readdir } from 'node:fs/promises';
+import { createServer } from 'node:http';
+import { readFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
 import { chromium } from 'playwright';
 import AxeBuilder from '@axe-core/playwright';
 
 const host = '127.0.0.1';
-const port = 4387;
-const origin = `http://${host}:${port}`;
 const distRoot = path.resolve('dist');
+
+const contentTypes = {
+  '.css': 'text/css; charset=utf-8',
+  '.glb': 'model/gltf-binary',
+  '.html': 'text/html; charset=utf-8',
+  '.ico': 'image/x-icon',
+  '.jpeg': 'image/jpeg',
+  '.jpg': 'image/jpeg',
+  '.js': 'text/javascript; charset=utf-8',
+  '.json': 'application/json; charset=utf-8',
+  '.png': 'image/png',
+  '.svg': 'image/svg+xml',
+  '.usdz': 'model/vnd.usdz+zip',
+  '.wasm': 'application/wasm',
+  '.webmanifest': 'application/manifest+json; charset=utf-8',
+  '.xml': 'application/xml; charset=utf-8',
+};
 
 const walk = async (directory) => {
   const files = [];
@@ -23,28 +38,57 @@ const routes = (await walk(distRoot))
   .filter((file) => file.endsWith('.html'))
   .map((file) => path.relative(distRoot, file).replaceAll('\\', '/'))
   .filter((relative) => !relative.split('/').includes('prostateview'))
+  .filter((relative) => !relative.split('/').includes('app-demo'))
   .map((relative) => relative === 'index.html' ? '/' : `/${relative.replace(/index\.html$/, '')}`)
   .sort((a, b) => a.localeCompare(b));
-const server = spawn(process.execPath, ['node_modules/astro/bin/astro.mjs', 'preview', '--host', host, '--port', String(port)], {
-  cwd: process.cwd(),
-  stdio: ['ignore', 'pipe', 'pipe'],
+const staticServer = createServer(async (request, response) => {
+  try {
+    const requestUrl = new URL(request.url ?? '/', `http://${host}`);
+    let relative = decodeURIComponent(requestUrl.pathname).replace(/^\/+/, '');
+    if (!relative || relative.endsWith('/')) relative += 'index.html';
+    const requestedTarget = path.resolve(distRoot, relative);
+    const candidates = path.extname(requestedTarget)
+      ? [requestedTarget]
+      : [requestedTarget, path.join(requestedTarget, 'index.html'), `${requestedTarget}.html`];
+    const target = candidates.find((candidate) => candidate === distRoot || candidate.startsWith(`${distRoot}${path.sep}`));
+    if (!target) {
+      response.writeHead(403).end('Forbidden');
+      return;
+    }
+    let body;
+    let resolvedTarget;
+    for (const candidate of candidates) {
+      if (!(candidate === distRoot || candidate.startsWith(`${distRoot}${path.sep}`))) continue;
+      try {
+        body = await readFile(candidate);
+        resolvedTarget = candidate;
+        break;
+      } catch {}
+    }
+    if (!body || !resolvedTarget) {
+      response.writeHead(404).end('Not found');
+      return;
+    }
+    response.writeHead(200, {
+      'Content-Type': contentTypes[path.extname(resolvedTarget).toLowerCase()] ?? 'application/octet-stream',
+      'Content-Length': body.byteLength,
+    });
+    response.end(request.method === 'HEAD' ? undefined : body);
+  } catch {
+    response.writeHead(404).end('Not found');
+  }
 });
 
-const waitForServer = async () => {
-  const deadline = Date.now() + 30_000;
-  while (Date.now() < deadline) {
-    try {
-      const response = await fetch(origin);
-      if (response.ok) return;
-    } catch {}
-    await new Promise((resolve) => setTimeout(resolve, 250));
-  }
-  throw new Error('Timed out waiting for the local production preview.');
-};
+await new Promise((resolve, reject) => {
+  staticServer.once('error', reject);
+  staticServer.listen(0, host, resolve);
+});
+const address = staticServer.address();
+if (!address || typeof address === 'string') throw new Error('Could not determine the local production-preview port.');
+const origin = `http://${host}:${address.port}`;
 
 let browser;
 try {
-  await waitForServer();
   browser = await chromium.launch({ headless: true });
   const context = await browser.newContext({ viewport: { width: 1280, height: 800 }, reducedMotion: 'reduce' });
   const failures = [];
@@ -201,5 +245,5 @@ try {
   }
 } finally {
   if (browser) await browser.close();
-  server.kill();
+  await new Promise((resolve) => staticServer.close(resolve));
 }

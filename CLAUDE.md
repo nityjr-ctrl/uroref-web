@@ -4,7 +4,7 @@ This repository is the production source for `https://uroref.com`. Treat an atta
 
 ## What “the UroRef page” means
 
-- The public homepage is `/`, implemented in `src/pages/index.astro`.
+- The public homepage is `/`, served from `public/index.html`: the approved portfolio design promoted from the `/next/` preview at the user's instruction (28 Aug 2026), with its css/js/assets at `public/css`, `public/js` and `public/assets`. `src/pages/index.astro` was deleted to avoid the route collision, following the `/about` precedent. A repo-native Astro rebuild of this page remains welcome but is not required. `/next/` now serves redirect stubs.
 - Do not create a separate `/urf` route unless the user explicitly asks for one.
 - The presentation hub is `/showcase/`, implemented in `src/pages/showcase.astro`.
 

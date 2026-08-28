@@ -13,6 +13,8 @@ export interface EcosystemProject {
   id: string;
   name: string;
   mark: string;
+  logo: string;
+  logoAlt: string;
   category: string;
   description: string;
   longDescription: string;
@@ -34,6 +36,8 @@ export const ecosystemProjects: EcosystemProject[] = [
     id: 'uroref',
     name: 'UroRef',
     mark: 'UR',
+    logo: '/brand/logo-kit/presentation/uroref-mark.svg',
+    logoAlt: 'UroRef logo',
     category: 'Quick reference and evidence',
     description: 'The navigation layer for concise trainee reference, current resources and direct routes back to original sources.',
     longDescription:
@@ -58,6 +62,8 @@ export const ecosystemProjects: EcosystemProject[] = [
     id: 'prostateview',
     name: 'ProstateView',
     mark: 'PV',
+    logo: '/brand/logo-kit/presentation/prostateview-mark.svg',
+    logoAlt: 'ProstateView logo',
     category: 'MRI and spatial anatomy',
     description: 'Public Prostate158 assets become rotatable teaching models, report visualisers and spatial-learning drills.',
     longDescription:
@@ -83,6 +89,8 @@ export const ecosystemProjects: EcosystemProject[] = [
     id: 'calyxview',
     name: 'CalyxView',
     mark: 'CV',
+    logo: '/brand/logo-kit/presentation/calyxview-mark.svg',
+    logoAlt: 'CalyxView logo',
     category: 'Renal anatomy and stones',
     description: 'A de-identified CT-derived teaching prototype with a simulated scope route and calyceal search.',
     longDescription:
@@ -101,6 +109,8 @@ export const ecosystemProjects: EcosystemProject[] = [
     id: 'uroops3d',
     name: 'UrOops3D',
     mark: 'U3',
+    logo: '/brand/logo-kit/presentation/uroops3d-mark.svg',
+    logoAlt: 'UrOops3D logo',
     category: 'Operative rehearsal',
     description: 'A browser-based operative and complications atlas using stylised 3D scenes, danger zones and active recall.',
     longDescription:
@@ -119,6 +129,8 @@ export const ecosystemProjects: EcosystemProject[] = [
     id: 'cystosight',
     name: 'Cystosight by UroRef',
     mark: 'CS',
+    logo: '/brand/logo-kit/presentation/cystosight-mark.svg',
+    logoAlt: 'Cystosight by UroRef logo',
     category: 'Bladder vision and cystoscopy',
     description: 'Browser-based exercises for spatial bladder and cystoscopy practice using schematic teaching meshes.',
     longDescription:

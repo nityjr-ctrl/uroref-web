@@ -56,11 +56,12 @@ const stoneJourney = [projectById.uroref, projectById.calyxview, projectById.uro
           <div class="orbit-ring orbit-ring-one" aria-hidden="true"></div>
           <div class="orbit-ring orbit-ring-two" aria-hidden="true"></div>
           <a class="orbit-core" href="#uroref" style={`--node:${projectById.uroref.accent}`}>
-            <span>Uro</span><strong>Ref</strong><small>source layer</small>
+            <img class="orbit-core-logo" src={projectById.uroref.logo} alt="" width="54" height="54" />
+            <strong>UroRef</strong><small>source layer</small>
           </a>
           {ecosystemProjects.filter((project) => project.id !== 'uroref').map((project, index) => (
             <a class={`orbit-node orbit-node-${index + 1}`} href={`#${project.id}`} style={`--node:${project.accent}`}>
-              <span>{project.mark}</span>
+              <img src={project.logo} alt="" width="34" height="34" loading="eager" decoding="async" />
               <strong>{project.name}</strong>
               <small>{project.category}</small>
             </a>
@@ -155,7 +156,7 @@ const stoneJourney = [projectById.uroref, projectById.calyxview, projectById.uro
         {ecosystemProjects.map((project, index) => (
           <article id={project.id} class={`portfolio-card portfolio-card-${index + 1}`} style={`--project:${project.accent}`}>
             <div class="portfolio-visual" aria-hidden="true">
-              <span class="portfolio-mark">{project.mark}</span>
+              <img class="portfolio-logo" src={project.logo} alt="" width="92" height="92" loading="lazy" decoding="async" />
               <div class="portfolio-wave"></div>
               <div class="portfolio-frame"><i></i><i></i><i></i></div>
             </div>
@@ -386,11 +387,11 @@ const stoneJourney = [projectById.uroref, projectById.calyxview, projectById.uro
     .orbit-core, .orbit-node { position: absolute; z-index: 2; display: grid; place-items: center; text-align: center; border: 1px solid color-mix(in srgb, var(--node) 54%, transparent); background: color-mix(in srgb, var(--node) 8%, #071321); box-shadow: 0 16px 44px -26px var(--node); transition: transform .2s ease, border-color .2s ease; }
     .orbit-core:hover, .orbit-node:hover { transform: translate(-50%, -50%) scale(1.04); border-color: var(--node); }
     .orbit-core { left: 50%; top: 50%; width: 150px; height: 150px; border-radius: 50%; transform: translate(-50%, -50%); }
-    .orbit-core span, .orbit-core strong { display: inline; font-size: 26px; line-height: .8; }
-    .orbit-core strong { color: var(--teal-500); }
+    .orbit-core-logo { width: 54px; height: 54px; border-radius: 16px; box-shadow: 0 12px 32px -18px var(--node); }
+    .orbit-core strong { color: white; font-size: 14px; line-height: 1; }
     .orbit-core small, .orbit-node small { color: var(--text-muted); font: 8px/1.4 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
     .orbit-node { width: 120px; min-height: 104px; padding: 13px 9px; border-radius: 25px; transform: translate(-50%, -50%); }
-    .orbit-node > span { display: grid; place-items: center; width: 31px; height: 31px; margin-bottom: 4px; border-radius: 10px; background: color-mix(in srgb, var(--node) 16%, transparent); color: var(--node); font: 600 10px var(--font-mono); }
+    .orbit-node > img { display: block; width: 34px; height: 34px; margin-bottom: 4px; border-radius: 10px; box-shadow: 0 8px 24px -14px var(--node); }
     .orbit-node strong { font-size: 12px; }
     .orbit-node-1 { left: 50%; top: 10%; }
     .orbit-node-2 { left: 88%; top: 49%; }
@@ -446,7 +447,7 @@ const stoneJourney = [projectById.uroref, projectById.calyxview, projectById.uro
     .portfolio-visual { position: relative; min-height: 240px; overflow: hidden; background: radial-gradient(circle at 50% 38%, color-mix(in srgb, var(--project) 25%, transparent), transparent 35%), linear-gradient(145deg, #071321, #10283c); }
     .portfolio-visual::before, .portfolio-visual::after { content: ''; position: absolute; left: 50%; top: 50%; border: 1px solid color-mix(in srgb, var(--project) 34%, transparent); border-radius: 48% 52% 45% 55%; transform: translate(-50%, -50%) rotate(22deg); }
     .portfolio-visual::before { width: 58%; aspect-ratio: 1; }.portfolio-visual::after { width: 34%; aspect-ratio: 1; transform: translate(-50%, -50%) rotate(-28deg); }
-    .portfolio-mark { position: absolute; z-index: 2; left: 50%; top: 50%; transform: translate(-50%, -50%); display: grid; place-items: center; width: 78px; height: 78px; border: 1px solid var(--project); border-radius: 24px; background: color-mix(in srgb, var(--project) 12%, #071321); color: var(--project); font: 700 20px var(--font-mono); box-shadow: 0 0 50px color-mix(in srgb, var(--project) 20%, transparent); }
+    .portfolio-logo { position: absolute; z-index: 2; left: 50%; top: 50%; width: 92px; height: 92px; transform: translate(-50%, -50%); border: 1px solid color-mix(in srgb, var(--project) 55%, transparent); border-radius: 25px; box-shadow: 0 0 56px color-mix(in srgb, var(--project) 28%, transparent); }
     .portfolio-wave { position: absolute; inset: 15% -10%; border: 1px dashed rgba(255,255,255,.1); border-radius: 50%; animation: portfolio-turn 20s linear infinite; }
     @keyframes portfolio-turn { to { transform: rotate(360deg); } }
     .portfolio-frame { position: absolute; left: 15px; right: 15px; bottom: 15px; display: flex; gap: 5px; }

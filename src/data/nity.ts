@@ -55,8 +55,8 @@ export const projects: Project[] = ecosystemProjects
     url: project.href,
     cta: `Open ${project.name}`,
     accent: project.accent,
-    logo: project.id === 'prostateview' ? '/prostateview/logo-symbol.png' : undefined,
-    logoAlt: project.id === 'prostateview' ? 'ProstateView logo' : undefined,
+    logo: project.logo,
+    logoAlt: project.logoAlt,
   }));
 
 export const publicity = {

@@ -15,6 +15,7 @@
     "build:assets": "node scripts/build-assets.mjs",
     "sync:prostateview": "node scripts/sync-prostateview-mirror.mjs",
     "check:links": "node scripts/check-links.mjs",
+    "check:logos": "node scripts/check-logo-kit.mjs",
     "check:a11y": "node scripts/check-a11y.mjs",
     "audit:production": "npm audit --omit=dev --audit-level=high",
     "eval:ariadne:fixtures": "node scripts/run-promptfoo.mjs eval -c evals/promptfoo.fixtures.yaml --no-cache",

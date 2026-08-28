@@ -19,7 +19,9 @@ const projects = ecosystemProjects.filter((project) => project.id !== 'uroref');
       {projects.map((project) => (
         <a class="project-card" style={`--project-accent:${project.accent}`} href={`/showcase#${project.id}`}>
           <span class="project-card-top">
-            <span class="project-card-mark" aria-hidden="true">{project.mark}</span>
+            <span class="project-card-mark" aria-hidden="true">
+              <img src={project.logo} alt="" width="38" height="38" loading="lazy" decoding="async" />
+            </span>
             <span class="project-card-status">{project.stageLabel}</span>
           </span>
           <span class="project-card-eyebrow">{project.category}</span>
@@ -158,12 +160,16 @@ const projects = ecosystemProjects.filter((project) => project.id !== 'uroref');
     border-radius: 12px;
     display: grid;
     place-items: center;
+    overflow: hidden;
     border: 1px solid color-mix(in srgb, var(--project-accent) 50%, transparent);
-    background: color-mix(in srgb, var(--project-accent) 13%, transparent);
-    color: var(--text-primary);
-    font-family: var(--font-mono);
-    font-size: 12px;
-    font-weight: 600;
+    background: #071321;
+    box-shadow: 0 8px 24px -14px var(--project-accent);
+  }
+
+  .project-card-mark img {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 
   .project-card-arrow {

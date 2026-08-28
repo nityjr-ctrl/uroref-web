@@ -953,6 +953,20 @@ html[data-mode="easy"] .dc{
   .footer nav{margin-left:0;gap:16px}
 }
 
+/* 3D orientation hotspot chips (informational, never block the drag) */
+.mv-hotspot{
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+  font-family:var(--font-label);font-size:9.5px;letter-spacing:var(--tracking-label-sm);
+  text-transform:var(--label-transform);color:#B8C5D6;white-space:nowrap;
+  background:rgba(5,15,28,.72);padding:3px 8px;border-radius:6px;
+  border:1px solid rgba(255,255,255,.14);
+  --min-hotspot-opacity:0.12;
+}
+@media(max-width:700px){
+  .mv-hotspot{font-size:8.5px;padding:2px 6px;letter-spacing:.08em}
+}
+
 /* ------------------------------------------------ ariadne scene embed */
 .ariadne-frame{background:#0B0907}
 .ariadne-embed{

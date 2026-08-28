@@ -227,8 +227,13 @@
     <figure class="scene-fig" data-reveal style="--d:.1s">
       <span class="scene-frame-ghost ghost-l"></span>
       <div class="scene-frame mv-frame">
-        <model-viewer class="mv" data-mv-src="assets/prostateview/pv-case-001-gland.glb" poster="/prostateview/demo-cases/pv-case-001/preview/t2_full_slice_overlay.png" camera-controls touch-action="pan-y" exposure="0.9" shadow-intensity="0.55" interaction-prompt="none" alt="Rotatable 3D prostate model from the Prostate158 public dataset, upright with the apex down: the gland capsule with its peripheral and transition zones and a marked lesion"></model-viewer>
-        <span class="frame-cap">Prostate158 public data · pv-case-001 · drag to rotate</span>
+        <model-viewer class="mv" data-mv-src="assets/prostateview/pv-case-001-gland.glb" poster="/prostateview/demo-cases/pv-case-001/preview/t2_full_slice_overlay.png" camera-controls touch-action="pan-y" camera-orbit="0deg 155deg 105%" exposure="0.9" shadow-intensity="0.55" interaction-prompt="none" alt="Rotatable 3D prostate model from the Prostate158 public dataset, viewed from the apex: the gland capsule with its peripheral and transition zones and a marked lesion. The apex points towards you, the base sits at the back, and the patient's right appears on the left of the screen">
+          <div class="mv-hotspot" slot="hotspot-apex" data-position="0 -0.027 0" data-normal="0 -1 0">Apex · towards you</div>
+          <div class="mv-hotspot" slot="hotspot-base" data-position="0 0.022 0" data-normal="0 1 0">Base · at the back</div>
+          <div class="mv-hotspot" slot="hotspot-right" data-position="-0.028 0 0" data-normal="-1 0 0">Right</div>
+          <div class="mv-hotspot" slot="hotspot-left" data-position="0.028 0 0" data-normal="1 0 0">Left</div>
+        </model-viewer>
+        <span class="frame-cap">Prostate158 public data · pv-case-001 · apex towards you · drag to rotate</span>
       </div>
     </figure>
     <div class="scene-head" data-reveal style="--d:0s">
@@ -236,7 +241,7 @@
       <div class="scene-title"><img class="scene-logo" src="assets/prostateview-mark.svg" alt="" width="44" height="44"><h3 id="sc2-h"><a href="https://prostateview.com/v2/">ProstateView</a></h3></div>
       <p class="tagline voice">From MRI to 3D understanding.</p>
       <p class="scene-body">A public-research-data teaching prototype that connects MRI slices, sector anatomy, mental rotation and browser-based 3D exploration.</p>
-      <div class="pills"><span class="pill">MRI slices</span><span class="pill">Sector anatomy</span><span class="pill">Mental rotation</span></div>
+      <div class="pills"><span class="pill">Spatial Lab</span><span class="pill">Mental Rotation</span><span class="pill">Cross-Section</span><span class="pill">Match the Slice</span></div>
       <p class="caveat" style="margin-top:22px">Teaching only. Not for diagnosis, PI-RADS assignment, biopsy planning or navigation.</p>
       <a class="scene-visit" href="https://prostateview.com/v2/">Visit prostateview.com ↗</a>
     </div>

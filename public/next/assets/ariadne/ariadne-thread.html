@@ -324,6 +324,33 @@
     .breath-one, .breath-two { animation: none; opacity: 0; }
     .minotaur-dread { opacity: 0 !important; }
   }
+  /* Art-space lock: JS publishes the artwork's cover rectangle as CSS vars
+     so every overlay stays glued to the painting at any frame aspect. */
+  .ariadne-image, .minotaur-layer, .minotaur-life, .thread-svg {
+    inset: auto;
+    left: var(--ax, 0); top: var(--ay, 0);
+    width: var(--aw, 100%); height: var(--ah, 100%);
+  }
+  .ariadne-image { object-fit: fill; transform: none; }
+  .minotaur-dread {
+    left: calc(var(--ax, 0px) + var(--aw, 100vw) * .5);
+    top: calc(var(--ay, 0px) + var(--ah, 100vh) * .36);
+    width: calc(var(--aw, 100vw) * .3);
+    height: calc(var(--ah, 100vh) * .44);
+  }
+  .minotaur-breath {
+    left: calc(var(--ax, 0px) + var(--aw, 100vw) * .395);
+    top: calc(var(--ay, 0px) + var(--ah, 100vh) * .15);
+    width: calc(var(--aw, 100vw) * .23);
+    height: calc(var(--ah, 100vh) * .45);
+  }
+  .ariadne-aura {
+    left: calc(var(--ax, 0px) + var(--aw, 100vw) * .58);
+    top: calc(var(--ay, 0px) + var(--ah, 100vh) * .23);
+    width: calc(var(--aw, 100vw) * .28);
+    height: calc(var(--aw, 100vw) * .28);
+    min-width: 0; min-height: 0;
+  }
   main{height:100%}
   .sr-skip{position:absolute;left:-9999px;top:0;z-index:99;background:#0b0907;color:#ffd86b;padding:8px 12px;border-radius:6px}
   .sr-skip:focus{left:8px}
@@ -360,7 +387,7 @@
 
       <!-- The golden thread is deliberately drawn over the thread already present in the artwork.
            Edit these path coordinates if you later swap the image. -->
-      <svg class="thread-svg" viewBox="0 0 1024 559" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <svg class="thread-svg" viewBox="0 0 1024 559" preserveAspectRatio="none" aria-hidden="true">
         <defs>
           <linearGradient id="goldGradient" x1="0" y1="0" x2="1" y2="0">
             <stop offset="0%" stop-color="#f0a924"/>
@@ -464,8 +491,28 @@
   const ease = t => 1 - Math.pow(1 - t, 3);
 
   let mouseX = .5, mouseY = .5;
+  let artMouseX = .5, artMouseY = .5;
   let scrollP = 0;
   let effReduced = reduced;
+
+  // The artwork's cover rectangle over the frame, with overscan so the
+  // pointer tilt never exposes an edge. Everything art-locked reads it
+  // through CSS custom properties.
+  const ART_AR = 1024 / 559;
+  let artX = 0, artY = 0, artW = 1024, artH = 559;
+  function layoutArt() {
+    const vw = Math.max(1, innerWidth), vh = Math.max(1, innerHeight);
+    artW = vw * 1.08; artH = artW / ART_AR;
+    if (artH < vh * 1.08) { artH = vh * 1.08; artW = artH * ART_AR; }
+    artX = (vw - artW) / 2; artY = (vh - artH) / 2;
+    const s = stage.style;
+    s.setProperty('--ax', artX + 'px');
+    s.setProperty('--ay', artY + 'px');
+    s.setProperty('--aw', artW + 'px');
+    s.setProperty('--ah', artH + 'px');
+  }
+  window.addEventListener('resize', layoutArt);
+  layoutArt();
 
   // Driven by the host page: it posts scroll progress, pointer position and
   // its motion preference (Easy read mode) into this frame. The frame itself
@@ -477,9 +524,14 @@
     spotlight.style.setProperty('--mx', (mouseX * 100) + '%');
     spotlight.style.setProperty('--my', (mouseY * 100) + '%');
 
-    // Approximate Minotaur centre in normalized stage coordinates.
-    const dx = mouseX - .50;
-    const dy = mouseY - .29;
+    // Convert to art-space fractions so the creature's senses line up with
+    // the painting rather than the frame.
+    artMouseX = clamp((mouseX * innerWidth - artX) / artW);
+    artMouseY = clamp((mouseY * innerHeight - artY) / artH);
+
+    // Approximate Minotaur centre in art coordinates.
+    const dx = artMouseX - .50;
+    const dy = artMouseY - .29;
     const nearMinotaur = Math.hypot(dx * 1.35, dy) < .17;
     const alert = nearMinotaur && scrollP < .80;
     sticky.classList.toggle('minotaur-alert', alert);
@@ -536,8 +588,8 @@
     const beast = wake * retreat;
 
     // Its attention drifts toward the pointer, smoothed like muscle.
-    aimX += ((mouseX - .505) * 2.4 - aimX) * .045;
-    aimY += ((mouseY - .215) * 1.8 - aimY) * .045;
+    aimX += ((artMouseX - .505) * 2.4 - aimX) * .045;
+    aimY += ((artMouseY - .215) * 1.8 - aimY) * .045;
     noticing = Math.max(0, noticing - .011);
 
     // Now and then it shifts its weight - small, unpredictable head-tosses.
@@ -650,7 +702,7 @@
       if (q.life <= 0) { puffs.splice(i, 1); continue; }
       const a = q.life * (q.ember ? .85 : .32);
       ctx.beginPath();
-      ctx.arc(q.x * W, q.y * H, q.r, 0, Math.PI * 2);
+      ctx.arc(artX + q.x * artW, artY + q.y * artH, q.r, 0, Math.PI * 2);
       if (q.ember) {
         ctx.fillStyle = `rgba(255,158,44,${a.toFixed(3)})`;
         ctx.shadowBlur = 10;

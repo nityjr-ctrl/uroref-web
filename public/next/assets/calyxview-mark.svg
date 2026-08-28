@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">CalyxView mark</title>
+  <desc id="desc">A renal collecting system with branching calyces and a highlighted stone on a navy tile.</desc>
+  <defs>
+    <linearGradient id="bg" x1="24" y1="16" x2="228" y2="240" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#183C61"/>
+      <stop offset="1" stop-color="#061725"/>
+    </linearGradient>
+    <linearGradient id="kidney" x1="70" y1="46" x2="190" y2="216" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A8F7D9"/>
+      <stop offset="1" stop-color="#2BCB91"/>
+    </linearGradient>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect x="4" y="4" width="248" height="248" rx="58" fill="url(#bg)"/>
+  <rect x="4.5" y="4.5" width="247" height="247" rx="57.5" fill="none" stroke="#FFFFFF" stroke-opacity=".10"/>
+  <path d="M145 43c34 2 57 27 55 58-2 25-19 32-31 46-10 11-11 25-13 38-3 22-17 34-39 33-35-2-61-31-61-73 0-55 37-105 89-102Z" fill="#6EE7B7" fill-opacity=".10" stroke="url(#kidney)" stroke-width="9" stroke-linejoin="round"/>
+  <path d="M148 204c-1-21-1-42-2-63m0 0-28-27m28 27 25-31m-41 17-37 3m48-25-7-36m12 72 28 20" fill="none" stroke="#A8F7D9" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M148 204c-1-21-1-42-2-63" fill="none" stroke="#38D39B" stroke-width="13" stroke-linecap="round" opacity=".25"/>
+  <circle cx="93" cy="130" r="7" fill="#6EE7B7"/>
+  <circle cx="134" cy="69" r="7" fill="#6EE7B7"/>
+  <circle cx="171" cy="110" r="7" fill="#6EE7B7"/>
+  <circle cx="174" cy="161" r="7" fill="#6EE7B7"/>
+  <circle cx="117" cy="114" r="10" fill="#F6C453" filter="url(#glow)"/>
+</svg>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">UroRef mark</title>
+  <desc id="desc">A teal U-shaped pathway with a reference point on a deep navy tile.</desc>
+  <defs>
+    <linearGradient id="bg" x1="30" y1="18" x2="226" y2="238" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#183C61"/>
+      <stop offset="1" stop-color="#061725"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="72" y1="58" x2="177" y2="213" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#67FFF2"/>
+      <stop offset="1" stop-color="#00B8AE"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect x="4" y="4" width="248" height="248" rx="58" fill="url(#bg)"/>
+  <rect x="4.5" y="4.5" width="247" height="247" rx="57.5" fill="none" stroke="#FFFFFF" stroke-opacity=".10"/>
+  <path d="M72 64v76c0 39 24 66 56 66s56-27 56-66V64" fill="none" stroke="#06223A" stroke-width="30" stroke-linecap="round" opacity=".55"/>
+  <path d="M72 64v76c0 39 24 66 56 66s56-27 56-66V64" fill="none" stroke="url(#accent)" stroke-width="18" stroke-linecap="round"/>
+  <path d="M72 65v58M184 65v58" fill="none" stroke="#D8FFFB" stroke-width="3" stroke-linecap="round" opacity=".48"/>
+  <circle cx="128" cy="206" r="10" fill="#67FFF2" filter="url(#glow)"/>
+</svg>

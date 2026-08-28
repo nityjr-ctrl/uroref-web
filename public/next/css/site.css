@@ -642,6 +642,13 @@ html[data-mode="easy"] .appui-search{background:rgba(30,40,51,.04)}
 .scene-visit{display:inline-flex;align-items:center;gap:8px;margin-top:24px;font-family:var(--font-label);font-size:13px;letter-spacing:.03em;color:var(--sa)}
 .scene-visit:hover{color:var(--text-primary)}
 
+.scene-title{display:flex;align-items:center;gap:14px;margin:0 0 10px}
+.scene-logo{width:44px;height:44px;border-radius:10px;border:1px solid var(--border);flex:0 0 auto}
+.scene-head .scene-title h3{margin:0}
+.scene-head h3 a{color:inherit;text-decoration:none;transition:color .2s}
+.scene-head h3 a:hover{color:var(--sa)}
+html[data-mode="easy"] .scene-head h3 a{text-decoration:underline;text-underline-offset:.14em}
+
 .scene-fig{margin:0;position:relative}
 .scene-frame-ghost{position:absolute;border:1px solid color-mix(in srgb,var(--sa) 22%,transparent);border-radius:var(--r-xl);pointer-events:none}
 .ghost-r{inset:18px -18px -18px 18px}
@@ -657,6 +664,40 @@ html[data-mode="easy"] .appui-search{background:rgba(30,40,51,.04)}
   font-family:var(--font-label);font-size:9.5px;letter-spacing:var(--tracking-label-sm);
   text-transform:var(--label-transform);color:var(--text-muted);
 }
+
+/* 3D model frames */
+.mv-frame{background:var(--surface-frame)}
+model-viewer.mv{
+  position:absolute;inset:0;width:100%;height:100%;
+  background:transparent;--poster-color:transparent;--progress-bar-color:var(--teal-500);
+}
+.split-frame{display:grid;grid-template-columns:1fr 1fr}
+.split-frame .half{position:relative;overflow:hidden;min-height:0}
+.split-frame .half:first-child{border-right:1px solid var(--border)}
+.half-scope svg{position:absolute;inset:0;width:100%;height:100%}
+.mv-frame .frame-cap,.half-tag{
+  position:absolute;left:14px;bottom:12px;z-index:2;
+  font-family:var(--font-label);font-size:9.5px;letter-spacing:var(--tracking-label-sm);
+  text-transform:var(--label-transform);color:#B8C5D6;
+  background:rgba(5,15,28,.62);padding:4px 9px;border-radius:6px;
+  -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
+}
+@media(max-width:700px){
+  .split-frame{grid-template-columns:1fr;grid-template-rows:1fr 1fr}
+  .split-frame .half:first-child{border-right:none;border-bottom:1px solid var(--border)}
+}
+
+/* simulated scope views: interior is always dark, so inks are literal */
+.scope-ground{fill:#071523;stroke:none}
+.scope-art .st{stroke:var(--scope-accent)}
+.scope-art .st-soft{stroke:color-mix(in srgb,var(--scope-accent) 48%,transparent)}
+.scope-art .st-faint{stroke:color-mix(in srgb,var(--scope-accent) 24%,transparent)}
+.scope-art text{fill:#7A8CA3}
+.scope-art .lbl-line{stroke:rgba(122,140,163,.55)}
+.scope-stone{fill:rgba(215,162,59,.85)}
+.scope-art .scope-stone-edge{stroke:#D7A23B}
+.scope-laser{stroke:#FF5D5D;stroke-width:1.8;fill:none;stroke-linecap:round}
+.scope-aim{fill:#FF5D5D}
 
 /* scene svg artwork */
 .art{--art:var(--sa)}

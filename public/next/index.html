@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="css/site.css">
 </head>
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
+<a class="skip-link" href="#main-content">Skip to content</a>
 <div class="progress" role="presentation"></div>
 
 <header class="hdr">
@@ -50,7 +50,7 @@
   </nav>
 </header>
 
-<main id="main">
+<main id="main-content">
 
 <!-- ============================================== hero -->
 <section class="hero" id="top" aria-label="Introduction">
@@ -203,7 +203,7 @@
   <div class="wrap scene-grid">
     <div class="scene-head" data-reveal style="--d:0s">
       <div class="idx"><span class="n">01</span><span class="cat">Reference app</span><span class="status status-live"><span class="sdot"></span>Deployed · education only</span></div>
-      <h3 id="sc1-h">UroRef</h3>
+      <div class="scene-title"><img class="scene-logo" src="assets/uroref-mark.svg" alt="" width="44" height="44"><h3 id="sc1-h"><a href="https://uroref.com/">UroRef</a></h3></div>
       <p class="tagline voice">Smarter on-call. Better decisions.</p>
       <p class="scene-body">Pathways, procedures, doses and calculators in one place. The core works with no signal.</p>
       <div class="pills"><span class="pill">Offline core</span><span class="pill">iOS · Android · Web</span><span class="pill">Free</span></div>
@@ -226,37 +226,14 @@
   <div class="wrap scene-grid flip">
     <figure class="scene-fig" data-reveal style="--d:.1s">
       <span class="scene-frame-ghost ghost-l"></span>
-      <div class="scene-frame tiltable">
-        <svg class="art draw" viewBox="0 0 520 440" role="img" aria-label="Line drawing of an MRI slice projected into a rotatable 3D prostate model">
-          <line class="st-faint" x1="40" y1="390" x2="480" y2="390" pathLength="1" style="--pd:.1s"/>
-          <rect class="st" x="52" y="86" width="168" height="168" rx="10" pathLength="1" style="--pd:0s"/>
-          <path class="st-soft" d="M78 196c-6-26 2-58 24-74 16-12 42-16 62-8 22 9 34 30 34 52 0 24-14 44-36 52-24 9-54 4-70-10" pathLength="1" style="--pd:.3s"/>
-          <path class="st-faint" d="M96 176c0-30 22-52 50-52s48 22 48 50" pathLength="1" style="--pd:.5s"/>
-          <circle class="fill-dot blink" cx="166" cy="188" r="5"/>
-          <circle class="st" cx="166" cy="188" r="11" pathLength="1" style="--pd:.7s"/>
-          <text x="52" y="72">T2 axial slice</text>
-          <path class="lbl-line" d="M176 199 196 236 236 236" pathLength="1" style="--pd:.9s"/>
-          <text x="150" y="252">Lesion</text>
-          <path class="st-soft marchy" d="M228 150h56"/>
-          <path class="st" d="M278 143l10 7-10 7" pathLength="1" style="--pd:.7s"/>
-          <g class="spin-slow" style="transform-origin:388px 190px">
-            <ellipse class="st" cx="388" cy="190" rx="88" ry="64" pathLength="1" style="--pd:.8s"/>
-            <ellipse class="st-soft" cx="388" cy="190" rx="88" ry="26" pathLength="1" style="--pd:1s"/>
-            <ellipse class="st-soft" cx="388" cy="190" rx="40" ry="64" pathLength="1" style="--pd:1.2s"/>
-            <path class="st-faint" d="M300 190c22-38 154-38 176 0" pathLength="1" style="--pd:1.3s"/>
-          </g>
-          <circle class="fill-dot blink" cx="414" cy="176" r="5"/>
-          <text x="332" y="286">Rotatable 3D model</text>
-          <path class="lbl-line" d="M414 184v46" pathLength="1" style="--pd:1.5s"/>
-          <text x="72" y="330">MRI slices → sector anatomy → spatial understanding</text>
-          <path class="st-faint" d="M60 344h396" pathLength="1" style="--pd:1.6s"/>
-        </svg>
-        <span class="frame-cap">Prostate158 public teaching data</span>
+      <div class="scene-frame mv-frame">
+        <model-viewer class="mv" data-mv-src="/prostateview/demo-cases/pv-case-001/model.glb" poster="/prostateview/demo-cases/pv-case-001/preview/t2_full_slice_overlay.png" camera-controls touch-action="pan-y" exposure="0.9" shadow-intensity="0.55" interaction-prompt="none" alt="Rotatable 3D prostate model from the Prostate158 public dataset, showing the gland with its peripheral and transition zones"></model-viewer>
+        <span class="frame-cap">Prostate158 public data · pv-case-001 · drag to rotate</span>
       </div>
     </figure>
     <div class="scene-head" data-reveal style="--d:0s">
       <div class="idx"><span class="n">02</span><span class="cat">MRI and spatial anatomy</span><span class="status status-live"><span class="sdot"></span>Live teaching prototype</span></div>
-      <h3 id="sc2-h">ProstateView</h3>
+      <div class="scene-title"><img class="scene-logo" src="assets/prostateview-mark.svg" alt="" width="44" height="44"><h3 id="sc2-h"><a href="https://prostateview.com/v2/">ProstateView</a></h3></div>
       <p class="tagline voice">From MRI to 3D understanding.</p>
       <p class="scene-body">A public-research-data teaching prototype that connects MRI slices, sector anatomy, mental rotation and browser-based 3D exploration.</p>
       <div class="pills"><span class="pill">MRI slices</span><span class="pill">Sector anatomy</span><span class="pill">Mental rotation</span></div>
@@ -273,7 +250,7 @@
   <div class="wrap scene-grid">
     <div class="scene-head" data-reveal style="--d:0s">
       <div class="idx"><span class="n">03</span><span class="cat">Renal anatomy and stones</span><span class="status status-dev"><span class="sdot"></span>Research prototype</span></div>
-      <h3 id="sc3-h">CalyxView</h3>
+      <div class="scene-title"><img class="scene-logo" src="assets/calyxview-mark.svg" alt="" width="44" height="44"><h3 id="sc3-h"><a href="https://calyxview.com/">CalyxView</a></h3></div>
       <p class="tagline voice">See every calyx. Plan every step.</p>
       <p class="scene-body">A de-identified, CT-derived teaching prototype for talking through collecting-system orientation, with a simulated scope route and calyceal search.</p>
       <div class="pills"><span class="pill">CT-derived</span><span class="pill">Simulated scope route</span><span class="pill">Calyceal search</span></div>
@@ -282,25 +259,31 @@
     </div>
     <figure class="scene-fig" data-reveal style="--d:.1s">
       <span class="scene-frame-ghost ghost-r"></span>
-      <div class="scene-frame tiltable">
-        <svg class="art draw" viewBox="0 0 520 440" role="img" aria-label="Line drawing of a kidney collecting system with a simulated scope route to a lower pole calyx">
-          <path class="st" d="M300 62c62 8 104 62 104 128 0 78-46 138-112 150-40 8-72-10-80-42-6-26 6-46 26-56" pathLength="1" style="--pd:0s"/>
-          <path class="st" d="M300 62c-40-6-76 16-88 52-8 26-2 44 12 62" pathLength="1" style="--pd:.2s"/>
-          <path class="st-soft" d="M262 236c-8-42 10-92 46-116M320 262c30-18 52-56 50-96M296 300c22 2 46-8 60-26" pathLength="1" style="--pd:.5s"/>
-          <path class="st-soft" d="M308 120c14-8 30-10 44-4M352 176c12-2 26 2 34 10M338 250c10 6 16 16 18 28" pathLength="1" style="--pd:.7s"/>
-          <path class="st marchy" d="M76 396c44 0 68-10 88-38 16-22 22-46 44-64 16-13 34-20 54-22"/>
-          <circle class="st" cx="286" cy="272" r="16" pathLength="1" style="--pd:1.3s"/>
-          <circle class="st-soft" cx="286" cy="272" r="26" pathLength="1" style="--pd:1.4s"/>
-          <circle class="fill-dot blink" cx="286" cy="272" r="5"/>
-          <text x="64" y="378">Simulated scope route</text>
-          <path class="lbl-line" d="M300 288 330 330 372 330" pathLength="1" style="--pd:1.5s"/>
-          <text x="308" y="346">Lower pole calyx</text>
-          <path class="lbl-line" d="M368 96 400 78 444 78" pathLength="1" style="--pd:1.5s"/>
-          <text x="384" y="70">Upper pole</text>
-          <text x="42" y="60">Collecting system, laid out in daylight</text>
-          <path class="st-faint" d="M42 72h180" pathLength="1" style="--pd:1.6s"/>
-        </svg>
-        <span class="frame-cap">De-identified CT-derived model</span>
+      <div class="scene-frame split-frame">
+        <div class="half">
+          <model-viewer class="mv" data-mv-src="assets/calyxview/urinary-ct-ureter.glb" camera-controls touch-action="pan-y" exposure="1" shadow-intensity="0.4" interaction-prompt="none" alt="Rotatable CT-derived ureter and renal pelvis with three simulated teaching stones, from the CalyxView case library"></model-viewer>
+          <span class="half-tag">CT-derived ureter · drag to rotate</span>
+        </div>
+        <div class="half half-scope">
+          <svg class="art draw scope-art" style="--scope-accent:#6EE7B7" viewBox="0 0 300 440" role="img" aria-label="Stylised simulated ureteroscope view approaching a stone">
+            <circle class="scope-ground" cx="150" cy="216" r="118"/>
+            <circle class="st scope-ring" cx="150" cy="216" r="118" pathLength="1" style="--pd:0s"/>
+            <circle class="st-faint scope-ring" cx="150" cy="216" r="104" pathLength="1" style="--pd:.2s"/>
+            <path class="st-soft scope-ink" d="M66 160c30 22 34 58 22 92" pathLength="1" style="--pd:.4s"/>
+            <path class="st-soft scope-ink" d="M234 160c-30 22-34 58-22 92" pathLength="1" style="--pd:.5s"/>
+            <path class="st scope-ink" d="M96 130c34 26 74 26 108 0" pathLength="1" style="--pd:.6s"/>
+            <circle class="scope-stone" cx="150" cy="238" r="21"/>
+            <path class="st scope-stone-edge" d="M133 225c8-10 26-11 34 0 7 9 6 22-3 29-9 8-24 7-31-2-6-8-6-19 0-27z" pathLength="1" style="--pd:.8s"/>
+            <path class="scope-laser marchy" d="M150 330 150 262"/>
+            <circle class="fill-dot blink scope-aim" cx="150" cy="238" r="4"/>
+            <path class="st-faint scope-ink" d="M138 330h24M150 318v24" pathLength="1" style="--pd:1s"/>
+            <text x="42" y="52" class="scope-txt">URS · simulated</text>
+            <path class="lbl-line" d="M136 250 104 286 42 286" pathLength="1" style="--pd:1.2s"/>
+            <text x="42" y="302" class="scope-txt">Sim stone · 3.2 mm</text>
+            <text x="52" y="404" class="scope-txt">Laser aligned · fragment and clear</text>
+          </svg>
+          <span class="half-tag">Simulated scope view</span>
+        </div>
       </div>
     </figure>
   </div>
@@ -314,30 +297,34 @@
     <figure class="scene-fig" data-reveal style="--d:.1s">
       <span class="scene-frame-ghost ghost-l"></span>
       <div class="scene-frame tiltable">
-        <svg class="art draw" viewBox="0 0 520 440" role="img" aria-label="Line drawing of a wireframe operative scene with a marked danger zone">
-          <path class="st-faint" d="M60 350 260 300 460 350M110 338 260 296 410 338M160 326 260 292 360 326" pathLength="1" style="--pd:0s"/>
-          <path class="st-faint" d="M100 360 240 306M420 360 280 306M180 372 250 302M340 372 270 302" pathLength="1" style="--pd:.2s"/>
-          <ellipse class="st" cx="262" cy="196" rx="118" ry="88" pathLength="1" style="--pd:.4s"/>
-          <ellipse class="st-soft" cx="262" cy="196" rx="118" ry="34" pathLength="1" style="--pd:.6s"/>
-          <ellipse class="st-soft" cx="262" cy="196" rx="52" ry="88" pathLength="1" style="--pd:.8s"/>
-          <path class="st" d="M470 372 330 236" pathLength="1" style="--pd:1s"/>
-          <path class="st" d="M330 236l-16-4 8 14z" pathLength="1" style="--pd:1.15s"/>
-          <path class="st marchy" d="M150 160c12-24 34-42 62-50"/>
-          <circle class="fill-dot blink" cx="150" cy="160" r="5"/>
-          <text x="66" y="132">Danger zone</text>
-          <path class="lbl-line" d="M150 152v-28h-56" pathLength="1" style="--pd:1.35s"/>
-          <text x="352" y="404">Instrument path</text>
-          <text x="42" y="60">Walk the anatomy before scrubbing in</text>
-          <path class="st-faint" d="M42 72h176" pathLength="1" style="--pd:1.5s"/>
-          <path class="st-soft" d="M414 128a92 92 0 0 1 22 58" pathLength="1" style="--pd:1.55s"/>
-          <path class="st" d="M436 186l6-12-14 2z" pathLength="1" style="--pd:1.7s"/>
+        <svg class="art draw scope-art" style="--scope-accent:#B8A4FF" viewBox="0 0 520 440" role="img" aria-label="Stylised resectoscope view from the verumontanum looking up at the bladder neck, with the resection loop at the bottom of the field">
+          <circle class="scope-ground" cx="260" cy="222" r="168"/>
+          <circle class="st scope-ring" cx="260" cy="222" r="168" pathLength="1" style="--pd:0s"/>
+          <circle class="st-faint scope-ring" cx="260" cy="222" r="150" pathLength="1" style="--pd:.15s"/>
+          <path class="st scope-ink" d="M196 130c14-26 42-42 64-42s50 16 64 42" pathLength="1" style="--pd:.35s"/>
+          <path class="st-soft scope-ink" d="M212 142c12-20 30-30 48-30s36 10 48 20" pathLength="1" style="--pd:.5s"/>
+          <ellipse class="st-soft scope-ink" cx="260" cy="136" rx="34" ry="12" pathLength="1" style="--pd:.65s"/>
+          <path class="st scope-ink" d="M112 176c26 10 40 34 40 62 0 30-12 52-30 66" pathLength="1" style="--pd:.8s"/>
+          <path class="st scope-ink" d="M408 176c-26 10-40 34-40 62 0 30 12 52 30 66" pathLength="1" style="--pd:.9s"/>
+          <path class="st-faint scope-ink" d="M136 210c14 8 20 22 20 36 0 16-6 28-14 38M384 210c-14 8-20 22-20 36 0 16 6 28 14 38" pathLength="1" style="--pd:1.05s"/>
+          <path class="st-soft scope-ink" d="M236 342c8-8 40-8 48 0" pathLength="1" style="--pd:1.15s"/>
+          <path class="st scope-loop" d="M214 390v-44M306 390v-44" pathLength="1" style="--pd:1.25s"/>
+          <path class="st scope-loop" d="M214 346c0-26 92-26 92 0" pathLength="1" style="--pd:1.4s"/>
+          <path class="st-faint scope-ink marchy" d="M180 108c22-14 50-22 80-22 30 0 58 8 80 22"/>
+          <text x="300" y="76" class="scope-txt">Bladder neck</text>
+          <path class="lbl-line" d="M296 82 276 100" pathLength="1" style="--pd:1.6s"/>
+          <text x="52" y="150" class="scope-txt">Lateral lobe</text>
+          <path class="lbl-line" d="M96 156 122 176" pathLength="1" style="--pd:1.6s"/>
+          <text x="330" y="404" class="scope-txt">Resection loop</text>
+          <path class="lbl-line" d="M326 398 308 384" pathLength="1" style="--pd:1.6s"/>
+          <text x="44" y="404" class="scope-txt">30° lens · simulated</text>
         </svg>
-        <span class="frame-cap">Stylised 3D scenes · active recall</span>
+        <span class="frame-cap">At the verumontanum, looking up at the neck</span>
       </div>
     </figure>
     <div class="scene-head" data-reveal style="--d:0s">
       <div class="idx"><span class="n">04</span><span class="cat">Operative rehearsal</span><span class="status status-live"><span class="sdot"></span>Live teaching project</span></div>
-      <h3 id="sc4-h">UrOops3D</h3>
+      <div class="scene-title"><img class="scene-logo" src="assets/uroops3d-mark.svg" alt="" width="44" height="44"><h3 id="sc4-h"><a href="https://uroops3d.com/">UrOops3D</a></h3></div>
       <p class="tagline voice">Learn the operation, not just the steps.</p>
       <p class="scene-body">A browser-based operative and complications atlas using stylised 3D scenes, danger zones and active recall, built for rehearsal before a viva or a supervised procedure.</p>
       <div class="pills"><span class="pill">Danger zones</span><span class="pill">Active recall</span><span class="pill">FRCS prep</span></div>
@@ -354,7 +341,7 @@
   <div class="wrap scene-grid">
     <div class="scene-head" data-reveal style="--d:0s">
       <div class="idx"><span class="n">05</span><span class="cat">Bladder vision and cystoscopy</span><span class="status status-dev"><span class="sdot"></span>Educational prototype</span></div>
-      <h3 id="sc5-h">Cystosight <span style="font-size:.55em;font-weight:600;color:var(--text-muted)">by UroRef</span></h3>
+      <div class="scene-title"><img class="scene-logo" src="assets/cystosight-mark.svg" alt="" width="44" height="44"><h3 id="sc5-h"><a href="https://cystosight.netlify.app/">Cystosight</a> <span style="font-size:.55em;font-weight:600;color:var(--text-muted)">by UroRef</span></h3></div>
       <p class="tagline voice">Recognise the view. Rehearse the scope.</p>
       <p class="scene-body">Browser-based exercises for spatial bladder and cystoscopy practice, using schematic teaching meshes rather than patient imaging.</p>
       <div class="pills"><span class="pill">Schematic meshes</span><span class="pill">Spatial practice</span><span class="pill">No patient data</span></div>

@@ -126,6 +126,39 @@
     });
   }
 
+  /* ---------------------------------------------- lazy 3D models */
+  var mvEls = document.querySelectorAll('model-viewer[data-mv-src]');
+  if (mvEls.length) {
+    var mvLibLoaded = false;
+    function loadMvLib() {
+      if (mvLibLoaded) return;
+      mvLibLoaded = true;
+      var own = document.querySelector('script[src*="site.js"]');
+      var base = own ? own.getAttribute('src').replace(/site\.js.*$/, '') : 'js/';
+      var tag = document.createElement('script');
+      tag.type = 'module';
+      tag.src = base + 'model-viewer.min.js';
+      document.head.appendChild(tag);
+    }
+    function armModel(el) {
+      loadMvLib();
+      el.setAttribute('src', el.getAttribute('data-mv-src'));
+      if (motionOK()) el.setAttribute('auto-rotate', '');
+    }
+    if ('IntersectionObserver' in window) {
+      var mvIO = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          armModel(e.target);
+          mvIO.unobserve(e.target);
+        });
+      }, { rootMargin: '600px 0px' });
+      mvEls.forEach(function (el) { mvIO.observe(el); });
+    } else {
+      mvEls.forEach(armModel);
+    }
+  }
+
   /* ---------------------------------------------- headline cascade */
   var words = document.querySelector('.js-words');
   if (words) {
@@ -158,6 +191,9 @@
         el.textContent = el.getAttribute('data-count');
       });
       document.querySelectorAll('.tiltable').forEach(function (el) { el.style.transform = ''; });
+      document.querySelectorAll('model-viewer[auto-rotate]').forEach(function (el) { el.removeAttribute('auto-rotate'); });
+    } else {
+      document.querySelectorAll('model-viewer[src]').forEach(function (el) { el.setAttribute('auto-rotate', ''); });
     }
   }
 

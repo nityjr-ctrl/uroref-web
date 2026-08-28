@@ -207,7 +207,7 @@
       <p class="tagline voice">Smarter on-call. Better decisions.</p>
       <p class="scene-body">Pathways, procedures, doses and calculators in one place. The core works with no signal.</p>
       <div class="pills"><span class="pill">Offline core</span><span class="pill">iOS · Android · Web</span><span class="pill">Free</span></div>
-      <a class="scene-visit" href="https://uroref.com/app">Open the app overview ↗</a>
+      <a class="scene-visit" href="https://uroref.com/app" data-emu-trigger aria-haspopup="dialog">See it on a phone ↗</a>
     </div>
     <figure class="scene-fig" data-reveal style="--d:.1s">
       <span class="scene-frame-ghost ghost-r"></span>
@@ -227,8 +227,13 @@
     <figure class="scene-fig" data-reveal style="--d:.1s">
       <span class="scene-frame-ghost ghost-l"></span>
       <div class="scene-frame mv-frame">
-        <model-viewer class="mv" data-mv-src="/prostateview/demo-cases/pv-case-001/model.glb" poster="/prostateview/demo-cases/pv-case-001/preview/t2_full_slice_overlay.png" camera-controls touch-action="pan-y" exposure="0.9" shadow-intensity="0.55" interaction-prompt="none" alt="Rotatable 3D prostate model from the Prostate158 public dataset, showing the gland with its peripheral and transition zones"></model-viewer>
-        <span class="frame-cap">Prostate158 public data · pv-case-001 · drag to rotate</span>
+        <model-viewer class="mv" data-mv-src="assets/prostateview/pv-case-001-gland.glb" poster="/prostateview/demo-cases/pv-case-001/preview/t2_full_slice_overlay.png" camera-controls touch-action="pan-y" camera-orbit="0deg 155deg 105%" exposure="0.9" shadow-intensity="0.55" interaction-prompt="none" alt="Rotatable 3D prostate model from the Prostate158 public dataset, viewed from the apex: the gland capsule with its peripheral and transition zones and a marked lesion. The apex points towards you, the base sits at the back, and the patient's right appears on the left of the screen">
+          <div class="mv-hotspot" slot="hotspot-apex" data-position="0 -0.027 0" data-normal="0 -1 0">Apex · towards you</div>
+          <div class="mv-hotspot" slot="hotspot-base" data-position="0 0.022 0" data-normal="0 1 0">Base · at the back</div>
+          <div class="mv-hotspot" slot="hotspot-right" data-position="-0.028 0 0" data-normal="-1 0 0">Right</div>
+          <div class="mv-hotspot" slot="hotspot-left" data-position="0.028 0 0" data-normal="1 0 0">Left</div>
+        </model-viewer>
+        <span class="frame-cap">Prostate158 public data · pv-case-001 · apex towards you · drag to rotate</span>
       </div>
     </figure>
     <div class="scene-head" data-reveal style="--d:0s">
@@ -236,7 +241,7 @@
       <div class="scene-title"><img class="scene-logo" src="assets/prostateview-mark.svg" alt="" width="44" height="44"><h3 id="sc2-h"><a href="https://prostateview.com/v2/">ProstateView</a></h3></div>
       <p class="tagline voice">From MRI to 3D understanding.</p>
       <p class="scene-body">A public-research-data teaching prototype that connects MRI slices, sector anatomy, mental rotation and browser-based 3D exploration.</p>
-      <div class="pills"><span class="pill">MRI slices</span><span class="pill">Sector anatomy</span><span class="pill">Mental rotation</span></div>
+      <div class="pills"><span class="pill">Spatial Lab</span><span class="pill">Mental Rotation</span><span class="pill">Cross-Section</span><span class="pill">Match the Slice</span></div>
       <p class="caveat" style="margin-top:22px">Teaching only. Not for diagnosis, PI-RADS assignment, biopsy planning or navigation.</p>
       <a class="scene-visit" href="https://prostateview.com/v2/">Visit prostateview.com ↗</a>
     </div>
@@ -259,31 +264,9 @@
     </div>
     <figure class="scene-fig" data-reveal style="--d:.1s">
       <span class="scene-frame-ghost ghost-r"></span>
-      <div class="scene-frame split-frame">
-        <div class="half">
-          <model-viewer class="mv" data-mv-src="assets/calyxview/left-renal-tract.glb" camera-controls touch-action="pan-y" exposure="1" shadow-intensity="0.4" interaction-prompt="none" alt="Rotatable CT-derived left renal tract from the CalyxView case library, with the collecting system and calyces at the top, a simulated flexible scope inside the lumen and a simulated stone"></model-viewer>
-          <span class="half-tag">Left renal tract · drag to rotate</span>
-        </div>
-        <div class="half half-scope">
-          <svg class="art draw scope-art" style="--scope-accent:#6EE7B7" viewBox="0 0 300 440" role="img" aria-label="Stylised simulated ureteroscope view approaching a stone">
-            <circle class="scope-ground" cx="150" cy="216" r="118"/>
-            <circle class="st scope-ring" cx="150" cy="216" r="118" pathLength="1" style="--pd:0s"/>
-            <circle class="st-faint scope-ring" cx="150" cy="216" r="104" pathLength="1" style="--pd:.2s"/>
-            <path class="st-soft scope-ink" d="M66 160c30 22 34 58 22 92" pathLength="1" style="--pd:.4s"/>
-            <path class="st-soft scope-ink" d="M234 160c-30 22-34 58-22 92" pathLength="1" style="--pd:.5s"/>
-            <path class="st scope-ink" d="M96 130c34 26 74 26 108 0" pathLength="1" style="--pd:.6s"/>
-            <circle class="scope-stone" cx="150" cy="238" r="21"/>
-            <path class="st scope-stone-edge" d="M133 225c8-10 26-11 34 0 7 9 6 22-3 29-9 8-24 7-31-2-6-8-6-19 0-27z" pathLength="1" style="--pd:.8s"/>
-            <path class="scope-laser marchy" d="M150 330 150 262"/>
-            <circle class="fill-dot blink scope-aim" cx="150" cy="238" r="4"/>
-            <path class="st-faint scope-ink" d="M138 330h24M150 318v24" pathLength="1" style="--pd:1s"/>
-            <text x="42" y="52" class="scope-txt">URS · simulated</text>
-            <path class="lbl-line" d="M136 250 104 286 42 286" pathLength="1" style="--pd:1.2s"/>
-            <text x="42" y="302" class="scope-txt">Sim stone · 3.2 mm</text>
-            <text x="52" y="404" class="scope-txt">Laser aligned · fragment and clear</text>
-          </svg>
-          <span class="half-tag">Simulated scope view</span>
-        </div>
+      <div class="scene-frame mv-frame">
+        <model-viewer class="mv" data-mv-src="assets/calyxview/left-renal-tract-anterior.glb" camera-controls touch-action="pan-y" exposure="1" shadow-intensity="0.4" interaction-prompt="none" alt="Rotatable CT-derived left renal tract from the CalyxView case library, seen from in front: the collecting system and calyces at the top, the ureter descending to the bladder entry, a simulated flexible scope inside the lumen and a simulated stone"></model-viewer>
+        <span class="frame-cap">CT-derived left renal tract · anterior view · drag to rotate</span>
       </div>
     </figure>
   </div>
@@ -296,30 +279,9 @@
   <div class="wrap scene-grid flip">
     <figure class="scene-fig" data-reveal style="--d:.1s">
       <span class="scene-frame-ghost ghost-l"></span>
-      <div class="scene-frame tiltable">
-        <svg class="art draw scope-art" style="--scope-accent:#B8A4FF" viewBox="0 0 520 440" role="img" aria-label="Stylised resectoscope view from the verumontanum looking up at the bladder neck, with the resection loop at the bottom of the field">
-          <circle class="scope-ground" cx="260" cy="222" r="168"/>
-          <circle class="st scope-ring" cx="260" cy="222" r="168" pathLength="1" style="--pd:0s"/>
-          <circle class="st-faint scope-ring" cx="260" cy="222" r="150" pathLength="1" style="--pd:.15s"/>
-          <path class="st scope-ink" d="M196 130c14-26 42-42 64-42s50 16 64 42" pathLength="1" style="--pd:.35s"/>
-          <path class="st-soft scope-ink" d="M212 142c12-20 30-30 48-30s36 10 48 20" pathLength="1" style="--pd:.5s"/>
-          <ellipse class="st-soft scope-ink" cx="260" cy="136" rx="34" ry="12" pathLength="1" style="--pd:.65s"/>
-          <path class="st scope-ink" d="M112 176c26 10 40 34 40 62 0 30-12 52-30 66" pathLength="1" style="--pd:.8s"/>
-          <path class="st scope-ink" d="M408 176c-26 10-40 34-40 62 0 30 12 52 30 66" pathLength="1" style="--pd:.9s"/>
-          <path class="st-faint scope-ink" d="M136 210c14 8 20 22 20 36 0 16-6 28-14 38M384 210c-14 8-20 22-20 36 0 16 6 28 14 38" pathLength="1" style="--pd:1.05s"/>
-          <path class="st-soft scope-ink" d="M236 342c8-8 40-8 48 0" pathLength="1" style="--pd:1.15s"/>
-          <path class="st scope-loop" d="M214 390v-44M306 390v-44" pathLength="1" style="--pd:1.25s"/>
-          <path class="st scope-loop" d="M214 346c0-26 92-26 92 0" pathLength="1" style="--pd:1.4s"/>
-          <path class="st-faint scope-ink marchy" d="M180 108c22-14 50-22 80-22 30 0 58 8 80 22"/>
-          <text x="300" y="76" class="scope-txt">Bladder neck</text>
-          <path class="lbl-line" d="M296 82 276 100" pathLength="1" style="--pd:1.6s"/>
-          <text x="52" y="150" class="scope-txt">Lateral lobe</text>
-          <path class="lbl-line" d="M96 156 122 176" pathLength="1" style="--pd:1.6s"/>
-          <text x="330" y="404" class="scope-txt">Resection loop</text>
-          <path class="lbl-line" d="M326 398 308 384" pathLength="1" style="--pd:1.6s"/>
-          <text x="44" y="404" class="scope-txt">30° lens · simulated</text>
-        </svg>
-        <span class="frame-cap">At the verumontanum, looking up at the neck</span>
+      <div class="scene-frame mv-frame">
+        <model-viewer class="mv" data-mv-src="assets/uroops3d/pelvic-atlas.glb" camera-controls touch-action="pan-y" exposure="1" shadow-intensity="0.5" interaction-prompt="none" alt="Rotatable stylised pelvic atlas from UrOops3D: the bladder with both ureters, the prostate below it, the urethra running down and the seminal vesicles behind"></model-viewer>
+        <span class="frame-cap">UrOops3D pelvic atlas · bladder, prostate and urethra · drag to rotate</span>
       </div>
     </figure>
     <div class="scene-head" data-reveal style="--d:0s">
@@ -350,9 +312,9 @@
     </div>
     <figure class="scene-fig" data-reveal style="--d:.1s">
       <span class="scene-frame-ghost ghost-r"></span>
-      <div class="scene-frame tiltable">
-        <img src="assets/scene-cystosight-stack.jpg" alt="An endoscopy stack glowing in a darkened theatre, with a flexible scope hanging beside the monitor" style="width:100%;height:100%;object-fit:cover" loading="lazy">
-        <span class="frame-cap frame-cap-photo">The view, before you are in it</span>
+      <div class="scene-frame mv-frame">
+        <model-viewer class="mv" data-mv-src="assets/cystosight/scope-assembly.glb" camera-controls touch-action="pan-y" exposure="1.05" shadow-intensity="0.5" interaction-prompt="none" alt="Animated 3D scope assembly from Cystosight: a 22 Ch rigid cystoscope assembling itself step by step, from sheath and obturator to bridge, telescope, camera head and light lead, then coming apart again"></model-viewer>
+        <span class="frame-cap">Scope assembly · 22 Ch rigid cystoscope · drag to rotate</span>
       </div>
     </figure>
   </div>
@@ -365,8 +327,8 @@
   <div class="wrap scene-grid flip">
     <figure class="scene-fig" data-reveal style="--d:.1s">
       <span class="scene-frame-ghost ghost-l"></span>
-      <div class="scene-frame tiltable">
-        <img src="assets/scene-ariadne-thread.jpg" alt="A single glowing teal thread curving through darkness" style="width:100%;height:100%;object-fit:cover" loading="lazy">
+      <div class="scene-frame ariadne-frame">
+        <iframe class="ariadne-embed" data-ariadne-src="assets/ariadne/ariadne-thread.html" title="Ariadne: an interactive scene where a golden thread finds its way past the minotaur" loading="lazy"></iframe>
         <span class="frame-cap frame-cap-photo">Optional · online · off by default</span>
       </div>
     </figure>
@@ -374,7 +336,7 @@
       <div class="idx"><span class="n">06</span><span class="cat">Optional feature · inside UroRef</span><span class="status status-dev"><span class="sdot"></span>In development</span></div>
       <h3 id="sc6-h">Ariadne</h3>
       <p class="tagline voice">A thread through the pathway.</p>
-      <p class="scene-body">The optional online assistant inside UroRef. Off by default, and it answers from the same references the rest of the app uses.</p>
+      <p class="scene-body">The optional online assistant inside UroRef. New hospital, 2am, and you need to book a stent? Ask, and it points you to the right pathway and the numbers to dial. Off by default, and it answers from the same references the rest of the app uses.</p>
       <div class="callout" style="max-width:46ch"><b>Do not enter patient-identifiable information.</b> Ariadne is optional, online, and off unless you turn it on.</div>
     </div>
   </div>
@@ -469,6 +431,46 @@
     </nav>
   </div>
 </footer>
+
+<div class="emu-backdrop" data-emu-backdrop hidden></div>
+<div class="emu-panel" role="dialog" aria-modal="true" aria-label="UroRef on a phone" data-emu-panel hidden>
+  <div class="emu-head">
+    <span class="mono-label emu-title">UroRef · on a phone</span>
+    <button class="emu-close" type="button" data-emu-close aria-label="Close the phone preview">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="emu-stage">
+    <div class="emu-shell" aria-hidden="false">
+      <span class="emu-island" aria-hidden="true"></span>
+      <span class="emu-sidebtn emu-sidebtn-a" aria-hidden="true"></span>
+      <span class="emu-sidebtn emu-sidebtn-b" aria-hidden="true"></span>
+      <span class="emu-sidebtn emu-sidebtn-c" aria-hidden="true"></span>
+      <div class="emu-screen" role="group" aria-label="UroRef app screenshots">
+        <div class="emu-loading" aria-hidden="true">
+          <span class="emu-mark"><b>Uro</b><span>Ref</span><i>●</i></span>
+          <span class="emu-loadtxt">Loading screenshots</span>
+        </div>
+        <div class="emu-track" data-emu-track tabindex="0">
+          <img data-emu-src="assets/app-shots/shot-1-procedures.jpg" alt="UroRef procedures screen: searchable list of emergency procedures including scrotal exploration and JJ stent insertion" width="800" height="1357">
+          <img data-emu-src="assets/app-shots/shot-2-turbt.jpg" alt="UroRef TURBT procedure page with the BAUS patient leaflet, consent risks and operative step sections" width="800" height="1359">
+          <img data-emu-src="assets/app-shots/shot-3-twist.jpg" alt="UroRef TWIST score calculator for suspected testicular torsion" width="797" height="1361">
+          <img data-emu-src="assets/app-shots/shot-4-drugs.jpg" alt="UroRef emergency drug doses screen with per-drug safety warnings" width="800" height="1353">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="emu-dots" role="group" aria-label="Choose a screenshot">
+    <button class="emu-dot" type="button" data-emu-dot="0" aria-label="Screenshot 1 of 4: procedures" aria-current="true"></button>
+    <button class="emu-dot" type="button" data-emu-dot="1" aria-label="Screenshot 2 of 4: TURBT"></button>
+    <button class="emu-dot" type="button" data-emu-dot="2" aria-label="Screenshot 3 of 4: TWIST calculator"></button>
+    <button class="emu-dot" type="button" data-emu-dot="3" aria-label="Screenshot 4 of 4: drug doses"></button>
+  </div>
+  <div class="emu-foot">
+    <span class="emu-note">App screenshots · the app itself runs on iOS and Android</span>
+    <a class="emu-open-full" href="https://uroref.com/app" target="_blank" rel="noopener">Open the app overview ↗</a>
+  </div>
+</div>
 
 <script src="js/site.js" defer></script>
 </body>

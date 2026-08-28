@@ -953,6 +953,115 @@ html[data-mode="easy"] .dc{
   .footer nav{margin-left:0;gap:16px}
 }
 
+/* 3D orientation hotspot chips (informational, never block the drag) */
+.mv-hotspot{
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+  font-family:var(--font-label);font-size:9.5px;letter-spacing:var(--tracking-label-sm);
+  text-transform:var(--label-transform);color:#B8C5D6;white-space:nowrap;
+  background:rgba(5,15,28,.72);padding:3px 8px;border-radius:6px;
+  border:1px solid rgba(255,255,255,.14);
+  --min-hotspot-opacity:0.12;
+}
+@media(max-width:700px){
+  .mv-hotspot{font-size:8.5px;padding:2px 6px;letter-spacing:.08em}
+}
+
+/* ------------------------------------------------ ariadne scene embed */
+.ariadne-frame{background:#0B0907}
+.ariadne-embed{
+  position:absolute;inset:0;width:100%;height:100%;border:0;display:block;
+  pointer-events:none; /* the host page forwards pointer + scroll state instead */
+}
+
+/* ------------------------------------------------ phone emulator panel */
+.emu-backdrop{
+  position:fixed;inset:0;z-index:290;background:rgba(5,15,28,.7);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  opacity:0;transition:opacity .35s var(--ease-out);
+}
+.emu-backdrop.open{opacity:1}
+.emu-panel[hidden],.emu-backdrop[hidden]{display:none}
+.emu-panel{
+  position:fixed;top:0;right:0;bottom:0;z-index:300;
+  width:min(460px,100vw);display:flex;flex-direction:column;gap:12px;
+  padding:16px 22px 18px;background:var(--surface-glass);
+  border-left:1px solid var(--border-strong);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  transform:translateX(102%);transition:transform .35s var(--ease-out);
+}
+.emu-panel.open{transform:none}
+html[data-mode="easy"] .emu-backdrop,html[data-mode="easy"] .emu-panel,
+html.no-motion .emu-backdrop,html.no-motion .emu-panel{transition:none}
+.emu-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex:0 0 auto}
+.emu-title{color:var(--text-muted)}
+.emu-close{
+  width:38px;height:38px;border-radius:var(--r-md);border:1px solid var(--border);
+  background:transparent;color:var(--text-secondary);cursor:pointer;
+  display:grid;place-items:center;
+}
+.emu-close:hover{border-color:var(--border-strong);color:var(--text-primary)}
+.emu-stage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center}
+.emu-shell{
+  position:relative;height:min(690px,100%);aspect-ratio:390/780;max-width:100%;
+  background:#0B1420;border-radius:40px;border:1px solid var(--border-strong);
+  box-shadow:var(--shadow-lg),inset 0 0 0 3px #1B2A3F;
+  padding:12px;
+}
+.emu-island{
+  position:absolute;top:24px;left:50%;transform:translateX(-50%);
+  width:88px;height:20px;border-radius:12px;background:#050B13;z-index:3;
+}
+.emu-sidebtn{position:absolute;right:-2.5px;width:2.5px;border-radius:2px;background:#2A3B54}
+.emu-sidebtn-a{top:120px;height:52px}
+.emu-sidebtn-b{left:-2.5px;right:auto;top:104px;height:30px}
+.emu-sidebtn-c{left:-2.5px;right:auto;top:142px;height:30px}
+.emu-screen{
+  position:relative;width:100%;height:100%;border-radius:28px;overflow:hidden;
+  background:#050F1C; /* device screen stays dark in both themes */
+}
+.emu-loading{
+  position:absolute;inset:0;z-index:1;display:grid;place-items:center;
+  align-content:center;gap:12px;
+}
+.emu-mark{font-family:var(--font-sans);font-weight:800;font-size:24px;letter-spacing:-.02em;color:#FFFFFF}
+.emu-mark span{color:#00D4C8}
+.emu-mark i{font-style:normal;color:#00D4C8;font-size:12px;vertical-align:4px;margin-left:2px}
+.emu-loadtxt{
+  font-family:var(--font-label);font-size:10px;letter-spacing:var(--tracking-label-sm);
+  text-transform:uppercase;color:#B8C5D6;
+}
+.emu-ready .emu-loading{display:none}
+.emu-track{
+  position:absolute;inset:0;z-index:2;display:flex;
+  overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;
+  overscroll-behavior-x:contain;
+}
+.emu-track::-webkit-scrollbar{display:none}
+.emu-track img{
+  flex:0 0 100%;width:100%;height:100%;object-fit:contain;object-position:center;
+  scroll-snap-align:center;scroll-snap-stop:always;
+}
+.emu-dots{display:flex;justify-content:center;gap:9px;flex:0 0 auto}
+.emu-dot{
+  width:9px;height:9px;border-radius:50%;padding:0;border:0;cursor:pointer;
+  background:var(--border-strong);
+}
+.emu-dot:hover{background:var(--text-muted)}
+.emu-dot[aria-current="true"]{background:var(--teal-500)}
+.emu-foot{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  flex-wrap:wrap;flex:0 0 auto;border-top:1px solid var(--border);padding-top:12px;
+}
+.emu-note{font-size:12.5px;color:var(--text-muted)}
+.emu-open-full{
+  font-family:var(--font-label);font-size:12px;letter-spacing:.03em;color:var(--teal-500);
+}
+.emu-open-full:hover{color:var(--text-primary)}
+@media(max-width:700px){
+  .emu-panel{width:100vw;border-left:0;padding:14px 16px 16px}
+}
+
 /* ------------------------------------------------ reduced motion */
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{

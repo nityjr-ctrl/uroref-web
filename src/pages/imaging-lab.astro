@@ -1,0 +1,102 @@
+---
+import Base from '../layouts/Base.astro';
+import ModelExperience from '../components/ModelExperience.astro';
+---
+
+<Base
+  title="Synthetic imaging lab"
+  description="A synthetic-only UroRef imaging integration boundary for public research teaching assets, OHIF, Cornerstone3D and MONAI provenance."
+>
+  <section class="lab-hero">
+    <div class="lab-hero-grid" aria-hidden="true"></div>
+    <div class="lab-hero-inner">
+      <div>
+        <p class="lab-kicker">Synthetic imaging lab · no clinical connection</p>
+        <h1>Imaging innovation, with a <em>hard safety boundary.</em></h1>
+        <p class="lab-lead">This is the landing zone for future DICOMweb teaching workflows. Today it demonstrates a public-research teaching case and the architecture—without an NHS study, a patient identifier or a clinical inference endpoint.</p>
+        <div class="lab-actions">
+          <a class="u-cta-primary" href="#public-case">Explore the public case ↓</a>
+          <a class="u-cta-ghost" href="/showcase#technology">Back to the Mega Hub</a>
+        </div>
+      </div>
+      <div class="lab-status" role="note" aria-label="Imaging lab status">
+        <span>Current state</span>
+        <strong>Synthetic interface staged</strong>
+        <dl>
+          <div><dt>DICOMweb</dt><dd>Not connected</dd></div>
+          <div><dt>Patient data</dt><dd>None</dd></div>
+          <div><dt>Live inference</dt><dd>Disabled</dd></div>
+          <div><dt>Teaching asset</dt><dd>Local</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <div class="lab-main">
+    <section class="lab-pipeline" aria-labelledby="pipeline-title">
+      <div class="lab-heading">
+        <p class="lab-kicker">Future connection contract</p>
+        <h2 id="pipeline-title">Separate the public learning plane from any future clinical plane.</h2>
+      </div>
+      <ol>
+        <li><span>01</span><div><b>DICOMweb teaching source</b><p>Synthetic or explicitly licensed, de-identified public study only.</p></div><small>OHIF boundary</small></li>
+        <li><span>02</span><div><b>Browser interpretation layer</b><p>OHIF and Cornerstone3D for 2D, MPR and structured teaching views.</p></div><small>Not connected</small></li>
+        <li><span>03</span><div><b>Research segmentation</b><p>MONAI pipeline runs outside the public website with model, data and transformation provenance.</p></div><small>Research only</small></li>
+        <li><span>04</span><div><b>Human QA and release</b><p>Orientation, overlay, transformation and use-boundary checks before a teaching asset is published.</p></div><small>Required gate</small></li>
+        <li><span>05</span><div><b>Local 3D and AR</b><p>Reviewed GLB/USDZ teaching output with an independent static fallback.</p></div><small>Demonstrated below</small></li>
+      </ol>
+    </section>
+
+    <section id="public-case" class="lab-case" aria-labelledby="public-case-title">
+      <div class="lab-heading">
+        <p class="lab-kicker">Public-research teaching case</p>
+        <h2 id="public-case-title">A working browser 3D surface—not a clinical viewer.</h2>
+      </div>
+      <ModelExperience />
+    </section>
+
+    <section class="lab-stack" aria-labelledby="stack-title">
+      <div class="lab-heading">
+        <p class="lab-kicker">Open building blocks</p>
+        <h2 id="stack-title">The software is ready before the clinical claim is.</h2>
+      </div>
+      <div class="lab-stack-grid">
+        <a href="https://github.com/OHIF/Viewers" target="_blank" rel="noopener"><span>Display</span><strong>OHIF Viewer</strong><p>Future zero-footprint DICOM teaching surface.</p><small>Connection ready · no server configured ↗</small></a>
+        <a href="https://github.com/cornerstonejs/cornerstone3D" target="_blank" rel="noopener"><span>Rendering</span><strong>Cornerstone3D</strong><p>Future browser imaging primitives and tooling.</p><small>Connection ready · no study loaded ↗</small></a>
+        <a href="https://github.com/Project-MONAI/MONAI" target="_blank" rel="noopener"><span>Research pipeline</span><strong>MONAI</strong><p>Provenance for approved public-data segmentation research.</p><small>Governance gated · no live inference ↗</small></a>
+        <a href="https://github.com/google/model-viewer" target="_blank" rel="noopener"><span>Teaching output</span><strong>model-viewer</strong><p>Local reviewed GLB/USDZ display and AR hand-off.</p><small>Integrated on this page ↗</small></a>
+      </div>
+    </section>
+
+    <section class="lab-gates" aria-labelledby="gates-title">
+      <div>
+        <p class="lab-kicker">Before any patient study</p>
+        <h2 id="gates-title">The next step is governance, not another demo.</h2>
+      </div>
+      <ul>
+        <li>Define intended purpose and explicitly exclude unsupported clinical uses.</li>
+        <li>Agree lawful basis, DPIA, retention, access control and de-identification validation.</li>
+        <li>Apply DCB0129/DCB0160 clinical-risk management where the system can influence care.</li>
+        <li>Complete model, transformation, orientation, accessibility and human-factors validation.</li>
+        <li>Obtain content, dataset and model-licence approval before distribution.</li>
+      </ul>
+    </section>
+  </div>
+
+  <style>
+    .lab-hero { position: relative; min-height: 72svh; display: grid; align-items: center; overflow: hidden; padding: clamp(70px, 9vw, 120px) 28px; background: radial-gradient(circle at 72% 42%, rgba(143,199,255,.2), transparent 32%), linear-gradient(145deg, #06101d, #102c46); }
+    .lab-hero-grid { position: absolute; inset: 0; opacity: .35; background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px); background-size: 50px 50px; mask-image: radial-gradient(circle at 70% 40%, black, transparent 70%); }
+    .lab-hero-inner { position: relative; width: min(1160px, 100%); margin: 0 auto; display: grid; grid-template-columns: 1fr 380px; gap: clamp(40px, 8vw, 95px); align-items: center; }
+    .lab-kicker { margin: 0 0 14px; color: #8fc7ff; font: 500 10px var(--font-mono); letter-spacing: .15em; text-transform: uppercase; }
+    .lab-hero h1 { max-width: 12ch; margin: 0; font-size: clamp(48px, 7vw, 88px); line-height: .95; letter-spacing: -.06em; }.lab-hero h1 em { color: #8fc7ff; font-family: var(--font-serif); font-weight: 500; }
+    .lab-lead { max-width: 65ch; color: var(--text-secondary); font: 18px/1.65 var(--font-serif); }.lab-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+    .lab-status { padding: 28px; border: 1px solid rgba(143,199,255,.3); border-radius: 24px; background: rgba(5,15,28,.66); box-shadow: 0 25px 80px -50px #8fc7ff; backdrop-filter: blur(12px); }
+    .lab-status > span { color: #8fc7ff; font: 9px var(--font-mono); letter-spacing: .12em; text-transform: uppercase; }.lab-status > strong { display: block; margin: 8px 0 24px; font-size: 25px; }
+    .lab-status dl { display: grid; gap: 0; margin: 0; }.lab-status dl div { display: flex; justify-content: space-between; gap: 15px; padding: 11px 0; border-top: 1px solid var(--border); }.lab-status dt, .lab-status dd { margin: 0; font: 10px var(--font-mono); }.lab-status dt { color: var(--text-muted); }.lab-status dd { color: white; }
+    .lab-main { width: min(1160px, calc(100% - 48px)); margin: 0 auto; }.lab-main > section { padding: clamp(76px, 9vw, 125px) 0; border-bottom: 1px solid var(--border); }.lab-heading { max-width: 820px; margin-bottom: 46px; }.lab-heading h2, .lab-gates h2 { max-width: 18ch; margin: 0; font-size: clamp(37px, 5vw, 65px); line-height: 1; letter-spacing: -.05em; }
+    .lab-pipeline ol { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }.lab-pipeline li { display: grid; grid-template-columns: 55px 1fr auto; gap: 20px; align-items: center; padding: 20px; border: 1px solid var(--border); border-radius: 14px; background: rgba(10,37,64,.58); }.lab-pipeline li > span { color: #8fc7ff; font: 600 10px var(--font-mono); }.lab-pipeline b { font-size: 15px; }.lab-pipeline p { margin: 4px 0 0; color: var(--text-secondary); font: 13px/1.5 var(--font-serif); }.lab-pipeline small { padding: 6px 8px; border: 1px solid var(--border); border-radius: 999px; color: var(--text-muted); font: 8px var(--font-mono); letter-spacing: .07em; text-transform: uppercase; }
+    .lab-stack-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }.lab-stack-grid a { min-height: 230px; display: flex; flex-direction: column; padding: 25px; border: 1px solid var(--border); border-radius: 18px; background: #091e32; transition: transform .18s, border-color .18s; }.lab-stack-grid a:hover { transform: translateY(-2px); border-color: #8fc7ff; }.lab-stack-grid span { color: #8fc7ff; font: 9px var(--font-mono); letter-spacing: .1em; text-transform: uppercase; }.lab-stack-grid strong { margin-top: 25px; font-size: 26px; }.lab-stack-grid p { color: var(--text-secondary); font: 14px/1.5 var(--font-serif); }.lab-stack-grid small { margin-top: auto; color: var(--text-muted); font: 10px var(--font-mono); }
+    .lab-gates { display: grid; grid-template-columns: .8fr 1.2fr; gap: 70px; }.lab-gates ul { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }.lab-gates li { padding: 15px 16px 15px 42px; position: relative; border: 1px solid var(--border); border-radius: 12px; color: var(--text-secondary); font: 14px/1.5 var(--font-serif); }.lab-gates li::before { content: '✓'; position: absolute; left: 15px; color: #8fc7ff; font-weight: 800; }
+    @media (max-width: 820px) { .lab-hero-inner, .lab-gates { grid-template-columns: 1fr; }.lab-status { max-width: 500px; }.lab-pipeline li { grid-template-columns: 40px 1fr; }.lab-pipeline small { grid-column: 2; justify-self: start; }.lab-stack-grid { grid-template-columns: 1fr; } }
+  </style>
+</Base>

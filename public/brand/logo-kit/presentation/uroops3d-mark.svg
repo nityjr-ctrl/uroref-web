@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">UrOops3D mark</title>
+  <desc id="desc">A layered three-dimensional teaching cube with a highlighted danger point.</desc>
+  <defs>
+    <linearGradient id="bg" x1="24" y1="16" x2="228" y2="240" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#183C61"/>
+      <stop offset="1" stop-color="#061725"/>
+    </linearGradient>
+    <linearGradient id="purple" x1="57" y1="56" x2="201" y2="199" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#DED5FF"/>
+      <stop offset="1" stop-color="#8E72FF"/>
+    </linearGradient>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect x="4" y="4" width="248" height="248" rx="58" fill="url(#bg)"/>
+  <rect x="4.5" y="4.5" width="247" height="247" rx="57.5" fill="none" stroke="#FFFFFF" stroke-opacity=".10"/>
+  <path d="m128 42 70 40-70 40-70-40 70-40Z" fill="#B8A4FF" fill-opacity=".16" stroke="url(#purple)" stroke-width="8" stroke-linejoin="round"/>
+  <path d="m58 82 70 40 70-40v82l-70 50-70-50V82Z" fill="#B8A4FF" fill-opacity=".08" stroke="url(#purple)" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M128 122v92M58 124l70 42 70-42" fill="none" stroke="#B8A4FF" stroke-width="6" stroke-linejoin="round" opacity=".72"/>
+  <path d="M76 153 128 184l52-31" fill="none" stroke="#E4DEFF" stroke-width="5" stroke-linecap="round" opacity=".46"/>
+  <path d="m167 83 13 23h-26l13-23Z" fill="#F6C453" filter="url(#glow)"/>
+  <path d="M167 91v7" stroke="#102F50" stroke-width="3" stroke-linecap="round"/><circle cx="167" cy="102" r="1.8" fill="#102F50"/>
+</svg>

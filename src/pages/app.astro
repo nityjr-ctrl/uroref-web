@@ -15,7 +15,7 @@ const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.nityg.
         UroRef on your phone.
       </h1>
       <p style="color: rgba(255,255,255,0.72); font-size: 1.15rem; margin: 0 auto 0.75rem; line-height: 1.6; max-width: 600px;">
-        16 procedures. On-call emergency algorithms. Urology drug doses. 6 calculators. 31 BAUS leaflets.
+        Procedures. On-call emergency algorithms. Urology drug doses. Calculators. Ask Ariadne. Direct links to BAUS patient information.
       </p>
       <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem; margin: 0;">
         Available now on iOS and Android.
@@ -104,7 +104,8 @@ const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.nityg.
     <div class="u-hero-bg" aria-hidden="true"></div>
     <div style="max-width: 1000px; margin: 0 auto; text-align: center; position: relative;">
       <h2 style="color: white; font-size: clamp(1.75rem, 3.5vw, 2.25rem); font-weight: 800; margin: 0 0 0.75rem; letter-spacing: -0.025em;">See it in action</h2>
-      <p style="color: rgba(255,255,255,0.55); margin: 0 0 3rem; font-size: 0.95rem;">Illustrative previews.</p>
+      <p style="color: rgba(255,255,255,0.55); margin: 0 0 1.2rem; font-size: 0.95rem;">Illustrative previews.</p>
+      <a class="live-preview-link" href="/try/">Try the live, scrollable app <span aria-hidden="true">↗</span></a>
 
       <div class="phones">
         <!-- Phone 1 — Home / search -->
@@ -221,7 +222,24 @@ const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.nityg.
         gap: 1.25rem;
         align-items: end;
         max-width: 900px;
-        margin: 0 auto;
+        margin: 3rem auto 0;
+      }
+      .live-preview-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        color: #33ddd3;
+        font-family: var(--font-mono);
+        font-size: 0.92rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-decoration: none;
+      }
+      .live-preview-link:hover { color: white; }
+      .live-preview-link:focus-visible {
+        outline: 2px solid #5ce8df;
+        outline-offset: 5px;
+        border-radius: 2px;
       }
       @media (max-width: 720px) {
         .phones { grid-template-columns: 1fr; gap: 2rem; max-width: 280px; }
@@ -295,7 +313,7 @@ const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.nityg.
       }
       .phone-search {
         font-size: 0.62rem;
-        color: #94a3b8;
+        color: #64748b;
         padding: 0.55rem 0.7rem;
         background: white;
         border-radius: 8px;
@@ -330,7 +348,7 @@ const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.nityg.
       .phone-card-label {
         font-family: 'JetBrains Mono', monospace;
         font-size: 0.5rem;
-        color: #94a3b8;
+        color: #64748b;
         letter-spacing: 0.08em;
         margin-bottom: 0.1rem;
       }
@@ -341,7 +359,7 @@ const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.nityg.
       }
       .phone-card-meta {
         font-size: 0.55rem;
-        color: #94a3b8;
+        color: #64748b;
         margin-top: 0.1rem;
       }
       .phone-pill {
@@ -452,7 +470,8 @@ const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.nityg.
         'Urology-specific drug doses, antibiotic protocols, renal adjustments and interaction flags',
         'Calculators — IDENTIFY, MIMIC, TWIST, eGFR, CPG, prostate volume, Leibovich Score',
         'Clinic presentation frameworks, investigation pathways, referral guidance',
-        '31 BAUS-approved patient information leaflets via QR code',
+        'Direct links to 31 BAUS patient-information leaflets via QR code',
+        'Ask Ariadne — source-linked educational navigation with explicit data and safety boundaries',
         'Search, pinned tools and recently used — fast access during busy shifts',
       ].map(item => (
         <li>

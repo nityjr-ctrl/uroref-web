@@ -1,0 +1,271 @@
+---
+import { CONTENT_VERSION, searchFallback } from '../data/ecosystem';
+---
+
+<div class="hub-search" data-pagefind-ignore data-search-version={CONTENT_VERSION}>
+  <button class="hub-search-trigger" type="button" data-hub-search-open aria-haspopup="dialog" aria-label="Search the UroRef hub">
+    <span aria-hidden="true">⌕</span>
+    <span>Search</span>
+    <kbd>Ctrl K</kbd>
+  </button>
+
+  <dialog class="hub-search-dialog" data-hub-search-dialog aria-labelledby="hub-search-title">
+    <div class="hub-search-panel">
+      <div class="hub-search-head">
+        <div>
+          <p class="hub-search-eyebrow">Search the UroRef hub</p>
+          <h2 id="hub-search-title">Find a topic, source or project</h2>
+        </div>
+        <button type="button" class="hub-search-close" data-hub-search-close aria-label="Close search">×</button>
+      </div>
+
+      <label class="hub-search-field">
+        <span class="sr-only">Search UroRef</span>
+        <span aria-hidden="true">⌕</span>
+        <input type="search" autocomplete="off" placeholder="Try “stones”, “PCNL” or “patient information”" data-hub-search-input />
+      </label>
+
+      <div class="hub-search-filters" aria-label="Search filters">
+        <label><span>Audience</span><select data-hub-search-audience>
+          <option value="">All audiences</option>
+          <option>Trainees</option><option>Trainers</option><option>Leaders</option><option>Patients and public</option>
+        </select></label>
+        <label><span>Topic</span><select data-hub-search-topic>
+          <option value="">All topics</option>
+          <option>Stones</option><option>Imaging</option><option>Evidence</option><option>Clinical reference</option><option>Innovation</option><option>Measurement</option><option>Governance</option>
+        </select></label>
+        <label><span>Content type</span><select data-hub-search-type>
+          <option value="">All content</option>
+          <option>Project</option><option>Source</option><option>Deep Dive</option><option>App</option><option>Hub</option><option>Lab</option><option>Governance</option><option>Page</option>
+        </select></label>
+      </div>
+
+      <p class="hub-search-status" data-hub-search-status aria-live="polite">
+        Search stays in your browser. Search text is not sent to analytics.
+      </p>
+      <div class="hub-search-results" data-hub-search-results></div>
+      <p class="hub-search-foot">Use ↑ ↓ to move, Enter to open, Esc to close.</p>
+    </div>
+  </dialog>
+
+  <script type="application/json" data-hub-search-fallback set:html={JSON.stringify(searchFallback)}></script>
+</div>
+
+<script>
+  const setupHubSearch = () => {
+    const root = document.querySelector('.hub-search');
+    if (!(root instanceof HTMLElement) || root.dataset.ready === 'true') return;
+    root.dataset.ready = 'true';
+
+    const dialog = root.querySelector('[data-hub-search-dialog]');
+    const openButton = root.querySelector('[data-hub-search-open]');
+    const closeButton = root.querySelector('[data-hub-search-close]');
+    const input = root.querySelector('[data-hub-search-input]');
+    const results = root.querySelector('[data-hub-search-results]');
+    const status = root.querySelector('[data-hub-search-status]');
+    const fallbackScript = root.querySelector('[data-hub-search-fallback]');
+    const audienceFilter = root.querySelector('[data-hub-search-audience]');
+    const topicFilter = root.querySelector('[data-hub-search-topic]');
+    const typeFilter = root.querySelector('[data-hub-search-type]');
+    if (!(dialog instanceof HTMLDialogElement) || !(input instanceof HTMLInputElement) || !(results instanceof HTMLElement) || !(status instanceof HTMLElement)) return;
+
+    let pagefindModule;
+    let pagefindUnavailable = false;
+    let activeIndex = -1;
+    let requestId = 0;
+    const fallback = fallbackScript?.textContent ? JSON.parse(fallbackScript.textContent) : [];
+
+    const escapeHtml = (value = '') => value
+      .replaceAll('&', '&amp;')
+      .replaceAll('<', '&lt;')
+      .replaceAll('>', '&gt;')
+      .replaceAll('"', '&quot;')
+      .replaceAll("'", '&#039;');
+
+    const render = (items, message) => {
+      activeIndex = -1;
+      status.textContent = message;
+      results.innerHTML = items.map((item, index) => `
+        <a class="hub-search-result" data-search-result data-result-index="${index}" href="${escapeHtml(item.url)}"${item.external ? ' target="_blank" rel="noopener"' : ''}>
+          <span class="hub-search-result-meta">${escapeHtml(item.meta || 'UroRef')}</span>
+          <strong>${escapeHtml(item.title)}</strong>
+          <span>${item.excerpt || ''}</span>
+        </a>
+      `).join('');
+    };
+
+    const selectedFilters = () => ({
+      audience: audienceFilter instanceof HTMLSelectElement ? audienceFilter.value : '',
+      topic: topicFilter instanceof HTMLSelectElement ? topicFilter.value : '',
+      contentType: typeFilter instanceof HTMLSelectElement ? typeFilter.value : '',
+    });
+
+    const fallbackSearch = (query) => {
+      const filters = selectedFilters();
+      return fallback
+      .filter((item) => item.terms.includes(query))
+      .filter((item) => !filters.audience || item.audience?.includes(filters.audience.toLowerCase()))
+      .filter((item) => !filters.topic || item.topics?.includes(filters.topic.toLowerCase()))
+      .filter((item) => !filters.contentType || item.contentType === filters.contentType.toLowerCase())
+      .slice(0, 8)
+      .map((item) => ({ ...item, external: item.url.startsWith('http') }));
+    };
+
+    const runSearch = async () => {
+      const query = input.value.trim();
+      const thisRequest = ++requestId;
+      if (query.length < 2) {
+        results.innerHTML = '';
+        status.textContent = 'Type at least two characters. Search stays in your browser.';
+        return;
+      }
+
+      status.textContent = 'Searching the hub…';
+      try {
+        if (!pagefindModule && !pagefindUnavailable) {
+          const pagefindPath = '/pagefind/pagefind.js';
+          pagefindModule = await import(/* @vite-ignore */ pagefindPath);
+          await pagefindModule.options({
+            excerptLength: 24,
+            metaCacheTag: root.dataset.searchVersion || 'uroref',
+          });
+        }
+        if (pagefindModule) {
+          const selected = selectedFilters();
+          const filters = Object.fromEntries(Object.entries(selected).filter(([, value]) => value));
+          const response = await pagefindModule.search(query, Object.keys(filters).length ? { filters } : undefined);
+          const entries = await Promise.all(response.results.slice(0, 8).map((item) => item.data()));
+          if (thisRequest !== requestId) return;
+          const indexed = entries.map((entry) => ({
+            title: entry.meta?.title || entry.url,
+            url: entry.url,
+            excerpt: entry.excerpt,
+            meta: entry.meta?.contentType || entry.meta?.site || 'UroRef',
+            external: false,
+          }));
+          const curated = fallbackSearch(query.toLowerCase());
+          const combined = [...curated, ...indexed].filter((item, index, items) => items.findIndex((candidate) => candidate.url === item.url) === index).slice(0, 8);
+          render(combined, `${combined.length} result${combined.length === 1 ? '' : 's'} from the private static index and curated source register.`);
+          return;
+        }
+      } catch {
+        pagefindUnavailable = true;
+      }
+
+      const entries = fallbackSearch(query.toLowerCase());
+      if (thisRequest !== requestId) return;
+      render(entries, entries.length
+        ? `${entries.length} curated hub result${entries.length === 1 ? '' : 's'}. Full-page search is available in the production build.`
+        : 'No matching project or evidence card. Try a broader term.');
+    };
+
+    const open = () => {
+      if (!dialog.open) dialog.showModal();
+      requestAnimationFrame(() => input.focus());
+    };
+    const close = () => {
+      if (dialog.open) dialog.close();
+      if (openButton instanceof HTMLElement) openButton.focus();
+    };
+
+    openButton?.addEventListener('click', open);
+    closeButton?.addEventListener('click', close);
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) close();
+    });
+    dialog.addEventListener('cancel', (event) => {
+      event.preventDefault();
+      close();
+    });
+    input.addEventListener('input', runSearch);
+    [audienceFilter, topicFilter, typeFilter].forEach((filter) => filter?.addEventListener('change', runSearch));
+    document.addEventListener('keydown', (event) => {
+      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
+        event.preventDefault();
+        dialog.open ? close() : open();
+        return;
+      }
+      if (!dialog.open) return;
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        close();
+        return;
+      }
+      const links = Array.from(results.querySelectorAll('[data-search-result]'));
+      if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+        if (!links.length) return;
+        event.preventDefault();
+        const direction = event.key === 'ArrowDown' ? 1 : -1;
+        activeIndex = (activeIndex + direction + links.length) % links.length;
+        const target = links[activeIndex];
+        if (target instanceof HTMLElement) target.focus();
+      }
+    });
+  };
+
+  setupHubSearch();
+  document.addEventListener('astro:page-load', setupHubSearch);
+</script>
+
+<style>
+  .hub-search-trigger {
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 12px;
+    color: var(--text-secondary);
+    background: rgba(255,255,255,0.035);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--r-full);
+    cursor: pointer;
+    font-size: 13px;
+  }
+  .hub-search-trigger:hover { color: white; border-color: rgba(0,212,200,.5); }
+  .hub-search-trigger kbd {
+    font: 500 9px var(--font-mono);
+    color: var(--text-muted);
+    background: var(--navy-900);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2px 5px;
+  }
+  .hub-search-dialog {
+    width: min(720px, calc(100vw - 32px));
+    max-height: min(760px, calc(100vh - 48px));
+    margin: auto;
+    padding: 0;
+    border: 1px solid rgba(0,212,200,.35);
+    border-radius: 24px;
+    background: #071a2c;
+    color: white;
+    box-shadow: 0 32px 100px rgba(0,0,0,.68);
+  }
+  .hub-search-dialog::backdrop { background: rgba(2,10,19,.78); backdrop-filter: blur(9px); }
+  .hub-search-panel { padding: clamp(20px, 4vw, 34px); }
+  .hub-search-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
+  .hub-search-head h2 { margin: 4px 0 20px; font-size: clamp(22px, 4vw, 32px); }
+  .hub-search-eyebrow { margin: 0; color: var(--teal-500); font: 500 10px var(--font-mono); letter-spacing: .15em; text-transform: uppercase; }
+  .hub-search-close { width: 40px; height: 40px; flex: 0 0 auto; border-radius: 50%; border: 1px solid var(--border-strong); background: transparent; color: white; font-size: 24px; cursor: pointer; }
+  .hub-search-field { display: flex; align-items: center; gap: 12px; border: 1px solid var(--border-strong); border-radius: 14px; padding: 0 16px; background: rgba(255,255,255,.045); }
+  .hub-search-field:focus-within { border-color: var(--teal-500); box-shadow: var(--focus-ring); }
+  .hub-search-field input { width: 100%; min-height: 56px; color: white; background: transparent; border: 0; outline: 0; font-size: 16px; }
+  .hub-search-field input::placeholder { color: var(--text-muted); }
+  .hub-search-filters { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; }
+  .hub-search-filters label { display: grid; gap: 5px; color: var(--text-muted); font: 9px/1.2 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
+  .hub-search-filters select { width: 100%; min-height: 40px; padding: 0 30px 0 10px; color: var(--text-primary); background: #0b2540; border: 1px solid var(--border-strong); border-radius: 9px; font: 12px var(--font-sans); }
+  .hub-search-status { margin: 13px 2px; color: var(--text-muted); font: 11px/1.5 var(--font-mono); }
+  .hub-search-results { display: grid; gap: 8px; max-height: 390px; overflow: auto; }
+  .hub-search-result { display: grid; gap: 5px; padding: 13px 15px; border: 1px solid var(--border); border-radius: 12px; background: rgba(255,255,255,.025); }
+  .hub-search-result:hover, .hub-search-result:focus { border-color: var(--teal-500); background: rgba(0,212,200,.07); }
+  .hub-search-result-meta { color: var(--teal-500); font: 500 9px var(--font-mono); letter-spacing: .1em; text-transform: uppercase; }
+  .hub-search-result strong { font-size: 15px; }
+  .hub-search-result > span:last-child { color: var(--text-secondary); font: 13px/1.5 var(--font-serif); }
+  .hub-search-result mark { color: white; background: rgba(0,212,200,.28); border-radius: 2px; }
+  .hub-search-foot { margin: 18px 2px 0; color: var(--text-muted); font: 10px var(--font-mono); }
+  @media (max-width: 520px) {
+    .hub-search-trigger > span:nth-child(2), .hub-search-trigger kbd { display: none; }
+    .hub-search-trigger { width: 40px; padding: 0; justify-content: center; }
+    .hub-search-filters { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,30 @@
+name: UroRef quality gates
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      PUBLIC_BUILD_REF: ${{ github.sha }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22.23.2'
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npm run check:logos
+      - run: npm run check:links
+      - run: npm run audit:production
+      - run: npm run eval:ariadne:fixtures
+      - run: npx playwright install --with-deps chromium
+      - run: npm run check:a11y

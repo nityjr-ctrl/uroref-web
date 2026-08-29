@@ -1,0 +1,133 @@
+<section class="model-experience" aria-labelledby="model-experience-title">
+  <div class="model-copy">
+    <p class="model-kicker">Local 3D · public teaching asset</p>
+    <h3 id="model-experience-title">Move from a slice to a spatial model.</h3>
+    <p>
+      This orientation-checked ProstateView case demonstrates the reusable 3D layer inside the hub. The GLB, USDZ and fallback image are served locally; nothing here is diagnostic.
+    </p>
+    <ul>
+      <li>Drag to rotate and scroll or pinch to zoom.</li>
+      <li>Use the AR button on a supported HTTPS phone.</li>
+      <li>Open the full case to see provenance and QA status.</li>
+    </ul>
+    <a class="model-case-link" href="/prostateview/v2/case/pv-case-001/">Open the full teaching case →</a>
+  </div>
+
+  <div class="model-stage" data-model-stage>
+    <img
+      class="model-static-fallback"
+      src="/prostateview/demo-cases/pv-case-001/preview/t2_full_slice_overlay.png"
+      alt="Axial public-research prostate MRI teaching slice with a segmentation overlay"
+      width="768"
+      height="768"
+      loading="lazy"
+    />
+    <model-viewer
+      class="model-viewer"
+      src="/prostateview/models_ar_human/pv-case-001/model.glb"
+      ios-src="/prostateview/models_ar_human/pv-case-001/model.usdz"
+      poster="/prostateview/demo-cases/pv-case-001/preview/t2_full_slice_overlay.png"
+      alt="Interactive three-dimensional teaching model derived from the public Prostate158 research dataset"
+      camera-controls
+      touch-action="pan-y"
+      loading="lazy"
+      reveal="interaction"
+      shadow-intensity="1"
+      environment-image="neutral"
+      ar
+      ar-modes="webxr scene-viewer quick-look"
+      ar-scale="auto"
+    >
+      <button class="model-load" slot="poster" type="button">Load interactive 3D</button>
+      <button class="model-ar" slot="ar-button" type="button">View in AR</button>
+      <div class="model-progress" slot="progress-bar" aria-hidden="true"><span></span></div>
+    </model-viewer>
+    <p class="model-error" data-model-error hidden>
+      Interactive 3D is unavailable. The teaching slice remains visible above.
+    </p>
+    <p class="sr-only" data-model-status aria-live="polite">Static teaching slice shown. Load the interactive model when ready.</p>
+    <div class="model-stage-labels" aria-hidden="true">
+      <span>Public research data</span><span>Teaching only</span>
+    </div>
+  </div>
+</section>
+
+<script>
+  type ModelViewerConfiguration = typeof globalThis & {
+    ModelViewerElement?: { dracoDecoderLocation?: string };
+  };
+
+  let modelViewerReady: Promise<void> | undefined;
+
+  const ensureModelViewer = () => {
+    if (!modelViewerReady) {
+      const scope = globalThis as ModelViewerConfiguration;
+      scope.ModelViewerElement = {
+        ...(scope.ModelViewerElement ?? {}),
+        dracoDecoderLocation: '/prostateview/draco/',
+      };
+      modelViewerReady = import('@google/model-viewer')
+        .then(() => customElements.whenDefined('model-viewer'));
+    }
+    return modelViewerReady;
+  };
+
+  const setupModel = () => {
+    const stage = document.querySelector('[data-model-stage]');
+    const viewer = stage?.querySelector('model-viewer');
+    const error = stage?.querySelector('[data-model-error]');
+    const loadButton = stage?.querySelector('.model-load');
+    const status = stage?.querySelector('[data-model-status]');
+    if (!stage || !viewer || stage.dataset.ready === 'true') return;
+    stage.dataset.ready = 'true';
+    loadButton?.addEventListener('click', async () => {
+      if (status instanceof HTMLElement) status.textContent = 'Loading the interactive 3D teaching model.';
+      if (loadButton instanceof HTMLButtonElement) loadButton.disabled = true;
+      stage.classList.remove('has-error');
+      if (error instanceof HTMLElement) error.hidden = true;
+      try {
+        await ensureModelViewer();
+        const interactiveViewer = viewer as HTMLElement & { dismissPoster?: () => void };
+        interactiveViewer.dismissPoster?.();
+      } catch {
+        stage.classList.add('has-error');
+        if (error instanceof HTMLElement) error.hidden = false;
+        if (status instanceof HTMLElement) status.textContent = 'Interactive 3D is unavailable. The static teaching slice remains visible.';
+      }
+    });
+    viewer.addEventListener('load', () => {
+      stage.classList.add('is-loaded');
+      if (status instanceof HTMLElement) status.textContent = 'Interactive 3D teaching model loaded.';
+    });
+    viewer.addEventListener('error', () => {
+      stage.classList.add('has-error');
+      if (error instanceof HTMLElement) error.hidden = false;
+      if (status instanceof HTMLElement) status.textContent = 'Interactive 3D is unavailable. The static teaching slice remains visible.';
+    });
+  };
+  setupModel();
+  document.addEventListener('astro:page-load', setupModel);
+</script>
+
+<style>
+  .model-experience { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(24px, 5vw, 64px); align-items: center; }
+  .model-kicker { margin: 0 0 12px; color: #f6c453; font: 500 10px var(--font-mono); letter-spacing: .14em; text-transform: uppercase; }
+  .model-copy h3 { margin: 0 0 16px; font-size: clamp(28px, 4vw, 48px); line-height: 1.03; letter-spacing: -.04em; }
+  .model-copy > p:not(.model-kicker) { color: var(--text-secondary); font: 17px/1.65 var(--font-serif); }
+  .model-copy ul { display: grid; gap: 8px; padding-left: 20px; color: var(--text-secondary); font-size: 14px; }
+  .model-case-link { display: inline-flex; margin-top: 12px; color: var(--teal-500); font-weight: 600; }
+  .model-stage { position: relative; min-height: 520px; border: 1px solid var(--border-strong); border-radius: 26px; overflow: hidden; background: radial-gradient(circle at 45% 35%, #253247, #07111d 68%); box-shadow: 0 35px 100px -55px rgba(0,212,200,.72); }
+  .model-static-fallback { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .34; filter: saturate(.72) contrast(1.08); }
+  .model-viewer { position: absolute; inset: 0; width: 100%; height: 100%; background: transparent; --poster-color: transparent; }
+  .model-stage.is-loaded .model-static-fallback { opacity: .08; }
+  .model-load, .model-ar { border: 1px solid rgba(255,255,255,.22); border-radius: 999px; padding: 12px 18px; color: white; background: rgba(5,15,28,.86); font-weight: 650; cursor: pointer; backdrop-filter: blur(8px); }
+  .model-load { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+  .model-load:hover, .model-ar:hover { border-color: var(--teal-500); }
+  .model-ar { position: absolute; right: 16px; bottom: 16px; background: var(--teal-500); color: var(--navy-900); border-color: var(--teal-500); }
+  .model-progress { position: absolute; left: 14%; right: 14%; bottom: 20px; height: 3px; overflow: hidden; border-radius: 3px; background: rgba(255,255,255,.12); }
+  .model-progress span { display: block; width: var(--progress-bar-width, 0%); height: 100%; background: var(--teal-500); }
+  .model-error { position: absolute; inset: auto 18px 18px; padding: 12px 14px; border-radius: 10px; background: #321a1f; border: 1px solid rgba(255,93,93,.4); color: #ffd8d8; font-size: 13px; }
+  .model-stage-labels { position: absolute; z-index: 2; top: 16px; left: 16px; right: 16px; display: flex; justify-content: space-between; pointer-events: none; }
+  .model-stage-labels span { padding: 6px 9px; border: 1px solid rgba(255,255,255,.13); border-radius: 999px; background: rgba(5,15,28,.68); color: rgba(255,255,255,.7); font: 9px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; backdrop-filter: blur(7px); }
+  @media (max-width: 860px) { .model-experience { grid-template-columns: 1fr; } .model-stage { min-height: min(560px, 74vw); } }
+</style>

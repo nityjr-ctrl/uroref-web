@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-const lastUpdated = '22 August 2026';
+const lastUpdated = '28 August 2026';
 ---
 <Base title="Privacy" description="UroRef privacy notice — how the website, offline reference library, Ask Ariadne and site-aware tools handle data.">
 
@@ -33,17 +33,39 @@ const lastUpdated = '22 August 2026';
 
       <h2>What this website collects</h2>
       <ul>
-        <li><strong>No account, no login.</strong> The marketing site does not require an account.</li>
+        <li><strong>No account, no login.</strong> The public website does not require an account.</li>
         <li>
-          <strong>Aggregate website analytics.</strong> We use Plausible Analytics without tracking
-          cookies to understand page views, country, referrer and device type. We do not use it
-          for advertising or cross-site tracking.
+          <strong>Private site search.</strong> Pagefind processes a downloaded static index in your
+          browser. Search text is not added to result URLs or sent to an analytics service.
+        </li>
+        <li>
+          <strong>Analytics are disabled by default.</strong> The site can be connected to an approved
+          Umami installation for limited, aggregate measurement. It will not be enabled until its
+          hosting, retention, consent position and event list are agreed. Search text, free text,
+          patient details and session replay must not be collected.
         </li>
         <li>
           <strong>Feedback form</strong> — if you submit our Google feedback form, the data goes to
           Google Forms under their privacy policy. We use it only to improve UroRef.
         </li>
       </ul>
+
+      <h2>Public showcase demonstration</h2>
+      <p>
+        The Ask Ariadne panel in the public showcase is fixed demonstration copy: it does not send
+        the example question to a model or external service.
+      </p>
+      <p>
+        The interactive app preview at <a href="/try/">Try UroRef</a> is different: it runs the
+        production interface packaged with the Android app. Optional connected features in that
+        preview, including Ask Ariadne and live hospital data, process information as described
+        below. Preferences and recent activity may be stored in your browser rather than on an
+        installed device.
+      </p>
+      <p>
+        Do not enter patient-identifiable or confidential information into site search, feedback
+        forms or any demonstration.
+      </p>
 
       <h2>Core app and on-device data</h2>
       <p>
@@ -130,20 +152,22 @@ const lastUpdated = '22 August 2026';
 
       <h2>Cookies</h2>
       <p>
-        UroRef does not set advertising or cross-site tracking cookies. Plausible is configured
-        without tracking cookies. Embedded services such as Google Fonts may process ordinary
-        request information under their own terms.
+        UroRef does not set advertising or cross-site tracking cookies. Analytics are disabled by
+        default; if approved Umami measurement is enabled, it will use its cookieless mode and this
+        notice will be updated. Embedded and external services you choose to open may process
+        ordinary request information under their own terms.
       </p>
 
       <h2>Third-party services</h2>
       <ul>
-        <li>GitHub Pages — website hosting.</li>
-        <li>Plausible Analytics — aggregate, cookie-free website analytics.</li>
+        <li>GitHub Pages — website hosting and ordinary web-request processing needed to serve the site.</li>
         <li>Cloudflare Workers and KV — Ariadne, live hospital data, rate limiting and site requests.</li>
         <li>Google Gemini — generation of some Ariadne responses.</li>
         <li>Google Apps Script, Gmail and Google Forms — site-request notification and feedback.</li>
-        <li>Google Fonts — website typefaces.</li>
+        <li>Google Fonts — website typefaces; system fonts provide an offline fallback.</li>
         <li>api.qrserver.com and linked clinical websites — QR images and external resources.</li>
+        <li>Apple and Google — for app distribution and any platform diagnostics you permit.</li>
+        <li>Umami — optional aggregate site measurement, currently disabled unless explicitly configured.</li>
       </ul>
 
       <h2>Security</h2>
@@ -205,7 +229,7 @@ const lastUpdated = '22 August 2026';
       border: 1px solid var(--border);
       border-radius: var(--r-md);
       font-size: 0.85rem;
-      color: var(--text-muted);
+      color: var(--text-secondary);
       font-family: var(--font-mono);
     }
   </style>

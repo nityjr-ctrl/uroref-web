@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About UroRef | UroRef</title>
 <link rel="canonical" href="https://uroref.com/about">
-<meta name="description" content="UroRef started as a personal tool on a urology on-call and has 700+ combined App Store and Google Play downloads as of August 2026. Learn what is in the app, who built it, the early quality-improvement feedback, and where the tool stops.">
+<meta name="description" content="UroRef started as a personal tool on a urology on-call and grew into a five-project learning ecosystem. Explore the app, its 700+ combined App Store and Google Play downloads as of August 2026, early quality-improvement feedback, its author and safety boundaries.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -309,8 +309,8 @@
   .sc-calyx .stage{--glow:radial-gradient(ellipse 62% 52% at 50% 55%,#34d39926,transparent 65%)}
   .sc-oops{background:linear-gradient(180deg,var(--navy-800),#2b0f18 52%,var(--navy-800))}
   .sc-oops .stage{--glow:radial-gradient(ellipse 62% 52% at 50% 55%,#f4728c26,transparent 65%)}
-  .sc-stent{background:linear-gradient(180deg,var(--navy-800),#12233a 52%,var(--navy-800))}
-  .sc-stent .stage{--glow:radial-gradient(ellipse 62% 52% at 50% 55%,#00d4c81f,transparent 65%)}
+  .sc-cysto{background:linear-gradient(180deg,var(--navy-800),#10233d 52%,var(--navy-800))}
+  .sc-cysto .stage{--glow:radial-gradient(ellipse 62% 52% at 50% 55%,#8fc7ff29,transparent 65%)}
   /* svg animation */
   .draw{stroke-dasharray:1;stroke-dashoffset:1}
   .in .draw{animation:draw 2.2s cubic-bezier(.4,0,.2,1) forwards;animation-delay:var(--dd,.3s)}
@@ -385,9 +385,13 @@
     font-size:13px;color:var(--text-muted)}
   .foot a{color:var(--text-secondary);text-decoration:none}
   .foot a:hover{color:var(--teal-500)}
+  .skip{position:fixed;z-index:1000;left:16px;top:12px;transform:translateY(-180%);padding:10px 14px;
+    border-radius:8px;background:#fff;color:#050f1c;font-weight:700;text-decoration:none}
+  .skip:focus{transform:translateY(0)}
 </style>
 </head>
 <body>
+<a class="skip" href="#main-content">Skip to main content</a>
 <div id="bar"></div>
 
 <header>
@@ -398,7 +402,7 @@
       <a href="#app">The app</a>
       <a href="#author">Who built it</a>
       <a href="#why">Why</a>
-      <a href="#projects">Projects</a>
+      <a href="https://uroref.com/showcase">Mega Hub</a>
       <a href="#governance">Governance</a>
       <a class="cta" href="https://uroref.com/app">Get the app</a>
     </div>
@@ -408,13 +412,15 @@
   </nav>
 </header>
 
+<main id="main-content" tabindex="-1">
+
 <!-- ================= HERO ================= -->
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
       <span class="kicker rv">About</span>
       <h1 class="h-hero rv" style="--d:.08s">It started as a personal<br><span class="teal">tool.</span></h1>
-      <p class="lead rv" style="--d:.16s">Downloaded <b>700+ times</b> across the App Store and Google Play as of August 2026. Built on a urology on-call, for urology trainees, by someone who kept running out of time to look things up.</p>
+      <p class="lead rv" style="--d:.16s">UroRef has <b>700+ combined App Store and Google Play downloads</b> as of August 2026. It has grown into a <b>five-project learning ecosystem</b> &mdash; built on a urology on-call, for urology trainees, by someone who kept running out of time to look things up.</p>
       <div class="actions rv" style="--d:.26s">
         <a class="btn" href="https://uroref.com/app">Get the app</a>
         <a class="btn ghost" href="#author">Who built it</a>
@@ -447,15 +453,13 @@
     <span class="mq-item">UroRef</span><span class="mq-item t">&#10022;</span>
     <span class="mq-item">ProstateView</span><span class="mq-item t">&#10022;</span>
     <span class="mq-item">CalyxView</span><span class="mq-item t">&#10022;</span>
-    <span class="mq-item">UroOps3D</span><span class="mq-item t">&#10022;</span>
-    <span class="mq-item">MCHT Stent Register</span><span class="mq-item t">&#10022;</span>
-    <span class="mq-item">Ariadne</span><span class="mq-item t">&#10022;</span>
+    <span class="mq-item">UrOops3D</span><span class="mq-item t">&#10022;</span>
+    <span class="mq-item">Cystosight by UroRef</span><span class="mq-item t">&#10022;</span>
     <span class="mq-item">UroRef</span><span class="mq-item t">&#10022;</span>
     <span class="mq-item">ProstateView</span><span class="mq-item t">&#10022;</span>
     <span class="mq-item">CalyxView</span><span class="mq-item t">&#10022;</span>
-    <span class="mq-item">UroOps3D</span><span class="mq-item t">&#10022;</span>
-    <span class="mq-item">MCHT Stent Register</span><span class="mq-item t">&#10022;</span>
-    <span class="mq-item">Ariadne</span><span class="mq-item t">&#10022;</span>
+    <span class="mq-item">UrOops3D</span><span class="mq-item t">&#10022;</span>
+    <span class="mq-item">Cystosight by UroRef</span><span class="mq-item t">&#10022;</span>
   </div>
 </div>
 
@@ -468,7 +472,7 @@
       <article class="card rv" style="--accent:var(--teal-500)">
         <span class="ico">&#129658;</span><span class="tag">Reference</span>
         <h3>Procedures</h3>
-        <p>16 common urology procedures with consent risks, operative steps, post-op orders, and ward round checklists.</p>
+        <p>Common urology procedures with consent risks, operative steps, post-op orders, and ward round checklists.</p>
       </article>
       <article class="card rv" style="--accent:var(--cat-oncall);--d:.06s">
         <span class="ico">&#128680;</span><span class="tag">On call</span>
@@ -493,7 +497,7 @@
       <article class="card rv" style="--accent:var(--cat-default);--d:.18s">
         <span class="ico">&#128196;</span><span class="tag">Patients</span>
         <h3>BAUS Leaflets</h3>
-        <p>31 BAUS-approved patient information leaflets via QR code.</p>
+        <p>Direct QR routes to original BAUS patient information leaflets.</p>
       </article>
     </div>
   </div>
@@ -509,7 +513,7 @@
         <p class="first">I'm Nity - a urology SpR in the North West of England, and the person who writes and builds UroRef.</p>
         <p>I trained in medicine at King's College London and took my MRCS with the Royal College of Physicians and Surgeons of Glasgow. Since then it has been the ordinary, unglamorous work of surgical training: clinics, lists, nights, on-calls, and the hundreds of small decisions that sit between them.</p>
         <p>The other half of the story starts much earlier, and much further east. I grew up in Singapore, and my first websites were built in primary school with Microsoft FrontPage and basic Dreamweaver. That was as far as coding went for a long time. In between came the Singapore Youth Flying Club, two years of National Service in the army, and then medicine, which left little room for anything else. I only learned to code properly much later in life, teaching myself JavaScript and React in the gaps around hospital rota - and for a while the two lives ran quietly in parallel.</p>
-        <p>They collided on a urology on-call. The gap I kept hitting was never that the knowledge did not exist; it was that I could not reach it fast enough. So I built the thing I wanted in my pocket. That became UroRef, and UroRef became <em>a family of tools</em> - 3D anatomy you can turn over in your hands, a register that stops stents being forgotten, simulators that let you rehearse the operation before the operation.</p>
+        <p>They collided on a urology on-call. The gap I kept hitting was never that the knowledge did not exist; it was that I could not reach it fast enough. So I built the thing I wanted in my pocket. That became UroRef, and UroRef became <em>a family of tools</em> - source-led reference, spatial anatomy and deliberate teaching rehearsal.</p>
         <p>These days I build in the open with the people who use it: trainees, trainers, and the BAUS Digital Innovation Group committee, where a lot of these conversations now happen.</p>
         <div class="ab-tags">
           <span class="pill">Urology</span><span class="pill">Clinical software</span><span class="pill">3D &amp; AR</span>
@@ -524,7 +528,7 @@
           <span class="live"><span class="dot"></span>Open to collaborate</span>
         </div>
         <dl>
-          <div class="ds-row"><dt>Now</dt><dd>Urology SpR<span>North West England &middot; NHS</span></dd></div>
+          <div class="ds-row"><dt>Now</dt><dd>ST5 Urology Registrar<span>North West England &middot; NHS</span></dd></div>
           <div class="ds-row"><dt>Grew up</dt><dd>Singapore<span>Singapore Youth Flying Club &middot; two years in the army</span></dd></div>
           <div class="ds-row"><dt>Trained</dt><dd>MBBS<span>King's College London</span></dd></div>
           <div class="ds-row"><dt>Member</dt><dd>MRCS<span>Royal College of Physicians &amp; Surgeons of Glasgow</span></dd></div>
@@ -549,7 +553,7 @@
         <li class="rv" style="--d:.16s"><span class="when">SHO years</span><span class="what">Urology on-call</span><p>Coude tips, on-call fog, and the private notes that would later become UroRef.</p></li>
         <li class="rv" style="--d:.2s"><span class="when">Membership</span><span class="what">MRCS, RCPS Glasgow</span><p>The exams done, the surgical path committed to.</p></li>
         <li class="rv" style="--d:.24s"><span class="when">Registrar</span><span class="what">Urology SpR, North West</span><p>Theatre lists by day, and a growing family of tools around them.</p></li>
-        <li class="rv" style="--d:.28s"><span class="when">Now</span><span class="what">700+ combined downloads</span><p>Across the App Store and Google Play as of August 2026. <a href="#evaluation">Early three-site NHS quality-improvement feedback on trainee self-rated confidence; full result and limitations above.</a></p></li>
+        <li class="rv" style="--d:.28s"><span class="when">Now</span><span class="what">Five connected public projects</span><p>A source-led learning hub spanning quick reference, spatial teaching and operative rehearsal. UroRef has 700+ combined App Store and Google Play downloads as of August 2026; <a href="#evaluation">see the evidence and limitations above.</a></p></li>
       </ol>
     </div>
   </div>
@@ -586,7 +590,7 @@
       <div class="prin rv" style="--d:.07s">
         <span class="n">02</span>
         <span class="h">Measure it, or it did not happen.</span>
-        <p>Confidence scores, adoption numbers, segmentation accuracy, forgotten-stent rates. If a tool claims to help, the claim should state what was measured, how, and what it does not show.</p>
+        <p>Every reported result should state what was measured and keep its source, denominator, dates, method and limitations visible. Usability and self-rated confidence are not clinical outcomes.</p>
       </div>
       <div class="prin rv" style="--d:.14s">
         <span class="n">03</span>
@@ -613,11 +617,11 @@
     <div class="s-copy rv">
       <div class="s-meta"><span class="idx"><b>Scene 01</b> / Clinical reference</span><span class="s-status live"><span class="dot"></span>Live</span></div>
       <h3 class="h-sec">UroRef</h3>
-      <span class="s-tag">Smarter on-call. Better decisions.</span>
-      <p class="s-desc">An offline-core companion for the first difficult minutes of a urological problem: decision pathways, checklists, operative notes, calculators, doses and escalation prompts. In early feedback from a three-site quality-improvement evaluation, participating trainees' mean self-rated confidence increased from 3.1 to 4.4 out of 5 after using UroRef. This preliminary, self-reported measure did not assess clinical competence, patient safety or patient outcomes.
+      <span class="s-tag">Quicker orientation. Sources within reach.</span>
+      <p class="s-desc">An offline-core educational companion for the first difficult minutes of common urology problems: quick-reference pathways, checklists, operative-note prompts, calculators, doses, escalation prompts and routes to original resources. In early feedback from a three-site quality-improvement evaluation, participating trainees' mean self-rated confidence increased from 3.1 to 4.4 out of 5 after using UroRef. This preliminary, self-reported measure did not assess clinical competence, patient safety or patient outcomes.
         <span class="sub"><b>Ask Ariadne</b> &middot; An optional online AI feature. A query sends the text you enter, recent chat context and selected-site context to UroRef's service and its AI provider. Do not enter patient-identifiable information. See the <a href="https://uroref.com/privacy">Privacy Policy</a>.</span>
       </p>
-      <div class="s-chips"><span class="pill">iOS</span><span class="pill">Android</span><span class="pill">Web</span><span class="pill">Offline core</span><span class="pill">Optional online AI</span></div>
+      <div class="s-chips"><span class="pill">iOS</span><span class="pill">Android</span><span class="pill">Web</span><span class="pill">Offline core</span><span class="pill">Source-linked</span><span class="pill">Optional online AI</span><span class="pill">Education only</span></div>
       <a class="ulink" href="https://uroref.com/app">Get the app <span class="arr">&nearr;</span></a>
     </div>
     <div class="s-visual rv" style="--d:.15s">
@@ -645,7 +649,7 @@
           <path class="draw" style="--dd:1.1s" pathLength="1" d="M236 226 C 300 190 420 210 470 120" stroke="#00d4c8" stroke-width="1.6" opacity=".65"/>
           <circle cx="30" cy="420" r="5" fill="#00d4c8"/>
           <circle cx="470" cy="120" r="5" fill="#33ddd3" class="blink"/>
-          <text x="336" y="110" class="svgtxt" font-size="8" fill="rgba(0,212,200,.9)">ARIADNE &middot; NEXT STEP</text>
+          <text x="336" y="110" class="svgtxt" font-size="8" fill="rgba(0,212,200,.9)">ARIADNE &middot; SOURCE ROUTE</text>
           <defs><linearGradient id="urgrad" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#163a62"/><stop offset="1" stop-color="#0a2540"/></linearGradient></defs>
         </svg>
       </div>
@@ -661,9 +665,9 @@
       <div class="s-meta"><span class="idx"><b>Scene 02</b> / MRI &middot; 3D &middot; AR</span><span class="s-status live"><span class="dot"></span>Live</span></div>
       <h3 class="h-sec">ProstateView</h3>
       <span class="s-tag">From MRI to 3D understanding.</span>
-      <p class="s-desc">A browser-based 3D prostate MRI learning environment: a verified case library, Spatial Lab drills like Locate the Lesion, a TURP AR simulator and a report visualiser. Flat images become anatomy you can walk around.</p>
-      <div class="s-chips"><span class="pill">Dice 0.947</span><span class="pill">Spatial Lab</span><span class="pill">TURP AR</span><span class="pill">Report visualiser</span></div>
-      <a class="ulink" href="https://prostateview.com/" target="_blank" rel="noopener">Explore ProstateView <span class="arr">&nearr;</span></a>
+      <p class="s-desc">A browser-based 3D prostate MRI learning environment: public research cases with visible QA status, Spatial Lab drills, a teaching simulator and a report visualiser. Flat images become anatomy you can walk around.</p>
+      <div class="s-chips"><span class="pill">Public research data</span><span class="pill">Spatial Lab</span><span class="pill">Teaching prototype</span><span class="pill">Report visualiser</span></div>
+      <a class="ulink" href="https://prostateview.com/v2/" target="_blank" rel="noopener">Explore ProstateView <span class="arr">&nearr;</span></a>
     </div>
     <div class="s-visual rv" style="--d:.15s">
       <div class="stage">
@@ -703,11 +707,11 @@
   <div class="wm r">03</div>
   <div class="wrap scene-grid">
     <div class="s-copy rv">
-      <div class="s-meta"><span class="idx"><b>Scene 03</b> / Endourology planning</span><span class="s-status dev">In development</span></div>
+      <div class="s-meta"><span class="idx"><b>Scene 03</b> / Spatial teaching</span><span class="s-status dev">Research / education prototype</span></div>
       <h3 class="h-sec">CalyxView</h3>
-      <span class="s-tag">See every calyx. Plan every step.</span>
-      <p class="s-desc">CT-derived 3D collecting-system and stone anatomy for ureteroscopy planning, with an experimental scope-tip perspective. See the collecting system before the scope does.</p>
-      <div class="s-chips"><span class="pill">CT &rarr; 3D</span><span class="pill">URS planning</span><span class="pill">Scope-tip view</span><span class="pill">Stone disease</span></div>
+      <span class="s-tag">Make the collecting system spatial.</span>
+      <p class="s-desc">A de-identified CT-derived teaching prototype with a simulated scope route and calyceal search. It is not for diagnosis, treatment selection, patient-specific surgical planning or intra-operative guidance.</p>
+      <div class="s-chips"><span class="pill">CT-derived teaching asset</span><span class="pill">Spatial anatomy</span><span class="pill">Scope-tip simulation</span><span class="pill">Education only</span></div>
       <a class="ulink" href="https://calyxview.com/" target="_blank" rel="noopener">Preview CalyxView <span class="arr">&nearr;</span></a>
     </div>
     <div class="s-visual rv" style="--d:.15s">
@@ -729,7 +733,7 @@
           <text x="342" y="112" class="svgtxt" font-size="8" fill="rgba(51,221,211,.9)">TARGET STONE</text>
           <path class="draw" style="--dd:2s" pathLength="1" d="M120 430 C 150 380 190 340 240 315 C 275 298 300 280 316 254 C 322 216 340 196 366 184 C 380 176 392 160 396 142" stroke="#00d4c8" stroke-width="1.4" stroke-dasharray="1" opacity=".9"/>
           <text x="96" y="416" class="svgtxt" font-size="8" fill="rgba(0,212,200,.9)" transform="rotate(-38 96 416)">SCOPE ROUTE</text>
-          <text x="252" y="416" class="svgtxt" font-size="7.5" fill="rgba(184,197,214,.5)">CT &rarr; SEGMENT &rarr; PLAN</text>
+          <text x="252" y="416" class="svgtxt" font-size="7.5" fill="rgba(184,197,214,.5)">CT &rarr; 3D &rarr; LEARN</text>
         </svg>
       </div>
     </div>
@@ -742,11 +746,11 @@
   <div class="wrap scene-grid">
     <div class="s-copy rv">
       <div class="s-meta"><span class="idx"><b>Scene 04</b> / Surgical education</span><span class="s-status live"><span class="dot"></span>Live</span></div>
-      <h3 class="h-sec">UroOps3D</h3>
+      <h3 class="h-sec">UrOops3D</h3>
       <span class="s-tag">Learn the operation, not just the steps.</span>
       <p class="s-desc">Realistic 3D endourology teaching built around anatomy, decisions and complications. Each complication is an Oops Card: the model, the mechanism, the save and the viva answer. Starting with TURBT, expanding to TURP, URS and PCNL.</p>
       <div class="s-chips"><span class="pill">3D animation</span><span class="pill">Oops Cards</span><span class="pill">Viva-ready</span></div>
-      <a class="ulink" href="https://uroops3d.com/" target="_blank" rel="noopener">Visit UroOps3D <span class="arr">&nearr;</span></a>
+      <a class="ulink" href="https://uroops3d.com/" target="_blank" rel="noopener">Visit UrOops3D <span class="arr">&nearr;</span></a>
     </div>
     <div class="s-visual rv" style="--d:.15s">
       <div class="stage">
@@ -780,68 +784,32 @@
   </div>
 </section>
 
-<!-- ================= SCENE 5 · STENT REGISTER ================= -->
-<section class="scene sc-stent">
+<!-- ================= SCENE 5 · CYSTOSIGHT ================= -->
+<section class="scene sc-cysto">
   <div class="wm r">05</div>
   <div class="wrap scene-grid">
     <div class="s-copy rv">
-      <div class="s-meta"><span class="idx"><b>Scene 05</b> / Quality improvement</span><span class="s-status live"><span class="dot"></span>In service</span></div>
-      <h3 class="h-sec">MCHT Stent Register</h3>
-      <span class="s-tag">Data that drives change. Outcomes that matter.</span>
-      <p class="s-desc">A clinician-built ureteric stent register for Mid Cheshire Hospitals NHS Foundation Trust, on Power Apps and SharePoint, with automated alerts and due dates nobody has to remember. Forgotten stents fell from 12% to 0%, capture rose from 57% to 88%, and multicentre adoption is being explored.</p>
-      <div class="s-chips"><span class="pill">Power Apps</span><span class="pill">SharePoint</span><span class="pill">Automated alerts</span><span class="pill">NHS QI</span></div>
+      <div class="s-meta"><span class="idx"><b>Scene 05</b> / Bladder vision</span><span class="s-status dev">Educational prototype</span></div>
+      <h3 class="h-sec">Cystosight by UroRef</h3>
+      <span class="s-tag">Practise the view before the procedure.</span>
+      <p class="s-desc">Browser-based exercises for spatial bladder and cystoscopy practice using schematic teaching meshes. No patient imaging or data; simplified teaching pathways do not replace current guidance or local policy.</p>
+      <div class="s-chips"><span class="pill">Bladder anatomy</span><span class="pill">Cystoscopy</span><span class="pill">Schematic 3D</span><span class="pill">Education only</span></div>
+      <a class="ulink" href="https://cystosight.netlify.app/" target="_blank" rel="noopener">Open Cystosight <span class="arr">&nearr;</span></a>
     </div>
     <div class="s-visual rv" style="--d:.15s">
       <div class="stage">
         <svg viewBox="0 0 520 440" fill="none" aria-hidden="true">
-          <rect x="70" y="40" width="380" height="360" rx="12" fill="#0d2743" stroke="#ffffff1a"/>
-          <text x="102" y="86" class="svgtxt" font-size="8.5" fill="rgba(184,197,214,.55)">FORGOTTEN STENTS</text>
-          <text x="102" y="132" class="svgser" font-size="40" fill="#fff">12% <tspan fill="#00d4c8">&rarr;</tspan> 0%</text>
-          <line x1="102" y1="330" x2="418" y2="330" stroke="#ffffff2e"/>
-          <rect class="bar-anim" x="140" y="190" width="64" height="140" rx="4" fill="#b8c5d6"/>
-          <rect class="bar-anim" style="transition-delay:.9s" x="280" y="324" width="64" height="6" rx="3" fill="#00d4c8"/>
-          <text x="152" y="352" class="svgtxt" font-size="8" fill="rgba(184,197,214,.55)">BEFORE</text>
-          <text x="296" y="352" class="svgtxt" font-size="8" fill="rgba(184,197,214,.55)">AFTER</text>
-          <text x="158" y="180" class="svgser" font-size="15" fill="#cfe2f2">12%</text>
-          <text x="300" y="314" class="svgser" font-size="15" fill="#33ddd3">0%</text>
-          <text x="102" y="384" font-size="9.5" fill="rgba(184,197,214,.5)">Measured over 8 weeks following implementation</text>
-          <g class="float">
-            <circle cx="432" cy="150" r="17" fill="rgba(0,212,200,.14)" stroke="rgba(0,212,200,.6)"/>
-            <path d="M432 142 v9 m0 5 v1" stroke="#33ddd3" stroke-width="2" stroke-linecap="round"/>
-          </g>
-          <path class="draw" pathLength="1" d="M415 162 C 390 190 360 200 344 220" stroke="rgba(0,212,200,.55)" stroke-width="1.2" stroke-dasharray="1"/>
-          <text x="356" y="132" class="svgtxt" font-size="7.5" fill="rgba(51,221,211,.85)">AUTO ALERT</text>
+          <path d="M260 64 C 346 64 402 126 398 224 C 395 306 344 362 260 372 C 176 362 125 306 122 224 C 118 126 174 64 260 64 Z" fill="rgba(143,199,255,.12)" stroke="rgba(143,199,255,.72)" stroke-width="2"/>
+          <path d="M168 184 C 212 158 308 158 352 184" stroke="rgba(255,255,255,.2)"/>
+          <circle cx="202" cy="235" r="9" fill="#8fc7ff"/>
+          <circle cx="318" cy="235" r="9" fill="#8fc7ff"/>
+          <path d="M202 235 C 230 266 290 266 318 235" stroke="rgba(143,199,255,.55)" stroke-width="2" stroke-dasharray="5 7"/>
+          <path class="draw" pathLength="1" d="M258 420 C 258 360 258 308 260 270 C 262 224 294 190 338 168" stroke="#33ddd3" stroke-width="3"/>
+          <circle cx="338" cy="168" r="8" fill="#33ddd3"/>
+          <circle cx="338" cy="168" r="8" stroke="#33ddd3" class="ringpulse"/>
+          <text x="350" y="150" class="svgtxt" font-size="8" fill="rgba(143,199,255,.95)">ORIENT THE VIEW</text>
+          <text x="176" y="404" class="svgtxt" font-size="7.5" fill="rgba(184,197,214,.55)">SCHEMATIC &middot; SPATIAL &middot; TEACHING ONLY</text>
         </svg>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= PIPELINE ================= -->
-<section class="pipesec">
-  <div class="wrap">
-    <div class="seclabel rv"><b>Next</b> Coming attractions</div>
-    <h2 class="h-sec rv" style="--d:.08s">In the <span class="teal">pipeline.</span></h2>
-    <div class="minis">
-      <div class="mini rv">
-        <div class="cat"><span>Android XR</span><span>Pipeline</span></div>
-        <h4>UroRef Spatial</h4>
-        <p>An anatomy and procedure trainer for the coming wave of XR glasses: spatial anatomy plus TURP, URS and nephrectomy rehearsal.</p>
-      </div>
-      <div class="mini rv" style="--d:.07s">
-        <div class="cat"><span>Mobile 3D</span><span>MVP</span></div>
-        <h4>Companion Viewer</h4>
-        <p>A pocket 3D kidney and stone viewer, turning CT into models you can rotate at the bedside for PCNL planning.</p>
-      </div>
-      <div class="mini rv" style="--d:.14s">
-        <div class="cat"><span>Andrology</span><span>In build</span></div>
-        <h4>AndroRecover</h4>
-        <p>A clean, minimalist companion for andrology recovery, covering twelve structured pathways from surgery to normal life.</p>
-      </div>
-      <div class="mini rv" style="--d:.21s">
-        <div class="cat"><span>eLogbook</span><span>MVP</span></div>
-        <h4>UroFlow Log</h4>
-        <p>A photo-to-structured-case logbook assistant: snap the list, review the parse, keep the evidence of your training.</p>
       </div>
     </div>
   </div>
@@ -872,6 +840,7 @@
         <div class="govbox">
           <p><b>UroRef is an independent quick-reference tool for healthcare professionals. It is not a substitute for clinical judgement, senior advice, or local protocols.</b></p>
           <p>Clinical content cites relevant sources, including EAU, NICE and BAUS guidance. Review of guideline-dependent content against the 2026 EAU Guidelines is in progress. Until a section's review is complete, verify it against the current source guidance and your local protocols.</p>
+          <p>Where recorded, source, date, jurisdiction and review status are shown; the original current source remains authoritative.</p>
           <p>Content is authored by Nity G, Urology SpR. UroRef is not affiliated with or endorsed by EAU, NICE or BAUS.</p>
         </div>
       </div>
@@ -906,10 +875,12 @@
   </div>
 </section>
 
+</main>
+
 <footer>
   <div class="wrap foot">
-    <span>&copy; 2026 UroRef &middot; Authored by Nity G, Urology SpR</span>
-    <span><a href="https://uroref.com/">uroref.com</a> &middot; <a href="https://uroref.com/app">Get the app</a> &middot; <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Back to top &uarr;</a></span>
+    <span>&copy; 2026 UroRef &middot; Authored by Nity G, ST5 Urology Registrar</span>
+    <span><a href="https://uroref.com/">uroref.com</a> &middot; <a href="https://uroref.com/showcase">Mega Hub</a> &middot; <a href="https://uroref.com/app">Get the app</a> &middot; <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Back to top &uarr;</a></span>
   </div>
 </footer>
 
@@ -960,5 +931,21 @@
   })},{rootMargin:'-45% 0px -50% 0px'});
   spy.forEach(x=>sio.observe(x.sec));
 </script>
+
+<style>
+.ng-float-contact{position:fixed;right:18px;bottom:18px;z-index:90;display:flex;flex-direction:column;gap:10px}
+.ng-float-btn{width:46px;height:46px;border-radius:999px;display:grid;place-items:center;background:rgba(10,37,64,.85);color:#fff;border:1px solid rgba(255,255,255,.16);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 20px 40px -10px rgba(0,0,0,.5);transition:transform .25s,border-color .25s,color .25s}
+.ng-float-btn:hover{transform:translateY(-2px);border-color:#00d4c8;color:#00d4c8}
+@media(prefers-reduced-motion:reduce){.ng-float-btn{transition:none}.ng-float-btn:hover{transform:none}}
+@media(max-width:700px){.ng-float-contact{right:12px;bottom:12px}.ng-float-btn{width:44px;height:44px}}
+</style>
+<nav class="ng-float-contact" aria-label="Contact Nity">
+  <a class="ng-float-btn" href="https://www.linkedin.com/in/nityg" rel="noopener" aria-label="Nity G on LinkedIn">
+    <svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+  </a>
+  <a class="ng-float-btn" href="mailto:nity@uroref.com" aria-label="Email nity@uroref.com">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg>
+  </a>
+</nav>
 </body>
 </html>

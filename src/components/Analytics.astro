@@ -1,0 +1,17 @@
+---
+const umamiSrc = import.meta.env.PUBLIC_UMAMI_SRC;
+const umamiWebsiteId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID;
+const hasUmami = Boolean(umamiSrc && umamiWebsiteId);
+---
+
+{
+  hasUmami && (
+    <script
+      is:inline
+      defer
+      src={umamiSrc}
+      data-website-id={umamiWebsiteId}
+      data-domains="uroref.com"
+    ></script>
+  )
+}

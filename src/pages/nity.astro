@@ -5,11 +5,17 @@
 // design tokens from global.css. All copy lives in src/data/nity.ts.
 import '../styles/global.css';
 import { identity, meta, projects, publicity, utm } from '../data/nity';
+import Analytics from '../components/Analytics.astro';
 
 const canonicalURL = new URL('/nity', Astro.site ?? Astro.url);
 const ogImage = new URL(meta.ogImage, Astro.site ?? Astro.url);
 
-const projectHref = (url: string) => `${url}/?${utm}`;
+const projectHref = (url: string) => {
+  const target = new URL(url);
+  const params = new URLSearchParams(utm);
+  params.forEach((value, key) => target.searchParams.set(key, value));
+  return target.toString();
+};
 
 const personJsonLd = {
   '@context': 'https://schema.org',
@@ -65,11 +71,11 @@ const pageJsonLd = {
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-  <script defer data-domain="uroref.com" src="https://plausible.io/js/script.js"></script>
+  <Analytics />
 </head>
 <body class="nity-body">
 
-  <a class="nity-skip" href="#projects">Skip to projects</a>
+  <a class="nity-skip" href="#main-content">Skip to main content</a>
 
   <!-- Decorative full-width backdrop, clipped so it can never cause overflow -->
   <div class="nity-backdrop" aria-hidden="true">
@@ -78,6 +84,8 @@ const pageJsonLd = {
   </div>
 
   <div class="nity-page">
+
+    <main id="main-content" tabindex="-1">
 
     <!-- ═══ Hero ═══ -->
     <header class="nity-hero">
@@ -107,7 +115,7 @@ const pageJsonLd = {
           <a href={`mailto:${identity.email}`} data-track="nity_email_click">Email Nity — {identity.email}</a>
         </p>
 
-        <!-- Compact quick links: the four projects reachable without scrolling -->
+        <!-- Compact project links reachable without scrolling -->
         <nav class="nity-quicklinks" aria-label="Projects — quick links">
           {projects.map((p) => (
             <a
@@ -128,7 +136,7 @@ const pageJsonLd = {
     <section id="projects" class="nity-section" aria-labelledby="projects-heading">
       <h2 id="projects-heading" class="nity-h2">
         <span class="nity-h2-kicker">The ecosystem</span>
-        Four tools. One goal: urology made clearer.
+        Connected tools. One goal: urology made clearer.
       </h2>
 
       <div class="nity-projects">
@@ -223,6 +231,8 @@ const pageJsonLd = {
       </details>
     </section>
 
+    </main>
+
     <!-- ═══ Footer ═══ -->
     <footer class="nity-footer">
       <p class="nity-sig">Built by <span class="gold">Nity G</span></p>
@@ -241,14 +251,12 @@ const pageJsonLd = {
   </div>
 
   <script>
-    // Progressive enhancement only: tracking, copy email and Web Share.
+    // Progressive enhancement only: optional aggregate events, copy email and Web Share.
     // Every link, download and mailto works without this script.
-    const plausible = (name: string, props?: Record<string, string>) => {
-      const w = window as unknown as { plausible?: (n: string, o?: object) => void };
-      try { w.plausible?.(name, props ? { props } : undefined); } catch { /* analytics must never break the page */ }
+    const track = (name: string, props?: Record<string, string>) => {
+      const w = window as unknown as { umami?: { track?: (n: string, p?: object) => void } };
+      try { w.umami?.track?.(name, props); } catch { /* analytics must never break the page */ }
     };
-
-    plausible('nity_page_view');
 
     document.querySelectorAll<HTMLElement>('[data-track]').forEach((el) => {
       el.addEventListener('click', () => {
@@ -256,7 +264,7 @@ const pageJsonLd = {
         const props: Record<string, string> = {};
         if (el.dataset.project) props.project = el.dataset.project;
         if (el.dataset.file) props.file = el.dataset.file;
-        plausible(event, Object.keys(props).length ? props : undefined);
+        track(event, Object.keys(props).length ? props : undefined);
       });
     });
 
@@ -283,7 +291,7 @@ const pageJsonLd = {
       const email = (e.currentTarget as HTMLElement).dataset.email ?? '';
       const ok = await copyText(email);
       announce(ok ? 'Email address copied' : 'Copy failed — long-press the address instead');
-      if (ok) plausible('nity_copy_email');
+      if (ok) track('nity_copy_email');
     });
 
     document.getElementById('share-page')?.addEventListener('click', async () => {
@@ -291,12 +299,12 @@ const pageJsonLd = {
       if (navigator.share) {
         try {
           await navigator.share({ title: 'Nity G — Urology, Education and Digital Innovation', url });
-          plausible('nity_share', { method: 'web-share' });
+          track('nity_share', { method: 'web-share' });
         } catch { /* user dismissed the share sheet */ }
       } else {
         const ok = await copyText(url);
         announce(ok ? 'Link copied to clipboard' : url);
-        if (ok) plausible('nity_share', { method: 'copy-link' });
+        if (ok) track('nity_share', { method: 'copy-link' });
       }
     });
 
@@ -550,8 +558,8 @@ const pageJsonLd = {
     .nity-card-logo {
       width: 44px; height: 44px;
       border-radius: 10px;
-      background: rgba(255,255,255,0.92);
-      padding: 3px;
+      background: #071321;
+      box-shadow: 0 8px 22px -14px var(--accent);
       flex-shrink: 0;
     }
     .nity-card-mark {

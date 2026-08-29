@@ -7,6 +7,8 @@ const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.nityg.
 <Base
   title="Inside the UroRef App"
   description="The on-call companion for urology trainees — decision trees, procedure guides, calculators, drug doses, clinic frameworks and BAUS patient information, all in one place."
+  searchTopics={['Clinical reference', 'Urology']}
+  searchContentType="Deep Dive"
 >
 
 <!-- ─────────────────────────────────────────────────────────────
@@ -47,12 +49,12 @@ const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.nityg.
         <span class="ia-stat-lbl">mean self-rated confidence / 5†</span>
       </div>
       <div class="ia-stat">
-        <span class="ia-stat-num">16</span>
-        <span class="ia-stat-lbl">on-call pathways</span>
+        <span class="ia-stat-num">Direct</span>
+        <span class="ia-stat-lbl">original-source routes</span>
       </div>
       <div class="ia-stat">
-        <span class="ia-stat-num">31</span>
-        <span class="ia-stat-lbl">patient info leaflets</span>
+        <span class="ia-stat-num">Visible</span>
+        <span class="ia-stat-lbl">safety boundaries</span>
       </div>
     </div>
 
@@ -213,12 +215,12 @@ const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.nityg.
           <span class="ia-feature-icon" aria-hidden="true">🏥</span>
           <h3>Clinic support</h3>
         </div>
-        <p>Structured frameworks for common outpatient presentations, plus the full BAUS patient information leaflet suite — useful before consent conversations and in the middle of a busy clinic.</p>
+        <p>Structured frameworks for common outpatient presentations, plus direct routes to BAUS patient information originals — useful before consent conversations and in the middle of a busy clinic.</p>
         <ul>
           <li>New haematuria clinic framework</li>
           <li>LUTS and BPH structure</li>
           <li>Post-operative follow-up guides</li>
-          <li>31 BAUS patient leaflets</li>
+          <li>Direct links to BAUS patient-information originals</li>
         </ul>
       </div>
 
@@ -745,7 +747,7 @@ const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.nityg.
 .ia-feature li {
   font-family: var(--font-mono);
   font-size: 0.8rem;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   display: flex;
   align-items: center;
   gap: 10px;

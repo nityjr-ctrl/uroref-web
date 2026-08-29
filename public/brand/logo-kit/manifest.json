@@ -1,0 +1,75 @@
+{
+  "name": "UroRef five-project logo kit",
+  "version": "2026.08.28",
+  "originalAssets": [
+    "originals/uroref-favicon-original.svg",
+    "originals/uroref-app-icon-original-512.png",
+    "originals/uroref-wordmark-legacy-prostateview.svg",
+    "originals/prostateview-logo-original.png",
+    "originals/prostateview-symbol-original.png",
+    "originals/prostateview-app-icon-legacy.svg",
+    "originals/prostateview-app-icon-legacy-512.png"
+  ],
+  "projects": [
+    {
+      "id": "uroref",
+      "name": "UroRef",
+      "accent": "#00D4C8",
+      "provenance": "Normalised from the existing U-shaped UroRef app mark.",
+      "assets": {
+        "markSvg": "presentation/uroref-mark.svg",
+        "markPng": "presentation/uroref-mark-1024.png",
+        "lockupSvg": "presentation/uroref-lockup.svg",
+        "lockupPng": "presentation/uroref-lockup-1600.png"
+      }
+    },
+    {
+      "id": "prostateview",
+      "name": "ProstateView",
+      "accent": "#F6C453",
+      "provenance": "Simplified vector companion to the established blue ProstateView emblem.",
+      "assets": {
+        "markSvg": "presentation/prostateview-mark.svg",
+        "markPng": "presentation/prostateview-mark-1024.png",
+        "lockupSvg": "presentation/prostateview-lockup.svg",
+        "lockupPng": "presentation/prostateview-lockup-1600.png"
+      }
+    },
+    {
+      "id": "calyxview",
+      "name": "CalyxView",
+      "accent": "#6EE7B7",
+      "provenance": "New working identity created for the UroRef presentation suite.",
+      "assets": {
+        "markSvg": "presentation/calyxview-mark.svg",
+        "markPng": "presentation/calyxview-mark-1024.png",
+        "lockupSvg": "presentation/calyxview-lockup.svg",
+        "lockupPng": "presentation/calyxview-lockup-1600.png"
+      }
+    },
+    {
+      "id": "uroops3d",
+      "name": "UrOops3D",
+      "accent": "#B8A4FF",
+      "provenance": "New working identity created for the UroRef presentation suite.",
+      "assets": {
+        "markSvg": "presentation/uroops3d-mark.svg",
+        "markPng": "presentation/uroops3d-mark-1024.png",
+        "lockupSvg": "presentation/uroops3d-lockup.svg",
+        "lockupPng": "presentation/uroops3d-lockup-1600.png"
+      }
+    },
+    {
+      "id": "cystosight",
+      "name": "Cystosight by UroRef",
+      "accent": "#8FC7FF",
+      "provenance": "New working identity created for the UroRef presentation suite.",
+      "assets": {
+        "markSvg": "presentation/cystosight-mark.svg",
+        "markPng": "presentation/cystosight-mark-1024.png",
+        "lockupSvg": "presentation/cystosight-lockup.svg",
+        "lockupPng": "presentation/cystosight-lockup-1600.png"
+      }
+    }
+  ]
+}

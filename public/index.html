@@ -324,6 +324,81 @@
   </div>
 </section>
 
+<!-- ============================================== sensate outcomes (product model card) -->
+<section class="section-deep" id="sensate-outcomes" style="padding:92px 0;--sa:var(--teal-500)" aria-labelledby="sensate-h">
+  <div class="wrap">
+    <div class="model-head" data-reveal style="--d:0s">
+      <span class="mono-label">Patient-reported outcomes</span>
+      <span class="status status-dev"><span class="sdot"></span>In development</span>
+    </div>
+    <h2 class="model-title" id="sensate-h" data-reveal style="--d:.06s">Sensate Outcomes</h2>
+    <p class="model-sub" data-reveal style="--d:.12s">Structured patient-reported sensory and recovery outcomes for consultant follow-up after feminising genital gender-affirming surgery.</p>
+    <figure class="scene-fig" data-reveal style="--d:.15s;margin-bottom:18px">
+      <div class="scene-frame split-frame frame-shots">
+        <div class="half">
+          <img src="assets/sensate-app-home.webp" alt="Sensate patient app home screen from the demonstration build: recovery check-ins introduced calmly, with a reference number entry point" loading="lazy" width="1100" height="640" style="width:100%;height:100%;object-fit:cover;object-position:top">
+          <span class="half-tag">Patient app · demonstration build</span>
+        </div>
+        <div class="half">
+          <img src="assets/sensate-app-checkin.webp" alt="Sensate check-in screen from the demonstration build: a synthetic reference code, surgery type and time since surgery selectors, and urgent symptom guidance" loading="lazy" width="1100" height="582" style="width:100%;height:100%;object-fit:cover;object-position:top">
+          <span class="half-tag">Check-in · synthetic reference</span>
+        </div>
+      </div>
+    </figure>
+    <figure class="scene-fig" data-reveal style="--d:.18s">
+      <div class="scene-frame frame-slim">
+        <svg class="art art-labels" viewBox="0 0 760 220" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false" style="--art:var(--teal-500)">
+          <rect x="20" y="34" width="200" height="126" rx="14" class="fill-soft"/>
+          <rect x="20" y="34" width="200" height="126" rx="14" class="st" fill="none"/>
+          <rect x="109" y="50" width="22" height="34" rx="5" class="st" fill="none"/>
+          <line x1="116" y1="78" x2="124" y2="78" class="st-soft"/>
+          <text x="120" y="112" text-anchor="middle" class="ttl">Structured check-in</text>
+          <text x="120" y="134" text-anchor="middle" class="cap">patient's own device</text>
+          <line x1="228" y1="97" x2="264" y2="97" class="st-soft"/>
+          <path d="M256,90 266,97 256,104" class="st-soft" fill="none"/>
+          <rect x="280" y="34" width="200" height="126" rx="14" class="fill-soft"/>
+          <rect x="280" y="34" width="200" height="126" rx="14" class="st" fill="none"/>
+          <circle cx="370" cy="62" r="9" class="st" fill="none"/>
+          <path d="M377,69 393,85" class="st" fill="none"/>
+          <path d="M385,83 390,78" class="st" fill="none"/>
+          <path d="M390,88 395,83" class="st" fill="none"/>
+          <text x="380" y="112" text-anchor="middle" class="ttl">Reference code</text>
+          <text x="380" y="134" text-anchor="middle" class="cap">no name, NHS number or DOB</text>
+          <line x1="488" y1="97" x2="524" y2="97" class="st-soft"/>
+          <path d="M516,90 526,97 516,104" class="st-soft" fill="none"/>
+          <rect x="540" y="34" width="200" height="126" rx="14" class="fill-soft"/>
+          <rect x="540" y="34" width="200" height="126" rx="14" class="st" fill="none"/>
+          <rect x="622" y="48" width="36" height="40" rx="6" class="st" fill="none"/>
+          <line x1="630" y1="60" x2="650" y2="60" class="st-soft"/>
+          <line x1="630" y1="68" x2="650" y2="68" class="st-soft"/>
+          <line x1="630" y1="76" x2="644" y2="76" class="st-soft"/>
+          <text x="640" y="112" text-anchor="middle" class="ttl">Consultant review</text>
+          <text x="640" y="134" text-anchor="middle" class="cap">structured export</text>
+        </svg>
+        <span class="frame-cap">The data model · no direct identifiers are collected</span>
+      </div>
+    </figure>
+    <div class="cards-3" style="margin-top:28px">
+      <article class="card" data-reveal style="--d:0s">
+        <span class="glyph" aria-hidden="true">🔒</span>
+        <h3>Anonymisation</h3>
+        <p>No direct identifiers are collected: no name, NHS number, date of birth or contact details. Age is a broad band, surgery type a category, and each episode files under a non-identifying reference code. Items are structured throughout; one optional free text field carries an explicit instruction to include no identifying details.</p>
+      </article>
+      <article class="card" data-reveal style="--d:.06s">
+        <span class="glyph" aria-hidden="true">📋</span>
+        <h3>How the interface works</h3>
+        <p>A 19-item local module covers sensation, pain, dilation, urinary symptoms, wound healing and recovery-related distress, and every item can be skipped. The patient completes it on their own phone or computer, from a pre-operative baseline through fixed intervals to 24 months. The clinician reviews explainable rules-based flags, change over time and a summary that is never a diagnosis.</p>
+      </article>
+      <article class="card" data-reveal style="--d:.12s">
+        <span class="glyph" aria-hidden="true">🎯</span>
+        <h3>What it aims to achieve</h3>
+        <p>To make sensory recovery after feminising genital surgery measurable across follow-up rather than anecdotal; to give a service comparable longitudinal data at fixed timepoints; and to hold a structured dataset that can carry validated instruments, where licensed, in support of prospective analysis.</p>
+      </article>
+    </div>
+    <div class="callout" data-reveal style="--d:.18s;margin-top:28px;max-width:62ch"><b>Sensate Outcomes is a prototype.</b> It is not a medical device and does not replace clinical review.</div>
+  </div>
+</section>
+
 <!-- ============================================== scene 06 ariadne -->
 <section class="scene" id="scene-ariadne" style="--sa:var(--proj-uroref);padding-bottom:110px" aria-labelledby="sc6-h">
   <span class="scene-tint" style="background:linear-gradient(180deg,transparent,rgba(0,212,200,.05) 50%,transparent)"></span>
@@ -343,6 +418,34 @@
       <p class="scene-body">A retrieval-augmented assistant built into UroRef. Each query is routed through a Cloudflare Worker and combined with curated UroRef guidance, recent chat context and the selected hospital profile when available. Common requests are handled directly by the service; others use Google Gemini to return source-linked educational navigation, with pseudonymous rate limiting and explicit safety boundaries.</p>
       <div class="pills ariadne-tech" aria-label="Ariadne technical architecture"><span class="pill">RAG</span><span class="pill">Source citations</span><span class="pill">Site-aware context</span><span class="pill">Cloudflare Worker</span><span class="pill">Google Gemini</span></div>
       <div class="callout" style="max-width:46ch"><b>Do not enter patient-identifiable information.</b> Ariadne is optional, online, and off unless you turn it on.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================== hospital track -->
+<section class="section" id="hospital" style="--sa:var(--teal-500)" aria-labelledby="hospital-h">
+  <div class="wrap">
+    <div class="seclabel" data-reveal style="--d:0s"><span class="txt">In the hospital</span><span class="rule"></span></div>
+    <div class="split">
+      <h2 class="h-section" id="hospital-h" data-reveal style="--d:.06s">Built inside the <span class="accent">day job.</span></h2>
+      <p class="voice-lead voice" data-reveal style="--d:.12s">Service tools for the department, running on the Microsoft 365 the hospital already has.</p>
+    </div>
+
+    <div class="scene-grid" style="margin-top:60px">
+      <div class="scene-head" data-reveal style="--d:0s">
+        <div class="idx"><span class="cat">Ureteric stent tracking</span><span class="status status-live"><span class="sdot"></span>In service</span></div>
+        <h3 class="h-card" id="stentdb-h">MCHT Stent Database</h3>
+        <p class="tagline voice">No stent forgotten.</p>
+        <p class="scene-body">A Power Apps and SharePoint register that closes the loop on ureteric stent tracking at Mid Cheshire Hospitals NHS Foundation Trust. Insertions are logged at the point of care, each stent is held against its intended exchange date, automated alerts flag what is coming due, and completed exchanges are archived with audit fields. In service since April 2026.</p>
+        <div class="pills"><span class="pill">Power Apps</span><span class="pill">SharePoint back end</span><span class="pill">Automated alerts</span><span class="pill">Audit trail</span></div>
+      </div>
+      <figure class="scene-fig" data-reveal style="--d:.1s">
+        <span class="scene-frame-ghost ghost-r"></span>
+        <div class="scene-frame">
+          <img src="assets/stent-database-form.webp" alt="Add New Stent Record form from the MCHT Stent Database app: patient details, laterality, insertion date, time to exchange, expected exchange date, stent type, surgeon and consultant fields" loading="lazy" width="760" height="1586" style="width:100%;height:100%;object-fit:cover;object-position:top">
+          <span class="half-tag">Point-of-care entry form · no record shown</span>
+        </div>
+      </figure>
     </div>
   </div>
 </section>

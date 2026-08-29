@@ -1075,30 +1075,11 @@ html.no-motion .emu-backdrop,html.no-motion .emu-panel{transition:none}
   .emu-panel{width:100vw;border-left:0;padding:14px 16px 16px}
 }
 
-/* ------------------------------------------------ sensate outcomes + hospital track */
-.model-head{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:18px}
-.model-title{font-size:clamp(26px,3vw,36px);letter-spacing:-.02em;margin:0 0 12px}
-.model-sub{
-  font-family:var(--font-voice);font-style:var(--voice-style);
-  font-size:clamp(17px,1.9vw,21px);line-height:1.5;
-  color:var(--text-secondary);max-width:56ch;margin:0 0 30px;
-}
-.frame-slim{height:240px}
-.frame-shots{height:300px}
-.frame-shots .half img{display:block}
+/* ------------------------------------------------ hospital track */
 .scene-head h3.h-card{font-size:clamp(24px,2.7vw,32px)}
-.cards-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-.card .status{margin-bottom:14px}
-.card .status + h3{margin-top:0}
-.art-labels text{font-size:12.5px;letter-spacing:.1em}
-.art-labels text.ttl{fill:var(--text-secondary)}
-.art-labels text.cap{font-size:10px}
-@media(max-width:820px){
-  .cards-2{grid-template-columns:1fr}
-}
+.frame-sensate{height:330px}
 @media(max-width:700px){
-  .frame-slim{height:175px}
-  .frame-shots{height:420px}
+  .frame-sensate{height:230px}
 }
 
 /* ------------------------------------------------ reduced motion */

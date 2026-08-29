@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
+import { sortDivesByDate } from '../utils/dives';
 
 const allDeepDives = await getCollection('deep-dives');
 
@@ -67,7 +68,7 @@ const stats = [
   { label: 'Avg. session', value: '2m 41s', delta: '+9%' },
 ];
 
-const recentDeepDives = allDeepDives.slice(0, 3);
+const recentDeepDives = sortDivesByDate(allDeepDives).slice(0, 3);
 ---
 <Base title="Last 30 days — what's trending" description="What urology trainees are reading on UroRef this month — trending protocols, deep dives, drug doses and emergency guides.">
 

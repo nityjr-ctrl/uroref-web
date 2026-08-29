@@ -1,19 +1,10 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
+import { sortDivesByDate } from '../../utils/dives';
 
 const articles = await getCollection('deep-dives');
-
-const monthOrder: Record<string, number> = {
-  January: 1, February: 2, March: 3, April: 4, May: 5, June: 6,
-  July: 7, August: 8, September: 9, October: 10, November: 11, December: 12
-};
-const sorted = [...articles].sort((a, b) => {
-  const [aMonth, aYear] = a.data.date.split(' ');
-  const [bMonth, bYear] = b.data.date.split(' ');
-  if (aYear !== bYear) return Number(bYear) - Number(aYear);
-  return monthOrder[bMonth] - monthOrder[aMonth];
-});
+const sorted = sortDivesByDate(articles);
 ---
 <Base title="Deep Dives" description="In-depth urology clinical guides for registrars and trainees — written by an SpR, peer reviewed.">
 

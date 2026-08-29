@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import ProjectEcosystem from '../components/ProjectEcosystem.astro';
 import { getCollection } from 'astro:content';
+import { sortDivesByDate } from '../utils/dives';
 
 const APP_STORE_URL = 'https://apps.apple.com/us/app/uroref/id6761680168';
 const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.nityg.uroref';
@@ -22,9 +23,7 @@ function readTimeFrom(body: string | undefined): string {
 }
 
 const allDives = await getCollection('deep-dives');
-const live = allDives
-  .slice()
-  .sort((a, b) => (a.data.date < b.data.date ? 1 : -1))
+const live = sortDivesByDate(allDives)
   .map(a => ({
     href: `/deep-dives/${a.id}`,
     category: (a.data.tags?.[0] ?? 'Deep Dive').toString(),

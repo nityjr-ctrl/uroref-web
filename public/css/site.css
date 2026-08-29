@@ -1077,9 +1077,9 @@ html.no-motion .emu-backdrop,html.no-motion .emu-panel{transition:none}
 
 /* ------------------------------------------------ hospital track */
 .scene-head h3.h-card{font-size:clamp(24px,2.7vw,32px)}
-.frame-sensate{height:330px}
+.frame-tall{height:500px}
 @media(max-width:700px){
-  .frame-sensate{height:230px}
+  .frame-tall{height:340px}
 }
 
 /* ------------------------------------------------ reduced motion */

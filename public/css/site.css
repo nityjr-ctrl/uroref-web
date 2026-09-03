@@ -1094,3 +1094,19 @@ html.no-motion .emu-backdrop,html.no-motion .emu-panel{transition:none}
   }
   .js-words .w{opacity:1;transform:none;filter:none}
 }
+
+/* ------------------------------------------------ shared legal footer */
+.ur-footer{background:transparent;color:inherit;font-family:inherit;text-align:center;padding:34px 20px 30px;border-top:1px solid rgba(128,128,128,.28);border-top:1px solid color-mix(in srgb, currentColor 22%, transparent)}
+.ur-footer *{margin:0;padding:0;box-sizing:border-box}
+.ur-footer-inner{max-width:680px;margin:0 auto;display:grid;gap:9px}
+.ur-footer a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+.ur-footer a:hover{text-decoration-thickness:2px}
+.ur-footer a:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+.ur-footer-label{font-size:10px;font-weight:600;letter-spacing:.24em;opacity:.5}
+.ur-footer-name{font-size:15px;opacity:.88}
+.ur-footer-name strong{font-weight:600}
+.ur-footer-name a{font-weight:500}
+.ur-footer-small{font-size:11.5px;line-height:1.7;opacity:.55}
+.ur-footer-links{opacity:.7}
+.ur-footer-links a{font-weight:500}
+.ur-footer-links .ur-footer-current{font-weight:600}

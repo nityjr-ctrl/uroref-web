@@ -1107,3 +1107,6 @@ html.no-motion .emu-backdrop,html.no-motion .emu-panel{transition:none}
 .ur-footer-name strong{font-weight:600}
 .ur-footer-name a{font-weight:500}
 .ur-footer-small{font-size:11.5px;line-height:1.7;opacity:.55}
+.ur-footer-links{opacity:.7}
+.ur-footer-links a{font-weight:500}
+.ur-footer-links .ur-footer-current{font-weight:600}

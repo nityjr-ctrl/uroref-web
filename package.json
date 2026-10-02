@@ -29,7 +29,7 @@
     "@tailwindcss/vite": "4.3.3",
     "astro": "7.2.9",
     "tailwindcss": "4.3.3",
-    "three": "0.183.0"
+    "three": "0.185.1"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.13.0",

@@ -1,0 +1,22 @@
+WEBVTT
+
+00:00.000 --> 00:05.000
+Observe, trace, compare, and understand the result in three dimensions.
+
+00:05.000 --> 00:10.000
+Read the radiological display first. Patient right appears on screen left.
+
+00:10.000 --> 00:15.000
+Review every displayed slice before drawing. Use neighbouring images when a boundary is uncertain.
+
+00:15.000 --> 00:20.000
+Contour only the assigned structure. Close each component, then copy to a neighbouring slice and adjust it.
+
+00:20.000 --> 00:25.000
+After submission, compare your contour with the reader-1 educational reference using overlap and in-plane boundary metrics.
+
+00:25.000 --> 00:30.000
+Then open the matching existing same-study GLB. It is a spatial reference, not a reconstruction of your contour.
+
+00:30.000 --> 00:35.000
+Your route is primer, synthetic warm-up, then thirty Prostate158 teaching cases. Targets are supplied and references remain educational.

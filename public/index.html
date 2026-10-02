@@ -390,6 +390,71 @@
         <div class="pills"><span class="pill">Point-of-care entry</span><span class="pill">Automated alerts</span><span class="pill">Audit trail</span><span class="pill">Mobile and desktop</span></div>
       </div>
     </div>
+
+    <div class="scene-grid" style="margin-top:64px">
+      <div class="scene-head" data-reveal style="--d:0s">
+        <div class="idx"><span class="cat">Service evaluation data</span><span class="status status-dev"><span class="sdot"></span>Synthetic demo</span></div>
+        <h3 class="h-card" id="echolaser-h">EchoLaser Service Evaluation</h3>
+        <p class="tagline voice">One coded case, start to finish.</p>
+        <p class="scene-body">A data-collection tool for the EchoLaser service evaluation at the Royal Liverpool University Hospital. A separate coding step issues a random study code, so the clinical app never holds a name or NHS number. Each coded case then runs through baseline, procedure and recovery, follow-up and safety events, with dropdowns for fixed choices, BMI worked out from height and weight, and the 0 to 10 pain card entered on a slider.</p>
+        <div class="pills"><span class="pill">Pseudonymised study codes</span><span class="pill">Structured case record</span><span class="pill">Pain-score branching</span><span class="pill">Power Apps and Lists</span></div>
+        <p class="caveat" style="margin-top:22px">Tested end to end with synthetic cases only. Not yet approved for real patient data.</p>
+      </div>
+      <figure class="scene-fig" data-reveal style="--d:.1s">
+        <span class="scene-frame-ghost ghost-r"></span>
+        <div class="scene-frame frame-tall">
+          <img src="assets/echolaser-app-home.webp" alt="EchoLaser Data Collection Tool home screen: the route from patient coding to cases, baseline, procedure, follow-up and safety, noting that only the study code is carried into the clinical workflow" loading="lazy" width="720" height="740" style="width:100%;height:100%;object-fit:cover;object-position:top">
+          <span class="half-tag">Clinical app · synthetic demonstration build</span>
+        </div>
+      </figure>
+    </div>
+
+    <div class="scene-grid flip" style="margin-top:64px">
+      <figure class="scene-fig" data-reveal style="--d:.1s">
+        <span class="scene-frame-ghost ghost-l"></span>
+        <div class="scene-frame frame-tall">
+          <img src="assets/bsm-tumour-details.webp" alt="Bladder cancer waiting list card, tumour details step: clinical findings checkboxes and a numbered bladder map for marking tumour sites" loading="lazy" width="720" height="740" style="width:100%;height:100%;object-fit:cover;object-position:top">
+          <span class="half-tag">Tumour details · blank card, development build</span>
+        </div>
+      </figure>
+      <div class="scene-head" data-reveal style="--d:0s">
+        <div class="idx"><span class="cat">Bladder Scheduling Meeting</span><span class="status status-dev"><span class="sdot"></span>In development</span></div>
+        <h3 class="h-card" id="bsm-h">Bladder Cancer Waiting List Card</h3>
+        <p class="tagline voice">Filled in at the scope, ready for the meeting.</p>
+        <p class="scene-body">A structured card completed straight after flexible cystoscopy, while the findings are fresh: lesion count and size, key findings, frailty, day-case suitability and a numbered bladder map for tumour site. Cards land in one shared list that becomes the worklist for the weekly Bladder Scheduling Meeting, where priority, consultant and theatre list are set, and the cancer trackers follow the same list through to TURBT. The dataset follows the June 2026 GIRFT guide to suspected bladder cancer.</p>
+        <div class="pills"><span class="pill">Post-flexi capture</span><span class="pill">BSM worklist</span><span class="pill">Bladder map</span><span class="pill">Pathway tracker</span><span class="pill">Power Apps</span></div>
+        <p class="caveat" style="margin-top:22px">Development build holding test data only, being set up with the team at University Hospitals of Liverpool Group.</p>
+      </div>
+    </div>
+
+    <div class="scene-grid" style="margin-top:64px">
+      <div class="scene-head" data-reveal style="--d:0s">
+        <div class="idx"><span class="cat">Patient-reported outcomes</span><span class="status status-dev"><span class="sdot"></span>Prototype</span></div>
+        <h3 class="h-card" id="prom-h">Urethral Stricture PROM</h3>
+        <p class="tagline voice">The follow-up questionnaire, without the paper.</p>
+        <p class="scene-body">Electronic PROMs for follow-up after urethral stricture treatment, including Optilume. Patients scan one QR code, type a single-use code and answer on their own phone: a two-minute IPSS, quality-of-life and stream-picture check at 3 and 6 months, and the full questionnaire with USS-PROM, EQ-5D-3L and SHIM before treatment and at 12 months. Answers are checked and scored automatically, then set side by side on a clinician dashboard with amber flags and a summary line to copy into the clinic letter.</p>
+        <div class="pills"><span class="pill">Patient QR access</span><span class="pill">No identifiers on the form</span><span class="pill">Automatic scoring</span><span class="pill">Clinician dashboard</span><span class="pill">Microsoft 365</span></div>
+        <p class="caveat" style="margin-top:22px">Working end to end with made-up patients. Needs a Trust-owned home, IG review and clinical-safety sign-off before any pilot.</p>
+      </div>
+      <figure class="scene-fig" data-reveal style="--d:.1s">
+        <span class="scene-frame-ghost ghost-r"></span>
+        <div class="scene-frame frame-tall">
+          <img src="assets/prom-clinician-timeline.webp" alt="Clinician dashboard for a made-up patient, DEMO-H2MX: baseline and 3-month results side by side, with IPSS severity and change from baseline, quality of life, stream picture, satisfaction and individual IPSS item scores" loading="lazy" width="700" height="720" style="width:100%;height:100%;object-fit:cover;object-position:left top">
+          <span class="half-tag">Clinician view · made-up patient</span>
+        </div>
+      </figure>
+    </div>
+
+    <div class="affil" data-reveal style="--d:0s">
+      <div class="seclabel"><span class="txt">Professional role</span><span class="rule"></span></div>
+      <a class="affil-link" href="https://www.baus.org.uk/committees/22/digital_innovation_group/public/" target="_blank" rel="noopener noreferrer">
+        <span class="affil-text">
+          <span class="affil-title">BAUS Digital Innovation Group</span>
+          <span class="affil-role">Member · British Association of Urological Surgeons</span>
+        </span>
+        <span class="affil-cta">View BAUS Digital Innovation&nbsp;Group&nbsp;<span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></span>
+      </a>
+    </div>
   </div>
 </section>
 

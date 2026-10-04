@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "files": {
+    "public/index.html": "d9efa57ee5c875a2450fea66edfcb4deac5280d501859ef3760eadc6745bfdd1",
+    "public/js/site.js": "6dd044f3b27f0ca691a9034066ad11db8b4543b03f72671d552f5e510f75cae0",
+    "src/content/deep-dives/3ts-protocol-peyronies.mdx": "f22ea4d7c98c97f40ad7463050e3daa3b4cc06795b3b6e07e8bfabe74ea1b5af",
+    "src/content/deep-dives/cirfs-are-dead.mdx": "1daa21e6a013add3f7cab5b967468eeda0ae4257194ca7cb660389e9d517502d",
+    "src/content/deep-dives/cvac-suction-urs.mdx": "164de41888d306eb69994b2dd3644653968d89b3838bae5ea2fa30f85ede8dc8",
+    "src/content/deep-dives/dogma-trials-aua-2026.mdx": "779ad726e759f1fc891f269ecef2b78e4f5972fe05ce8715bb96d60f4541074d",
+    "src/content/deep-dives/emergency-holep-refractory-haematuria.mdx": "248cc5281a242b90f35efd06d00186e636cff848972024ffd3024f31b631bcd8",
+    "src/content/deep-dives/finasteride-ed-aua-2026.mdx": "364d1961d0b6d49d760328aa37e1b2be67328986bc8a669829a39e7e61481aa8",
+    "src/content/deep-dives/foley-after-urs-jj-stent.mdx": "49c6f74b28c71a4c22fb1c5ad318463d91bbb1cfd46e26ca36bc8ccb5e9edab9",
+    "src/content/deep-dives/histotripsy-kidney-edison.mdx": "b1f5ebe58bf226c5aa1ae61b3d3b743c15b1f634d1e5da61125aa957340f5974",
+    "src/content/deep-dives/inside-the-uroref-app.mdx": "f7d2c2e7239295db103a469c4012e70f415a7b6f847a91e08c6fc93011589ed8",
+    "src/content/deep-dives/low-testosterone-prostate-cancer.mdx": "aa8633c6a6f1770c523096937f5e729438490e8676f67423a8d9639c9512baa9",
+    "src/content/deep-dives/milep-sui-miles-trial.mdx": "d196c90fb5079f5e0913653b60f03d5add975bbce929ffea707759fe7db86d5e",
+    "src/content/deep-dives/mps2-as-surveillance-biopsy.mdx": "8c99579cfef656c74ca20169e7d9c39bf4a85f9b718f48a4046284b4c5b8adee",
+    "src/content/deep-dives/push-trial-hydration.mdx": "ed8ef19c150d53f003b20b115e3d69bd7ddf4ccf20301e4a207b5a9817bf5066",
+    "src/content/deep-dives/rice-grain-magnetic-robot-stones.mdx": "15380360d0b9495ca72f3c56183e87eaf378fdef6cd31153e7864a25668cbebf",
+    "src/content/deep-dives/second-wave-bph-devices.mdx": "0c023a8a7e7298e5d68fc89466582e926e3868ebcafb27e414e0738d6ae3ed5f",
+    "src/content/deep-dives/the-quiet-eye.mdx": "9f7160035962a5953b22f0773835eefd221eaae6446b871f4cf828c132c2cc7b",
+    "src/content/deep-dives/why-i-built-uroref.mdx": "ea55cd2a2b81d0641861da4725617709494486a4612b260b0f56df7b60e7f091",
+    "src/content/deep-dives/zamenix-robotic-rirs.mdx": "4a8a2ac4fe232012f99f86d417559a2a05bc79ef3a5c387fc6b45f58ac21dda9"
+  }
+}

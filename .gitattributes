@@ -1,3 +1,5 @@
+public/prostateview/** linguist-vendored -diff
+public/app-demo/static/** linguist-generated
 # Published demo assets are byte-verified against security/demo-release.json.
 # Preserve exact release bytes on Windows, Linux and fresh checkouts.
 public/app-demo/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

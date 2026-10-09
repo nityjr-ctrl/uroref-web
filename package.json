@@ -33,11 +33,11 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "4.13.0",
-    "axe-core": "4.13.0",
+    "axe-core": "4.14.0",
     "jsqr": "^1.4.0",
     "pagefind": "1.5.2",
-    "playwright": "1.62.1",
-    "promptfoo": "0.122.1",
+    "playwright": "1.63.0",
+    "promptfoo": "0.123.1",
     "qrcode": "^1.5.4",
     "sharp": "0.35.5"
   },

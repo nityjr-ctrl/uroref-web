@@ -8,8 +8,9 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
-    "postbuild": "node scripts/inject-build-ref.mjs && pagefind --site dist",
+    "build": "node scripts/verify-clinical-content-integrity.mjs && astro build",
+    "postbuild": "node scripts/inject-build-ref.mjs && node scripts/harden-output.mjs && pagefind --site dist && node scripts/verify-clinical-content-integrity.mjs",
+    "check:clinical": "node scripts/verify-clinical-content-integrity.mjs",
     "preview": "astro preview",
     "presentation": "astro preview --host 127.0.0.1 --port 4321",
     "astro": "astro",
@@ -42,6 +43,7 @@
     "sharp": "0.35.5"
   },
   "overrides": {
+    "http-cache-semantics": "4.3.0",
     "onnxruntime-node": {
       "adm-zip": "0.6.0"
     }

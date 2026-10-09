@@ -1,33 +1,36 @@
 # UroRef interactive app preview
 
-The browser preview at `/try/` runs the production web payload packaged inside the official UroRef Android APK. It is not a hand-authored mock-up and it does not run Android bytecode in the browser.
+The phone preview at `/try/` and `/app-demo/` uses a dedicated build of UroRef 3.3.1. It runs the real interface with selected, complete reference entries, all existing calculators and two complete pathway collections. Clinical entries are selected without rewriting or summarising them. The full app retains its full dataset and offline functionality.
 
-## Provenance
+The website formerly published the full web payload extracted from the Android 3.1.1 package. That delivery method is retired. Historical release provenance remains in Git history; do not restore those assets as a demo update.
 
-- Google Play Console production release: `3.1.1` (`versionCode 70`), released 10 July 2026
-- Android package: `com.nityg.uroref`; minimum SDK 22; target SDK 35
-- Original Console bundle: `70.aab`; SHA-256 `DFB39DA01E37529D58728E2FF66EE081406141C5D51E900AB26955EBA53E90C8`
-- Play-signed universal APK: Console file `70.apk` (saved locally as `70 (1).apk`); SHA-256 `061B485C550C7DC9E92C83EA95FD84D621E115C11B079655D165D8509DECBF3A`
-- APK signature verification: v1, v2 and v3 verified; Google Play source stamp verified
-- Play app-signing certificate SHA-256: `1B0D0ADB215E2DE72DEB95E4090A59A8D37AA73E2FDBF8F644C197A2C6DA3D21` (matches the prior production APK)
-- AAB upload certificate SHA-256: `DD4149FCBA93F16A1447D321D90BD278B6444EA422EE5692F84B0CDFBF87F967` (the expected separate upload key)
-- Google Play source-stamp certificate SHA-256: `3257D599A49D2C961A471CA9843F59D341A405884583FC087DF4237B733BBD6D`
-- Packaged web payload: 20 files, 2,701,068 bytes; AAB and APK trees byte-identical; tree SHA-256 `856A8CCC736E40674A100D51A9CC9A43204D8F49F0200C98AE0AF599A74EDD2D`
-- Packaged JavaScript: `main.bf23a7b9.js`; SHA-256 `FCBE4CAD36E1BEAFDA8233D9F704F7951188E86267A002F7593C857D7390EF23`
-- Browser-adapted JavaScript: `main.6d7b4626.js`; SHA-256 `6D7B4626333629641B2586153DE706C36D98A3D7E0464E40685C2912E5D4D14C`
-- Published CSS: `main.de79c777.css`; SHA-256 `95B80E13BF90CA1B947366355167F872BCD245F6CEDCDD897B44E82F9865E553`
-- Published licence notice: `main.6d7b4626.js.LICENSE.txt`; SHA-256 `438E8719657F377607EAEB464FF664655CA0CA89EF38B7B1F22D854EE888E6EF`
-- Browser-patched `index.html` SHA-256: `B89D753F815F2969D076CA70FE23EE2FAC714F0CBE46F040EAED9F4F707FF156`
-- Browser-patched `manifest.json` SHA-256: `4D74E600FA6F3F7392EACA5AD1E6F21225C6A20A6FA666CEA085F3874F937823`
+## Release contract
 
-Only the Capacitor web payload is published under `public/app-demo/`: the production HTML, minified JavaScript and CSS, icons, and the JavaScript licence notice. Android DEX, signing material, native package metadata, source maps, Cordova bridge files and the Android service worker are not copied into the website.
-
-The embedded `index.html` differs from the packaged file only to use relative asset URLs, point at local icons, add `noindex` plus a strict referrer policy, and darken low-contrast light-theme helper text. The wrapper page sandboxes the iframe and repeats the educational/no-patient-data boundary.
-
-The published JavaScript has one deterministic browser-only accessibility adaptation, applied by `scripts/adapt-app-demo.mjs`: each procedure's open action and pin action are emitted as sibling buttons instead of one button nested inside another. Text, clinical data, navigation targets and event handlers are unchanged. The script verifies the original packaged hash and the exact source template before applying the change.
-
-The signed Android manifest and Play release metadata are authoritative for `versionCode 70`. The embedded Capacitor config correctly carries app version `3.1.1` but retains a stale internal `buildCode 46`, which is not used for the published release identity.
+- The private app repository owns `security/demo-selection.json`, the build transformation and clinical integrity baseline.
+- `security/demo-release.json` in this repository records the exact allowed demo files and SHA-256 hashes. The website build rejects unexpected files or mismatches.
+- The demo has its own entry point, lazy app/operative chunks, no service worker, no offline pack and no global full-app search export. Search operates over the selected entries.
+- Ariadne's online interaction explains how to access the full app; it does not send demo queries to the clinical API. Analytics is disabled in the static demo.
+- Third-party licence notices are retained. Every demo HTML document is excluded from Pagefind; robots directives are indexing preferences, not access control.
+- The iframe preserves keyboard access, selection, zoom and pop-out viewing. The showroom banner makes the selected-entry scope visible.
 
 ## Updating the preview
 
-Replace the runtime only from the official UroRef Play Console release. Before replacing it, record the package identity, version, bundle and APK SHA-256 values, signing certificate and source stamp; then re-run the site build, link check, accessibility check and interactive phone-viewport test.
+In the private UroRef-App checkout, use the reviewed clinical baseline and run:
+
+```text
+npm run check:clinical
+npm run test:security
+npm run build:demo
+node scripts/check-demo-exposure.cjs
+node scripts/export-demo.cjs <absolute-path-to-uroref-web-worktree>
+```
+
+The exporter verifies file hashes and refuses unknown destination files. Commit the reviewed publication snapshot and manifest together. Do not copy the full app `build/`, an APK, source maps or app source into `public/`.
+
+Run the website build, link, logo, production dependency, fixture and accessibility checks. Check the phone iframe and full-screen demo at desktop/mobile widths before publishing. Selected-entry changes require the same content-equality checks; a website build must never regenerate the clinical baseline.
+
+## Optional guarded hosting
+
+The private app repository contains a separate Cloudflare Worker and owner activation checklist. No guard is enabled by this website branch. After its private assets and Turnstile entry have been tested, `UROREF_DEMO_DELIVERY=edge` omits demo bundles from the Pages output and leaves an accessible fallback document. The Worker must own `/app-demo/*` before that website mode is published.
+
+Keeping another public origin copy would bypass the guard. Repository history and historical deployments need separate owner review. A browser can recover any entries it legitimately receives; the showroom limits unnecessary distribution, rather than promising unextractable content.

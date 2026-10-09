@@ -7,17 +7,17 @@ const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.nityg.
 
 <Base
   title="Try UroRef on a phone"
-  description="Explore the real UroRef Android interface in an interactive, scrollable browser preview."
+  description="Explore selected complete entries in UroRef's interactive, scrollable browser demo."
   searchContentType="App"
   searchTopics={['Clinical reference']}
 >
   <section class="try-hero" aria-labelledby="try-title">
     <div class="try-hero-grid" aria-hidden="true"></div>
     <div class="try-hero-inner">
-      <p class="try-kicker"><span></span> Interactive Android app preview</p>
+      <p class="try-kicker"><span></span> Interactive UroRef demo</p>
       <h1 id="try-title">UroRef, running <em>in your browser.</em></h1>
       <p class="try-lead">
-        Tap, search and scroll through the interface shipped inside the signed UroRef Android app—without installing anything.
+        Tap, search and scroll through UroRef's interface with selected complete reference entries—without installing anything.
       </p>
       <div class="try-hero-actions">
         <a class="try-primary" href="#live-preview">Open the live preview ↓</a>
@@ -28,18 +28,18 @@ const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.nityg.
 
   <section id="live-preview" class="try-preview" aria-labelledby="preview-title">
     <div class="try-copy">
-      <p class="try-kicker try-kicker-dark"><span></span> Android package · 3.1.1</p>
+      <p class="try-kicker try-kicker-dark"><span></span> Selected reference entries · 3.3.1</p>
       <h2 id="preview-title">The real interface, not a mock-up.</h2>
       <p>
-        This preview runs the web interface packaged inside the official Android release. Core navigation, search,
-        calculators, pathways and scrolling work here; Android-only system features may behave differently in a browser.
+        This demo uses UroRef's app interface with a representative selection of complete, unchanged entries.
+        Navigation, search, calculators, pathways and scrolling work here. The full app includes the complete offline reference and optional Ariadne assistant.
       </p>
       <div class="try-note" role="note" aria-label="Safe-use notice">
         <strong>Educational reference only.</strong>
         Do not enter patient-identifiable or confidential information. Follow local guidance, senior advice and clinical judgement.
       </div>
       <ul class="try-checks" aria-label="Preview capabilities">
-        <li>Scroll through the complete app home screen</li>
+        <li>Explore the app home screen and a selection of complete entries</li>
         <li>Open procedures, emergency pathways and calculators</li>
         <li>Use search, pinned tools and theme controls</li>
       </ul>
@@ -50,7 +50,7 @@ const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.nityg.
         <div class="device-speaker" aria-hidden="true"></div>
         <iframe
           src="/app-demo/"
-          title="Interactive UroRef Android app preview"
+          title="Interactive UroRef reference demo"
           loading="eager"
           referrerpolicy="strict-origin-when-cross-origin"
           sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-modals"
@@ -61,7 +61,7 @@ const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.nityg.
         <a href="/app-demo/" target="_blank" rel="noopener">Open full screen ↗</a>
         <a href={PLAY_STORE_URL} target="_blank" rel="noopener">Google Play ↗</a>
       </div>
-      <p class="device-version">Signed Android package 3.1.1 · version code 70</p>
+      <p class="device-version">UroRef 3.3.1 interface · representative demo</p>
     </div>
   </section>
 

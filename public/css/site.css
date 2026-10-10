@@ -1082,6 +1082,29 @@ html.no-motion .emu-backdrop,html.no-motion .emu-panel{transition:none}
   .frame-tall{height:340px}
 }
 
+/* professional affiliation: an external role, deliberately quieter than a project */
+.affil{margin-top:88px}
+.affil .seclabel{margin-bottom:18px}
+.affil-link{
+  display:flex;align-items:center;justify-content:space-between;gap:18px 32px;flex-wrap:wrap;
+  padding:20px 24px;border:1px solid var(--border);border-radius:var(--r-lg);
+  background:var(--hairline-wash);color:inherit;text-decoration:none;
+  transition:border-color .25s,background .25s;
+}
+.affil-link:hover{border-color:var(--border-accent)}
+.affil-link:focus-visible{outline:2px solid var(--teal-500);outline-offset:3px}
+.affil-text{display:grid;gap:6px}
+.affil-title{font-size:clamp(18px,1.8vw,21px);font-weight:700;letter-spacing:-.01em;color:var(--text-primary)}
+.affil-role{font-size:var(--size-small);color:var(--text-secondary)}
+.affil-cta{font-family:var(--font-label);font-size:13px;letter-spacing:.03em;color:var(--teal-500);white-space:nowrap}
+.affil-link:hover .affil-cta{color:var(--text-primary)}
+@media(max-width:700px){
+  .affil{margin-top:64px}
+  .affil-link{padding:18px}
+  .affil-cta{white-space:normal}
+}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
 /* ------------------------------------------------ reduced motion */
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{

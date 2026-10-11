@@ -1,0 +1,180 @@
+{
+  "distribution": "demo",
+  "files": [
+    {
+      "file": "404.html",
+      "bytes": 238,
+      "sha256": "6ed5d4550f1c631166106248ff35e0a66fb6194b50b0fbd877619147048e1612"
+    },
+    {
+      "file": "apple-touch-icon.png",
+      "bytes": 8554,
+      "sha256": "447be19e33d718d57e7dc557d747bb800014658b635e7ffbf375a11d1a00b2b5"
+    },
+    {
+      "file": "icon.svg",
+      "bytes": 1546,
+      "sha256": "38a263d9581c989b190342cd3a270adc1a2c960d910aa15695ff0ca95088e905"
+    },
+    {
+      "file": "icons/icon-128x128.png",
+      "bytes": 7118,
+      "sha256": "6e4a0ebe3988df4400393c32edd51136d1a4bc673a83c2ea99a51372b2f237e4"
+    },
+    {
+      "file": "icons/icon-144x144.png",
+      "bytes": 8275,
+      "sha256": "ec2f754781e28302d5610536b6ca0599d0b976676fd75e3de1086f2e660ac7ec"
+    },
+    {
+      "file": "icons/icon-152x152.png",
+      "bytes": 8644,
+      "sha256": "1c08c52a3157d1987bb403b27df33cc432ba087af9620fe4697f32c3367d6cd5"
+    },
+    {
+      "file": "icons/icon-192x192.png",
+      "bytes": 8554,
+      "sha256": "447be19e33d718d57e7dc557d747bb800014658b635e7ffbf375a11d1a00b2b5"
+    },
+    {
+      "file": "icons/icon-384x384.png",
+      "bytes": 23634,
+      "sha256": "d7b90c31cdc61295dca2db508195e2d4dac9bf8e07a40e6afb924377474f5cf0"
+    },
+    {
+      "file": "icons/icon-512x512.png",
+      "bytes": 26625,
+      "sha256": "81945237b1ad6cda422b243268821efd449f06274549c6b44c7fed3b9d653d94"
+    },
+    {
+      "file": "icons/icon-72x72.png",
+      "bytes": 3569,
+      "sha256": "26a54981522f4848607dcc73ef6bb3602d14f05535be04c9ef7ecc2f39ddc52a"
+    },
+    {
+      "file": "icons/icon-96x96.png",
+      "bytes": 5127,
+      "sha256": "2f6c2c7fd89f3513e6267048e2e47f26c43179662b34e9f9fa77a1c1fc435dce"
+    },
+    {
+      "file": "index.html",
+      "bytes": 1530,
+      "sha256": "dc60d9fb156eb3b366837c1ea3f853564c51efe71a45ebc3015baa2231fef70f"
+    },
+    {
+      "file": "privacy-policy.html",
+      "bytes": 4273,
+      "sha256": "5a08b79eb9489e9040a1b2f6e3f065f8ea82c32681b0e7160cbcce536db39475"
+    },
+    {
+      "file": "static/css/main.7b7d8012.css",
+      "bytes": 33627,
+      "sha256": "bbd55577ac738de1b9a14c3c3817771571d1b07bc7b425b6e3ccf52ef0a4f514"
+    },
+    {
+      "file": "static/js/296.dce146c1.chunk.js",
+      "bytes": 13388,
+      "sha256": "d7604f3450927e98944380b05f3b9020cd06defe21839368a0328d4d3ad3d6d5"
+    },
+    {
+      "file": "static/js/296.dce146c1.chunk.js.LICENSE.txt",
+      "bytes": 171,
+      "sha256": "94f2db9ff35103bfa822be064946cce1231caca6d746eab5390635e6bf315c9d"
+    },
+    {
+      "file": "static/js/488.b73252e3.chunk.js",
+      "bytes": 19240,
+      "sha256": "9b722d1df70525730c34ec8800a45018a8df5ea147fb263cd514b1e5605c5ff3"
+    },
+    {
+      "file": "static/js/488.b73252e3.chunk.js.LICENSE.txt",
+      "bytes": 171,
+      "sha256": "94f2db9ff35103bfa822be064946cce1231caca6d746eab5390635e6bf315c9d"
+    },
+    {
+      "file": "static/js/558.d17037ed.chunk.js",
+      "bytes": 31785,
+      "sha256": "61d56ff0c6ddeaf78a0f4c0fdb243a730af2e7914e0b95b50dd620a2d67bb4d3"
+    },
+    {
+      "file": "static/js/558.d17037ed.chunk.js.LICENSE.txt",
+      "bytes": 171,
+      "sha256": "94f2db9ff35103bfa822be064946cce1231caca6d746eab5390635e6bf315c9d"
+    },
+    {
+      "file": "static/js/616.a83ffa2f.chunk.js",
+      "bytes": 36345,
+      "sha256": "f28a9b6212bea6453af931eb43abd5752fba295be5139472e3818333c49ba88c"
+    },
+    {
+      "file": "static/js/616.a83ffa2f.chunk.js.LICENSE.txt",
+      "bytes": 171,
+      "sha256": "94f2db9ff35103bfa822be064946cce1231caca6d746eab5390635e6bf315c9d"
+    },
+    {
+      "file": "static/js/655.707dafc1.chunk.js",
+      "bytes": 16552,
+      "sha256": "471af220bedbb937f69fff832a0b801d69b4012f96cdd8055cd4e84fb76e30a6"
+    },
+    {
+      "file": "static/js/655.707dafc1.chunk.js.LICENSE.txt",
+      "bytes": 171,
+      "sha256": "94f2db9ff35103bfa822be064946cce1231caca6d746eab5390635e6bf315c9d"
+    },
+    {
+      "file": "static/js/751.7a2276d4.chunk.js",
+      "bytes": 437030,
+      "sha256": "e849e0bd75e1a32d76489f0d77fc2e1b1ab2769700e320aa1a893d9357b62b86"
+    },
+    {
+      "file": "static/js/82.1b87921d.chunk.js",
+      "bytes": 876,
+      "sha256": "8c6c283905062f2804bb6b2f8234dc93750680ae7af18fefceb6f301c29d2507"
+    },
+    {
+      "file": "static/js/main.d40f188a.js",
+      "bytes": 148246,
+      "sha256": "75360141f63a23da4798267f9bbff31f4c9e542e55d5b2a4593d15c49a62d766"
+    },
+    {
+      "file": "static/js/main.d40f188a.js.LICENSE.txt",
+      "bytes": 971,
+      "sha256": "bc83aaff43d3ef9301331bbfeaacc4d2d8549dfc9029f786bd6abdd32363b020"
+    },
+    {
+      "file": "static/media/ariadne-teal-gold.e51ede3584fe36fff977.png",
+      "bytes": 1151259,
+      "sha256": "166059c9d8b8b73bdaf7e3ba4c99db369faedb61ddb770691722e1a1fca9d664"
+    },
+    {
+      "file": "static/media/plate-1.000fa00c6f8191b8a689.jpg",
+      "bytes": 155637,
+      "sha256": "57b398492c7ad8dbd8f3ab80a0e86df347ec08c7b8e25d2ad5a4598b3587094e"
+    },
+    {
+      "file": "static/media/plate-2.ae18b18335b421545240.jpg",
+      "bytes": 92789,
+      "sha256": "f243c6e1c076b6c20c91332d2647bab26462aa05548e3b13c62969dd88481763"
+    },
+    {
+      "file": "static/media/plate-3.02c4eb8d098c54af25be.jpg",
+      "bytes": 97944,
+      "sha256": "55df68f8efeb27e7b5284c0230ded061b7fd20aed1be23c2563e9fbb283560ba"
+    },
+    {
+      "file": "static/media/plate-4.20a96126b1c3798503f2.jpg",
+      "bytes": 183245,
+      "sha256": "e6e569f06a9fa2e44ff131faa864b9f84be3d651faf33e6e7e95db5c1666aa2e"
+    },
+    {
+      "file": "static/media/plate-5.9094a45113ad1a17af8b.jpg",
+      "bytes": 89105,
+      "sha256": "ac70bcc4c1ecdef36a8d83fcadd4f88b245df9689147168d2b4f4953b05db54f"
+    },
+    {
+      "file": "static/media/plate-6.3bfb5ae2f0247f413f53.jpg",
+      "bytes": 245582,
+      "sha256": "acd9efbcccad9f2e595256297af36cfb25dd18fb7a2e5efe76e2ce703db1416c"
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 User-agent: *
 Disallow: /prostateview/
+Disallow: /app-demo/
 Allow: /
 
 Sitemap: https://uroref.com/sitemap-index.xml

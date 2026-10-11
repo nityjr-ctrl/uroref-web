@@ -11,6 +11,7 @@ export default defineConfig({
   },
   integrations: [mdx(), sitemap()],
   vite: {
+    build: { sourcemap: false, minify: 'esbuild' },
     plugins: [tailwindcss()],
   },
 });

@@ -8,6 +8,7 @@ export default defineConfig({
   redirects: {
     '/connect': '/nity',
     '/ecosystem': '/showcase',
+    '/try': '/app',
   },
   integrations: [mdx(), sitemap()],
   vite: {

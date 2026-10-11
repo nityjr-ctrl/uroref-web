@@ -4,10 +4,6 @@ import path from 'node:path';
 const root = path.resolve('dist');
 const requiredPaths = [
   'index.html',
-  'try/index.html',
-  'app-demo/index.html',
-  'app-demo/static/css/main.de79c777.css',
-  'app-demo/static/js/main.6d7b4626.js',
   'showcase/index.html',
   'imaging-lab/index.html',
   'last30days/index.html',
@@ -52,6 +48,9 @@ const authoredHtml = (await walk(root))
 
 const errors = [];
 let checked = 0;
+
+// The packaged app preview was retired in October 2026 and must not be published again.
+if (await exists(path.join(root, 'app-demo'))) errors.push('Retired app preview is present in the output: /app-demo/');
 
 for (const required of requiredPaths) {
   if (!await exists(path.join(root, required))) errors.push(`Missing required presentation asset: /${required.replaceAll('\\', '/')}`);

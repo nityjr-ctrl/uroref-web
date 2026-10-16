@@ -25,11 +25,11 @@
   "dependencies": {
     "@astrojs/mdx": "7.0.8",
     "@astrojs/sitemap": "3.7.3",
-    "@google/model-viewer": "4.3.1",
+    "@google/model-viewer": "4.4.0",
     "@tailwindcss/vite": "4.3.3",
     "astro": "7.2.9",
     "tailwindcss": "4.3.3",
-    "three": "0.183.0"
+    "three": "0.186.1"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.13.0",

@@ -27,6 +27,28 @@ const steps = [
   },
 ];
 
+// The closed loop: one next step at a time, in this order (ContiRegistry 2.5).
+const loop = ['Follow-up due', 'Review requested', 'Responsibility accepted', 'Plan agreed', 'Action completed', 'Closure verified'];
+
+const shots = [
+  { img: '/contiregistry/img/g-record.jpg', title: 'The device record and its lifecycle', alt: 'A demonstration device record for a fictional patient, with the device lifecycle from implantation through review, activation, PROM and surveillance, and the next step with its responsible team.' },
+  { img: '/contiregistry/img/g-owner.jpg', title: 'A named owner, or plainly Awaiting owner', alt: 'Two demonstration next steps: a 6-week activation accepted by the Continence CNS Team, and a 12-month follow-up shown as overdue by 24 days and awaiting owner, viewed twice and still open.' },
+  { img: '/contiregistry/img/g-awaiting.jpg', title: 'Action completed, awaiting closure', alt: 'The demonstration 12-month follow-up after the action was completed, still marked awaiting closure, with a Verify closure button.' },
+  { img: '/contiregistry/img/g-closed.jpg', title: 'Closure verified', alt: 'The demonstration 12-month follow-up with closure verified by the continence lead, every lifecycle stage complete.' },
+];
+
+const strengths = [
+  { t: 'Named clinical ownership', d: 'Every next step shows a responsible clinician or team, or says plainly that it is awaiting an owner.' },
+  { t: 'Overdue follow-up, kept in view', d: 'Due soon, overdue and significantly overdue are shown in stages, and stay on screen until the step is done.' },
+  { t: 'Implant lifecycle history', d: 'Implantation, activation, reviews, revisions and every next step on one timeline for each device episode.' },
+  { t: 'PROMs', d: 'Patient-reported outcomes from the check-in form sit on the same timeline as the clinic reviews.' },
+  { t: 'Longitudinal outcomes', d: 'Device survival, revisions and patient-reported change over time, with counts and denominators.' },
+  { t: 'Audit trail', d: 'Who did what, and when: created, assigned, accepted, reassigned, plan changed, completed, verified, reopened, escalated.' },
+  { t: 'Verified closure', d: 'Completing an action and closing it are separate steps. Closure is verified by a site owner, with the evidence noted.' },
+  { t: 'Future interoperability', d: 'Designed around established healthcare workflow principles with future FHIR and NHS interoperability in mind.' },
+  { t: 'Governance and QI', d: 'Built for audit, service evaluation and quality improvement. It records who agreed to do what; it does not make clinical decisions.' },
+];
+
 const people = [
   {
     who: 'Surgeons',
@@ -43,8 +65,8 @@ const people = [
 ];
 ---
 <Base
-  title="ContiRegistry"
-  description="ContiRegistry: the AUS device register for ContiClassic. Implant, register, follow up and audit, all in one."
+  title="ContiRegistry: Follow the implant"
+  description="ContiRegistry tracks the whole AUS device journey for ContiClassic, from implantation through follow-up, PROMs, review, revision and verified closure."
   image="/contiregistry/img/og.jpg"
   noindex={true}
 >
@@ -63,17 +85,18 @@ const people = [
       </button>
 
       <div class="cr-hero-inner">
-        <div class="cr-lockup cr-rise" style="--d: 0s">
-          <img src="/contiregistry/img/contiregistry-mark.svg" width="84" height="84" alt="" />
-          <span class="cr-word"><b>Conti</b>Registry<sup class="tm">™</sup></span>
-        </div>
-        <p class="cr-eyebrow cr-rise" style="--d: .15s">The AUS device register for ContiClassic<sup class="tm">™</sup></p>
-        <h1 id="cr-title" class="cr-h1">
-          <span class="cr-rise" style="--d: .3s">Implant.</span>
-          <span class="cr-rise" style="--d: .45s">Register.</span>
-          <span class="cr-rise cr-teal" style="--d: .6s">Follow up.</span>
+        <img class="cr-mark cr-rise" style="--d: 0s" src="/contiregistry/img/contiregistry-mark.svg" width="72" height="72" alt="" />
+        <p class="cr-eyebrow cr-rise" style="--d: .1s">The AUS device register for ContiClassic<sup class="tm">™</sup></p>
+        <h1 id="cr-title" class="cr-brand">
+          <span class="cr-brand-main cr-rise" style="--d: .25s"><span class="cr-brand-name"><b>Conti</b>Registry</span>: Follow the implant</span>
+          <span class="cr-brand-sub cr-rise" style="--d: .45s">not just the implantation</span>
         </h1>
-        <p class="cr-sub cr-rise" style="--d: .8s">Audit, all in one. <span class="cr-teal">Seamlessly.</span></p>
+        <p class="cr-lead cr-rise" style="--d: .65s">ContiRegistry tracks the whole device journey, from implantation through follow-up, PROMs, review, revision and verified closure.</p>
+        <ul class="cr-know cr-rise" style="--d: .8s">
+          <li>Know what needs to happen next.</li>
+          <li>Know who owns it.</li>
+          <li>Know whether it was actually completed.</li>
+        </ul>
         <div class="cr-cta cr-rise" style="--d: .95s">
           <a class="cr-btn cr-btn-primary" href="#film">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
@@ -90,9 +113,9 @@ const people = [
     <section id="film" class="cr-section cr-film" aria-labelledby="cr-film-title">
       <div class="cr-wrap">
         <p class="cr-kicker cr-reveal">The film</p>
-        <h2 id="cr-film-title" class="cr-h2 cr-reveal">From theatre to audit, in four and a half minutes.</h2>
+        <h2 id="cr-film-title" class="cr-h2 cr-reveal">From theatre to verified closure, in five and a half minutes.</h2>
         <div class="cr-player cr-reveal">
-          <video controls playsinline preload="metadata" poster="/contiregistry/img/poster.jpg" aria-label="ContiRegistry film, 4 minutes 37 seconds, narrated with captions" data-cr-film>
+          <video controls playsinline preload="metadata" poster="/contiregistry/img/poster.jpg" aria-label="ContiRegistry film, 5 minutes 32 seconds, narrated with captions" data-cr-film>
             <source src="/contiregistry/media/contiregistry-film.mp4" type="video/mp4" />
             Your browser cannot play this video. <a href="/contiregistry/media/contiregistry-film.mp4">Download the film (MP4)</a>.
           </video>
@@ -101,6 +124,47 @@ const people = [
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg>
           <span><b>Turn your sound on.</b> The film is narrated, with captions on screen.</span>
         </p>
+      </div>
+    </section>
+
+    <!-- Closed loop (release 2.5) -->
+    <section class="cr-section cr-loop" aria-labelledby="cr-loop-title">
+      <div class="cr-wrap">
+        <p class="cr-kicker cr-reveal">Coming in ContiRegistry 2.5</p>
+        <h2 id="cr-loop-title" class="cr-h2 cr-reveal">Closed-loop device lifecycle management</h2>
+        <ol class="cr-flow cr-reveal" aria-label="The closed loop, one step at a time">
+          {loop.map((s, i) => (
+            <li class:list={['cr-flow-step', { last: i === loop.length - 1 }]}>
+              <span class="cr-flow-n" aria-hidden="true">{i === loop.length - 1 ? '✓' : i + 1}</span>
+              <span class="cr-flow-t">{s}</span>
+            </li>
+          ))}
+        </ol>
+        <p class="cr-loop-lead cr-reveal">A viewed alert is not a completed clinical action. ContiRegistry keeps outstanding actions visible until the required next step has genuinely been completed.</p>
+        <ul class="cr-rules cr-reveal" aria-label="Three rules the app keeps">
+          <li>Viewed <span aria-hidden="true">≠</span><span class="sr-only">is not</span> completed</li>
+          <li>Accepted <span aria-hidden="true">≠</span><span class="sr-only">is not</span> completed</li>
+          <li>Completed <span aria-hidden="true">≠</span><span class="sr-only">is not</span> closure verified</li>
+        </ul>
+        <ul class="cr-shots">
+          {shots.map((s) => (
+            <li class="cr-reveal">
+              <figure class="cr-shot">
+                <img src={s.img} alt={s.alt} width="1280" height="720" loading="lazy" decoding="async" />
+                <figcaption>{s.title}</figcaption>
+              </figure>
+            </li>
+          ))}
+        </ul>
+        <ul class="cr-strengths">
+          {strengths.map((s) => (
+            <li class="cr-reveal">
+              <h3>{s.t}</h3>
+              <p>{s.d}</p>
+            </li>
+          ))}
+        </ul>
+        <p class="cr-loop-note cr-reveal">Release 2.5 has been built and is being tested with demonstration data. It is not yet live at any site. Screens shown use fictional records.</p>
       </div>
     </section>
 
@@ -222,6 +286,7 @@ const people = [
     --cr-navy: #0b1a26;
     --cr-teal: #2fe0d0;
     --cr-grad: linear-gradient(90deg, #7df7ec, #22d3c5);
+    --cr-gold: linear-gradient(90deg, #f6d58a, #e0a63a);
     --cr-text: #ffffff;
     --cr-soft: rgba(255, 255, 255, 0.74);
     --cr-faint: rgba(255, 255, 255, 0.5);
@@ -244,16 +309,18 @@ const people = [
     radial-gradient(ellipse at 50% 45%, rgba(3, 7, 11, .25) 0%, rgba(3, 7, 11, .7) 62%, rgba(3, 7, 11, .95) 100%),
     linear-gradient(180deg, rgba(3, 7, 11, .2) 0%, rgba(3, 7, 11, 0) 40%, var(--cr-bg) 100%); }
   .cr-hero-inner { max-width: 980px; }
-  .cr-lockup { display: inline-flex; align-items: center; gap: 18px; margin-bottom: 26px; }
-  .cr-lockup img { width: clamp(56px, 7vw, 84px); height: auto; filter: drop-shadow(0 0 24px rgba(47, 224, 208, .35)); }
-  .cr-word { font-size: clamp(2rem, 4.6vw, 3.4rem); font-weight: 300; letter-spacing: -0.03em; color: var(--cr-soft); line-height: 1; }
-  .cr-word b { font-weight: 700; color: var(--cr-text); }
-  .cr-word sup.tm { font-size: .3em; vertical-align: top; position: relative; top: .15em; margin-left: .12em; }
+  .cr-mark { width: clamp(56px, 6vw, 72px); height: auto; margin: 0 auto 22px; display: block; filter: drop-shadow(0 0 24px rgba(47, 224, 208, .35)); }
   .tm { font-family: var(--font-sans); font-weight: 500; font-size: .6em; vertical-align: super; line-height: 0; margin-left: .05em; }
-  .cr-eyebrow { font-size: clamp(1rem, 1.6vw, 1.25rem); font-weight: 500; color: var(--cr-soft); margin: 0 0 22px; }
-  .cr-h1 { margin: 0; font-weight: 800; font-size: clamp(2.6rem, 8vw, 6.4rem); line-height: .98; letter-spacing: -0.035em; text-transform: uppercase; display: flex; flex-wrap: wrap; justify-content: center; gap: 0 .32em; }
-  .cr-h1 span { display: inline-block; }
-  .cr-sub { margin: 26px 0 0; font-size: clamp(1.15rem, 2.2vw, 1.6rem); font-weight: 400; color: var(--cr-soft); }
+  .cr-eyebrow { font-size: clamp(1rem, 1.6vw, 1.2rem); font-weight: 500; color: var(--cr-soft); margin: 0 0 22px; }
+  .cr-brand { margin: 0; display: grid; gap: clamp(8px, 1.4vw, 16px); justify-items: center; }
+  .cr-brand-main { display: block; font-weight: 800; font-size: clamp(2.3rem, 6.4vw, 5.2rem); line-height: 1.02; letter-spacing: -0.035em; color: var(--cr-text); text-wrap: balance; }
+  .cr-brand-name { font-weight: 300; color: var(--cr-soft); }
+  .cr-brand-name b { font-weight: 800; color: var(--cr-text); }
+  .cr-brand-sub { display: block; font-weight: 500; font-size: clamp(1.35rem, 3.2vw, 2.4rem); line-height: 1.15; letter-spacing: -0.015em; background: var(--cr-gold); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .cr-lead { margin: clamp(26px, 3.4vw, 38px) auto 0; max-width: 46ch; font-size: clamp(1.1rem, 1.9vw, 1.4rem); line-height: 1.5; color: var(--cr-text); font-weight: 500; text-wrap: balance; }
+  .cr-know { list-style: none; margin: 22px 0 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 22px; color: var(--cr-soft); font-size: clamp(1rem, 1.6vw, 1.15rem); }
+  .cr-know li { display: inline-flex; align-items: center; gap: 10px; }
+  .cr-know li::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--cr-teal); box-shadow: 0 0 10px rgba(47, 224, 208, .7); flex: none; }
   .cr-cta { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
   .cr-btn { display: inline-flex; align-items: center; gap: 10px; padding: 15px 28px; border-radius: 999px; font-weight: 600; font-size: 1.02rem; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
   .cr-btn-primary { background: var(--cr-grad); color: #04121a; box-shadow: 0 10px 40px -10px rgba(47, 224, 208, .6); }
@@ -289,6 +356,28 @@ const people = [
   .cr-soundnote b { color: var(--cr-text); font-weight: 600; }
 
   .cr-film { padding-bottom: clamp(40px, 6vw, 72px); }
+  /* closed loop */
+  .cr-loop { background: radial-gradient(ellipse at 50% 0%, rgba(224, 166, 58, .08), transparent 55%), var(--cr-bg); }
+  .cr-loop .cr-h2 { max-width: 24ch; }
+  .cr-flow { list-style: none; margin: 0 0 34px; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; counter-reset: none; }
+  .cr-flow-step { position: relative; display: grid; gap: 12px; align-content: start; padding: 18px 16px 20px; border-radius: 16px; background: linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .02)); border: 1px solid var(--cr-line); }
+  .cr-flow-step:not(.last)::after { content: ''; position: absolute; right: -11px; top: 50%; width: 10px; height: 10px; border-top: 2px solid var(--cr-teal); border-right: 2px solid var(--cr-teal); transform: translateY(-50%) rotate(45deg); opacity: .8; }
+  .cr-flow-n { display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; border: 1.5px solid rgba(47, 224, 208, .55); color: var(--cr-teal); font-weight: 600; font-size: .95rem; }
+  .cr-flow-step.last { border-color: rgba(34, 197, 94, .5); background: linear-gradient(180deg, rgba(34, 197, 94, .14), rgba(34, 197, 94, .04)); }
+  .cr-flow-step.last .cr-flow-n { border-color: #22c55e; background: #16a34a; color: #fff; }
+  .cr-flow-t { font-weight: 700; font-size: 1.05rem; line-height: 1.25; }
+  .cr-loop-lead { margin: 0 0 22px; max-width: 60ch; font-size: clamp(1.15rem, 2vw, 1.45rem); line-height: 1.5; font-weight: 500; }
+  .cr-rules { list-style: none; margin: 0 0 clamp(40px, 6vw, 64px); padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+  .cr-rules li { padding: 9px 16px; border-radius: 999px; border: 1px solid rgba(224, 166, 58, .45); background: rgba(224, 166, 58, .08); color: #f6d58a; font-weight: 600; font-size: .98rem; }
+  .cr-shots { list-style: none; margin: 0 0 clamp(48px, 7vw, 80px); padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+  .cr-shots figure { margin: 0; }
+  .cr-shots figcaption { padding: 14px 18px; font-weight: 600; color: var(--cr-soft); background: rgba(255, 255, 255, .03); border-top: 1px solid var(--cr-line); }
+  .cr-strengths { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .cr-strengths li { padding: 22px 22px 24px; border-radius: 18px; border: 1px solid var(--cr-line); background: linear-gradient(180deg, rgba(255, 255, 255, .045), rgba(255, 255, 255, .015)); }
+  .cr-strengths h3 { margin: 0 0 8px; font-size: 1.1rem; font-weight: 700; color: var(--cr-teal); }
+  .cr-strengths p { margin: 0; color: var(--cr-soft); line-height: 1.6; font-size: 1rem; }
+  .cr-loop-note { margin: 28px 0 0; color: var(--cr-faint); font-size: .92rem; }
+
   .cr-guide { padding-top: clamp(40px, 6vw, 72px); background: linear-gradient(180deg, var(--cr-bg), var(--cr-navy) 50%, var(--cr-bg)); }
   .cr-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(48px, 7vw, 96px); }
   .cr-step { display: grid; grid-template-columns: 1.25fr 1fr; gap: clamp(24px, 4vw, 56px); align-items: center; }
@@ -318,14 +407,27 @@ const people = [
   .cr-notes p { margin: 0 0 10px; color: var(--cr-faint); font-size: .9rem; line-height: 1.6; max-width: 92ch; }
   .cr-notes b { color: var(--cr-soft); }
 
+  @media (max-width: 1020px) {
+    .cr-flow { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .cr-flow-step:nth-child(3)::after { display: none; }
+    .cr-strengths { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
   @media (max-width: 860px) {
+    .cr-shots { grid-template-columns: 1fr; }
     .cr-step, .cr-step.flip { grid-template-columns: 1fr; }
     .cr-step.flip .cr-shot { order: 0; }
     .cr-cards { grid-template-columns: 1fr; }
   }
+  @media (max-width: 600px) {
+    .cr-flow { grid-template-columns: 1fr; gap: 10px; }
+    .cr-flow-step { grid-template-columns: auto 1fr; align-items: center; padding: 12px 16px; }
+    .cr-flow-step:not(.last)::after { display: block; right: auto; left: 32px; top: auto; bottom: -11px; transform: rotate(135deg); }
+    .cr-flow-step:nth-child(3)::after { display: block; }
+    .cr-strengths { grid-template-columns: 1fr; }
+    .cr-know { flex-direction: column; align-items: center; }
+  }
   @media (max-width: 520px) {
     .cr-hero { padding: 80px 18px 110px; }
-    .cr-lockup { gap: 12px; }
     .cr-sound { top: 12px; right: 12px; }
     .cr-btn { width: 100%; justify-content: center; }
     .cr-soundnote { border-radius: 16px; }
@@ -336,5 +438,6 @@ const people = [
     .cr-hero { background: url('/contiregistry/img/hero-waves.jpg') center / cover; }
     .cr-scroll span { animation: none; }
     .cr-btn, .cr-card { transition: none; }
+    .cr-mark { filter: none; }
   }
 </style>

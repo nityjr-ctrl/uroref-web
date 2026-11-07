@@ -9,7 +9,7 @@ export default defineConfig({
     '/connect': '/nity',
     '/ecosystem': '/showcase',
   },
-  integrations: [mdx(), sitemap()],
+  integrations: [mdx(), sitemap({ filter: (page) => !page.includes('/contiregistry') })],
   vite: {
     plugins: [tailwindcss()],
   },

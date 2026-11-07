@@ -1,0 +1,340 @@
+---
+import Base from '../layouts/Base.astro';
+
+// Unlisted product page: noindex, left out of the sitemap and not linked from the site.
+const DEMO = 'mailto:nity@uroref.com?subject=ContiRegistry%20demo';
+
+const steps = [
+  {
+    n: '01', when: 'At admission', title: 'Snap the sticker.',
+    body: 'The optional AI Builder reader fills the name, NHS number, hospital number and date of birth from a photo of the patient’s sticker.',
+    img: '/contiregistry/img/g-sticker.jpg', alt: 'A phone photographing a fictional patient sticker beside the patient identity form, with the fields filled in.',
+  },
+  {
+    n: '02', when: 'In theatre', title: 'Scan every box.',
+    body: 'Point the camera at the Rigicon ContiClassic component packaging. Each GS1 code fills the product code, lot, serial number and expiry date. No hunting for serial numbers, no copying them by hand.',
+    img: '/contiregistry/img/g-scan.jpg', alt: 'A demonstration component label for an occlusive cuff being read by a scanning line across its GS1 DataMatrix code.',
+  },
+  {
+    n: '03', when: 'At home', title: 'One scan. Ten questions. One tap to send.',
+    body: 'The app drafts a letter with the site’s QR code and the patient’s check-in code. The patient answers on their own phone, and the answers link to the record. No re-keying.',
+    img: '/contiregistry/img/g-phone.jpg', alt: 'A phone showing the submitted check-in form, with steps reading letter or email arrives, patient scans and answers.',
+  },
+  {
+    n: '04', when: 'In audit', title: 'Ask your data anything.',
+    body: 'Revisions, explants, device survival and patient-reported change, with counts and denominators, ready for an audit, a meeting or a poster. Export a site pack, or the MDOR extract for NHS England, in one click.',
+    img: '/contiregistry/img/g-metrics.jpg', alt: 'An example three-dimensional chart of cuff sizes used, built from a typed question. Illustrative values.',
+  },
+];
+
+const people = [
+  {
+    who: 'Surgeons',
+    line: 'Operation details in a tap, every component scanned, and outcomes you can present: revisions, explants, device survival and how patients rate the change.',
+  },
+  {
+    who: 'Specialist nurses',
+    line: 'Overdue and missed reviews at a glance. Opening a record fills the review date, type and timepoint, and the app drafts the patient letter with its QR and check-in codes.',
+  },
+  {
+    who: 'Trusts',
+    line: 'Runs in the Trust’s own Microsoft 365: Power Apps, SharePoint, Forms and Outlook. Local permissions, records stay with the Trust, and a named colleague decides what, if anything, is shared.',
+  },
+];
+---
+<Base
+  title="ContiRegistry"
+  description="ContiRegistry: the AUS device register for ContiClassic. Implant, register, follow up and audit, all in one."
+  image="/contiregistry/img/og.jpg"
+  noindex={true}
+>
+  <div class="cr">
+
+    <!-- Hero -->
+    <section class="cr-hero" aria-labelledby="cr-title">
+      <video class="cr-hero-video" autoplay muted loop playsinline preload="auto" poster="/contiregistry/img/hero-waves.jpg" aria-hidden="true" tabindex="-1" data-cr-bg>
+        <source src="/contiregistry/media/hero-waves.mp4" type="video/mp4" />
+      </video>
+      <div class="cr-hero-shade" aria-hidden="true"></div>
+
+      <button type="button" class="cr-sound" aria-pressed="false" data-cr-sound>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path class="cr-sound-on" d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/><path class="cr-sound-off" d="m22 9-6 6M16 9l6 6"/></svg>
+        <span data-cr-sound-label>Sound off</span>
+      </button>
+
+      <div class="cr-hero-inner">
+        <div class="cr-lockup cr-rise" style="--d: 0s">
+          <img src="/contiregistry/img/contiregistry-mark.svg" width="84" height="84" alt="" />
+          <span class="cr-word"><b>Conti</b>Registry<sup class="tm">™</sup></span>
+        </div>
+        <p class="cr-eyebrow cr-rise" style="--d: .15s">The AUS device register for ContiClassic<sup class="tm">™</sup></p>
+        <h1 id="cr-title" class="cr-h1">
+          <span class="cr-rise" style="--d: .3s">Implant.</span>
+          <span class="cr-rise" style="--d: .45s">Register.</span>
+          <span class="cr-rise cr-teal" style="--d: .6s">Follow up.</span>
+        </h1>
+        <p class="cr-sub cr-rise" style="--d: .8s">Audit, all in one. <span class="cr-teal">Seamlessly.</span></p>
+        <div class="cr-cta cr-rise" style="--d: .95s">
+          <a class="cr-btn cr-btn-primary" href="#film">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            Watch the film
+          </a>
+          <a class="cr-btn cr-btn-ghost" href={DEMO}>Request a demo</a>
+        </div>
+      </div>
+
+      <a class="cr-scroll" href="#film" aria-label="Scroll to the film"><span></span></a>
+    </section>
+
+    <!-- Film -->
+    <section id="film" class="cr-section cr-film" aria-labelledby="cr-film-title">
+      <div class="cr-wrap">
+        <p class="cr-kicker cr-reveal">The film</p>
+        <h2 id="cr-film-title" class="cr-h2 cr-reveal">From theatre to audit, in four and a half minutes.</h2>
+        <div class="cr-player cr-reveal">
+          <video controls playsinline preload="metadata" poster="/contiregistry/img/poster.jpg" aria-label="ContiRegistry film, 4 minutes 37 seconds, narrated with captions" data-cr-film>
+            <source src="/contiregistry/media/contiregistry-film.mp4" type="video/mp4" />
+            Your browser cannot play this video. <a href="/contiregistry/media/contiregistry-film.mp4">Download the film (MP4)</a>.
+          </video>
+        </div>
+        <p class="cr-soundnote cr-reveal">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg>
+          <span><b>Turn your sound on.</b> The film is narrated, with captions on screen.</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- Guide -->
+    <section class="cr-section cr-guide" aria-labelledby="cr-guide-title">
+      <div class="cr-wrap">
+        <p class="cr-kicker cr-reveal">How it works</p>
+        <h2 id="cr-guide-title" class="cr-h2 cr-reveal">Four moments. One record.</h2>
+        <ol class="cr-steps">
+          {steps.map((s, i) => (
+            <li class:list={['cr-step', 'cr-reveal', { flip: i % 2 === 1 }]} data-cr-whoosh>
+              <figure class="cr-shot">
+                <img src={s.img} alt={s.alt} width="1280" height="720" loading="lazy" decoding="async" />
+              </figure>
+              <div class="cr-step-text">
+                <p class="cr-step-n"><span>{s.n}</span>{s.when}</p>
+                <h3>{s.title}</h3>
+                <p>{s.body}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- Who it is for -->
+    <section class="cr-section cr-who" aria-labelledby="cr-who-title">
+      <div class="cr-wrap">
+        <p class="cr-kicker cr-reveal">Who it is for</p>
+        <h2 id="cr-who-title" class="cr-h2 cr-reveal">Built for everyone in the pathway.</h2>
+        <ul class="cr-cards">
+          {people.map((p) => (
+            <li class="cr-card cr-reveal">
+              <h3>{p.who}</h3>
+              <p>{p.line}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Demo -->
+    <section class="cr-section cr-demo" aria-labelledby="cr-demo-title">
+      <div class="cr-wrap cr-demo-inner cr-reveal">
+        <img src="/contiregistry/img/contiregistry-mark.svg" width="64" height="64" alt="" />
+        <h2 id="cr-demo-title" class="cr-h2">See it on your own pathway.</h2>
+        <p>We will walk your team through ContiRegistry using demonstration data.</p>
+        <a class="cr-btn cr-btn-primary" href={DEMO}>Request a demo</a>
+        <p class="cr-mail"><a href="mailto:nity@uroref.com">nity@uroref.com</a></p>
+      </div>
+    </section>
+
+    <!-- Credits and notes -->
+    <section class="cr-notes" aria-label="Credits and notes">
+      <div class="cr-wrap">
+        <p><b>ContiRegistry<sup class="tm">™</sup></b> is a product of UroRef Ltd. Created by Nity G, Urology Registrar. Clinical advisor: Mr Andrew Baird, Consultant Urologist, Royal Liverpool University Hospital.</p>
+        <p>The film and screenshots use demonstration data: patient details are fictional, chart values are illustrative and the second site (Wirral) is illustrative. ContiRegistry supports data collection and audit by clinical teams; it does not give clinical advice. Naming an NHS organisation does not imply its endorsement. Rigicon and ContiClassic are trademarks of their respective owner.</p>
+      </div>
+    </section>
+
+  </div>
+
+  <audio preload="none" loop data-cr-ambient><source src="/contiregistry/media/ambient.mp3" type="audio/mpeg" /></audio>
+  <audio preload="none" data-cr-whoosh-audio><source src="/contiregistry/media/whoosh.mp3" type="audio/mpeg" /></audio>
+
+  <script>
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const bg = document.querySelector('[data-cr-bg]');
+    if (bg instanceof HTMLVideoElement && reduce) { bg.pause(); bg.removeAttribute('autoplay'); }
+
+    // optional ambient sound (off by default); a soft whoosh as each step arrives, only while sound is on
+    const btn = document.querySelector('[data-cr-sound]');
+    const label = document.querySelector('[data-cr-sound-label]');
+    const amb = document.querySelector('[data-cr-ambient]');
+    const whoosh = document.querySelector('[data-cr-whoosh-audio]');
+    const film = document.querySelector('[data-cr-film]');
+    let soundOn = false;
+    const setSound = (on) => {
+      soundOn = on;
+      if (btn) btn.setAttribute('aria-pressed', String(on));
+      if (label) label.textContent = on ? 'Sound on' : 'Sound off';
+      if (amb instanceof HTMLAudioElement) {
+        if (on) { amb.volume = 0.35; amb.play().catch(() => setSound(false)); } else amb.pause();
+      }
+    };
+    btn?.addEventListener('click', () => setSound(!soundOn));
+    film?.addEventListener('play', () => { if (soundOn) setSound(false); });
+
+    // reveal on scroll
+    const items = document.querySelectorAll('.cr-reveal');
+    if (reduce || !('IntersectionObserver' in window)) {
+      items.forEach((el) => el.classList.add('in'));
+    } else {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          e.target.classList.add('in');
+          if (soundOn && e.target.hasAttribute('data-cr-whoosh') && whoosh instanceof HTMLAudioElement) {
+            whoosh.currentTime = 0; whoosh.volume = 0.5; whoosh.play().catch(() => {});
+          }
+          io.unobserve(e.target);
+        });
+      }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
+      items.forEach((el) => io.observe(el));
+    }
+  </script>
+</Base>
+
+<style>
+  @font-face { font-family: 'Lenia Sans'; src: url('/contiregistry/fonts/lenia-sans-light.woff2') format('woff2'); font-weight: 300; font-display: swap; }
+  @font-face { font-family: 'Lenia Sans'; src: url('/contiregistry/fonts/lenia-sans-regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+  @font-face { font-family: 'Lenia Sans'; src: url('/contiregistry/fonts/lenia-sans-medium.woff2') format('woff2'); font-weight: 500; font-display: swap; }
+  @font-face { font-family: 'Lenia Sans'; src: url('/contiregistry/fonts/lenia-sans-semibold.woff2') format('woff2'); font-weight: 600; font-display: swap; }
+  @font-face { font-family: 'Lenia Sans'; src: url('/contiregistry/fonts/lenia-sans-bold.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+  @font-face { font-family: 'Lenia Sans'; src: url('/contiregistry/fonts/lenia-sans-extrabold.woff2') format('woff2'); font-weight: 800; font-display: swap; }
+
+  .cr {
+    --cr-bg: #03070b;
+    --cr-navy: #0b1a26;
+    --cr-teal: #2fe0d0;
+    --cr-grad: linear-gradient(90deg, #7df7ec, #22d3c5);
+    --cr-text: #ffffff;
+    --cr-soft: rgba(255, 255, 255, 0.74);
+    --cr-faint: rgba(255, 255, 255, 0.5);
+    --cr-line: rgba(255, 255, 255, 0.1);
+    background: var(--cr-bg);
+    color: var(--cr-text);
+    font-family: 'Lenia Sans', var(--font-sans);
+    overflow-x: clip;
+  }
+  .cr-wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  .cr-teal { background: var(--cr-grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+  /* hero */
+  .cr-hero {
+    position: relative; min-height: calc(100svh - 72px); display: grid; place-items: center;
+    padding: 96px 24px 120px; isolation: isolate; overflow: hidden; text-align: center;
+  }
+  .cr-hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; filter: saturate(1.1) brightness(.75); }
+  .cr-hero-shade { position: absolute; inset: 0; z-index: -1; background:
+    radial-gradient(ellipse at 50% 45%, rgba(3, 7, 11, .25) 0%, rgba(3, 7, 11, .7) 62%, rgba(3, 7, 11, .95) 100%),
+    linear-gradient(180deg, rgba(3, 7, 11, .2) 0%, rgba(3, 7, 11, 0) 40%, var(--cr-bg) 100%); }
+  .cr-hero-inner { max-width: 980px; }
+  .cr-lockup { display: inline-flex; align-items: center; gap: 18px; margin-bottom: 26px; }
+  .cr-lockup img { width: clamp(56px, 7vw, 84px); height: auto; filter: drop-shadow(0 0 24px rgba(47, 224, 208, .35)); }
+  .cr-word { font-size: clamp(2rem, 4.6vw, 3.4rem); font-weight: 300; letter-spacing: -0.03em; color: var(--cr-soft); line-height: 1; }
+  .cr-word b { font-weight: 700; color: var(--cr-text); }
+  .cr-word sup.tm { font-size: .3em; vertical-align: top; position: relative; top: .15em; margin-left: .12em; }
+  .tm { font-family: var(--font-sans); font-weight: 500; font-size: .6em; vertical-align: super; line-height: 0; margin-left: .05em; }
+  .cr-eyebrow { font-size: clamp(1rem, 1.6vw, 1.25rem); font-weight: 500; color: var(--cr-soft); margin: 0 0 22px; }
+  .cr-h1 { margin: 0; font-weight: 800; font-size: clamp(2.6rem, 8vw, 6.4rem); line-height: .98; letter-spacing: -0.035em; text-transform: uppercase; display: flex; flex-wrap: wrap; justify-content: center; gap: 0 .32em; }
+  .cr-h1 span { display: inline-block; }
+  .cr-sub { margin: 26px 0 0; font-size: clamp(1.15rem, 2.2vw, 1.6rem); font-weight: 400; color: var(--cr-soft); }
+  .cr-cta { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+  .cr-btn { display: inline-flex; align-items: center; gap: 10px; padding: 15px 28px; border-radius: 999px; font-weight: 600; font-size: 1.02rem; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
+  .cr-btn-primary { background: var(--cr-grad); color: #04121a; box-shadow: 0 10px 40px -10px rgba(47, 224, 208, .6); }
+  .cr-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 50px -10px rgba(47, 224, 208, .75); }
+  .cr-btn-ghost { color: var(--cr-text); border: 1.5px solid rgba(255, 255, 255, .35); background: rgba(255, 255, 255, .04); backdrop-filter: blur(6px); }
+  .cr-btn-ghost:hover { border-color: var(--cr-teal); background: rgba(47, 224, 208, .08); }
+  .cr a:focus-visible, .cr button:focus-visible, .cr video:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+  .cr-sound { position: absolute; top: 20px; right: 20px; display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, .22); background: rgba(3, 7, 11, .45); color: var(--cr-soft); font: 500 .85rem 'Lenia Sans', var(--font-sans); cursor: pointer; backdrop-filter: blur(6px); }
+  .cr-sound:hover { color: var(--cr-text); border-color: var(--cr-teal); }
+  .cr-sound .cr-sound-on { display: none; }
+  .cr-sound[aria-pressed='true'] { color: var(--cr-teal); border-color: rgba(47, 224, 208, .6); }
+  .cr-sound[aria-pressed='true'] .cr-sound-on { display: inline; }
+  .cr-sound[aria-pressed='true'] .cr-sound-off { display: none; }
+  .cr-scroll { position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); width: 28px; height: 46px; border: 2px solid rgba(255, 255, 255, .35); border-radius: 16px; }
+  .cr-scroll span { position: absolute; left: 50%; top: 9px; width: 4px; height: 9px; margin-left: -2px; border-radius: 2px; background: var(--cr-teal); animation: cr-wheel 1.8s ease-in-out infinite; }
+  @keyframes cr-wheel { 0% { opacity: 0; transform: translateY(0); } 30% { opacity: 1; } 100% { opacity: 0; transform: translateY(14px); } }
+
+  .cr-rise { opacity: 0; transform: translateY(26px); filter: blur(8px); animation: cr-rise .9s cubic-bezier(.16, 1, .3, 1) var(--d, 0s) forwards; }
+  @keyframes cr-rise { to { opacity: 1; transform: none; filter: none; } }
+
+  /* sections */
+  .cr-section { padding: clamp(72px, 10vw, 128px) 0; position: relative; }
+  .cr-kicker { margin: 0 0 12px; color: var(--cr-teal); font-weight: 600; font-size: .95rem; letter-spacing: .14em; text-transform: uppercase; }
+  .cr-h2 { margin: 0 0 40px; font-weight: 800; font-size: clamp(2rem, 4.6vw, 3.4rem); line-height: 1.04; letter-spacing: -0.03em; max-width: 20ch; }
+  .cr-reveal { opacity: 0; transform: translateY(30px); transition: opacity .8s ease, transform .8s cubic-bezier(.16, 1, .3, 1); }
+  .cr-reveal.in { opacity: 1; transform: none; }
+
+  .cr-film { background: radial-gradient(ellipse at 50% 0%, rgba(47, 224, 208, .1), transparent 60%), var(--cr-bg); }
+  .cr-player { position: relative; border-radius: 22px; overflow: hidden; border: 1px solid var(--cr-line); box-shadow: 0 40px 120px -30px rgba(0, 0, 0, .9), 0 0 0 1px rgba(47, 224, 208, .12), 0 30px 90px -40px rgba(47, 224, 208, .35); background: #000; }
+  .cr-player video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #000; }
+  .cr-soundnote { margin: 18px 0 0; display: inline-flex; align-items: center; gap: 10px; padding: 10px 16px; border-radius: 999px; background: rgba(47, 224, 208, .08); border: 1px solid rgba(47, 224, 208, .3); color: var(--cr-soft); font-size: .98rem; }
+  .cr-soundnote svg { color: var(--cr-teal); flex: none; }
+  .cr-soundnote b { color: var(--cr-text); font-weight: 600; }
+
+  .cr-film { padding-bottom: clamp(40px, 6vw, 72px); }
+  .cr-guide { padding-top: clamp(40px, 6vw, 72px); background: linear-gradient(180deg, var(--cr-bg), var(--cr-navy) 50%, var(--cr-bg)); }
+  .cr-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(48px, 7vw, 96px); }
+  .cr-step { display: grid; grid-template-columns: 1.25fr 1fr; gap: clamp(24px, 4vw, 56px); align-items: center; }
+  .cr-step.flip .cr-shot { order: 2; }
+  .cr-shot { margin: 0; border-radius: 18px; overflow: hidden; border: 1px solid var(--cr-line); box-shadow: 0 30px 80px -30px rgba(0, 0, 0, .9); }
+  .cr-shot img { display: block; width: 100%; height: auto; }
+  .cr-step-n { margin: 0 0 12px; display: flex; align-items: center; gap: 12px; color: var(--cr-faint); font-weight: 600; font-size: .95rem; letter-spacing: .08em; text-transform: uppercase; }
+  .cr-step-n span { display: inline-grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; border: 1.5px solid rgba(47, 224, 208, .55); color: var(--cr-teal); letter-spacing: 0; box-shadow: 0 0 22px rgba(47, 224, 208, .25); }
+  .cr-step h3 { margin: 0 0 14px; font-weight: 700; font-size: clamp(1.5rem, 2.8vw, 2.2rem); line-height: 1.1; letter-spacing: -0.02em; }
+  .cr-step p:not(.cr-step-n) { margin: 0; color: var(--cr-soft); font-size: 1.08rem; line-height: 1.65; }
+
+  .cr-cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .cr-card { padding: 30px 28px; border-radius: 20px; background: linear-gradient(180deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .02)); border: 1px solid var(--cr-line); transition: border-color .3s ease, transform .3s ease, box-shadow .3s ease; }
+  .cr-card:hover { border-color: rgba(47, 224, 208, .45); transform: translateY(-3px); box-shadow: 0 20px 60px -30px rgba(47, 224, 208, .45); }
+  .cr-card h3 { margin: 0 0 12px; font-size: 1.35rem; font-weight: 700; color: var(--cr-teal); }
+  .cr-card p { margin: 0; color: var(--cr-soft); line-height: 1.65; }
+
+  .cr-demo { text-align: center; background: radial-gradient(ellipse at 50% 100%, rgba(47, 224, 208, .14), transparent 60%), var(--cr-bg); }
+  .cr-demo-inner { display: grid; justify-items: center; gap: 10px; }
+  .cr-demo-inner img { filter: drop-shadow(0 0 22px rgba(47, 224, 208, .4)); margin-bottom: 10px; }
+  .cr-demo .cr-h2 { margin: 0 auto 6px; }
+  .cr-demo p { margin: 0 0 22px; color: var(--cr-soft); font-size: 1.1rem; }
+  .cr-mail { margin: 18px 0 0 !important; font-size: 1rem !important; }
+  .cr-mail a { color: var(--cr-teal); }
+
+  .cr-notes { padding: 36px 0 56px; border-top: 1px solid var(--cr-line); }
+  .cr-notes p { margin: 0 0 10px; color: var(--cr-faint); font-size: .9rem; line-height: 1.6; max-width: 92ch; }
+  .cr-notes b { color: var(--cr-soft); }
+
+  @media (max-width: 860px) {
+    .cr-step, .cr-step.flip { grid-template-columns: 1fr; }
+    .cr-step.flip .cr-shot { order: 0; }
+    .cr-cards { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 520px) {
+    .cr-hero { padding: 80px 18px 110px; }
+    .cr-lockup { gap: 12px; }
+    .cr-sound { top: 12px; right: 12px; }
+    .cr-btn { width: 100%; justify-content: center; }
+    .cr-soundnote { border-radius: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cr-rise, .cr-reveal { opacity: 1; transform: none; filter: none; animation: none; transition: none; }
+    .cr-hero-video { display: none; }
+    .cr-hero { background: url('/contiregistry/img/hero-waves.jpg') center / cover; }
+    .cr-scroll span { animation: none; }
+    .cr-btn, .cr-card { transition: none; }
+  }
+</style>

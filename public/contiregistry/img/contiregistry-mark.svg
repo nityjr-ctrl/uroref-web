@@ -1,0 +1,14 @@
+<svg role="img" aria-label="ContiRegistry mark" width="120" height="120" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cr0p" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1A3A63"/><stop offset="1" stop-color="#07162A"/></linearGradient>
+    <linearGradient id="cr0r" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7DF7EC"/><stop offset=".55" stop-color="#22D3C5"/><stop offset="1" stop-color="#0FA9A0"/></linearGradient>
+    <radialGradient id="cr0g"><stop offset="0" stop-color="#8FFFF4" stop-opacity="1"/><stop offset=".45" stop-color="#3FF0E0" stop-opacity=".55"/><stop offset="1" stop-color="#3FF0E0" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect x="2" y="2" width="96" height="96" rx="24" fill="url(#cr0p)"/><rect x="2.5" y="2.5" width="95" height="95" rx="23.5" fill="none" stroke="#ffffff" stroke-opacity=".10"/>
+  <path d="M 74.43 69.09 A 31 31 0 1 1 74.43 30.91" fill="none" stroke="#04101F" stroke-opacity=".55" stroke-width="15" stroke-linecap="round" transform="translate(0 1.5)"/>
+  <path d="M 74.43 69.09 A 31 31 0 1 1 74.43 30.91" fill="none" stroke="url(#cr0r)" stroke-width="12" stroke-linecap="round"/>
+  <path d="M 61.61 78.74 A 31 31 0 0 1 21.26 61.61" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="2.4" stroke-linecap="round" transform="translate(0 -3.4) scale(1)"/>
+  <circle cx="74.43" cy="30.91" r="16" fill="url(#cr0g)"/>
+  <circle cx="74.43" cy="30.91" r="7.2" fill="#7FFFF3"/>
+  <circle cx="50" cy="50" r="5.5" fill="#ffffff" fill-opacity="0.9"/>
+</svg>

@@ -49,6 +49,19 @@ const strengths = [
   { t: 'Governance and QI', d: 'Built for audit, service evaluation and quality improvement. It records who agreed to do what; it does not make clinical decisions.' },
 ];
 
+// What each question in the dataset is based on. Questionnaire items are not reproduced here.
+const measures = [
+  { area: 'Continence symptoms and their impact', name: 'ICIQ-UI Short Form', what: 'How often and how much urine leaks, and how much this interferes with daily life. Scored 0 to 21.', when: 'Before surgery and at every review, including from home', who: 'Patient', kind: 'Validated questionnaire', ref: 'Avery K et al. Neurourol Urodyn 2004;23:322–30' },
+  { area: 'Leakage, measured', name: '24-hour pad count and pad weight', what: 'Pads used in 24 hours, and their weight where measured. Social continence is 0 or 1 pad a day.', when: 'Before surgery and at reviews', who: 'Patient and team', kind: 'Standard outcome measure', ref: 'Nitti VW et al. J Urol 2014;192:836–42' },
+  { area: 'Change since the operation', name: 'PGI-I, with PGI-S at baseline', what: 'The patient’s own rating of change, from very much better to very much worse, and of severity before surgery.', when: 'PGI-S before surgery, PGI-I at reviews', who: 'Patient', kind: 'Validated questionnaire', ref: 'Yalcin I, Bump RC. Am J Obstet Gynecol 2003;189:98–101' },
+  { area: 'Health-related quality of life', name: 'EQ-5D-5L and EQ VAS', what: 'Five dimensions of general health, and a 0 to 100 rating of health on the day.', when: 'Before surgery and at 12 months', who: 'Patient', kind: 'Validated questionnaire', ref: 'Herdman M et al. Qual Life Res 2011;20:1727–36' },
+  { area: 'Urinary symptoms before surgery', name: 'IPSS', what: 'Lower urinary tract symptoms, scored 0 to 35.', when: 'Before surgery', who: 'Patient', kind: 'Validated questionnaire', ref: 'Barry MJ et al. J Urol 1992;148:1549–57' },
+  { area: 'Erectile function before surgery', name: 'IIEF-5', what: 'Erectile function, scored 5 to 25, where relevant.', when: 'Before surgery', who: 'Patient', kind: 'Validated questionnaire', ref: 'Rosen RC et al. Int J Impot Res 1999;11:319–26' },
+  { area: 'Complications', name: 'Clavien–Dindo grade', what: 'The severity of complications in hospital and in the early weeks after surgery.', when: 'After surgery', who: 'Team', kind: 'Recognised classification', ref: 'Dindo D, Demartines N, Clavien PA. Ann Surg 2004;240:205–13' },
+  { area: 'Device identity', name: 'GS1 barcode data', what: 'GTIN, lot, serial number and expiry, read from the component packaging.', when: 'At implant and at revision', who: 'Scanned by the team', kind: 'International standard', ref: 'GS1 General Specifications' },
+  { area: 'Device function and experience', name: 'ContiRegistry review items', what: 'Satisfaction, whether the patient would have the operation again, pump use, device status, cycling, pump position and the reason for any revision.', when: 'At reviews and at revision', who: 'Patient and team', kind: 'Registry-specific item', ref: 'Agreed with the clinical advisor. Not a validated scale.' },
+];
+
 const people = [
   {
     who: 'Surgeons',
@@ -187,6 +200,34 @@ const people = [
             </li>
           ))}
         </ol>
+      </div>
+    </section>
+
+    <!-- Dataset sources -->
+    <section class="cr-section cr-data" aria-labelledby="cr-data-title">
+      <div class="cr-wrap">
+        <p class="cr-kicker cr-reveal">The dataset</p>
+        <h2 id="cr-data-title" class="cr-h2 cr-reveal">Every question has a source.</h2>
+        <p class="cr-data-lead cr-reveal">The questions patients answer, and the measures the team records, come from published, validated questionnaires and recognised classifications. The few that are specific to ContiRegistry are marked as such.</p>
+        <div class="cr-review cr-reveal">
+          <p class="cr-review-k">Clinical review</p>
+          <p>Every question in the dataset, including the patient check-in form, has been reviewed by our clinical advisor, <strong>Mr Andrew Baird</strong>, Consultant Urologist, Royal Liverpool University Hospital.</p>
+        </div>
+        <ul class="cr-measures">
+          {measures.map((m) => (
+            <li class:list={['cr-reveal', { own: m.kind === 'Registry-specific item' }]}>
+              <p class="cr-m-area">{m.area}</p>
+              <h3>{m.name}</h3>
+              <p class="cr-m-what">{m.what}</p>
+              <dl>
+                <div><dt>When</dt><dd>{m.when}</dd></div>
+                <div><dt>Completed by</dt><dd>{m.who}</dd></div>
+                <div><dt>Basis</dt><dd><span class="cr-m-kind">{m.kind}</span> {m.ref}</dd></div>
+              </dl>
+            </li>
+          ))}
+        </ul>
+        <p class="cr-data-note cr-reveal">Questionnaire items are not reproduced on this page. ICIQ-UI SF is copyright of ICIQ, and EQ-5D is a trade mark of the EuroQol Research Foundation; use of both is subject to registration with their owners.</p>
       </div>
     </section>
 
@@ -378,6 +419,25 @@ const people = [
   .cr-strengths p { margin: 0; color: var(--cr-soft); line-height: 1.6; font-size: 1rem; }
   .cr-loop-note { margin: 28px 0 0; color: var(--cr-faint); font-size: .92rem; }
 
+  /* dataset sources */
+  .cr-data-lead { margin: 0 0 26px; max-width: 62ch; font-size: clamp(1.1rem, 1.9vw, 1.35rem); line-height: 1.55; color: var(--cr-soft); }
+  .cr-review { margin: 0 0 clamp(36px, 5vw, 52px); max-width: 760px; padding: 20px 24px; border-radius: 16px; border: 1px solid rgba(224, 166, 58, .45); background: rgba(224, 166, 58, .07); }
+  .cr-review p { margin: 0; line-height: 1.6; font-size: 1.05rem; }
+  .cr-review strong { color: var(--cr-text); }
+  .cr-review .cr-review-k { margin: 0 0 6px; font-size: .82rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #f6d58a; }
+  .cr-measures { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .cr-measures li { display: flex; flex-direction: column; padding: 22px 22px 20px; border-radius: 18px; border: 1px solid var(--cr-line); background: linear-gradient(180deg, rgba(255, 255, 255, .045), rgba(255, 255, 255, .015)); }
+  .cr-measures li.own { border-style: dashed; }
+  .cr-m-area { margin: 0 0 6px; font-size: .85rem; font-weight: 600; color: var(--cr-faint); }
+  .cr-measures h3 { margin: 0 0 8px; font-size: 1.15rem; font-weight: 700; color: var(--cr-teal); }
+  .cr-m-what { margin: 0 0 14px; color: var(--cr-soft); line-height: 1.55; }
+  .cr-measures dl { margin: auto 0 0; display: grid; gap: 6px; font-size: .92rem; }
+  .cr-measures dl div { display: grid; grid-template-columns: 7.2em 1fr; gap: 8px; }
+  .cr-measures dt { color: var(--cr-faint); }
+  .cr-measures dd { margin: 0; color: var(--cr-soft); }
+  .cr-m-kind { display: block; color: var(--cr-text); font-weight: 600; }
+  .cr-data-note { margin: 26px 0 0; color: var(--cr-faint); font-size: .92rem; max-width: 80ch; }
+
   .cr-guide { padding-top: clamp(40px, 6vw, 72px); background: linear-gradient(180deg, var(--cr-bg), var(--cr-navy) 50%, var(--cr-bg)); }
   .cr-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(48px, 7vw, 96px); }
   .cr-step { display: grid; grid-template-columns: 1.25fr 1fr; gap: clamp(24px, 4vw, 56px); align-items: center; }
@@ -408,6 +468,7 @@ const people = [
   .cr-notes b { color: var(--cr-soft); }
 
   @media (max-width: 1020px) {
+    .cr-measures { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .cr-flow { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .cr-flow-step:nth-child(3)::after { display: none; }
     .cr-strengths { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -419,6 +480,7 @@ const people = [
     .cr-cards { grid-template-columns: 1fr; }
   }
   @media (max-width: 600px) {
+    .cr-measures { grid-template-columns: 1fr; }
     .cr-flow { grid-template-columns: 1fr; gap: 10px; }
     .cr-flow-step { grid-template-columns: auto 1fr; align-items: center; padding: 12px 16px; }
     .cr-flow-step:not(.last)::after { display: block; right: auto; left: 32px; top: auto; bottom: -11px; transform: rotate(135deg); }

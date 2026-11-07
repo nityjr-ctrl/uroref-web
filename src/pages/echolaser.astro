@@ -1,0 +1,333 @@
+---
+import Base from '../layouts/Base.astro';
+
+// Unlisted product page: noindex, left out of the sitemap and not linked from the site.
+const DEMO = 'mailto:nity@uroref.com?subject=EchoLaser%20Registry%20demo';
+
+const moments = [
+  {
+    n: '01', when: 'In clinic', title: 'A new case in seconds.',
+    body: 'Site, year of birth and indication open a case. Six steps follow in any order: baseline, procedure, catheter, follow-up and safety, each saving on its own. No names or NHS numbers are held.',
+    img: '/echolaser/img/m-steps.jpg', alt: 'The case hub of a demonstration case, with six steps ticking off one by one.',
+  },
+  {
+    n: '02', when: 'In theatre', title: 'Scan the fibre kit box.',
+    body: 'Point the camera at the GS1 code on the fibre kit packaging. The product code, lot, serial number and expiry date fill in. Nothing is copied out by hand.',
+    img: '/echolaser/img/m-scan.jpg', alt: 'A phone reading the GS1 code on a demonstration laser fibre kit box, with the product code, lot, serial number and expiry date filled in.',
+  },
+  {
+    n: '03', when: 'At home', title: 'One letter. Four questions.',
+    body: 'Before discharge the patient receives one letter with a QR code and a single-use check-in code. At home they answer four short questions on their own phone, in about two minutes.',
+    img: '/echolaser/img/m-home.jpg', alt: 'A man on his sofa beside a phone showing a four-question demonstration check-in form.',
+  },
+  {
+    n: '04', when: 'In review', title: 'How are we doing?',
+    body: 'Every review date is calculated. Live charts compare the site with the network, using aggregates only, and the governance site pack exports in one click.',
+    img: '/echolaser/img/m-charts.jpg', alt: 'Demonstration charts of cases by indication, procedure setting and first trial without catheter outcome.',
+  },
+];
+
+const measures = [
+  { m: 'IPSS', what: 'Urinary symptoms', scale: '7 items, 0 to 35', src: 'Barry et al. J Urol 1992' },
+  { m: 'IPSS quality of life', what: 'Bother from urinary symptoms', scale: '0 to 6', src: 'Single item of the IPSS' },
+  { m: 'IIEF-5 (SHIM)', what: 'Erectile function', scale: '5 items, 5 to 25', src: 'Rosen et al. Int J Impot Res 1999' },
+  { m: 'Qmax and PVR', what: 'Flow rate and post-void residual volume', scale: 'ml/s and ml', src: 'ICS Good Urodynamic Practices, 2002' },
+  { m: 'Clavien-Dindo', what: 'Grade of each complication', scale: 'I to V', src: 'Dindo et al. Ann Surg 2004' },
+  { m: 'Pain NRS', what: 'Pain during the procedure', scale: '0 to 10', src: 'Numeric rating scale' },
+];
+
+const people = [
+  { who: 'Surgeons', line: 'Every case and every outcome in one place, from the fibre kit to the 12-month review, ready for an audit, a meeting or a poster.' },
+  { who: 'Patients', line: 'One letter and about two minutes on their own phone. No app to install, no name asked.' },
+  { who: 'Trusts', line: 'Runs in the Trust’s own Microsoft 365. Records stay with the Trust, and only aggregate counts leave it, with small counts suppressed.' },
+];
+
+type Mark = 'yes' | 'no' | 'unk';
+const compare: { f: string; v: [Mark, Mark, Mark] }[] = [
+  { f: 'Runs inside the Trust’s own Microsoft 365', v: ['no', 'no', 'yes'] },
+  { f: 'Collects PROMs', v: ['yes', 'yes', 'yes'] },
+  { f: 'Scans the fibre kit’s GS1 code into the record', v: ['unk', 'unk', 'yes'] },
+  { f: 'Patient QR check-in from home', v: ['unk', 'unk', 'yes'] },
+  { f: 'Cross-site comparison dashboard', v: ['unk', 'unk', 'yes'] },
+];
+const markText: Record<Mark, string> = { yes: 'Yes', no: 'No', unk: 'Unconfirmed' };
+const markGlyph: Record<Mark, string> = { yes: '✓', no: '✕', unk: '—' };
+---
+<Base
+  title="EchoLaser Registry: Follow every case"
+  description="The EchoLaser Registry follows each EchoLaser case from the procedure through catheter, patient check-in and reviews to 12 months, with no patient identifiers."
+  image="/echolaser/img/og.jpg"
+  noindex={true}
+>
+  <div class="el">
+
+    <section class="el-hero" aria-labelledby="el-title">
+      <video class="el-hero-video" autoplay muted loop playsinline preload="auto" poster="/echolaser/img/hero.jpg" aria-hidden="true" tabindex="-1" data-el-bg>
+        <source src="/echolaser/media/hero-network.mp4" type="video/mp4" />
+      </video>
+      <div class="el-hero-shade" aria-hidden="true"></div>
+      <div class="el-wrap el-hero-inner">
+        <p class="el-status el-rise" style="--d:0s"><span aria-hidden="true"></span>Coming soon</p>
+        <p class="el-eyebrow el-rise" style="--d:.1s">Procedure outcomes registry for EchoLaser</p>
+        <h1 id="el-title" class="el-title el-rise" style="--d:.2s">EchoLaser Registry</h1>
+        <p class="el-sub el-rise" style="--d:.35s">Follow every case, not just the procedure.</p>
+        <p class="el-lead el-rise" style="--d:.5s">EchoLaser is a minimally invasive, ultrasound-guided laser treatment for an enlarged prostate. It is new, and the evidence is still growing. Tracking what happens afterwards is challenging, and too often it isn’t done.</p>
+        <ul class="el-pills el-rise" style="--d:.65s" aria-label="Key points">
+          <li>No patient identifiers</li>
+          <li>Six-step case record</li>
+          <li>Patient QR check-in</li>
+          <li>Aggregate-only reporting</li>
+        </ul>
+        <div class="el-cta el-rise" style="--d:.8s">
+          <a class="el-btn el-btn-primary" href="#film">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            Watch the film
+          </a>
+          <a class="el-btn el-btn-ghost" href={DEMO}>Request a demo</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="film" class="el-section el-film" aria-labelledby="el-film-title">
+      <div class="el-wrap">
+        <p class="el-kicker el-reveal">The film</p>
+        <h2 id="el-film-title" class="el-h2 el-reveal">From theatre to the 12-month review.</h2>
+        <div class="el-player el-reveal">
+          <video controls playsinline preload="metadata" poster="/echolaser/img/poster.jpg" aria-label="EchoLaser Registry film, about three and a half minutes, narrated with captions" data-el-film>
+            <source src="/echolaser/media/echolaser-registry-film.mp4" type="video/mp4" />
+            Your browser cannot play this video. <a href="/echolaser/media/echolaser-registry-film.mp4">Download the film (MP4)</a>.
+          </video>
+        </div>
+        <p class="el-filmnote el-reveal">Narrated, with captions on screen. Demonstration data throughout.</p>
+      </div>
+    </section>
+
+    <section class="el-section el-how" aria-labelledby="el-how-title">
+      <div class="el-wrap">
+        <p class="el-kicker el-reveal">How it works</p>
+        <h2 id="el-how-title" class="el-h2 el-reveal">Four moments. One record.</h2>
+        <ol class="el-moments">
+          {moments.map((m, i) => (
+            <li class:list={['el-moment', 'el-reveal', { flip: i % 2 === 1 }]}>
+              <figure class="el-shot"><img src={m.img} alt={m.alt} width="1280" height="720" loading="lazy" decoding="async" /></figure>
+              <div class="el-moment-text">
+                <p class="el-moment-n"><span>{m.n}</span>{m.when}</p>
+                <h3>{m.title}</h3>
+                <p>{m.body}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <section class="el-section el-measures" aria-labelledby="el-measures-title">
+      <div class="el-wrap">
+        <p class="el-kicker el-reveal">Where the questions come from</p>
+        <h2 id="el-measures-title" class="el-h2 el-reveal">Established, validated measures.</h2>
+        <div class="el-table-wrap el-reveal">
+          <table class="el-table">
+            <caption class="sr-only">Outcome measures used in the EchoLaser Registry and their sources</caption>
+            <thead><tr><th scope="col">Measure</th><th scope="col">What it records</th><th scope="col">Scale</th><th scope="col">Source</th></tr></thead>
+            <tbody>
+              {measures.map((r) => (<tr><th scope="row">{r.m}</th><td>{r.what}</td><td>{r.scale}</td><td>{r.src}</td></tr>))}
+            </tbody>
+          </table>
+        </div>
+        <p class="el-small el-reveal">Patient satisfaction (1 to 5) and ejaculatory change are registry items, not validated scales.</p>
+        <div class="el-review el-reveal">
+          <span class="el-review-mark" aria-hidden="true">✓</span>
+          <p><span>Reviewed by</span> Mr Suresh Venugopal, Clinical Advisor, Consultant Urologist, Royal Liverpool University Hospital</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="el-section el-who" aria-labelledby="el-who-title">
+      <div class="el-wrap">
+        <p class="el-kicker el-reveal">Who it is for</p>
+        <h2 id="el-who-title" class="el-h2 el-reveal">Built for everyone in the pathway.</h2>
+        <ul class="el-cards">
+          {people.map((p) => (<li class="el-card el-reveal"><h3>{p.who}</h3><p>{p.line}</p></li>))}
+        </ul>
+      </div>
+    </section>
+
+    <section class="el-section el-compare" aria-labelledby="el-compare-title">
+      <div class="el-wrap">
+        <p class="el-kicker el-reveal">The landscape</p>
+        <h2 id="el-compare-title" class="el-h2 el-reveal">What’s out there now?</h2>
+        <div class="el-table-wrap el-reveal">
+          <table class="el-table el-cmp">
+            <caption class="sr-only">Features of MDOR, other device registries and the EchoLaser Registry</caption>
+            <thead><tr><th scope="col">Feature</th><th scope="col">MDOR</th><th scope="col">Other device registries</th><th scope="col" class="el-us">EchoLaser Registry</th></tr></thead>
+            <tbody>
+              {compare.map((r) => (
+                <tr><th scope="row">{r.f}</th>{r.v.map((v, j) => (<td class:list={[{ 'el-us': j === 2 }]}><span class:list={['el-mark', `el-mark-${v}`]} aria-hidden="true">{markGlyph[v]}</span><span class="sr-only">{markText[v]}</span></td>))}</tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="el-small el-reveal">— Unconfirmed. MDOR is NHS England’s Medical Device Outcome Registry.</p>
+      </div>
+    </section>
+
+    <section class="el-section el-demo" aria-labelledby="el-demo-title">
+      <div class="el-wrap el-demo-inner el-reveal">
+        <h2 id="el-demo-title" class="el-h2">See it with your own team.</h2>
+        <p>We will walk your department through the EchoLaser Registry using demonstration data.</p>
+        <a class="el-btn el-btn-primary" href={DEMO}>Request a demo</a>
+        <p class="el-mail"><a href="mailto:nity@uroref.com">nity@uroref.com</a></p>
+      </div>
+    </section>
+
+    <section class="el-notes" aria-label="Credits and notes">
+      <div class="el-wrap">
+        <p><b>EchoLaser Registry</b> is a product of UroRef Ltd. Created by Nity G, Urology Registrar. Clinical Advisor: Mr Suresh Venugopal, Consultant Urologist, Royal Liverpool University Hospital.</p>
+        <p>The film and screenshots use demonstration data: records, dates, codes, the fibre kit label and the chart values are illustrative, and centres other than Liverpool are illustrative. Automatic write-back of patient check-in answers is in final development. The Registry records and reports outcomes for audit and service evaluation; it is not a medical device and does not give clinical advice. Naming an NHS organisation or company does not imply its endorsement. EchoLaser is a trademark of its owner.</p>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const bg = document.querySelector('[data-el-bg]');
+    if (bg instanceof HTMLVideoElement && reduce) { bg.pause(); bg.removeAttribute('autoplay'); }
+    const items = document.querySelectorAll('.el-reveal');
+    if (reduce || !('IntersectionObserver' in window)) {
+      items.forEach((el) => el.classList.add('in'));
+    } else {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+      items.forEach((el) => io.observe(el));
+    }
+  </script>
+</Base>
+
+<style>
+  @font-face { font-family: 'Gridon'; src: url('/echolaser/fonts/gridon-medium.woff2') format('woff2'); font-weight: 500; font-display: swap; }
+  @font-face { font-family: 'Plex'; src: url('/echolaser/fonts/plex-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+  @font-face { font-family: 'Plex'; src: url('/echolaser/fonts/plex-500.woff2') format('woff2'); font-weight: 500; font-display: swap; }
+  @font-face { font-family: 'Plex'; src: url('/echolaser/fonts/plex-600.woff2') format('woff2'); font-weight: 600; font-display: swap; }
+
+  .el {
+    --el-bg: #061428;
+    --el-panel: #0b2140;
+    --el-mag: #e8318f;
+    --el-mag-soft: #ff8cc6;
+    --el-ice: #9ccbff;
+    --el-text: #ffffff;
+    --el-soft: rgba(226, 236, 250, 0.8);
+    --el-faint: rgba(226, 236, 250, 0.58);
+    --el-line: rgba(156, 203, 255, 0.16);
+    background: var(--el-bg);
+    color: var(--el-text);
+    font-family: 'Plex', var(--font-sans);
+    overflow-x: clip;
+  }
+  .el-wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+  .el-hero { position: relative; min-height: calc(100svh - 72px); display: grid; align-items: center; padding: 96px 0 104px; isolation: isolate; overflow: hidden; }
+  .el-hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; filter: brightness(.7) saturate(.9); }
+  .el-hero-shade { position: absolute; inset: 0; z-index: -1; background:
+    linear-gradient(90deg, rgba(6, 20, 40, .95) 0%, rgba(6, 20, 40, .78) 48%, rgba(6, 20, 40, .35) 100%),
+    linear-gradient(180deg, rgba(6, 20, 40, 0) 60%, var(--el-bg) 100%); }
+  .el-hero-inner { width: 100%; }
+  .el-status { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 22px; padding: 7px 14px; border: 1px solid rgba(232, 49, 143, .55); border-radius: 6px; font-weight: 600; font-size: .9rem; letter-spacing: .12em; text-transform: uppercase; color: var(--el-mag-soft); }
+  .el-status span { width: 8px; height: 8px; border-radius: 50%; background: var(--el-mag); box-shadow: 0 0 10px var(--el-mag); }
+  .el-eyebrow { display: flex; align-items: center; gap: 16px; margin: 0 0 14px; font-weight: 500; font-size: clamp(.9rem, 1.4vw, 1.05rem); letter-spacing: .2em; text-transform: uppercase; color: var(--el-ice); }
+  .el-eyebrow::before { content: ''; width: 44px; height: 2px; background: var(--el-mag); flex: none; }
+  .el-title { margin: 0; font-family: 'Gridon', 'Plex', monospace; font-weight: 500; text-transform: uppercase; font-size: clamp(2.6rem, 8vw, 6.2rem); line-height: 1; letter-spacing: .01em; }
+  .el-sub { margin: 14px 0 0; font-size: clamp(1.3rem, 3vw, 2.2rem); font-weight: 500; color: var(--el-mag-soft); }
+  .el-lead { margin: 26px 0 0; max-width: 56ch; font-size: clamp(1.05rem, 1.7vw, 1.25rem); line-height: 1.6; color: var(--el-soft); }
+  .el-pills { list-style: none; margin: 26px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+  .el-pills li { padding: 8px 14px; border: 1px solid var(--el-line); border-radius: 6px; background: rgba(11, 33, 64, .7); font-weight: 500; font-size: .98rem; }
+  .el-cta { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 14px; }
+  .el-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 26px; border-radius: 8px; font-weight: 600; font-size: 1.02rem; text-decoration: none; transition: transform .2s ease, background .2s ease, border-color .2s ease; }
+  .el-btn-primary { background: #c41f72; color: #fff; box-shadow: 0 10px 34px -10px rgba(232, 49, 143, .7); }
+  .el-btn-primary:hover { transform: translateY(-2px); background: #b01a66; }
+  .el-btn-ghost { color: var(--el-text); border: 1.5px solid rgba(226, 236, 250, .4); background: rgba(6, 20, 40, .4); }
+  .el-btn-ghost:hover { border-color: var(--el-ice); }
+  .el a:focus-visible, .el video:focus-visible { outline: 3px solid var(--el-ice); outline-offset: 3px; }
+  .el-rise { opacity: 0; transform: translateY(22px); animation: el-rise .8s cubic-bezier(.16, 1, .3, 1) var(--d, 0s) forwards; }
+  @keyframes el-rise { to { opacity: 1; transform: none; } }
+
+  .el-section { padding: clamp(64px, 9vw, 112px) 0; }
+  .el-kicker { display: flex; align-items: center; gap: 14px; margin: 0 0 12px; color: var(--el-ice); font-weight: 600; font-size: .92rem; letter-spacing: .18em; text-transform: uppercase; }
+  .el-kicker::before { content: ''; width: 36px; height: 2px; background: var(--el-mag); }
+  .el-h2 { margin: 0 0 36px; font-weight: 600; font-size: clamp(1.9rem, 4.2vw, 3.1rem); line-height: 1.08; letter-spacing: -.02em; max-width: 22ch; }
+  .el-reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s cubic-bezier(.16, 1, .3, 1); }
+  .el-reveal.in { opacity: 1; transform: none; }
+
+  .el-film { padding-top: clamp(48px, 7vw, 80px); }
+  .el-player { border-radius: 14px; overflow: hidden; border: 1px solid var(--el-line); box-shadow: 0 40px 100px -30px rgba(0, 0, 0, .9), 0 20px 70px -40px rgba(232, 49, 143, .45); background: #000; }
+  .el-player video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #000; }
+  .el-filmnote { margin: 16px 0 0; color: var(--el-faint); font-size: .98rem; }
+
+  .el-how { background: linear-gradient(180deg, var(--el-bg), var(--el-panel) 50%, var(--el-bg)); }
+  .el-moments { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(44px, 6vw, 84px); }
+  .el-moment { display: grid; grid-template-columns: 1.25fr 1fr; gap: clamp(24px, 4vw, 52px); align-items: center; }
+  .el-moment.flip .el-shot { order: 2; }
+  .el-shot { margin: 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--el-line); box-shadow: 0 30px 80px -30px rgba(0, 0, 0, .9); }
+  .el-shot img { display: block; width: 100%; height: auto; }
+  .el-moment-n { margin: 0 0 12px; display: flex; align-items: center; gap: 12px; color: var(--el-faint); font-weight: 600; font-size: .92rem; letter-spacing: .12em; text-transform: uppercase; }
+  .el-moment-n span { font-family: 'Gridon', monospace; font-weight: 500; font-size: 1.1rem; letter-spacing: 0; color: var(--el-mag-soft); }
+  .el-moment h3 { margin: 0 0 12px; font-weight: 600; font-size: clamp(1.45rem, 2.6vw, 2rem); line-height: 1.15; }
+  .el-moment p:not(.el-moment-n) { margin: 0; color: var(--el-soft); font-size: 1.06rem; line-height: 1.65; }
+
+  .el-table-wrap { position: relative; overflow-x: auto; border: 1px solid var(--el-line); border-radius: 12px; background: var(--el-panel); }
+  .el-table { width: 100%; border-collapse: collapse; font-size: 1rem; min-width: 640px; }
+  .el-table th, .el-table td { padding: 14px 18px; text-align: left; border-bottom: 1px solid var(--el-line); vertical-align: top; }
+  .el-table thead th { font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; color: var(--el-ice); font-weight: 600; }
+  .el-table tbody th { font-family: 'Gridon', 'Plex', monospace; font-weight: 500; font-size: 1.05rem; }
+  .el-table tbody td { color: var(--el-soft); }
+  .el-table tbody tr:last-child th, .el-table tbody tr:last-child td { border-bottom: 0; }
+  .el-small { margin: 14px 0 0; color: var(--el-faint); font-size: .92rem; }
+  .el-review { margin-top: 28px; display: flex; align-items: center; gap: 16px; padding: 18px 22px; border: 1px solid rgba(232, 49, 143, .5); border-radius: 12px; background: rgba(232, 49, 143, .08); }
+  .el-review-mark { display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--el-mag); font-weight: 700; flex: none; }
+  .el-review p { margin: 0; font-weight: 500; line-height: 1.5; }
+  .el-review p span { display: block; font-size: .8rem; letter-spacing: .16em; text-transform: uppercase; color: var(--el-ice); }
+
+  .el-cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .el-card { padding: 28px 26px; border-radius: 12px; background: var(--el-panel); border: 1px solid var(--el-line); }
+  .el-card h3 { margin: 0 0 10px; font-family: 'Gridon', 'Plex', monospace; font-weight: 500; font-size: 1.5rem; text-transform: uppercase; }
+  .el-card p { margin: 0; color: var(--el-soft); line-height: 1.65; }
+
+  .el-cmp td { text-align: center; vertical-align: middle; }
+  .el-cmp thead th:not(:first-child) { text-align: center; }
+  .el-cmp tbody th { font-family: 'Plex', sans-serif; font-weight: 500; font-size: 1rem; }
+  .el-cmp .el-us { background: rgba(232, 49, 143, .1); }
+  .el-cmp thead .el-us { color: var(--el-mag-soft); }
+  .el-mark { display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; font-weight: 700; }
+  .el-mark-yes { background: #11a36a; color: #fff; }
+  .el-mark-no { background: #d93a4b; color: #fff; }
+  .el-mark-unk { color: #9aa6ba; font-size: 1.4rem; }
+
+  .el-demo { text-align: center; background: radial-gradient(ellipse at 50% 100%, rgba(232, 49, 143, .14), transparent 60%), var(--el-bg); }
+  .el-demo-inner { display: grid; justify-items: center; gap: 8px; }
+  .el-demo .el-h2 { margin: 0 auto 4px; }
+  .el-demo p { margin: 0 0 20px; color: var(--el-soft); font-size: 1.08rem; }
+  .el-mail { margin: 16px 0 0 !important; }
+  .el-mail a { color: var(--el-ice); }
+
+  .el-notes { padding: 34px 0 54px; border-top: 1px solid var(--el-line); }
+  .el-notes p { margin: 0 0 10px; color: var(--el-faint); font-size: .9rem; line-height: 1.6; max-width: 92ch; }
+  .el-notes b { color: var(--el-soft); }
+
+  @media (max-width: 860px) {
+    .el-moment, .el-moment.flip { grid-template-columns: 1fr; }
+    .el-moment.flip .el-shot { order: 0; }
+    .el-cards { grid-template-columns: 1fr; }
+    .el-hero-shade { background: linear-gradient(180deg, rgba(6, 20, 40, .8), rgba(6, 20, 40, .92)); }
+  }
+  @media (max-width: 520px) {
+    .el-hero { padding: 72px 0 88px; }
+    .el-btn { width: 100%; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .el-rise, .el-reveal { opacity: 1; transform: none; animation: none; transition: none; }
+    .el-hero-video { display: none; }
+    .el-hero { background: url('/echolaser/img/hero.jpg') center / cover; }
+    .el-btn { transition: none; }
+  }
+</style>

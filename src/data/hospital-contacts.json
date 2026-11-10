@@ -1,0 +1,259 @@
+[
+  {
+    "id": "derriford-hospital",
+    "name": "Derriford Hospital",
+    "city": "Plymouth",
+    "contacts": [
+      {
+        "label": "Switchboard",
+        "phones": [
+          {
+            "display": "01752 202082",
+            "e164": "+441752202082"
+          }
+        ],
+        "source": "https://www.plymouthhospitals.nhs.uk/chestnut-urology-investigation-unit/",
+        "checked": "2026-11-10",
+        "note": "Ask for the Chestnut Urology Investigation Unit to reach the unit through switchboard."
+      }
+    ]
+  },
+  {
+    "id": "frimley-park-hospital",
+    "name": "Frimley Park Hospital",
+    "city": "Frimley",
+    "contacts": [
+      {
+        "label": "Switchboard",
+        "phones": [
+          {
+            "display": "0300 614 5000",
+            "e164": "+443006145000"
+          }
+        ],
+        "source": "https://www.fhft.nhs.uk/patients-and-visitors/contact-us",
+        "checked": "2026-11-10",
+        "note": "Shared Frimley Health switchboard. Specify Frimley Park Hospital."
+      },
+      {
+        "label": "Outpatient bookings, including urology",
+        "phones": [
+          {
+            "display": "0300 613 4201",
+            "e164": "+443006134201"
+          }
+        ],
+        "source": "https://www.fhft.nhs.uk/patients-and-visitors/your-visit/outpatient-appointments",
+        "checked": "2026-11-10",
+        "note": "For booking enquiries."
+      }
+    ]
+  },
+  {
+    "id": "great-western-hospital",
+    "name": "Great Western Hospital",
+    "city": "Swindon",
+    "contacts": [
+      {
+        "label": "Switchboard",
+        "phones": [
+          {
+            "display": "01793 604020",
+            "e164": "+441793604020"
+          }
+        ],
+        "source": "https://www.gwh.nhs.uk/contact/",
+        "checked": "2026-11-10",
+        "note": "Main hospital switchboard."
+      },
+      {
+        "label": "Surgical Assessment Unit",
+        "phones": [
+          {
+            "display": "01793 605855",
+            "e164": "+441793605855"
+          }
+        ],
+        "source": "https://www.gwh.nhs.uk/wards-and-departments/s/surgical-assessment-unit-sau/",
+        "checked": "2026-11-10",
+        "note": "General surgical assessment unit, ground floor, Brunel Treatment Centre."
+      },
+      {
+        "label": "Urological cancer nurse specialists",
+        "phones": [
+          {
+            "display": "01793 605917",
+            "e164": "+441793605917"
+          }
+        ],
+        "source": "https://www.gwh.nhs.uk/wards-and-departments/c/cancer/urological-cancer/",
+        "checked": "2026-11-10",
+        "note": "For urological cancer enquiries."
+      }
+    ]
+  },
+  {
+    "id": "norfolk-and-norwich-university-hospital",
+    "name": "Norfolk and Norwich University Hospital",
+    "city": "Norwich",
+    "contacts": [
+      {
+        "label": "Switchboard",
+        "phones": [
+          {
+            "display": "01603 286286",
+            "e164": "+441603286286"
+          }
+        ],
+        "source": "https://www.nnuh.nhs.uk/patients-visitors/contacting-and-finding-us/",
+        "checked": "2026-11-10",
+        "note": "Main hospital switchboard."
+      },
+      {
+        "label": "Edgefield Ward",
+        "phones": [
+          {
+            "display": "01603 289962",
+            "e164": "+441603289962"
+          }
+        ],
+        "source": "https://www.nnuh.nhs.uk/wards/edgefield-ward/",
+        "checked": "2026-11-10",
+        "note": "Urology and surgical inpatient ward, level 2, Centre Block."
+      },
+      {
+        "label": "Urology clinics",
+        "phones": [
+          {
+            "display": "01603 287275",
+            "e164": "+441603287275"
+          }
+        ],
+        "source": "https://www.nnuh.nhs.uk/clinics/urology-clinics/",
+        "checked": "2026-11-10",
+        "note": "Surgical outpatients, level 3, West Block."
+      }
+    ]
+  },
+  {
+    "id": "royal-blackburn-teaching-hospital",
+    "name": "Royal Blackburn Teaching Hospital",
+    "city": "Blackburn",
+    "contacts": [
+      {
+        "label": "Switchboard",
+        "phones": [
+          {
+            "display": "01254 263555",
+            "e164": "+441254263555"
+          }
+        ],
+        "source": "https://elht.nhs.uk/your-visit/our-hospitals-and-locations/royal-blackburn-teaching-hospital",
+        "checked": "2026-11-10",
+        "note": "Royal Blackburn site switchboard."
+      },
+      {
+        "label": "Ward B14",
+        "phones": [
+          {
+            "display": "01254 734579",
+            "e164": "+441254734579"
+          }
+        ],
+        "source": "https://elht.nhs.uk/your-visit/visiting-times",
+        "checked": "2026-11-10",
+        "note": "Shared urology, maxillofacial and ENT inpatient ward."
+      }
+    ]
+  },
+  {
+    "id": "royal-hallamshire-hospital",
+    "name": "Royal Hallamshire Hospital",
+    "city": "Sheffield",
+    "contacts": [
+      {
+        "label": "Switchboard",
+        "phones": [
+          {
+            "display": "0114 271 1900",
+            "e164": "+441142711900"
+          }
+        ],
+        "source": "https://www.sth.nhs.uk/contact-us/",
+        "checked": "2026-11-10",
+        "note": "Royal Hallamshire site switchboard."
+      },
+      {
+        "label": "Urology outpatients",
+        "phones": [
+          {
+            "display": "0114 271 2255",
+            "e164": "+441142712255"
+          }
+        ],
+        "source": "https://www.sth.nhs.uk/patients-visitor-information/ward-contact-details/",
+        "checked": "2026-11-10",
+        "note": "Urology outpatient department."
+      },
+      {
+        "label": "Ward F1",
+        "phones": [
+          {
+            "display": "0114 271 2744",
+            "e164": "+441142712744"
+          },
+          {
+            "display": "0114 271 2265",
+            "e164": "+441142712265"
+          }
+        ],
+        "source": "https://www.sth.nhs.uk/patients-visitor-information/ward-contact-details/",
+        "checked": "2026-11-10",
+        "note": "Inpatient ward at Royal Hallamshire Hospital."
+      }
+    ]
+  },
+  {
+    "id": "wythenshawe-hospital",
+    "name": "Wythenshawe Hospital",
+    "city": "Manchester",
+    "contacts": [
+      {
+        "label": "Switchboard",
+        "phones": [
+          {
+            "display": "0161 998 7070",
+            "e164": "+441619987070"
+          }
+        ],
+        "source": "https://mft.nhs.uk/wythenshawe/get-in-touch/",
+        "checked": "2026-11-10",
+        "note": "Wythenshawe Hospital switchboard."
+      },
+      {
+        "label": "Ward F3",
+        "phones": [
+          {
+            "display": "0161 291 2208",
+            "e164": "+441612912208"
+          }
+        ],
+        "source": "https://mft.nhs.uk/wythenshawe/services/wythenshawe-urology/",
+        "checked": "2026-11-10",
+        "note": "Urology inpatient ward, first floor, F Block (Green Zone)."
+      },
+      {
+        "label": "Urology Assessment Unit",
+        "phones": [
+          {
+            "display": "0161 291 2438",
+            "e164": "+441612912438"
+          }
+        ],
+        "source": "https://mft.nhs.uk/wythenshawe/services/wythenshawe-urology/",
+        "checked": "2026-11-10",
+        "note": "First floor, general outpatient department (Yellow Zone)."
+      }
+    ]
+  }
+]

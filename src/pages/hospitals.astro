@@ -1,0 +1,88 @@
+---
+import Base from '../layouts/Base.astro';
+import hospitals from '../data/hospital-contacts.json';
+
+const dateFormat = new Intl.DateTimeFormat('en-GB', {
+  day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC'
+});
+---
+<Base title="Hospital contacts" description="NHS switchboards, urology wards and department numbers for hospitals in UroRef.">
+  <div class="contacts-directory">
+    <header>
+      <h1>Hospital contacts</h1>
+      <p>Find the switchboard, urology ward or department for your hospital. These numbers come from public NHS directories. Confirm the current on-call contact locally.</p>
+    </header>
+
+    <nav class="hospital-picker" aria-label="Choose a hospital">
+      <h2>Choose a hospital</h2>
+      <ul>
+        {hospitals.map(hospital =>
+          <li><a href={`#${hospital.id}`}>{hospital.name}</a></li>
+        )}
+      </ul>
+    </nav>
+
+    {hospitals.map(hospital =>
+      <section id={hospital.id} tabindex="-1" aria-labelledby={`${hospital.id}-title`} class="hospital">
+        <h2 id={`${hospital.id}-title`}>{hospital.name}</h2>
+        <p class="city">{hospital.city}</p>
+        <ul class="contacts">
+          {hospital.contacts.map(contact =>
+            <li>
+              <div class="contact-row">
+                <h3>{contact.label}</h3>
+                <div class="phones">
+                  {contact.phones.map(phone =>
+                    <a href={`tel:${phone.e164}`} aria-label={`Call ${contact.label} at ${hospital.name} on ${phone.display}`}>{phone.display}</a>
+                  )}
+                </div>
+              </div>
+              <p>{contact.note}</p>
+              <div class="source">
+                <a href={contact.source} aria-label={`NHS source for ${contact.label} at ${hospital.name}`}>NHS source</a>
+                <span> · Checked <time datetime={contact.checked}>{dateFormat.format(new Date(contact.checked))}</time></span>
+              </div>
+            </li>
+          )}
+        </ul>
+      </section>
+    )}
+    <footer class="contribute">
+      <a href="https://urorefai.nityjr.workers.dev/contribute">Contribute local hospital details</a>
+    </footer>
+  </div>
+</Base>
+
+<style>
+  .contacts-directory {
+    width: min(100% - 2.5rem, 50rem);
+    margin: 0 auto;
+    padding: clamp(2.5rem, 6vw, 5rem) 0 4rem;
+    color: var(--text-primary);
+  }
+  h1, h2, h3, p { margin: 0; }
+  h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); line-height: 1.1; letter-spacing: -0.04em; }
+  header p { margin-top: 1rem; max-width: 62ch; line-height: 1.6; }
+  p, .source { color: var(--text-secondary); }
+  a { color: var(--text-primary); text-decoration: underline; text-underline-offset: .2em; }
+  .hospital-picker { margin: 2rem 0 3rem; }
+  .hospital-picker h2 { font-size: 1.2rem; }
+  .hospital-picker ul {
+    list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+    margin: .6rem 0 0; padding: 0; column-gap: 1.5rem;
+  }
+  .hospital-picker a { display: inline-block; padding: .55rem 0; }
+  .hospital { scroll-margin-top: 6rem; margin-block: 2.5rem; }
+  .hospital h2 { font-size: clamp(1.5rem, 4vw, 2rem); line-height: 1.2; }
+  .city { margin: .3rem 0 1rem; }
+  .contacts { list-style: none; padding: 0; margin: 0; }
+  .contacts li { border-top: 1px solid var(--border); padding: 1rem 0; }
+  .contact-row, .phones { display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem 1rem; }
+  .contact-row { justify-content: space-between; }
+  h3, .phones a { font-size: 1.1rem; font-weight: 650; }
+  .phones a { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .contacts p { margin-block: .3rem; }
+  .source { font-size: .88rem; }
+  .contribute { border-top: 1px solid var(--border); padding-top: 1.4rem; }
+  .contacts-directory a:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+</style>

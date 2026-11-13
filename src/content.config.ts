@@ -11,6 +11,7 @@ const deepDives = defineCollection({
     tags: z.array(z.string()).optional(),
     anchor: z.string().optional(),
     image: z.string().optional(),
+    imageAlt: z.string().optional(),
   }),
 });
 

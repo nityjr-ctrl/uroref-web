@@ -47,7 +47,7 @@ const { Content } = await render(article);
   <!-- Hero image -->
   {article.data.image && (
     <div class="article-hero-image">
-      <img src={article.data.image} alt={article.data.title} />
+      <img src={article.data.image} alt={article.data.imageAlt || article.data.title} />
     </div>
   )}
 

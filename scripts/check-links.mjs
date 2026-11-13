@@ -6,8 +6,6 @@ const requiredPaths = [
   'index.html',
   'try/index.html',
   'app-demo/index.html',
-  'app-demo/static/css/main.de79c777.css',
-  'app-demo/static/js/main.6d7b4626.js',
   'showcase/index.html',
   'imaging-lab/index.html',
   'last30days/index.html',

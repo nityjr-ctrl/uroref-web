@@ -11,6 +11,7 @@ export default defineConfig({
   },
   integrations: [mdx(), sitemap({ filter: (page) => !page.includes('/contiregistry') && !page.includes('/echolaser') })],
   vite: {
+    build: { sourcemap: false, minify: 'esbuild' },
     plugins: [tailwindcss()],
   },
 });

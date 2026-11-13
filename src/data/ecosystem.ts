@@ -53,7 +53,7 @@ export const ecosystemProjects: EcosystemProject[] = [
     safetyNotice:
       'Follow local policy, senior advice and clinical judgement. Do not enter patient-identifiable information into connected features.',
     demoLinks: [
-      { label: 'Try UroRef on a phone', href: '/try/' },
+      { label: 'Get the UroRef app', href: '/app' },
       { label: 'Browse evidence-led Deep Dives', href: '/deep-dives' },
     ],
     searchTerms: ['on call', 'guidelines', 'deep dives', 'clinical reference', 'trainee', 'Ariadne'],

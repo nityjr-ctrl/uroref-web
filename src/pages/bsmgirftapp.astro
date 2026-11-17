@@ -8,6 +8,14 @@ const steps = [
   { n: '3', title: 'Tumour details', body: 'Choose the lesion count and largest size, tick any findings, and tap the numbered circles on the bladder map. A red FAST-TRACK bar appears as soon as a trigger is met.' },
   { n: '4', title: 'Save', body: 'Tap Save card to worklist. The card goes straight to the scheduling meeting worklist, and the next new card starts blank.' },
 ];
+
+// Short summary of the published GIRFT guide, in our own words. The film's opening cards use the same four lines.
+const girft = [
+  'A standard electronic waiting list card for every bladder cancer procedure.',
+  'A bladder map with the number, size and site of the lesions.',
+  'Early fast-track scheduling when muscle-invasive cancer is suspected.',
+  'A weekly scheduling meeting, with day case TURBT as the default.',
+];
 ---
 <Base
   title="Bladder Cancer Waiting List Card: new user guide"
@@ -24,10 +32,20 @@ const steps = [
 
     <section class="bsm-film" aria-labelledby="bsm-film-title">
       <h2 id="bsm-film-title" class="bsm-sr">Guide film</h2>
-      <video controls playsinline preload="metadata" poster="/bsmgirftapp/img/poster.jpg" aria-label="Bladder Cancer Waiting List Card new user guide film, 44 seconds, no sound, captions on screen">
+      <video controls playsinline preload="metadata" poster="/bsmgirftapp/img/poster.jpg" aria-label="Bladder Cancer Waiting List Card new user guide film, about one minute, no sound, captions on screen">
         <source src="/bsmgirftapp/media/bladder-card-new-user-guide.mp4" type="video/mp4" />
       </video>
-      <p class="bsm-note">44 seconds. No sound; captions on screen. Demonstration values only. No patient data is shown. The same four steps are written out below.</p>
+      <p class="bsm-note">About one minute. No sound; captions on screen. Demonstration values only. No patient data is shown. Everything in the film is also written out below.</p>
+    </section>
+
+    <section class="bsm-why" aria-labelledby="bsm-why-title">
+      <h2 id="bsm-why-title">Why this card</h2>
+      <p>What is seen at flexible cystoscopy decides how urgent the TURBT is. The card records it there and then, in about a minute, so the weekly scheduling meeting can plan from the cards with the highest-risk patients first.</p>
+      <h3>What GIRFT asks for</h3>
+      <ul>
+        {girft.map((g) => <li>{g}</li>)}
+      </ul>
+      <p class="bsm-small">Our summary of <a href="https://gettingitrightfirsttime.co.uk/wp-content/uploads/2026/07/GIRFT-Suspected-Bladder-Cancer-FINAL-June-2026.pdf" rel="noopener">GIRFT Urology: Guide to suspected bladder cancer (June 2026)</a>. Read the guide itself for the detail.</p>
     </section>
 
     <section class="bsm-steps" aria-labelledby="bsm-steps-title">
@@ -52,7 +70,7 @@ const steps = [
         <li>Patient details are only ever entered in the card itself, which runs inside your trust's own systems. Nothing is entered on this website.</li>
         <li>The full user guide is available from your service lead.</li>
       </ul>
-      <p class="bsm-small">This guide is produced by UroRef. It is not an NHS publication. App design and logic by Nity G, Urology Registrar. &copy; 2026 UroRef Ltd. All rights reserved.</p>
+      <p class="bsm-small">This guide is produced by UroRef. It is not an NHS or GIRFT publication. App design and logic by Nity G, Urology Registrar. &copy; 2026 UroRef Ltd. All rights reserved.</p>
     </section>
   </div>
 </Base>
@@ -72,6 +90,10 @@ const steps = [
   .bsm-n { flex: 0 0 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #04121f; background: var(--text-accent); }
   .bsm-steps h3 { margin: 4px 0 6px; font-size: 1.12rem; color: var(--text-primary); }
   .bsm-steps p { margin: 0; line-height: 1.55; }
+  .bsm-why p { margin: 0 0 10px; max-width: 70ch; line-height: 1.6; }
+  .bsm-why h3 { margin: 22px 0 10px; font-size: 1.15rem; color: var(--text-primary); }
+  .bsm-why ul { list-style: disc; margin: 0; padding-left: 1.2em; display: grid; gap: 8px; line-height: 1.55; }
+  .bsm a { color: var(--text-accent); text-decoration: underline; text-underline-offset: 2px; }
   .bsm-know ul { list-style: disc; margin: 0; padding-left: 1.2em; display: grid; gap: 10px; line-height: 1.55; }
   .bsm-small { margin: 22px 0 0; font-size: .88rem; color: var(--text-muted); }
   @media (max-width: 720px) { .bsm-steps ol { grid-template-columns: 1fr; } }

@@ -26,7 +26,7 @@ const moments = [
   },
   {
     n: '04', when: 'In review', title: 'How are we doing?',
-    body: 'Every review date is calculated. Live charts compare the site with the network, using aggregates only, and the governance site pack exports in one click.',
+    body: 'Every review date is calculated. Live charts set the site beside reference figures, using aggregates only, with small counts hidden. The site report prints in one tap, and the full dataset exports to the Trust’s own mailbox.',
     img: '/echolaser/img/m-charts.jpg', alt: 'Demonstration charts of cases by indication, procedure setting and first trial without catheter outcome.',
   },
 ];
@@ -44,6 +44,12 @@ const people = [
   { who: 'Surgeons', line: 'Every case and every outcome in one place, from the fibre kit to the 12-month review, ready for an audit, a meeting or a poster.' },
   { who: 'Patients', line: 'One letter and about two minutes on their own phone. No app to install, no name asked.' },
   { who: 'Trusts', line: 'Runs in the Trust’s own Microsoft 365. Records stay with the Trust, and only aggregate counts leave it, with small counts suppressed.' },
+];
+
+const rollout = [
+  { who: 'Same Trust', line: 'A second hospital in the same Trust is one new row in Site settings, about ten minutes’ work. It gets its own Registry IDs, review list and charts.' },
+  { who: 'Another Trust', line: 'Each Trust runs its own copy in its own Microsoft 365, set up from a kit in about two hours. Its records stay with it, and an aggregate report goes to the coordinating centre each quarter.' },
+  { who: 'Practice site', line: 'Every copy includes a demonstration hospital with 42 made-up cases, so new staff can practise and a team can see the charts before its first real case.' },
 ];
 
 type Mark = 'yes' | 'no' | 'unk';
@@ -166,6 +172,17 @@ const markGlyph: Record<Mark, string> = { yes: '✓', no: '✕', unk: '—' };
       </div>
     </section>
 
+    <section class="el-section el-who" aria-labelledby="el-rollout-title">
+      <div class="el-wrap">
+        <p class="el-kicker el-reveal">Adding a hospital</p>
+        <h2 id="el-rollout-title" class="el-h2 el-reveal">From one hospital to a network.</h2>
+        <ul class="el-cards">
+          {rollout.map((r) => (<li class="el-card el-reveal"><h3>{r.who}</h3><p>{r.line}</p></li>))}
+        </ul>
+        <p class="el-small el-reveal">The Registry runs at one hospital today. The set-up kit was tested in November 2026; the first set-up in a second Trust has not yet taken place.</p>
+      </div>
+    </section>
+
     <section class="el-section el-compare" aria-labelledby="el-compare-title">
       <div class="el-wrap">
         <p class="el-kicker el-reveal">The landscape</p>
@@ -197,7 +214,7 @@ const markGlyph: Record<Mark, string> = { yes: '✓', no: '✕', unk: '—' };
     <section class="el-notes" aria-label="Credits and notes">
       <div class="el-wrap">
         <p><b>EchoLaser Registry</b> is a product of UroRef Ltd. Created by Nity G, Urology Registrar. Clinical Advisor: Mr Suresh Venugopal, Consultant Urologist, Royal Liverpool University Hospital.</p>
-        <p>The film and screenshots use demonstration data: records, dates, codes, the fibre kit label and the chart values are illustrative, and centres other than Liverpool are illustrative. Automatic write-back of patient check-in answers is in final development. The Registry records and reports outcomes for audit and service evaluation; it is not a medical device and does not give clinical advice. Naming an NHS organisation or company does not imply its endorsement. EchoLaser is a trademark of its owner.</p>
+        <p>The film and screenshots use demonstration data: records, dates, codes, the fibre kit label and the chart values are illustrative, and centres other than Liverpool are illustrative. Patient check-in answers are written to the case record automatically; this was switched on in November 2026 after an end-to-end test with a made-up case. The Registry records and reports outcomes for audit and service evaluation; it is not a medical device and does not give clinical advice. Naming an NHS organisation or company does not imply its endorsement. EchoLaser is a trademark of its owner.</p>
       </div>
     </section>
   </div>

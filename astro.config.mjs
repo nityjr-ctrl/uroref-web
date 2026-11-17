@@ -9,7 +9,7 @@ export default defineConfig({
     '/connect': '/nity',
     '/ecosystem': '/showcase',
   },
-  integrations: [mdx(), sitemap({ filter: (page) => !page.includes('/contiregistry') && !page.includes('/echolaser') })],
+  integrations: [mdx(), sitemap({ filter: (page) => !page.includes('/contiregistry') && !page.includes('/echolaser') && !page.includes('/bsmgirftapp') })],
   vite: {
     plugins: [tailwindcss()],
   },

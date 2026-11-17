@@ -1,0 +1,78 @@
+---
+import Base from '../layouts/Base.astro';
+
+// Unlisted how-to page: noindex, left out of the sitemap and not linked from the site.
+const steps = [
+  { n: '1', title: 'Open the app', body: 'Sign in with your NHS account, then tap + New card straight after the cystoscopy.' },
+  { n: '2', title: 'Patient details', body: 'Fields marked * are required: RQ number, NHS number, date of birth (typed as dd/mm/yyyy), initials and nominal consultant. Choose TBC if a consultant has not been assigned yet.' },
+  { n: '3', title: 'Tumour details', body: 'Choose the lesion count and largest size, tick any findings, and tap the numbered circles on the bladder map. A red FAST-TRACK bar appears as soon as a trigger is met.' },
+  { n: '4', title: 'Save', body: 'Tap Save card to worklist. The card goes straight to the scheduling meeting worklist, and the next new card starts blank.' },
+];
+---
+<Base
+  title="Bladder Cancer Waiting List Card: new user guide"
+  description="A short guide for staff who are new to the Bladder Cancer Waiting List Card: adding a card after flexible cystoscopy in four steps."
+  image="/bsmgirftapp/img/poster.jpg"
+  noindex={true}
+>
+  <div class="bsm">
+    <header class="bsm-head">
+      <p class="bsm-kicker">New user guide</p>
+      <h1>Bladder Cancer Waiting List Card</h1>
+      <p class="bsm-lead">Adding a card straight after flexible cystoscopy, in under a minute. For staff who have been given access to the card.</p>
+    </header>
+
+    <section class="bsm-film" aria-labelledby="bsm-film-title">
+      <h2 id="bsm-film-title" class="bsm-sr">Guide film</h2>
+      <video controls playsinline preload="metadata" poster="/bsmgirftapp/img/poster.jpg" aria-label="Bladder Cancer Waiting List Card new user guide film, 44 seconds, no sound, captions on screen">
+        <source src="/bsmgirftapp/media/bladder-card-new-user-guide.mp4" type="video/mp4" />
+      </video>
+      <p class="bsm-note">44 seconds. No sound; captions on screen. Demonstration values only. No patient data is shown. The same four steps are written out below.</p>
+    </section>
+
+    <section class="bsm-steps" aria-labelledby="bsm-steps-title">
+      <h2 id="bsm-steps-title">The four steps</h2>
+      <ol>
+        {steps.map((s) => (
+          <li>
+            <span class="bsm-n" aria-hidden="true">{s.n}</span>
+            <div>
+              <h3>{s.title}</h3>
+              <p>{s.body}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="bsm-know" aria-labelledby="bsm-know-title">
+      <h2 id="bsm-know-title">Good to know</h2>
+      <ul>
+        <li>If a save fails, a red message gives the reason and nothing is lost from the form. Take a screenshot of the message and send it to Nity G.</li>
+        <li>Patient details are only ever entered in the card itself, which runs inside your trust's own systems. Nothing is entered on this website.</li>
+        <li>The full user guide is available from your service lead.</li>
+      </ul>
+      <p class="bsm-small">This guide is produced by UroRef. It is not an NHS publication. App design and logic by Nity G, Urology Registrar. &copy; 2026 UroRef Ltd. All rights reserved.</p>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .bsm { max-width: 980px; margin: 0 auto; padding: clamp(28px, 5vw, 64px) clamp(18px, 4vw, 32px) clamp(48px, 7vw, 96px); color: var(--text-secondary); }
+  .bsm-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .bsm-kicker { margin: 0 0 12px; font-family: var(--font-mono); font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; color: var(--text-accent); }
+  .bsm h1 { margin: 0 0 16px; font-size: clamp(2rem, 5.2vw, 3.4rem); line-height: 1.06; letter-spacing: -.02em; color: var(--text-primary); }
+  .bsm-lead { margin: 0; max-width: 60ch; font-size: clamp(1.05rem, 2vw, 1.25rem); line-height: 1.55; }
+  .bsm-film { margin-top: clamp(24px, 4vw, 40px); }
+  .bsm-film video { display: block; width: 100%; aspect-ratio: 16 / 9; height: auto; background: #0b1220; border: 1px solid var(--border-strong); border-radius: var(--r-xl); box-shadow: var(--shadow-lg); }
+  .bsm-note { margin: 14px 0 0; font-size: .95rem; color: var(--text-muted); }
+  .bsm h2 { margin: clamp(36px, 6vw, 56px) 0 18px; font-size: clamp(1.4rem, 3vw, 1.9rem); color: var(--text-primary); letter-spacing: -.01em; }
+  .bsm-steps ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .bsm-steps li { display: flex; gap: 16px; padding: 20px; border: 1px solid var(--border); border-radius: var(--r-lg); background: rgba(255, 255, 255, .03); }
+  .bsm-n { flex: 0 0 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #04121f; background: var(--text-accent); }
+  .bsm-steps h3 { margin: 4px 0 6px; font-size: 1.12rem; color: var(--text-primary); }
+  .bsm-steps p { margin: 0; line-height: 1.55; }
+  .bsm-know ul { list-style: disc; margin: 0; padding-left: 1.2em; display: grid; gap: 10px; line-height: 1.55; }
+  .bsm-small { margin: 22px 0 0; font-size: .88rem; color: var(--text-muted); }
+  @media (max-width: 720px) { .bsm-steps ol { grid-template-columns: 1fr; } }
+</style>

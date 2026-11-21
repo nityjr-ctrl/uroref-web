@@ -1,0 +1,398 @@
+---
+import Base from '../layouts/Base.astro';
+
+// Unlisted product page: noindex, left out of the sitemap and the site search, and not linked from the site.
+// Shared by link only (21 November 2026). Draft for clinical review: demonstration data only, nothing live.
+const DEMO = 'mailto:nity@uroref.com?subject=Perovial%20Registry%20demo';
+const P = '/perovialregistry';
+
+const moments = [
+  {
+    n: '01', when: 'First visit', title: 'Start a case.',
+    body: 'A year of birth and a date. No name and no hospital number: each patient is known only by a Registry ID. The history, the examination and the suitability check from the instructions for use are recorded once.',
+    img: `${P}/img/s-case.jpg`, alt: 'The Case step of the app with a demonstration entry, beside a blue panel reading Start a case, No name, No hospital number, and the Registry ID DEMO-0001.',
+  },
+  {
+    n: '02', when: 'Every week', title: 'One entry per injection.',
+    body: 'Scan the box for the lot and expiry, slide for pain, save and move on. Each of the 10 to 12 weekly injections has its own slot.',
+    img: `${P}/img/s-inject.jpg`, alt: 'The Injections step with injection 4 open, the lot and expiry filled from a demonstration syringe box label, and the pain slider set to 3.',
+  },
+  {
+    n: '03', when: 'At each assessment', title: 'A letter, printed from the app.',
+    body: 'The same measures at baseline, at the end of the course, and at 3, 6 and 12 months. The letter carries a QR code and a single-use check-in code, and nothing that identifies the patient. It can also be sent by email as a link.',
+    img: `${P}/img/s-letter.jpg`, alt: 'A demonstration patient letter with a QR code and the check-in code DEMO42, beside the words No name, No NHS number, No date of birth.',
+  },
+  {
+    n: '04', when: 'At home', title: 'Fourteen short questions.',
+    body: 'The patient scans the code and answers on their own phone, in about three minutes, with no app to install. The check-in form is designed and specified, not yet live.',
+    img: `${P}/img/s-home.jpg`, alt: 'A drawn flat lay: a phone on a kitchen table scanning the QR code on the demonstration letter, with the message Check-in form found.',
+  },
+  {
+    n: '05', when: 'In audit', title: 'The site’s own figures.',
+    body: 'Outcomes with the number of cases behind each one. Counts below five are hidden, so that no one can be picked out.',
+    img: `${P}/img/s-outcomes.jpg`, alt: 'The outcomes screen with demonstration figures marked as not results, beside the small-number rule: a count of 1 to 4 is shown as less than 5.',
+  },
+];
+
+// What each part of the dataset is based on. Questionnaire items are not reproduced here.
+const measures = [
+  { area: 'What to record', name: 'The EAU guideline', what: 'The phase of the disease, the deformity and how it was measured, pain, erectile function and distress.', when: 'History, examination and every assessment', who: 'Team', kind: 'Clinical guideline', ref: 'European Association of Urology. Guidelines on Sexual and Reproductive Health, 2026 update, section 8.2' },
+  { area: 'Curvature and plaque', name: 'Degrees, length and width', what: 'Curvature with the method used to measure it, and plaque size: the outcomes reported in the hyaluronic acid studies.', when: 'Baseline, end of course, 3, 6 and 12 months', who: 'Team', kind: 'Outcome measure', ref: 'Zucchi A et al. Sex Med 2016;4:e85–90. Favilla V et al. Andrology 2017;5:771–5' },
+  { area: 'Pain', name: 'Pain score, 0 to 10', what: 'Pain on erection, and pain during each injection.', when: 'Every injection and every assessment', who: 'Patient and team', kind: 'Outcome measure', ref: 'As reported in the hyaluronic acid studies' },
+  { area: 'Erectile function', name: 'IIEF-5', what: 'The total score only, where the site holds a licence. Not validated in Peyronie’s disease.', when: 'Baseline and assessments', who: 'Patient', kind: 'Validated questionnaire', ref: 'Rosen RC et al. Int J Impot Res 1999;11:319–26' },
+  { area: 'Change since treatment', name: 'PGI-I', what: 'The patient’s own rating of change, from very much better to very much worse.', when: 'End of course and follow-up', who: 'Patient', kind: 'Validated questionnaire', ref: 'Yalcin I, Bump RC. Am J Obstet Gynecol 2003;189:98–101' },
+  { area: 'Complications', name: 'Clavien–Dindo grade', what: 'The severity of any adverse event, and whether the course stopped early.', when: 'When something happens, and at the end', who: 'Team', kind: 'Recognised classification', ref: 'Dindo D, Demartines N, Clavien PA. Ann Surg 2004;240:205–13' },
+  { area: 'Suitability and the course', name: 'Instructions for use', what: 'Who can be treated, the 10 to 12 weekly course and the listed side effects.', when: 'Before the first injection', who: 'Team', kind: 'Product information', ref: 'Perovial 0.8% instructions for use, revision January 2025' },
+  { area: 'The patient check-in', name: 'Fourteen plain-English items', what: 'Pain, the bend, change, bother, and whether the patient would like the team to make contact, each mapped to the guideline.', when: 'Each assessment, from home', who: 'Patient', kind: 'Registry-specific item', ref: 'Written for this registry. Not a validated questionnaire.' },
+];
+
+const built = [
+  { t: 'Registry ID only', d: 'No names, NHS numbers, hospital numbers or dates of birth in the record or on the letter.' },
+  { t: 'Small numbers hidden', d: 'Counts of 1 to 4 show as <5, and the rates and averages that rest on them are withheld.' },
+  { t: 'One press, one save', d: 'A double press does not save the same entry twice.' },
+  { t: 'IDs never repeat', d: 'Registry IDs and check-in codes do not repeat.' },
+  { t: 'Locked stays locked', d: 'A locked case is not saved over.' },
+  { t: 'The Trust’s own systems', d: 'Power Apps and SharePoint lists in the Trust’s Microsoft 365, behind the Trust sign-in. Records stay inside the Trust.' },
+  { t: 'Ready for other centres', d: 'The same dataset at every site, so results can be compared and pooled.' },
+];
+
+const ticks = Array.from({ length: 37 }, (_, i) => i * 5);
+const pt = (deg: number, r: number) => [200 + r * Math.cos(((180 + deg) * Math.PI) / 180), 200 + r * Math.sin(((180 + deg) * Math.PI) / 180)];
+---
+<Base
+  title="Perovial Registry: a careful record of a new treatment"
+  description="The Perovial Registry records each course of hyaluronic acid injections for Peyronie's disease, each assessment and each outcome, inside the Trust's own Microsoft 365. Draft for clinical review."
+  image="/perovialregistry/img/og.jpg"
+  noindex={true}
+>
+  <div class="pv" data-pv>
+
+    <!-- Hero -->
+    <section class="pv-hero" aria-labelledby="pv-title">
+      <div class="pv-wrap pv-hero-grid">
+        <div class="pv-hero-text">
+          <img class="pv-mark pv-rise" style="--d: 0s" src={`${P}/img/perovial-registry-mark.svg`} width="76" height="76" alt="" />
+          <p class="pv-label pv-rise" style="--d: .08s"><span class="pv-rule" aria-hidden="true"></span>Hyaluronic acid in Peyronie’s disease</p>
+          <h1 id="pv-title" class="pv-title pv-rise" style="--d: .16s">Perovial <span>Registry</span></h1>
+          <p class="pv-sub pv-rise" style="--d: .26s">A careful record of a new treatment.</p>
+          <p class="pv-lead pv-rise" style="--d: .36s">Each course of injections, each assessment and each outcome in one record, inside the Trust’s own Microsoft 365. No names and no hospital numbers: each patient is known only by a Registry ID.</p>
+          <p class="pv-status pv-rise" style="--d: .44s"><span aria-hidden="true"></span>Draft for clinical review. Not yet live.</p>
+          <div class="pv-cta pv-rise" style="--d: .52s">
+            <a class="pv-btn pv-btn-primary" href="#film">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+              Watch the film
+            </a>
+            <a class="pv-btn pv-btn-ghost" href={DEMO}>Request a demo</a>
+          </div>
+        </div>
+        <figure class="pv-gauge pv-rise" style="--d: .2s" aria-hidden="true">
+          <svg viewBox="0 -10 400 250" width="400" height="250">
+            <path d="M 6 200 A 194 194 0 0 1 394 200" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" />
+            {ticks.map((d) => {
+              const big = d % 30 === 0;
+              const [x1, y1] = pt(d, big ? 160 : 176);
+              const [x2, y2] = pt(d, 194);
+              return <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="currentColor" stroke-width={big ? 4 : 2} stroke-linecap="round" />;
+            })}
+            {[0, 30, 60, 90, 120, 150, 180].map((d) => {
+              const [x, y] = pt(d, 132);
+              return <text x={x} y={y + 6} text-anchor="middle">{d}</text>;
+            })}
+            <g class="pv-needle"><line x1="200" y1="200" x2="72" y2="200" stroke-width="7" stroke-linecap="round" /></g>
+            <circle cx="200" cy="200" r="15" class="pv-hub" />
+            <circle cx="200" cy="200" r="6" fill="#F4F7FB" />
+          </svg>
+          <figcaption>Curvature, in degrees</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Film -->
+    <section id="film" class="pv-section pv-film" aria-labelledby="pv-film-title">
+      <div class="pv-wrap">
+        <p class="pv-kicker pv-reveal"><span class="pv-rule" aria-hidden="true"></span>The film</p>
+        <h2 id="pv-film-title" class="pv-h2 pv-reveal">From the first visit to the site’s own outcomes, in three minutes.</h2>
+        <div class="pv-player pv-reveal">
+          <video controls playsinline preload="metadata" poster={`${P}/img/poster.jpg`} aria-label="Perovial Registry film, 3 minutes 6 seconds, narrated with captions on screen" data-pv-film>
+            <source src={`${P}/media/perovial-registry-film.mp4`} type="video/mp4" />
+            <track kind="captions" srclang="en" label="English" src={`${P}/media/perovial-registry-film.en.vtt`} />
+            Your browser cannot play this video. <a href={`${P}/media/perovial-registry-film.mp4`}>Download the film (MP4)</a>.
+          </video>
+        </div>
+        <p class="pv-soundnote pv-reveal">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg>
+          <span><b>Turn your sound on.</b> The film is narrated, with captions on screen. It uses demonstration entries and figures only: no patient data and no results.</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="pv-section pv-how" aria-labelledby="pv-how-title">
+      <div class="pv-wrap">
+        <p class="pv-kicker pv-reveal"><span class="pv-rule" aria-hidden="true"></span>How it works</p>
+        <h2 id="pv-how-title" class="pv-h2 pv-reveal">Five moments. One record.</h2>
+        <ol class="pv-steps">
+          {moments.map((m, i) => (
+            <li class:list={['pv-step', 'pv-reveal', { flip: i % 2 === 1 }]}>
+              <figure class="pv-shot">
+                <img src={m.img} alt={m.alt} width="1280" height="720" loading="lazy" decoding="async" />
+              </figure>
+              <div class="pv-step-text">
+                <p class="pv-step-n"><span>{m.n}</span>{m.when}</p>
+                <h3>{m.title}</h3>
+                <p>{m.body}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- Dataset sources -->
+    <section class="pv-section pv-data" aria-labelledby="pv-data-title">
+      <div class="pv-wrap">
+        <p class="pv-kicker pv-reveal"><span class="pv-rule" aria-hidden="true"></span>The dataset</p>
+        <h2 id="pv-data-title" class="pv-h2 pv-reveal">Every question has a source.</h2>
+        <p class="pv-data-lead pv-reveal">What the team records and what the patient is asked come from the European guideline, the hyaluronic acid studies and established scales. The patient check-in items are registry items in plain English, not a new validated questionnaire.</p>
+        <div class="pv-review pv-reveal">
+          <p class="pv-review-k">Clinical review</p>
+          <p>Not yet done. Our clinical advisor, <strong>Mr Marc Lucky</strong>, Consultant Urologist, is being asked to review the dataset and the patient wording.</p>
+        </div>
+        <ul class="pv-measures">
+          {measures.map((m) => (
+            <li class:list={['pv-reveal', { own: m.kind === 'Registry-specific item' }]}>
+              <p class="pv-m-area">{m.area}</p>
+              <h3>{m.name}</h3>
+              <p class="pv-m-what">{m.what}</p>
+              <dl>
+                <div><dt>When</dt><dd>{m.when}</dd></div>
+                <div><dt>Completed by</dt><dd>{m.who}</dd></div>
+                <div><dt>Basis</dt><dd><span class="pv-m-kind">{m.kind}</span> {m.ref}</dd></div>
+              </dl>
+            </li>
+          ))}
+        </ul>
+        <p class="pv-data-note pv-reveal">Questionnaire items are not reproduced on this page. IIEF-5 is used only where the site holds a licence.</p>
+      </div>
+    </section>
+
+    <!-- Built in -->
+    <section class="pv-section pv-built" aria-labelledby="pv-built-title">
+      <div class="pv-wrap">
+        <p class="pv-kicker pv-reveal"><span class="pv-rule" aria-hidden="true"></span>Built in</p>
+        <h2 id="pv-built-title" class="pv-h2 pv-reveal">Safe by design, quick to use.</h2>
+        <ul class="pv-cards">
+          {built.map((b) => (
+            <li class="pv-card pv-reveal">
+              <h3>{b.t}</h3>
+              <p>{b.d}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Demo -->
+    <section class="pv-section pv-demo" aria-labelledby="pv-demo-title">
+      <div class="pv-wrap pv-demo-inner pv-reveal">
+        <img src={`${P}/img/perovial-registry-mark.svg`} width="64" height="64" alt="" />
+        <h2 id="pv-demo-title" class="pv-h2">See it with demonstration data.</h2>
+        <p>We will walk your team through the Perovial Registry, from the first visit to the outcomes screen.</p>
+        <a class="pv-btn pv-btn-primary" href={DEMO}>Request a demo</a>
+        <p class="pv-mail"><a href="mailto:nity@uroref.com">nity@uroref.com</a></p>
+      </div>
+    </section>
+
+    <!-- Credits and notes -->
+    <section class="pv-notes" aria-label="Credits and notes">
+      <div class="pv-wrap">
+        <p><b>Perovial Registry</b> (working title) is a product of UroRef Ltd. App design and logic by Nity G, Urology Registrar. Clinical advisor: Mr Marc Lucky, Consultant Urologist. © 2026 UroRef Ltd (company no. 17504491). All rights reserved.</p>
+        <p>Version 0.3, November 2026: built and tested with demonstration data, not yet live at any site and not yet clinically reviewed. The film and screens use demonstration entries and figures: no patient data and no results. The registry supports data collection and service evaluation by clinical teams; it is not a medical device and it does not give clinical advice. Showing or naming an NHS organisation does not imply its endorsement. Perovial is a trade mark of its owner; the registry is independent of the manufacturer and is not endorsed by it.</p>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    const root = document.querySelector('[data-pv]');
+    root?.classList.add('pv-js');
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const items = document.querySelectorAll('.pv-reveal');
+    if (reduce || !('IntersectionObserver' in window)) {
+      items.forEach((el) => el.classList.add('in'));
+    } else {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        });
+      }, { threshold: 0.16, rootMargin: '0px 0px -6% 0px' });
+      items.forEach((el) => io.observe(el));
+    }
+  </script>
+</Base>
+
+<style>
+  @font-face { font-family: 'PV Fraunces'; src: url('/perovialregistry/fonts/fraunces-latin-500-normal.woff2') format('woff2'); font-weight: 500; font-display: swap; }
+  @font-face { font-family: 'PV Fraunces'; src: url('/perovialregistry/fonts/fraunces-latin-600-normal.woff2') format('woff2'); font-weight: 600; font-display: swap; }
+  @font-face { font-family: 'PV Jakarta'; src: url('/perovialregistry/fonts/plus-jakarta-sans-latin-400-normal.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+  @font-face { font-family: 'PV Jakarta'; src: url('/perovialregistry/fonts/plus-jakarta-sans-latin-500-normal.woff2') format('woff2'); font-weight: 500; font-display: swap; }
+  @font-face { font-family: 'PV Jakarta'; src: url('/perovialregistry/fonts/plus-jakarta-sans-latin-600-normal.woff2') format('woff2'); font-weight: 600; font-display: swap; }
+  @font-face { font-family: 'PV Jakarta'; src: url('/perovialregistry/fonts/plus-jakarta-sans-latin-700-normal.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+
+  .pv {
+    --pv-bg: #F4F7FB;
+    --pv-ink: #0A2340;
+    --pv-ink2: #1B3B66;
+    --pv-muted: #52627A;
+    --pv-blue: #0B63B5;
+    --pv-coral: #E8553A;
+    --pv-coral-text: #B93C24;
+    --pv-line: #D5DFEB;
+    --pv-tint: #E7F0FA;
+    --pv-card: #FFFFFF;
+    --pv-shadow: 0 1px 0 rgba(10, 35, 64, .04), 0 18px 40px rgba(10, 35, 64, .10);
+    --pv-serif: 'PV Fraunces', Georgia, 'Times New Roman', serif;
+    --pv-sans: 'PV Jakarta', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    background: var(--pv-bg);
+    color: var(--pv-ink);
+    font-family: var(--pv-sans);
+    overflow-x: clip;
+  }
+  .pv-wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+  /* hero */
+  .pv-hero {
+    position: relative;
+    padding: clamp(56px, 9vw, 120px) 0 clamp(56px, 8vw, 100px);
+    background:
+      radial-gradient(ellipse at 85% 0%, #DCE9F8 0%, rgba(220, 233, 248, 0) 60%),
+      radial-gradient(circle at 0% 100%, rgba(232, 85, 58, .07), rgba(232, 85, 58, 0) 45%),
+      var(--pv-bg);
+  }
+  .pv-hero::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background-image: radial-gradient(rgba(11, 99, 181, .10) 1.4px, transparent 1.6px); background-size: 28px 28px;
+    -webkit-mask-image: radial-gradient(ellipse at 85% 10%, #000 0%, rgba(0, 0, 0, .5) 35%, transparent 70%);
+    mask-image: radial-gradient(ellipse at 85% 10%, #000 0%, rgba(0, 0, 0, .5) 35%, transparent 70%);
+  }
+  .pv-hero-grid { position: relative; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(24px, 4vw, 64px); align-items: center; }
+  .pv-mark { display: block; width: clamp(56px, 6vw, 76px); height: auto; }
+  .pv-label, .pv-kicker {
+    display: flex; align-items: center; gap: 14px; margin: 22px 0 0;
+    font-weight: 700; font-size: .86rem; letter-spacing: .16em; text-transform: uppercase; color: var(--pv-blue);
+  }
+  .pv-kicker { margin: 0 0 14px; }
+  .pv-rule { display: inline-block; flex: none; width: 36px; height: 4px; border-radius: 2px; background: var(--pv-coral); }
+  .pv-title {
+    margin: 14px 0 0; font-family: var(--pv-serif); font-weight: 600;
+    font-size: clamp(3rem, 8.4vw, 6.4rem); line-height: .98; letter-spacing: -0.02em; color: var(--pv-ink);
+  }
+  .pv-title span { display: block; color: var(--pv-blue); }
+  .pv-sub { margin: 18px 0 0; font-family: var(--pv-serif); font-weight: 500; font-size: clamp(1.4rem, 2.6vw, 2rem); line-height: 1.2; color: var(--pv-ink2); }
+  .pv-lead { margin: 18px 0 0; max-width: 52ch; font-size: clamp(1.05rem, 1.5vw, 1.2rem); line-height: 1.55; color: var(--pv-muted); font-weight: 500; }
+  .pv-status {
+    display: inline-flex; align-items: center; gap: 10px; margin: 22px 0 0; padding: 8px 16px; border-radius: 999px;
+    background: #FFF1EC; color: var(--pv-coral-text); font-weight: 700; font-size: .95rem;
+  }
+  .pv-status span { width: 9px; height: 9px; border-radius: 50%; background: var(--pv-coral); flex: none; }
+  .pv-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+  .pv-btn {
+    display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 24px; border-radius: 14px;
+    font-weight: 700; font-size: 1rem; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
+  }
+  .pv-btn-primary { background: var(--pv-blue); color: #fff; box-shadow: 0 10px 24px rgba(11, 99, 181, .25); }
+  .pv-btn-primary:hover { background: #0A579F; transform: translateY(-1px); }
+  .pv-btn-ghost { background: #fff; color: var(--pv-ink); box-shadow: inset 0 0 0 2px var(--pv-line); }
+  .pv-btn-ghost:hover { box-shadow: inset 0 0 0 2px var(--pv-blue); }
+  .pv a:focus-visible, .pv video:focus-visible { outline: 3px solid var(--pv-coral); outline-offset: 3px; }
+
+  .pv-gauge { margin: 0; color: var(--pv-blue); text-align: center; }
+  .pv-gauge svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .pv-gauge text { font-family: var(--pv-sans); font-weight: 600; font-size: 15px; fill: var(--pv-muted); }
+  .pv-gauge figcaption { margin-top: 10px; font-weight: 700; font-size: .8rem; letter-spacing: .18em; text-transform: uppercase; color: var(--pv-muted); }
+  .pv-needle { transform-origin: 200px 200px; transform: rotate(38deg); stroke: var(--pv-coral); animation: pv-sweep 2.2s cubic-bezier(.2, .7, .2, 1) .4s both; }
+  .pv-hub { fill: var(--pv-coral); }
+  @keyframes pv-sweep { from { transform: rotate(2deg); } to { transform: rotate(38deg); } }
+
+  .pv-rise { animation: pv-rise .8s cubic-bezier(.16, 1, .3, 1) var(--d, 0s) both; }
+  @keyframes pv-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+  /* sections */
+  .pv-section { padding: clamp(64px, 9vw, 112px) 0; }
+  .pv-h2 { margin: 0 0 36px; max-width: 22ch; font-family: var(--pv-serif); font-weight: 600; font-size: clamp(2rem, 4.4vw, 3.2rem); line-height: 1.06; letter-spacing: -0.015em; color: var(--pv-ink); }
+
+  .pv-film { background: #fff; }
+  .pv-player { border-radius: 22px; overflow: hidden; background: #0A2340; box-shadow: 0 30px 70px rgba(10, 35, 64, .22), 0 0 0 1px rgba(10, 35, 64, .06); }
+  .pv-player video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #0A2340; }
+  .pv-soundnote { display: flex; align-items: flex-start; gap: 12px; margin: 18px 0 0; max-width: 70ch; color: var(--pv-muted); font-size: 1rem; line-height: 1.5; }
+  .pv-soundnote svg { flex: none; margin-top: 3px; color: var(--pv-blue); }
+  .pv-soundnote b { color: var(--pv-ink); }
+
+  .pv-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(40px, 6vw, 72px); }
+  .pv-step { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
+  .pv-step.flip { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); }
+  .pv-step.flip .pv-shot { order: 2; }
+  .pv-shot { margin: 0; border-radius: 18px; overflow: hidden; background: #fff; box-shadow: var(--pv-shadow); }
+  .pv-shot img { display: block; width: 100%; height: auto; }
+  .pv-step-n { display: flex; align-items: center; gap: 12px; margin: 0 0 10px; font-weight: 700; font-size: .86rem; letter-spacing: .14em; text-transform: uppercase; color: var(--pv-blue); }
+  .pv-step-n span { display: inline-flex; align-items: center; justify-content: center; min-width: 40px; height: 40px; border-radius: 50%; background: var(--pv-blue); color: #fff; letter-spacing: 0; font-size: .95rem; }
+  .pv-step h3 { margin: 0 0 12px; font-family: var(--pv-serif); font-weight: 600; font-size: clamp(1.6rem, 3vw, 2.3rem); line-height: 1.1; color: var(--pv-ink); }
+  .pv-step p:last-child { margin: 0; font-size: 1.06rem; line-height: 1.6; color: var(--pv-muted); }
+
+  .pv-data { background: #fff; }
+  .pv-data-lead { margin: -14px 0 26px; max-width: 64ch; font-size: 1.1rem; line-height: 1.6; color: var(--pv-muted); }
+  .pv-review { margin: 0 0 34px; padding: 20px 24px; border-radius: 16px; background: var(--pv-tint); max-width: 76ch; }
+  .pv-review p { margin: 0; line-height: 1.55; color: var(--pv-ink2); }
+  .pv-review-k { margin-bottom: 6px !important; font-weight: 700; font-size: .82rem; letter-spacing: .16em; text-transform: uppercase; color: var(--pv-blue) !important; }
+  .pv-measures { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 18px; }
+  .pv-measures li { padding: 24px 24px 20px; border-radius: 18px; background: var(--pv-bg); box-shadow: inset 0 0 0 1.5px var(--pv-line); }
+  .pv-measures li.own { background: #FFF7F4; box-shadow: inset 0 0 0 1.5px #F3C9BD; }
+  .pv-m-area { margin: 0 0 6px; font-weight: 700; font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--pv-blue); }
+  .pv-measures li.own .pv-m-area { color: var(--pv-coral-text); }
+  .pv-measures h3 { margin: 0 0 8px; font-family: var(--pv-serif); font-weight: 600; font-size: 1.45rem; line-height: 1.15; color: var(--pv-ink); }
+  .pv-m-what { margin: 0 0 14px; line-height: 1.5; color: var(--pv-ink2); }
+  .pv-measures dl { margin: 0; display: grid; gap: 6px; font-size: .92rem; line-height: 1.45; }
+  .pv-measures dl div { display: grid; grid-template-columns: 7.5em minmax(0, 1fr); gap: 8px; }
+  .pv-measures dt { font-weight: 700; color: var(--pv-muted); }
+  .pv-measures dd { margin: 0; color: var(--pv-ink2); }
+  .pv-m-kind { font-weight: 700; color: var(--pv-ink); }
+  .pv-data-note { margin: 22px 0 0; font-size: .92rem; color: var(--pv-muted); }
+
+  .pv-cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 16px; }
+  .pv-card { padding: 24px; border-radius: 18px; background: #fff; box-shadow: var(--pv-shadow); border-top: 5px solid var(--pv-blue); }
+  .pv-card:nth-child(3n + 2) { border-top-color: var(--pv-coral); }
+  .pv-card h3 { margin: 0 0 8px; font-family: var(--pv-serif); font-weight: 600; font-size: 1.35rem; line-height: 1.15; color: var(--pv-ink); }
+  .pv-card p { margin: 0; line-height: 1.5; color: var(--pv-muted); }
+
+  .pv-demo { background: linear-gradient(160deg, #0E6BC0 0%, #0A4A93 100%); color: #fff; text-align: center; }
+  .pv-demo-inner { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .pv-demo .pv-h2 { margin: 6px 0 0; color: #fff; max-width: none; }
+  .pv-demo p { margin: 0; max-width: 56ch; font-size: 1.1rem; line-height: 1.55; color: rgba(255, 255, 255, .88); }
+  .pv-demo .pv-btn-primary { margin-top: 10px; background: #fff; color: var(--pv-blue); box-shadow: 0 10px 24px rgba(0, 0, 0, .2); }
+  .pv-demo .pv-btn-primary:hover { background: #F4F7FB; }
+  .pv-demo .pv-mail a { color: #fff; font-weight: 600; }
+  .pv-demo a:focus-visible { outline-color: #fff; }
+
+  .pv-notes { padding: 36px 0 48px; background: var(--pv-bg); }
+  .pv-notes p { margin: 0 0 10px; max-width: 110ch; font-size: .88rem; line-height: 1.6; color: var(--pv-muted); }
+  .pv-notes b { color: var(--pv-ink); }
+
+  /* reveal on scroll, only when the script runs */
+  .pv-js .pv-reveal { transition: opacity .7s ease, transform .8s cubic-bezier(.16, 1, .3, 1); }
+  .pv-js .pv-reveal:not(.in) { opacity: 0; transform: translateY(22px); }
+
+  @media (max-width: 860px) {
+    .pv-hero-grid { grid-template-columns: minmax(0, 1fr); }
+    .pv-gauge { max-width: 420px; }
+    .pv-step, .pv-step.flip { grid-template-columns: minmax(0, 1fr); }
+    .pv-step.flip .pv-shot { order: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .pv-rise, .pv-needle { animation: none; }
+    .pv-js .pv-reveal { transition: none; }
+    .pv-js .pv-reveal:not(.in) { opacity: 1; transform: none; }
+    .pv-btn { transition: none; }
+  }
+</style>

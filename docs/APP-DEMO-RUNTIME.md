@@ -1,5 +1,7 @@
 # UroRef interactive app preview
 
+> Retired 11 October 2026. The `/try/` preview, the homepage phone panel and `public/app-demo/` were removed from the website at the owner's request; `/try` now redirects to `/app`. The text below is kept as a record of the earlier runtime.
+
 The browser preview at `/try/` runs the production web payload packaged inside the official UroRef Android APK. It is not a hand-authored mock-up and it does not run Android bytecode in the browser.
 
 ## Provenance
